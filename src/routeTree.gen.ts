@@ -9,38 +9,116 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesResearchDevelopmentRouteImport } from './routes/services.research-development'
+import { Route as ServicesProjectManagementRouteImport } from './routes/services.project-management'
+import { Route as ServicesDataManagementRouteImport } from './routes/services.data-management'
+import { Route as ServicesAiToolsRouteImport } from './routes/services.ai-tools'
 
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesResearchDevelopmentRoute =
+  ServicesResearchDevelopmentRouteImport.update({
+    id: '/services/research-development',
+    path: '/services/research-development',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesProjectManagementRoute =
+  ServicesProjectManagementRouteImport.update({
+    id: '/services/project-management',
+    path: '/services/project-management',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesDataManagementRoute = ServicesDataManagementRouteImport.update({
+  id: '/services/data-management',
+  path: '/services/data-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesAiToolsRoute = ServicesAiToolsRouteImport.update({
+  id: '/services/ai-tools',
+  path: '/services/ai-tools',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/services/ai-tools': typeof ServicesAiToolsRoute
+  '/services/data-management': typeof ServicesDataManagementRoute
+  '/services/project-management': typeof ServicesProjectManagementRoute
+  '/services/research-development': typeof ServicesResearchDevelopmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/services/ai-tools': typeof ServicesAiToolsRoute
+  '/services/data-management': typeof ServicesDataManagementRoute
+  '/services/project-management': typeof ServicesProjectManagementRoute
+  '/services/research-development': typeof ServicesResearchDevelopmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/services/ai-tools': typeof ServicesAiToolsRoute
+  '/services/data-management': typeof ServicesDataManagementRoute
+  '/services/project-management': typeof ServicesProjectManagementRoute
+  '/services/research-development': typeof ServicesResearchDevelopmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/services/ai-tools'
+    | '/services/data-management'
+    | '/services/project-management'
+    | '/services/research-development'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/services/ai-tools'
+    | '/services/data-management'
+    | '/services/project-management'
+    | '/services/research-development'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/services/ai-tools'
+    | '/services/data-management'
+    | '/services/project-management'
+    | '/services/research-development'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ServicesAiToolsRoute: typeof ServicesAiToolsRoute
+  ServicesDataManagementRoute: typeof ServicesDataManagementRoute
+  ServicesProjectManagementRoute: typeof ServicesProjectManagementRoute
+  ServicesResearchDevelopmentRoute: typeof ServicesResearchDevelopmentRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +126,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/research-development': {
+      id: '/services/research-development'
+      path: '/services/research-development'
+      fullPath: '/services/research-development'
+      preLoaderRoute: typeof ServicesResearchDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/project-management': {
+      id: '/services/project-management'
+      path: '/services/project-management'
+      fullPath: '/services/project-management'
+      preLoaderRoute: typeof ServicesProjectManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/data-management': {
+      id: '/services/data-management'
+      path: '/services/data-management'
+      fullPath: '/services/data-management'
+      preLoaderRoute: typeof ServicesDataManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/ai-tools': {
+      id: '/services/ai-tools'
+      path: '/services/ai-tools'
+      fullPath: '/services/ai-tools'
+      preLoaderRoute: typeof ServicesAiToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ServicesAiToolsRoute: ServicesAiToolsRoute,
+  ServicesDataManagementRoute: ServicesDataManagementRoute,
+  ServicesProjectManagementRoute: ServicesProjectManagementRoute,
+  ServicesResearchDevelopmentRoute: ServicesResearchDevelopmentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
