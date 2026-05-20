@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import heroImg from "@/assets/hero-collab.jpg";
 import ribbonImg from "@/assets/ribbon.png";
 import { SiteShell, SERVICES, CTA, SunburstLogo } from "@/components/site/chrome";
+import { Splash } from "@/components/site/Splash";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
