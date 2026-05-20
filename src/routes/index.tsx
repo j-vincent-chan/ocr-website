@@ -340,21 +340,44 @@ function NewsTeaser() {
 }
 
 function HomePage() {
+  // Scroll-reveal for elements with `.reveal`
+  useEffect(() => {
+    if (typeof window === "undefined" || !("IntersectionObserver" in window)) return;
+    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add("in-view");
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.08 },
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <SiteShell>
-      <Hero />
-      <ServicesGrid />
-      <Approach />
-      <Partners />
-      <NewsTeaser />
-      <CTA
-        eyebrow="Work with us"
-        title={<>Let's start something<br /><span className="text-white/70">worth funding.</span></>}
-        subtitle="Whether you have a deadline next month or a five-year vision, the earlier we engage, the more value we can add."
-        email="ocr@ucsf.edu"
-      />
-    </SiteShell>
+    <>
+      <Splash />
+      <SiteShell>
+        <Hero />
+        <div className="reveal"><ServicesGrid /></div>
+        <div className="reveal"><Approach /></div>
+        <div className="reveal"><Partners /></div>
+        <div className="reveal"><NewsTeaser /></div>
+        <CTA
+          eyebrow="Work with us"
+          title={<>Let's start something<br /><span className="text-white/70">worth funding.</span></>}
+          subtitle="Whether you have a deadline next month or a five-year vision, the earlier we engage, the more value we can add."
+          email="ocr@ucsf.edu"
+        />
+      </SiteShell>
+    </>
   );
 }
+
 
 export { SunburstLogo };
