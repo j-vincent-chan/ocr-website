@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import heroImg from "@/assets/hero-collab.jpg";
 import ribbonImg from "@/assets/ribbon.png";
 import { SiteShell, SERVICES, CTA, SunburstLogo } from "@/components/site/chrome";
+import { Splash } from "@/components/site/Splash";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,14 +27,55 @@ export const Route = createFileRoute("/")({
 });
 
 function Hero() {
+  const heroRef = useRef<HTMLDivElement | null>(null);
+
+  // Cursor-tracking spotlight + parallax for the ribbon
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
+    const onMove = (e: MouseEvent) => {
+      const rect = el.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      el.style.setProperty("--mx", `${x}%`);
+      el.style.setProperty("--my", `${y}%`);
+      const dx = (e.clientX - rect.left - rect.width / 2) / rect.width;
+      const dy = (e.clientY - rect.top - rect.height / 2) / rect.height;
+      el.style.setProperty("--rx", `${dx * 18}px`);
+      el.style.setProperty("--ry", `${dy * 18}px`);
+    };
+    el.addEventListener("mousemove", onMove);
+    return () => el.removeEventListener("mousemove", onMove);
+  }, []);
+
   return (
-    <section className="relative overflow-hidden">
-      <img
-        src={ribbonImg}
-        alt=""
+    <section
+      ref={heroRef}
+      className="relative overflow-hidden"
+      style={{ ["--mx" as never]: "50%", ["--my" as never]: "30%" }}
+    >
+      {/* Interactive spotlight */}
+      <div
         aria-hidden
-        className="pointer-events-none absolute -top-32 -right-48 w-[780px] opacity-90 select-none"
+        className="pointer-events-none absolute inset-0 opacity-70 transition-opacity"
+        style={{
+          background:
+            "radial-gradient(600px circle at var(--mx) var(--my), color-mix(in oklab, var(--coral) 18%, transparent), transparent 60%)",
+        }}
       />
+      {/* Animated ribbon: slow spin + gentle float, parallax with cursor */}
+      <div
+        className="pointer-events-none absolute -top-32 -right-48 w-[780px] max-w-[90vw] animate-ribbon-float select-none"
+        style={{ transform: "translate3d(var(--rx,0), var(--ry,0), 0)" }}
+        aria-hidden
+      >
+        <img
+          src={ribbonImg}
+          alt=""
+          className="w-full animate-ribbon-spin opacity-90"
+        />
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-24 grid lg:grid-cols-12 gap-12 items-center relative">
         <div className="lg:col-span-7">
           <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1.5 text-xs font-medium text-ink">
@@ -296,21 +340,44 @@ function NewsTeaser() {
 }
 
 function HomePage() {
+  // Scroll-reveal for elements with `.reveal`
+  useEffect(() => {
+    if (typeof window === "undefined" || !("IntersectionObserver" in window)) return;
+    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add("in-view");
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.08 },
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <SiteShell>
-      <Hero />
-      <ServicesGrid />
-      <Approach />
-      <Partners />
-      <NewsTeaser />
-      <CTA
-        eyebrow="Work with us"
-        title={<>Let's start something<br /><span className="text-white/70">worth funding.</span></>}
-        subtitle="Whether you have a deadline next month or a five-year vision, the earlier we engage, the more value we can add."
-        email="ocr@ucsf.edu"
-      />
-    </SiteShell>
+    <>
+      <Splash />
+      <SiteShell>
+        <Hero />
+        <div className="reveal"><ServicesGrid /></div>
+        <div className="reveal"><Approach /></div>
+        <div className="reveal"><Partners /></div>
+        <div className="reveal"><NewsTeaser /></div>
+        <CTA
+          eyebrow="Work with us"
+          title={<>Let's start something<br /><span className="text-white/70">worth funding.</span></>}
+          subtitle="Whether you have a deadline next month or a five-year vision, the earlier we engage, the more value we can add."
+          email="ocr@ucsf.edu"
+        />
+      </SiteShell>
+    </>
   );
 }
+
 
 export { SunburstLogo };
