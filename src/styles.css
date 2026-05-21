@@ -123,31 +123,3 @@
 @utility shadow-lift {
   box-shadow: var(--shadow-lift);
 }
-
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes ribbon-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-@keyframes ribbon-float {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50%      { transform: translate3d(0, -18px, 0); }
-}
-@keyframes reveal-up {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.animate-ribbon-spin { animation: ribbon-spin 60s linear infinite; transform-origin: 50% 50%; }
-.animate-ribbon-float { animation: ribbon-float 9s ease-in-out infinite; }
-.reveal { opacity: 0; }
-.reveal.in-view { animation: reveal-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-ribbon-spin,
-  .animate-ribbon-float { animation: none !important; }
-}
-
