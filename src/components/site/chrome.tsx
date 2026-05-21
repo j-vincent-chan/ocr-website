@@ -240,8 +240,7 @@ export function Header() {
           </nav>
 
           <Link
-            to="/about"
-            hash="contact"
+            to="/contact"
             className="hidden md:inline-flex items-center gap-2 rounded-full bg-ink text-white px-5 py-2.5 text-sm font-medium hover:bg-ink/90 transition"
           >
             Get in touch
