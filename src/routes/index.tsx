@@ -27,12 +27,14 @@ export const Route = createFileRoute("/")({
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-cream">
-      {/* animated ribbon — large foreground */}
+      {/* satin ribbon weaving across the hero — sits behind headline, drapes off both edges */}
       <img
         src={ribbonImg}
         alt=""
         aria-hidden
-        className="pointer-events-none absolute -top-40 -right-72 w-[1100px] opacity-90 select-none animate-[float_22s_ease-in-out_infinite]"
+        width={1920}
+        height={1080}
+        className="pointer-events-none absolute top-[8%] -left-[12%] w-[135%] max-w-none opacity-95 select-none drop-shadow-[0_30px_60px_rgba(20,20,60,0.18)] animate-[ribbon-drift_28s_ease-in-out_infinite] mix-blend-multiply"
       />
       {/* gradient blob */}
       <div
