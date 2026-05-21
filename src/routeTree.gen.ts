@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PeopleRouteImport } from './routes/people'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesResearchDevelopmentRouteImport } from './routes/services.research-development'
@@ -16,6 +17,11 @@ import { Route as ServicesProjectManagementRouteImport } from './routes/services
 import { Route as ServicesDataManagementRouteImport } from './routes/services.data-management'
 import { Route as ServicesAiToolsRouteImport } from './routes/services.ai-tools'
 
+const PeopleRoute = PeopleRouteImport.update({
+  id: '/people',
+  path: '/people',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -52,6 +58,7 @@ const ServicesAiToolsRoute = ServicesAiToolsRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/people': typeof PeopleRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
@@ -60,6 +67,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/people': typeof PeopleRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/people': typeof PeopleRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/people'
     | '/services/ai-tools'
     | '/services/data-management'
     | '/services/project-management'
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/people'
     | '/services/ai-tools'
     | '/services/data-management'
     | '/services/project-management'
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/people'
     | '/services/ai-tools'
     | '/services/data-management'
     | '/services/project-management'
@@ -104,6 +116,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  PeopleRoute: typeof PeopleRoute
   ServicesAiToolsRoute: typeof ServicesAiToolsRoute
   ServicesDataManagementRoute: typeof ServicesDataManagementRoute
   ServicesProjectManagementRoute: typeof ServicesProjectManagementRoute
@@ -112,6 +125,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/people': {
+      id: '/people'
+      path: '/people'
+      fullPath: '/people'
+      preLoaderRoute: typeof PeopleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -160,6 +180,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  PeopleRoute: PeopleRoute,
   ServicesAiToolsRoute: ServicesAiToolsRoute,
   ServicesDataManagementRoute: ServicesDataManagementRoute,
   ServicesProjectManagementRoute: ServicesProjectManagementRoute,
@@ -168,3 +189,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
