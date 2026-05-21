@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-collab.jpg";
-import ribbonImg from "@/assets/ribbon.png";
+import constellationImg from "@/assets/hero-constellation.png";
 import { SiteShell, SERVICES, CTA, SunburstLogo } from "@/components/site/chrome";
 
 export const Route = createFileRoute("/")({
@@ -27,31 +27,24 @@ export const Route = createFileRoute("/")({
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-cream">
-      {/* animated ribbon — flowing across the hero */}
+      {/* constellation → ribbon background */}
       <img
-        src={ribbonImg}
+        src={constellationImg}
         alt=""
         aria-hidden
-        className="pointer-events-none absolute -top-20 -right-40 w-[1600px] max-w-none opacity-80 select-none animate-[float_22s_ease-in-out_infinite]"
+        className="pointer-events-none absolute inset-0 w-full h-full object-cover object-right select-none animate-[float_22s_ease-in-out_infinite]"
       />
-      {/* gradient blob */}
+      {/* left-side readability veil */}
       <div
         aria-hidden
-        className="absolute -bottom-40 -left-40 w-[680px] h-[680px] rounded-full blur-3xl opacity-30"
-        style={{ background: "var(--gradient-sunburst)" }}
+        className="absolute inset-0 bg-gradient-to-r from-cream via-cream/85 to-transparent"
       />
-      {/* faint grid */}
       <div
         aria-hidden
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, var(--ink) 1px, transparent 1px), linear-gradient(to bottom, var(--ink) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
+        className="absolute inset-0 bg-gradient-to-b from-cream/40 via-transparent to-cream/30"
       />
 
-      <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-32">
         <div className="flex items-center gap-3 text-xs font-medium text-ink/70 uppercase tracking-[0.22em]">
           <span className="w-8 h-px bg-coral" />
           UCSF · Office of Collaborative Research
