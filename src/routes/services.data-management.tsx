@@ -4,13 +4,13 @@ import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
 export const Route = createFileRoute("/services/data-management")({
   head: () => ({
     meta: [
-      { title: "Data Management & Sharing — UCSF OCR" },
+      { title: "Data management & sharing — UCSF OCR" },
       {
         name: "description",
         content:
           "REDCap and custom databases, metadata standards, and NIH-compliant Data Management & Sharing plans for UCSF research programs.",
       },
-      { property: "og:title", content: "Data Management & Sharing — UCSF OCR" },
+      { property: "og:title", content: "Data management & sharing — UCSF OCR" },
       { property: "og:description", content: "Make your data findable, accessible, interoperable, and reusable — from day one." },
     ],
   }),
@@ -285,7 +285,7 @@ function Policy() {
 function DMSPage() {
   return (
     <SiteShell>
-      <Breadcrumb trail={[{ label: "Services" }, { label: "Data Management & Sharing" }]} />
+      <Breadcrumb trail={[{ label: "Services" }, { label: "Data management & sharing" }]} />
       <Hero />
       <FAIR />
       <Architecture />

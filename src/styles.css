@@ -131,6 +131,78 @@
 
 @keyframes float {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-18px) rotate(3deg); }
+  50% { transform: translateY(-14.7px) rotate(2.1deg); }
+}
+
+/* Hero constellation: vertical drift only (rotate expands bounds and clips awkwardly) */
+@keyframes hero-constellation-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12.6px);
+  }
+}
+
+.animate-hero-constellation {
+  animation: hero-constellation-float 22s ease-in-out infinite;
+}
+
+.dispatch-ribbon {
+  animation: float 24s ease-in-out infinite;
+}
+
+.dispatch-ribbon-alt {
+  animation: float 28s ease-in-out infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-constellation {
+    animation: none;
+  }
+
+  .cta-phrase-enter,
+  .cta-phrase-exit {
+    animation: none;
+  }
+
+  .dispatch-ribbon,
+  .dispatch-ribbon-alt {
+    animation: none;
+  }
+}
+
+.cta-phrase-exit {
+  animation: cta-phrase-out 1.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.cta-phrase-enter {
+  animation: cta-phrase-in 1.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes cta-phrase-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-0.4em);
+    filter: blur(3px);
+  }
+}
+
+@keyframes cta-phrase-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.4em);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 

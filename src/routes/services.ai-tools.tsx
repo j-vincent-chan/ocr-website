@@ -4,13 +4,13 @@ import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
 export const Route = createFileRoute("/services/ai-tools")({
   head: () => ({
     meta: [
-      { title: "AI Tools & Workflow Innovation — UCSF OCR" },
+      { title: "Research resources & AI tools — UCSF OCR" },
       {
         name: "description",
         content:
           "Signal, Prospera, and a growing suite of AI tools that move OCR from passive search to proactive matchmaking for UCSF researchers.",
       },
-      { property: "og:title", content: "AI Tools & Workflow Innovation — UCSF OCR" },
+      { property: "og:title", content: "Research resources & AI tools — UCSF OCR" },
       { property: "og:description", content: "Software OCR is building so researchers and staff can spend more time on science." },
     ],
   }),
@@ -310,7 +310,7 @@ function Principles() {
 function AIPage() {
   return (
     <SiteShell>
-      <Breadcrumb trail={[{ label: "Services" }, { label: "AI Tools & Workflow Innovation" }]} />
+      <Breadcrumb trail={[{ label: "Services" }, { label: "Research resources & AI tools" }]} />
       <Hero />
       <Products />
       <Automations />

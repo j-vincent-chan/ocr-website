@@ -1,5 +1,87 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const CTA_ROTATING_PHRASES = [
+  "worth funding.",
+  "built together.",
+  "clinic ready.",
+  "science forward.",
+  "made possible.",
+] as const;
+
+export function CtaRotatingPhrase({
+  phrases = CTA_ROTATING_PHRASES,
+  className = "text-white/70",
+  intervalMs = 4500,
+}: {
+  phrases?: readonly string[];
+  className?: string;
+  intervalMs?: number;
+}) {
+  const [index, setIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState<number | null>(null);
+  const [reducedMotion, setReducedMotion] = useState(true);
+
+  useEffect(() => {
+    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+
+  useEffect(() => {
+    if (reducedMotion || phrases.length < 2) return;
+
+    let clearPrev: ReturnType<typeof setTimeout>;
+    const intervalId = window.setInterval(() => {
+      setIndex((current) => {
+        setPrevIndex(current);
+        clearPrev = window.setTimeout(() => setPrevIndex(null), 1300);
+        return (current + 1) % phrases.length;
+      });
+    }, intervalMs);
+
+    return () => {
+      window.clearInterval(intervalId);
+      window.clearTimeout(clearPrev);
+    };
+  }, [reducedMotion, phrases, intervalMs]);
+
+  return (
+    <span
+      className={`relative inline-block min-w-[17ch] h-[1.2em] align-text-bottom ${className}`}
+      aria-live="polite"
+    >
+      {prevIndex !== null && (
+        <span aria-hidden className="cta-phrase-exit absolute inset-0">
+          {phrases[prevIndex]}
+        </span>
+      )}
+      <span
+        className={`absolute inset-0 ${prevIndex !== null ? "cta-phrase-enter" : ""}`}
+      >
+        {phrases[index]}
+      </span>
+    </span>
+  );
+}
+
+/** Preserves acronyms (e.g. AI, NIH) when rendering service titles. */
+function formatServiceTitlePart(text: string) {
+  return text.replace(/\b(ai)\b/gi, "AI");
+}
+
+/** Splits on " & " so the ampersand leads the second line in display headings. */
+export function ServiceTitle({ name }: { name: string }) {
+  const parts = name.split(" & ");
+  if (parts.length < 2) {
+    return <>{formatServiceTitlePart(name)}</>;
+  }
+  return (
+    <>
+      {formatServiceTitlePart(parts[0])}
+      <br />
+      & {formatServiceTitlePart(parts.slice(1).join(" & "))}
+    </>
+  );
+}
 
 export function SunburstLogo({ className = "" }: { className?: string }) {
   const colors = [
@@ -25,7 +107,6 @@ export function SunburstLogo({ className = "" }: { className?: string }) {
           />
         );
       })}
-      <circle cx="50" cy="50" r="11" fill="white" />
     </svg>
   );
 }
@@ -33,25 +114,25 @@ export function SunburstLogo({ className = "" }: { className?: string }) {
 export const SERVICES = [
   {
     to: "/services/research-development",
-    name: "Research Development & Grantwriting",
+    name: "Research development & grantwriting",
     desc: "Strategy, matchmaking & writing",
     accent: "var(--coral)",
   },
   {
     to: "/services/project-management",
-    name: "Project Management & Clinical Coordination",
+    name: "Project management & clinical coordination",
     desc: "Study startup, CRCs & operations",
     accent: "var(--teal)",
   },
   {
     to: "/services/data-management",
-    name: "Data Management & Sharing",
+    name: "Data management & sharing",
     desc: "Databases, metadata & DMS plans",
     accent: "var(--magenta)",
   },
   {
     to: "/services/ai-tools",
-    name: "AI Tools & Workflow Innovation",
+    name: "Research resources & AI tools",
     desc: "Signal, Prospera & automation",
     accent: "var(--gold)",
   },
@@ -109,8 +190,8 @@ export function Header() {
                 </svg>
               </button>
               {open && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[560px]">
-                  <div className="bg-card rounded-2xl shadow-lift border border-border p-3 grid grid-cols-2 gap-1">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[min(100vw-2rem,22rem)]">
+                  <div className="bg-card rounded-2xl shadow-lift border border-border p-2 flex flex-col gap-0.5">
                     {SERVICES.map((s) => {
                       const active = pathname === s.to;
                       return (

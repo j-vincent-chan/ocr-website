@@ -6,13 +6,13 @@ import { SiteShell, Breadcrumb, CTA, SunburstLogo } from "@/components/site/chro
 export const Route = createFileRoute("/services/research-development")({
   head: () => ({
     meta: [
-      { title: "Research Development & Grantwriting — UCSF OCR" },
+      { title: "Research development & grantwriting — UCSF OCR" },
       {
         name: "description",
         content:
           "Strategic consultation, matchmaking, and expert grantwriting support for UCSF principal investigators — from R-series to P/U large grants.",
       },
-      { property: "og:title", content: "Research Development & Grantwriting — UCSF OCR" },
+      { property: "og:title", content: "Research development & grantwriting — UCSF OCR" },
       {
         property: "og:description",
         content: "Helping UCSF PIs compete and win in today's federal funding environment.",
@@ -34,7 +34,7 @@ function Hero() {
       <div className="max-w-7xl mx-auto px-6 pt-12 pb-20 relative">
         <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1.5 text-xs font-medium text-ink">
           <span className="w-1.5 h-1.5 rounded-full bg-coral" />
-          Service arm 01 · Research Development & Grantwriting
+          Service arm 01 · Research development & grantwriting
         </span>
         <h1 className="mt-8 font-display text-[clamp(3rem,8vw,7.5rem)] leading-[0.95] tracking-tight text-ink max-w-[14ch]">
           From a hunch<br />
@@ -312,7 +312,7 @@ function Evidence() {
 function RDGPage() {
   return (
     <SiteShell>
-      <Breadcrumb trail={[{ label: "Services" }, { label: "Research Development & Grantwriting" }]} />
+      <Breadcrumb trail={[{ label: "Services" }, { label: "Research development & grantwriting" }]} />
       <Hero />
       <Journey />
       <Boost />

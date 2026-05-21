@@ -4,13 +4,13 @@ import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
 export const Route = createFileRoute("/services/project-management")({
   head: () => ({
     meta: [
-      { title: "Project Management & Clinical Coordination — UCSF OCR" },
+      { title: "Project management & clinical coordination — UCSF OCR" },
       {
         name: "description",
         content:
           "Operational backbone for complex research programs at UCSF — study startup, clinical research coordination, biospecimen pipelines, and multi-site logistics.",
       },
-      { property: "og:title", content: "Project Management & Clinical Coordination — UCSF OCR" },
+      { property: "og:title", content: "Project management & clinical coordination — UCSF OCR" },
       { property: "og:description", content: "Run your science with a team that knows how to ship it." },
     ],
   }),
@@ -296,7 +296,7 @@ function Bench() {
 function PMPage() {
   return (
     <SiteShell>
-      <Breadcrumb trail={[{ label: "Services" }, { label: "Project Management & Clinical Coordination" }]} />
+      <Breadcrumb trail={[{ label: "Services" }, { label: "Project management & clinical coordination" }]} />
       <Hero />
       <Swimlanes />
       <Pipeline />
