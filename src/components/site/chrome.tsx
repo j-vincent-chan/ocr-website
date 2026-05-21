@@ -220,16 +220,27 @@ export function Header() {
               )}
             </div>
 
-            {["People", "Projects", "Funding", "Collaborate"].map((l) => (
-              <a key={l} href="#" className="px-4 py-2 rounded-full hover:bg-secondary font-medium">
-                {l}
-              </a>
-            ))}
+            <Link
+              to="/people"
+              className="px-4 py-2 rounded-full hover:bg-secondary font-medium"
+              activeProps={{ className: "px-4 py-2 rounded-full bg-secondary font-medium" }}
+            >
+              People
+            </Link>
+            <Link
+              to="/projects"
+              className="px-4 py-2 rounded-full hover:bg-secondary font-medium"
+              activeProps={{ className: "px-4 py-2 rounded-full bg-secondary font-medium" }}
+            >
+              Projects
+            </Link>
+            <a href="#" className="px-4 py-2 rounded-full hover:bg-secondary font-medium">
+              Funding
+            </a>
           </nav>
 
           <Link
-            to="/about"
-            hash="contact"
+            to="/contact"
             className="hidden md:inline-flex items-center gap-2 rounded-full bg-ink text-white px-5 py-2.5 text-sm font-medium hover:bg-ink/90 transition"
           >
             Get in touch
