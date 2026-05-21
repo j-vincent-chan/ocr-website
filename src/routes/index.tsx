@@ -65,9 +65,9 @@ function Hero() {
 
         <div className="mt-12 grid lg:grid-cols-12 gap-10 items-end">
           <p className="lg:col-span-5 text-lg md:text-xl text-muted-foreground leading-relaxed">
-            OCR is the strategic hub of ImmunoX and the Parnassus Institutes —
-            connecting investigators, accelerating grants, and turning ambitious
-            ideas into funded, well-managed research programs.
+            OCR is the strategic hub at UCSF for connecting investigators,
+            accelerating grants, and turning ambitious ideas into funded,
+            well-managed research programs.
           </p>
 
           <div className="lg:col-span-4 lg:col-start-7 flex flex-wrap gap-3">
