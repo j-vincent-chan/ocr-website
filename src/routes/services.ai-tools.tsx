@@ -11,202 +11,267 @@ export const Route = createFileRoute("/services/ai-tools")({
           "Signal, Prospera, and a growing suite of AI tools that move OCR from passive search to proactive matchmaking for UCSF researchers.",
       },
       { property: "og:title", content: "AI Tools & Workflow Innovation — UCSF OCR" },
-      {
-        property: "og:description",
-        content: "Software OCR is building so researchers and staff can spend more time on science.",
-      },
+      { property: "og:description", content: "Software OCR is building so researchers and staff can spend more time on science." },
     ],
   }),
   component: AIPage,
 });
 
+const G = "var(--gold)";
+
+/* Product-style hero with version badge and big product wordmark */
 function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-background">
       <div
         aria-hidden
         className="absolute -top-40 -right-40 w-[720px] h-[720px] rounded-full blur-3xl opacity-30"
         style={{ background: "conic-gradient(from 120deg, var(--gold), var(--magenta), var(--teal), var(--gold))" }}
       />
-      <div className="max-w-7xl mx-auto px-6 pt-10 pb-24 grid lg:grid-cols-12 gap-12 items-center relative">
-        <div className="lg:col-span-7">
+      <div className="max-w-7xl mx-auto px-6 pt-12 pb-20 relative">
+        <div className="flex items-center justify-between flex-wrap gap-4">
           <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1.5 text-xs font-medium text-ink">
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--gold)" }} />
-            Service arm · Office of Collaborative Research
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: G }} />
+            Service arm 04 · Built in-house at UCSF
           </span>
-          <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.02] text-ink">
-            AI Tools &<br />
-            <span className="text-gradient-sunburst">Workflow Innovation.</span>
-          </h1>
-          <p className="mt-7 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            We build the software OCR wishes existed — so investigators and staff spend less time on
-            search, summarization, and paperwork, and more time on science.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <a href="#tools" className="inline-flex items-center gap-2 rounded-full bg-ink text-white px-6 py-3.5 text-sm font-medium hover:bg-ink/90 transition shadow-soft">
-              Meet the tools <span aria-hidden>→</span>
-            </a>
-            <a href="#principles" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 text-sm font-medium hover:bg-secondary transition">
-              How we build
-            </a>
+          <div className="flex items-center gap-3 text-xs text-muted-foreground font-mono">
+            <span className="px-2 py-1 rounded-md bg-secondary border border-border">v0.4</span>
+            <span>Signal · Prospera · in active pilot</span>
           </div>
-          <dl className="mt-14 grid grid-cols-3 gap-6 max-w-xl">
-            {[
-              ["2", "Tools in pilot"],
-              ["8", "Workflows automated"],
-              ["~14h", "Saved per PI / month"],
-            ].map(([n, l]) => (
-              <div key={l} className="border-l-2 pl-4" style={{ borderColor: "var(--gold)" }}>
-                <dt className="font-display text-4xl text-ink">{n}</dt>
-                <dd className="text-xs text-muted-foreground mt-1 leading-snug">{l}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
+        <h1 className="mt-10 font-display text-[clamp(3rem,8.5vw,7.5rem)] leading-[0.92] tracking-tight text-ink max-w-[14ch]">
+          The software we
+          <br />
+          <em className="not-italic text-gradient-sunburst">wish existed.</em>
+        </h1>
+        <p className="mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed">
+          OCR builds the AI tools we needed for our own work — so investigators
+          and staff spend less time on search, summarization, and paperwork,
+          and more time on science.
+        </p>
+      </div>
+    </section>
+  );
+}
 
-        <div className="lg:col-span-5">
-          <div className="relative rounded-3xl border border-border bg-card p-8 shadow-soft overflow-hidden">
-            <div
-              className="absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl opacity-30"
-              style={{ background: "var(--gold)" }}
-            />
-            <div className="relative">
-              <div className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-                Live Signal feed
+/* Two flagship product split panels */
+function Products() {
+  return (
+    <section className="py-24 bg-cream">
+      <div className="max-w-7xl mx-auto px-6 space-y-8">
+        {/* SIGNAL */}
+        <article className="rounded-[2rem] overflow-hidden border border-border bg-card grid lg:grid-cols-12">
+          <div className="lg:col-span-5 p-10 md:p-12 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-display" style={{ background: "var(--teal)" }}>
+                  S
+                </div>
+                <div>
+                  <div className="font-display text-3xl text-ink">Signal</div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                    Research intelligence
+                  </div>
+                </div>
               </div>
-              <div className="space-y-3">
+              <p className="mt-8 text-lg text-ink/85 leading-relaxed">
+                A research-intelligence platform that watches the literature,
+                grants, and news — then curates the signals that actually
+                matter for our investigators.
+              </p>
+              <ul className="mt-8 space-y-3 text-sm text-muted-foreground">
                 {[
-                  { t: "New NOFO", d: "NIDDK · K23 Mentored Patient-Oriented Research", c: "var(--magenta)" },
-                  { t: "Award", d: "Bakar ImmunoX faculty · R01 awarded", c: "var(--coral)" },
-                  { t: "Publication", d: "Cell · Single-cell atlas, IGHS collab", c: "var(--teal)" },
-                  { t: "Foundation", d: "Helmsley · T1D moonshot RFP open", c: "var(--gold)" },
+                  "Monitors publications, grants, awards & news",
+                  "Author-level deduplication across preprints & journals",
+                  "Editorial summaries staged for human review",
+                ].map((p) => (
+                  <li key={p} className="flex gap-3">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-none" style={{ background: "var(--teal)" }} />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-10 flex items-center gap-3">
+              <span className="text-[11px] uppercase tracking-widest text-muted-foreground border border-border rounded-full px-2.5 py-1">
+                Internal pilot
+              </span>
+              <span className="text-[11px] uppercase tracking-widest text-muted-foreground font-mono">
+                v0.4 · 4 institutes
+              </span>
+            </div>
+          </div>
+          {/* live feed mock */}
+          <div className="lg:col-span-7 bg-ink text-white p-6 md:p-10 relative">
+            <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full blur-3xl opacity-40" style={{ background: "var(--teal)" }} />
+            <div className="relative">
+              <div className="flex items-center justify-between mb-5 text-xs text-white/60 font-mono">
+                <span>signal · live feed</span>
+                <span className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-lime animate-pulse" />
+                  streaming
+                </span>
+              </div>
+              <div className="space-y-2.5">
+                {[
+                  { t: "NEW NOFO", d: "NIDDK · K23 Mentored Patient-Oriented Research", c: "var(--magenta)", time: "2m" },
+                  { t: "AWARD", d: "Bakar ImmunoX faculty · R01 awarded", c: "var(--coral)", time: "11m" },
+                  { t: "PUBLICATION", d: "Cell · Single-cell atlas, IGHS collab", c: "var(--teal)", time: "1h" },
+                  { t: "FOUNDATION", d: "Helmsley · T1D moonshot RFP open", c: "var(--gold)", time: "3h" },
+                  { t: "PREPRINT", d: "bioRxiv · merged 2 duplicates for J. Lee", c: "var(--lime)", time: "5h" },
                 ].map((r) => (
-                  <div key={r.d} className="p-3 rounded-xl bg-secondary/60 flex items-start gap-3">
+                  <div key={r.d} className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3">
                     <span className="mt-1.5 w-2 h-2 rounded-full flex-none" style={{ background: r.c }} />
-                    <div>
-                      <div className="text-xs uppercase tracking-widest text-muted-foreground">{r.t}</div>
-                      <div className="text-sm text-ink mt-0.5">{r.d}</div>
+                    <div className="flex-1">
+                      <div className="text-[10px] uppercase tracking-widest text-white/50">{r.t}</div>
+                      <div className="text-sm text-white mt-0.5">{r.d}</div>
+                    </div>
+                    <div className="text-[10px] text-white/40 font-mono">{r.time}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+
+        {/* PROSPERA */}
+        <article className="rounded-[2rem] overflow-hidden border border-border bg-card grid lg:grid-cols-12">
+          {/* pipeline mock — on left for variation */}
+          <div className="lg:col-span-7 lg:order-1 order-2 bg-ink text-white p-6 md:p-10 relative">
+            <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full blur-3xl opacity-40" style={{ background: "var(--magenta)" }} />
+            <div className="relative">
+              <div className="flex items-center justify-between mb-5 text-xs text-white/60 font-mono">
+                <span>prospera · opportunity pipeline</span>
+                <span>14 active matches</span>
+              </div>
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { col: "Discovered", n: 6, c: "var(--gold)" },
+                  { col: "Matched", n: 5, c: "var(--magenta)" },
+                  { col: "In dev", n: 3, c: "var(--coral)" },
+                ].map((c) => (
+                  <div key={c.col} className="rounded-xl border border-white/10 bg-white/5 p-3">
+                    <div className="flex items-center justify-between text-[10px] uppercase tracking-widest text-white/60 mb-3">
+                      <span>{c.col}</span>
+                      <span>{c.n}</span>
+                    </div>
+                    <div className="space-y-2">
+                      {Array.from({ length: c.n }).map((_, i) => (
+                        <div key={i} className="rounded-lg bg-white/5 p-2.5">
+                          <div className="w-3/4 h-1.5 rounded-full mb-1.5" style={{ background: c.c, opacity: 0.6 }} />
+                          <div className="w-1/2 h-1 rounded-full bg-white/20" />
+                        </div>
+                      ))}
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="mt-5 text-[11px] text-muted-foreground">Illustrative preview · not live data</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Tools() {
-  const tools = [
-    {
-      name: "Signal",
-      tagline: "Research intelligence & content generation",
-      points: [
-        "Monitors publications, grants, awards, and news",
-        "Curates relevant signals for review and approval",
-        "Generates editorial summaries and watchlists",
-      ],
-      accent: "var(--teal)",
-      status: "Internal pilot",
-    },
-    {
-      name: "Prospera",
-      tagline: "AI-assisted funding discovery & matchmaking",
-      points: [
-        "Aggregates federal, foundation & internal opportunities",
-        "Matches NOFOs to investigators by research profile",
-        "Tracks outreach through a structured pipeline",
-      ],
-      accent: "var(--magenta)",
-      status: "Beta with partner institutes",
-    },
-  ];
-  return (
-    <section id="tools" className="py-24 bg-cream">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-12">
-          <div className="max-w-2xl">
-            <span className="text-xs uppercase tracking-[0.2em] font-medium" style={{ color: "var(--gold)" }}>The tools</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-medium text-ink leading-[1.05]">
-              From passive search to proactive matchmaking.
-            </h2>
-          </div>
-          <span className="text-xs rounded-full bg-card border border-border px-3 py-1.5 text-muted-foreground">
-            Built in-house · UCSF only
-          </span>
-        </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          {tools.map((t) => (
-            <div key={t.name} className="relative rounded-3xl bg-card border border-border p-8 overflow-hidden">
-              <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-20 blur-2xl" style={{ background: t.accent }} />
-              <div className="relative">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-3xl text-ink">{t.name}</h3>
-                  <span className="text-[11px] uppercase tracking-widest text-muted-foreground border border-border rounded-full px-2.5 py-1">
-                    {t.status}
-                  </span>
-                </div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground mt-2">{t.tagline}</div>
-                <ul className="mt-6 space-y-2.5 text-sm text-muted-foreground">
-                  {t.points.map((p) => (
-                    <li key={p} className="flex gap-3">
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-none" style={{ background: t.accent }} />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
+              <div className="mt-5 text-[11px] text-white/40">
+                Illustrative preview · not live data
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+          <div className="lg:col-span-5 lg:order-2 order-1 p-10 md:p-12 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-display" style={{ background: "var(--magenta)" }}>
+                  P
+                </div>
+                <div>
+                  <div className="font-display text-3xl text-ink">Prospera</div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                    Funding matchmaking
+                  </div>
+                </div>
+              </div>
+              <p className="mt-8 text-lg text-ink/85 leading-relaxed">
+                AI-assisted funding discovery and matchmaking. Aggregates
+                federal, foundation, and internal opportunities — then matches
+                them to investigator profiles with a structured pipeline.
+              </p>
+              <ul className="mt-8 space-y-3 text-sm text-muted-foreground">
+                {[
+                  "Aggregates federal, foundation & internal opportunities",
+                  "Matches NOFOs to PI profile, methods, and prior work",
+                  "Tracks outreach through a structured pipeline",
+                ].map((p) => (
+                  <li key={p} className="flex gap-3">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-none" style={{ background: "var(--magenta)" }} />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-10 flex items-center gap-3">
+              <span className="text-[11px] uppercase tracking-widest text-muted-foreground border border-border rounded-full px-2.5 py-1">
+                Beta · partner institutes
+              </span>
+              <span className="text-[11px] uppercase tracking-widest text-muted-foreground font-mono">
+                v0.2
+              </span>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
   );
 }
 
-function Workflows() {
+/* Small automations — as a "what's shipped" log */
+function Automations() {
   const items = [
-    { t: "Aims-to-LOI drafter", d: "Turns approved Specific Aims into a tailored Letter of Intent in minutes.", c: "var(--coral)" },
-    { t: "Biosketch refresh", d: "Pulls recent publications and rebuilds NIH biosketches at the click of a button.", c: "var(--teal)" },
-    { t: "NOFO summarizer", d: "Reads a full FOA and returns review criteria, scored fit, and key dates.", c: "var(--magenta)" },
-    { t: "Collaborator finder", d: "Suggests UCSF collaborators by topic, complementary methods, and prior co-authorship.", c: "var(--gold)" },
-    { t: "Submission checklist bot", d: "Tracks every artifact required for a submission, by sponsor and mechanism.", c: "var(--lime)" },
-    { t: "Meeting recap drafter", d: "Generates structured meeting notes and action items from PI consults.", c: "#8b5cf6" },
+    { t: "Aims-to-LOI drafter", d: "Turns approved Specific Aims into a tailored Letter of Intent in minutes.", c: "var(--coral)", ship: "Shipped · Q1 26" },
+    { t: "Biosketch refresh", d: "Pulls recent publications and rebuilds NIH biosketches at the click of a button.", c: "var(--teal)", ship: "Shipped · Q4 25" },
+    { t: "NOFO summarizer", d: "Reads a full FOA and returns review criteria, scored fit, and key dates.", c: "var(--magenta)", ship: "Shipped · Q4 25" },
+    { t: "Collaborator finder", d: "Suggests UCSF collaborators by topic, complementary methods, and prior co-authorship.", c: "var(--gold)", ship: "In dev · Q2 26" },
+    { t: "Submission checklist bot", d: "Tracks every artifact required for a submission, by sponsor and mechanism.", c: "var(--lime)", ship: "In dev · Q2 26" },
+    { t: "Meeting recap drafter", d: "Generates structured notes and action items from PI consults.", c: "#8b5cf6", ship: "Beta" },
   ];
   return (
-    <section className="py-24">
+    <section className="py-28">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-10 mb-16">
-          <div className="lg:col-span-5">
-            <span className="text-xs uppercase tracking-[0.2em] font-medium" style={{ color: "var(--coral)" }}>Workflow innovation</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-medium text-ink leading-[1.05]">
+        <div className="grid lg:grid-cols-12 gap-10 items-end mb-12">
+          <div className="lg:col-span-6">
+            <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: "var(--coral)" }}>
+              Workflow innovation
+            </span>
+            <h2 className="mt-4 font-display text-5xl text-ink leading-[0.98]">
               Small automations.<br />Compounding hours back.
             </h2>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7 self-end">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Beyond Signal and Prospera, we ship internal tools that automate the high-frequency,
-              low-judgement work — and free our team to do the work only humans can.
-            </p>
-          </div>
+          <p className="lg:col-span-5 lg:col-start-8 text-muted-foreground leading-relaxed">
+            Beyond Signal and Prospera, we ship internal tools that automate
+            the high-frequency, low-judgement work — and free our team to do
+            the work only humans can.
+          </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <ul className="divide-y divide-border border-y border-border">
           {items.map((i) => (
-            <article key={i.t} className="bg-card rounded-3xl p-7 border border-border hover:shadow-lift hover:-translate-y-0.5 transition-all">
-              <div className="w-3 h-3 rounded-full" style={{ background: i.c }} />
-              <h3 className="mt-5 text-xl text-ink">{i.t}</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{i.d}</p>
-            </article>
+            <li
+              key={i.t}
+              className="grid grid-cols-12 gap-6 py-6 items-center group hover:bg-cream/60 px-3 -mx-3 rounded-xl transition"
+            >
+              <div className="col-span-12 md:col-span-1">
+                <span className="w-3 h-3 rounded-full inline-block" style={{ background: i.c }} />
+              </div>
+              <div className="col-span-12 md:col-span-4">
+                <h3 className="font-display text-xl text-ink">{i.t}</h3>
+              </div>
+              <div className="col-span-12 md:col-span-5 text-sm text-muted-foreground leading-relaxed">
+                {i.d}
+              </div>
+              <div className="col-span-12 md:col-span-2 text-[11px] uppercase tracking-widest text-muted-foreground font-mono md:text-right">
+                {i.ship}
+              </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
 }
 
+/* Principles */
 function Principles() {
   const ps = [
     { n: "01", t: "Humans in the loop", d: "Every output is staged for review. We never auto-send to PIs or sponsors." },
@@ -215,17 +280,23 @@ function Principles() {
     { n: "04", t: "Built with users", d: "Every tool starts with a PI or staff complaint. We ship, measure, iterate, repeat." },
   ];
   return (
-    <section id="principles" className="py-24 bg-ink text-white relative overflow-hidden">
+    <section className="py-24 bg-ink text-white relative overflow-hidden">
       <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-gradient-sunburst opacity-15 blur-3xl" />
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="max-w-3xl">
-          <span className="text-xs uppercase tracking-[0.2em] font-medium" style={{ color: "var(--gold)" }}>Principles</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-medium text-white leading-[1.05]">How we build with AI.</h2>
+          <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: G }}>
+            Principles
+          </span>
+          <h2 className="mt-4 font-display text-5xl text-white leading-[0.98]">
+            How we build with AI.
+          </h2>
         </div>
         <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {ps.map((p) => (
             <div key={p.n} className="rounded-3xl border border-white/10 bg-white/5 p-7">
-              <div className="font-display text-xl" style={{ color: "var(--gold)" }}>{p.n}</div>
+              <div className="font-display text-xl" style={{ color: G }}>
+                {p.n}
+              </div>
               <h3 className="mt-4 text-xl text-white">{p.t}</h3>
               <p className="mt-3 text-sm text-white/70 leading-relaxed">{p.d}</p>
             </div>
@@ -241,8 +312,8 @@ function AIPage() {
     <SiteShell>
       <Breadcrumb trail={[{ label: "Services" }, { label: "AI Tools & Workflow Innovation" }]} />
       <Hero />
-      <Tools />
-      <Workflows />
+      <Products />
+      <Automations />
       <Principles />
       <CTA
         eyebrow="Get early access"

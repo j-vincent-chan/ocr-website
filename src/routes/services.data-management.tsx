@@ -11,169 +11,201 @@ export const Route = createFileRoute("/services/data-management")({
           "REDCap and custom databases, metadata standards, and NIH-compliant Data Management & Sharing plans for UCSF research programs.",
       },
       { property: "og:title", content: "Data Management & Sharing — UCSF OCR" },
-      {
-        property: "og:description",
-        content: "Make your data findable, accessible, interoperable, and reusable — from day one.",
-      },
+      { property: "og:description", content: "Make your data findable, accessible, interoperable, and reusable — from day one." },
     ],
   }),
   component: DMSPage,
 });
 
+const M = "var(--magenta)";
+
+/* Schematic hero — diagrammatic feel */
 function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      <div
-        aria-hidden
-        className="absolute -top-32 -left-32 w-[640px] h-[640px] rounded-full blur-3xl opacity-25"
-        style={{ background: "radial-gradient(circle, var(--magenta), transparent 65%)" }}
-      />
-      <div className="max-w-7xl mx-auto px-6 pt-10 pb-24 grid lg:grid-cols-12 gap-12 items-center relative">
-        <div className="lg:col-span-7">
+    <section className="relative overflow-hidden border-b border-ink/10">
+      <div className="max-w-7xl mx-auto px-6 pt-12 pb-20 grid lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-6">
           <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1.5 text-xs font-medium text-ink">
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--magenta)" }} />
-            Service arm · Office of Collaborative Research
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: M }} />
+            Service arm 03 · Data infrastructure
           </span>
-          <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.02] text-ink">
-            Data Management<br />
-            <span style={{ color: "var(--magenta)" }}>& Sharing.</span>
+          <h1 className="mt-8 font-display text-[clamp(2.8rem,7vw,6.5rem)] leading-[0.95] tracking-tight text-ink">
+            Structured by<br />
+            <em className="not-italic" style={{ color: M }}>design.</em>
           </h1>
-          <p className="mt-7 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            Databases, metadata standards, and NIH-compliant DMS plans built with your team from
-            study design — not retrofit at the end. We make your data findable, reusable, and yours.
+          <p className="mt-8 max-w-xl text-xl text-muted-foreground leading-relaxed">
+            Databases, metadata standards, and NIH-compliant Data Management &
+            Sharing plans — built with your team from study design, not
+            retrofit at the end.
           </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-ink text-white px-6 py-3.5 text-sm font-medium hover:bg-ink/90 transition shadow-soft">
-              Plan your data <span aria-hidden>→</span>
-            </a>
-            <a href="#stack" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 text-sm font-medium hover:bg-secondary transition">
-              See our stack
-            </a>
-          </div>
-          <dl className="mt-14 grid grid-cols-3 gap-6 max-w-xl">
-            {[
-              ["62", "DMS plans authored"],
-              ["100%", "NIH 2023 policy compliant"],
-              ["FAIR", "Built-in by default"],
-            ].map(([n, l]) => (
-              <div key={l} className="border-l-2 pl-4" style={{ borderColor: "var(--magenta)" }}>
-                <dt className="font-display text-4xl text-ink">{n}</dt>
-                <dd className="text-xs text-muted-foreground mt-1 leading-snug">{l}</dd>
+          <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
+            {[["62", "DMS plans authored"], ["100%", "NIH 2023 compliant"], ["FAIR", "By default"]].map(([n, l]) => (
+              <div key={l} className="border-l-2 pl-4" style={{ borderColor: M }}>
+                <div className="font-display text-3xl text-ink">{n}</div>
+                <div className="text-[11px] text-muted-foreground uppercase tracking-widest mt-1">{l}</div>
               </div>
             ))}
-          </dl>
+          </div>
         </div>
 
-        <div className="lg:col-span-5">
-          <div className="rounded-3xl border border-border bg-card p-8 shadow-soft">
-            <div className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-              FAIR principles in practice
-            </div>
-            <div className="space-y-4">
-              {[
-                { l: "F", t: "Findable", d: "Persistent identifiers, rich metadata, indexed in trusted repositories.", c: "var(--coral)" },
-                { l: "A", t: "Accessible", d: "Standard protocols, clear authentication, long-term metadata availability.", c: "var(--teal)" },
-                { l: "I", t: "Interoperable", d: "Open formats, controlled vocabularies, qualified references.", c: "var(--magenta)" },
-                { l: "R", t: "Reusable", d: "Clear licensing, detailed provenance, community standards.", c: "var(--gold)" },
-              ].map((r) => (
-                <div key={r.t} className="flex items-start gap-4 p-3 rounded-xl hover:bg-secondary/60 transition">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center font-display text-white text-base flex-none"
-                    style={{ background: r.c }}
-                  >
-                    {r.l}
-                  </div>
-                  <div>
-                    <div className="text-ink font-medium text-sm">{r.t}</div>
-                    <div className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{r.d}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Lifecycle ring */}
+        <div className="lg:col-span-6 relative flex items-center justify-center">
+          <LifecycleRing />
         </div>
       </div>
     </section>
   );
 }
 
-function Capabilities() {
+function LifecycleRing() {
+  const stages = [
+    { t: "Plan", c: "var(--coral)" },
+    { t: "Capture", c: "var(--magenta)" },
+    { t: "Curate", c: "var(--teal)" },
+    { t: "Share", c: "var(--gold)" },
+    { t: "Reuse", c: "var(--lime)" },
+  ];
+  const R = 170;
+  return (
+    <div className="relative w-[420px] h-[420px] max-w-full">
+      <svg viewBox="-220 -220 440 440" className="absolute inset-0 w-full h-full">
+        <defs>
+          <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="oklch(0.7 0.2 30)" />
+            <stop offset="0.5" stopColor="oklch(0.62 0.24 340)" />
+            <stop offset="1" stopColor="oklch(0.7 0.13 195)" />
+          </linearGradient>
+        </defs>
+        <circle r={R} cx="0" cy="0" fill="none" stroke="url(#ring)" strokeWidth="1.5" opacity="0.5" strokeDasharray="3 5" />
+        <circle r={R - 35} cx="0" cy="0" fill="none" stroke="var(--ink)" strokeOpacity="0.08" strokeWidth="1" />
+        <text x="0" y="-8" textAnchor="middle" className="font-display" fontSize="22" fill="var(--ink)">Data</text>
+        <text x="0" y="18" textAnchor="middle" className="font-display" fontSize="22" fill="var(--ink)">lifecycle</text>
+      </svg>
+      {stages.map((s, i) => {
+        const angle = (i / stages.length) * 2 * Math.PI - Math.PI / 2;
+        const x = Math.cos(angle) * R;
+        const y = Math.sin(angle) * R;
+        return (
+          <div
+            key={s.t}
+            className="absolute"
+            style={{
+              left: "50%",
+              top: "50%",
+              transform: `translate(calc(${x}px - 50%), calc(${y}px - 50%))`,
+            }}
+          >
+            <div className="flex flex-col items-center gap-2">
+              <div
+                className="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-display shadow-lift"
+                style={{ background: s.c }}
+              >
+                0{i + 1}
+              </div>
+              <div className="text-xs uppercase tracking-widest text-ink font-medium">{s.t}</div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* FAIR pillars — horizontal letter blocks */
+function FAIR() {
   const items = [
-    { tag: "01", title: "DMS Plan Authoring", body: "We write the NIH Data Management & Sharing plan with you — aligned to the 2023 policy, your repository choices, and your study realities.", color: "var(--magenta)" },
-    { tag: "02", title: "REDCap Build & Optimization", body: "Project setup, branching logic, longitudinal arms, data quality rules, and integration with downstream pipelines.", color: "var(--coral)" },
-    { tag: "03", title: "Custom Databases", body: "When REDCap isn't right, we design and build study-specific databases with auditability and FAIR metadata baked in.", color: "var(--teal)" },
-    { tag: "04", title: "Metadata & Ontologies", body: "Controlled vocabularies, common data elements, and ontology alignment so your data plays well with the rest of the field.", color: "var(--gold)" },
-    { tag: "05", title: "Repository Strategy", body: "We help you choose between dbGaP, AnVIL, generalist repositories, and discipline-specific options — and prepare submissions.", color: "var(--lime)" },
-    { tag: "06", title: "Data Use Agreements", body: "Coordinate with ITS, OoR, and counsel on DUAs and DTAs — so sharing is approved, not aspirational.", color: "#8b5cf6" },
+    { L: "F", t: "Findable", d: "Persistent identifiers, rich metadata, indexed in trusted repositories.", c: "var(--coral)" },
+    { L: "A", t: "Accessible", d: "Standard protocols, clear authentication, long-term metadata availability.", c: "var(--teal)" },
+    { L: "I", t: "Interoperable", d: "Open formats, controlled vocabularies, qualified references.", c: "var(--magenta)" },
+    { L: "R", t: "Reusable", d: "Clear licensing, detailed provenance, community standards.", c: "var(--gold)" },
   ];
   return (
-    <section id="stack" className="py-24 bg-cream">
+    <section className="py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-10 mb-16">
-          <div className="lg:col-span-5">
-            <span className="text-xs uppercase tracking-[0.2em] font-medium" style={{ color: "var(--magenta)" }}>What we do</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-medium text-ink leading-[1.05]">
-              From DMS plan to data release.
+        <div className="mb-14">
+          <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: M }}>
+            Framework
+          </span>
+          <h2 className="mt-4 font-display text-5xl text-ink leading-[0.98] max-w-3xl">
+            We build to FAIR.<br />
+            <em className="not-italic text-muted-foreground/60">From day one.</em>
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {items.map((i) => (
+            <div key={i.L} className="rounded-3xl bg-card border border-border p-7 relative overflow-hidden">
+              <div
+                className="absolute -top-10 -right-10 font-display text-[12rem] leading-none opacity-10 select-none"
+                style={{ color: i.c }}
+                aria-hidden
+              >
+                {i.L}
+              </div>
+              <div
+                className="font-display text-5xl mb-4 relative"
+                style={{ color: i.c }}
+              >
+                {i.L}
+              </div>
+              <h3 className="font-display text-xl text-ink relative">{i.t}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed relative">{i.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* Architecture diagram: layered stack */
+function Architecture() {
+  const layers = [
+    { l: "Capture", items: ["REDCap", "OnCore", "Qualtrics", "Custom forms"], c: "var(--coral)" },
+    { l: "Storage", items: ["Wynton HPC", "AWS / Azure", "Box for UCSF", "Encrypted SQL"], c: "var(--magenta)" },
+    { l: "Curate", items: ["Metadata", "Common data elements", "Ontologies", "QC pipelines"], c: "var(--teal)" },
+    { l: "Share", items: ["dbGaP", "AnVIL", "Zenodo", "Dryad"], c: "var(--gold)" },
+  ];
+  return (
+    <section className="py-28">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-10 items-end mb-12">
+          <div className="lg:col-span-6">
+            <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: "var(--teal)" }}>
+              Reference architecture
+            </span>
+            <h2 className="mt-4 font-display text-5xl text-ink leading-[0.98]">
+              Standards over<br />silver bullets.
             </h2>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7 self-end">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              We work across the full data lifecycle — design, capture, curation, sharing — so your
-              data is an asset for your lab and the broader research community.
-            </p>
-          </div>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {items.map((i) => (
-            <article key={i.title} className="bg-card rounded-3xl p-7 border border-border hover:shadow-lift hover:-translate-y-0.5 transition-all duration-300">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center font-display text-lg text-white" style={{ background: i.color }}>{i.tag}</div>
-              <h3 className="mt-6 text-xl text-ink">{i.title}</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{i.body}</p>
-              <div className="mt-6 h-px" style={{ background: `linear-gradient(90deg, ${i.color}, transparent)` }} />
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Stack() {
-  const groups = [
-    { h: "Capture", items: ["REDCap", "OnCore", "Qualtrics", "Custom forms"] },
-    { h: "Storage", items: ["Wynton HPC", "AWS / Azure", "Box for UCSF", "Encrypted SQL"] },
-    { h: "Analysis", items: ["R / RStudio Server", "Python / JupyterHub", "Stata", "QGIS"] },
-    { h: "Sharing", items: ["dbGaP", "AnVIL", "Zenodo", "Dryad"] },
-  ];
-  return (
-    <section className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="max-w-3xl">
-          <span className="text-xs uppercase tracking-[0.2em] font-medium" style={{ color: "var(--teal)" }}>The stack</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-medium text-ink leading-[1.05]">Standards over silver bullets.</h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            We're tool-agnostic and pragmatic. Most of our projects live in this stack — but we
-            design for what your collaborators, IRB, and repositories actually require.
+          <p className="lg:col-span-5 lg:col-start-8 text-muted-foreground leading-relaxed">
+            We're tool-agnostic and pragmatic. Most of our projects live in
+            this stack — but we design for what your collaborators, IRB, and
+            repositories actually require.
           </p>
         </div>
-        <div className="mt-12 grid md:grid-cols-4 gap-4">
-          {groups.map((g, i) => (
-            <div key={g.h} className="rounded-3xl border border-border bg-card p-6">
-              <div className="flex items-center gap-3 mb-5">
-                <div
-                  className="w-2 h-8 rounded-full"
-                  style={{ background: ["var(--magenta)", "var(--coral)", "var(--teal)", "var(--gold)"][i] }}
-                />
-                <h3 className="text-lg text-ink">{g.h}</h3>
+        <div className="space-y-3">
+          {layers.map((g) => (
+            <div
+              key={g.l}
+              className="grid grid-cols-12 gap-4 items-center rounded-2xl border border-border bg-card p-5 hover:shadow-lift transition"
+            >
+              <div className="col-span-12 md:col-span-3 flex items-center gap-3">
+                <div className="w-2 h-12 rounded-full" style={{ background: g.c }} />
+                <div>
+                  <div className="text-[11px] uppercase tracking-widest text-muted-foreground">Layer</div>
+                  <div className="font-display text-2xl text-ink">{g.l}</div>
+                </div>
               </div>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <div className="col-span-12 md:col-span-9 flex flex-wrap gap-2">
                 {g.items.map((it) => (
-                  <li key={it} className="flex items-center gap-2">
-                    <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
+                  <span
+                    key={it}
+                    className="text-xs px-3 py-2 rounded-xl bg-secondary text-ink/80 font-mono"
+                  >
                     {it}
-                  </li>
+                  </span>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
@@ -182,35 +214,64 @@ function Stack() {
   );
 }
 
+/* DMS plan: two-page document mockup */
 function Policy() {
+  const checks = [
+    "Data types & estimated volumes",
+    "Related tools, software & code",
+    "Standards & metadata",
+    "Repository & timeline",
+    "Access, distribution & reuse",
+    "Oversight of data management",
+  ];
   return (
-    <section className="py-24 bg-ink text-white relative overflow-hidden">
+    <section className="py-28 bg-ink text-white relative overflow-hidden">
       <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-gradient-sunburst opacity-15 blur-3xl" />
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 relative">
         <div className="lg:col-span-5">
-          <span className="text-xs uppercase tracking-[0.2em] font-medium" style={{ color: "var(--magenta)" }}>NIH 2023 DMS Policy</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-medium text-white leading-[1.05]">A two-page plan that holds up.</h2>
-          <p className="mt-6 text-white/70 leading-relaxed text-lg">
-            Since January 2023, every NIH proposal needs a Data Management & Sharing plan. We write
-            yours alongside the science — not in the last 48 hours before submission — so it's
-            specific, fundable, and operationally honest.
+          <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: M }}>
+            NIH 2023 DMS policy
+          </span>
+          <h2 className="mt-4 font-display text-5xl text-white leading-[0.98]">
+            A two-page plan<br />that holds up.
+          </h2>
+          <p className="mt-6 text-white/70 leading-relaxed text-lg max-w-md">
+            Since January 2023, every NIH proposal needs a Data Management &
+            Sharing plan. We write yours alongside the science — not in the
+            last 48 hours before submission.
           </p>
         </div>
-        <div className="lg:col-span-7 lg:pl-8">
-          <div className="rounded-3xl bg-white/5 border border-white/10 p-8 backdrop-blur">
-            <div className="text-xs uppercase tracking-widest text-white/50 mb-6">DMS plan checklist</div>
-            <div className="grid sm:grid-cols-2 gap-3">
-              {[
-                "Data types & estimated volumes",
-                "Related tools, software & code",
-                "Standards & metadata",
-                "Repository & timeline",
-                "Access, distribution & reuse",
-                "Oversight of data management",
-              ].map((c, i) => (
-                <div key={c} className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
-                  <span className="font-display text-base text-white/40 w-6">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="text-sm text-white/90">{c}</span>
+        <div className="lg:col-span-7">
+          {/* Document mockup */}
+          <div className="rounded-2xl bg-cream text-ink shadow-lift p-8 md:p-10 relative">
+            <div
+              aria-hidden
+              className="absolute top-0 left-8 right-8 h-1"
+              style={{ background: "var(--gradient-sunburst)" }}
+            />
+            <div className="flex items-center justify-between text-[11px] uppercase tracking-widest text-muted-foreground mb-6">
+              <span>NIH DMS Plan · v1.0</span>
+              <span>PI: Smith · 2 pages</span>
+            </div>
+            <h3 className="font-display text-2xl text-ink">
+              Data Management & Sharing Plan
+            </h3>
+            <div className="mt-6 space-y-3">
+              {checks.map((c, i) => (
+                <div
+                  key={c}
+                  className="flex items-center gap-4 p-3.5 rounded-xl bg-card border border-border"
+                >
+                  <span
+                    className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-display"
+                    style={{ background: ["var(--coral)", "var(--magenta)", "var(--teal)", "var(--gold)", "var(--lime)", "#8b5cf6"][i] }}
+                  >
+                    {i + 1}
+                  </span>
+                  <span className="text-sm text-ink">{c}</span>
+                  <span className="ml-auto text-[10px] uppercase tracking-widest text-muted-foreground">
+                    Section {i + 1}
+                  </span>
                 </div>
               ))}
             </div>
@@ -226,8 +287,8 @@ function DMSPage() {
     <SiteShell>
       <Breadcrumb trail={[{ label: "Services" }, { label: "Data Management & Sharing" }]} />
       <Hero />
-      <Capabilities />
-      <Stack />
+      <FAIR />
+      <Architecture />
       <Policy />
       <CTA
         eyebrow="Plan early"
