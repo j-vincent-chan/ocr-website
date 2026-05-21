@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PeopleRouteImport } from './routes/people'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -17,6 +18,11 @@ import { Route as ServicesProjectManagementRouteImport } from './routes/services
 import { Route as ServicesDataManagementRouteImport } from './routes/services.data-management'
 import { Route as ServicesAiToolsRouteImport } from './routes/services.ai-tools'
 
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PeopleRoute = PeopleRouteImport.update({
   id: '/people',
   path: '/people',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/people': typeof PeopleRoute
+  '/projects': typeof ProjectsRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/people': typeof PeopleRoute
+  '/projects': typeof ProjectsRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/people': typeof PeopleRoute
+  '/projects': typeof ProjectsRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/people'
+    | '/projects'
     | '/services/ai-tools'
     | '/services/data-management'
     | '/services/project-management'
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/people'
+    | '/projects'
     | '/services/ai-tools'
     | '/services/data-management'
     | '/services/project-management'
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/people'
+    | '/projects'
     | '/services/ai-tools'
     | '/services/data-management'
     | '/services/project-management'
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   PeopleRoute: typeof PeopleRoute
+  ProjectsRoute: typeof ProjectsRoute
   ServicesAiToolsRoute: typeof ServicesAiToolsRoute
   ServicesDataManagementRoute: typeof ServicesDataManagementRoute
   ServicesProjectManagementRoute: typeof ServicesProjectManagementRoute
@@ -125,6 +138,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/people': {
       id: '/people'
       path: '/people'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   PeopleRoute: PeopleRoute,
+  ProjectsRoute: ProjectsRoute,
   ServicesAiToolsRoute: ServicesAiToolsRoute,
   ServicesDataManagementRoute: ServicesDataManagementRoute,
   ServicesProjectManagementRoute: ServicesProjectManagementRoute,
