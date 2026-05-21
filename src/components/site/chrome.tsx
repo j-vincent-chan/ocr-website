@@ -29,7 +29,7 @@ export function CtaRotatingPhrase({
   useEffect(() => {
     if (reducedMotion || phrases.length < 2) return;
 
-    let clearPrev: ReturnType<typeof setTimeout>;
+    let clearPrev: ReturnType<typeof window.setTimeout> | undefined;
     const intervalId = window.setInterval(() => {
       setIndex((current) => {
         setPrevIndex(current);
