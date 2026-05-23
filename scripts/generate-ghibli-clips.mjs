@@ -106,7 +106,6 @@ async function buildClip(slug) {
   }
 
   const webmOut = join(outputDir, `${slug}-gesture.webm`);
-  const gifOut = join(outputDir, `${slug}-gesture.gif`);
 
   runFfmpeg([
     "-y",
@@ -124,20 +123,7 @@ async function buildClip(slug) {
     webmOut,
   ]);
 
-  runFfmpeg([
-    "-y",
-    "-framerate",
-    String(FPS),
-    "-i",
-    join(personFrameDir, "frame-%03d.png"),
-    "-vf",
-    "split[s0][s1];[s0]palettegen=max_colors=128:stats_mode=diff[p];[s1][p]paletteuse=dither=bayer:bayer_scale=3",
-    "-loop",
-    "0",
-    gifOut,
-  ]);
-
-  return { slug, variant, webmOut, gifOut };
+  return { slug, variant, webmOut };
 }
 
 async function main() {
@@ -157,7 +143,6 @@ async function main() {
     manifest[slug] = {
       variant: result.variant,
       webm: `./clips/${slug}-gesture.webm`,
-      gif: `./clips/${slug}-gesture.gif`,
     };
     console.log(`Generated ${slug} (${result.variant})`);
   }

@@ -31,3 +31,4 @@ dist-ssr
 *.sln
 *.sw?
 .tmp/
+src/assets/people/hover/clips/*.gif

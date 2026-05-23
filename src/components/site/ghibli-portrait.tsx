@@ -13,7 +13,7 @@ export function GhibliPortrait({ name, photo, photoHover, clip }: GhibliPortrait
   const [active, setActive] = useState(false);
   const [motionEnabled, setMotionEnabled] = useState(true);
   const [gestureKey, setGestureKey] = useState(0);
-  const [useGifFallback, setUseGifFallback] = useState(false);
+  const [videoFailed, setVideoFailed] = useState(false);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -21,15 +21,15 @@ export function GhibliPortrait({ name, photo, photoHover, clip }: GhibliPortrait
   }, []);
 
   useEffect(() => {
-    if (!active || !motionEnabled || useGifFallback || !clip || !videoRef.current) return;
+    if (!active || !motionEnabled || videoFailed || !clip || !videoRef.current) return;
     const video = videoRef.current;
     video.currentTime = 0;
-    void video.play().catch(() => setUseGifFallback(true));
-  }, [active, motionEnabled, useGifFallback, clip, gestureKey]);
+    void video.play().catch(() => setVideoFailed(true));
+  }, [active, motionEnabled, videoFailed, clip, gestureKey]);
 
   const handleEnter = () => {
     setGestureKey((key) => key + 1);
-    setUseGifFallback(false);
+    setVideoFailed(false);
     setActive(true);
   };
 
@@ -41,7 +41,7 @@ export function GhibliPortrait({ name, photo, photoHover, clip }: GhibliPortrait
     }
   };
 
-  const showClip = active && motionEnabled && clip;
+  const showClip = active && motionEnabled && clip && !videoFailed;
 
   return (
     <div
@@ -66,21 +66,7 @@ export function GhibliPortrait({ name, photo, photoHover, clip }: GhibliPortrait
         } motion-safe:transition-opacity motion-safe:duration-500`}
         aria-hidden={!active}
       >
-        {!showClip ? (
-          <img
-            src={photoHover}
-            alt=""
-            className={`h-full w-full object-cover object-center ${active ? "opacity-100" : "opacity-0"}`}
-            loading="lazy"
-          />
-        ) : useGifFallback ? (
-          <img
-            key={`gif-${gestureKey}`}
-            src={clip.gif}
-            alt=""
-            className="h-full w-full object-cover object-center"
-          />
-        ) : (
+        {showClip ? (
           <video
             key={`video-${gestureKey}`}
             ref={videoRef}
@@ -89,10 +75,17 @@ export function GhibliPortrait({ name, photo, photoHover, clip }: GhibliPortrait
             playsInline
             preload="metadata"
             poster={photoHover}
-            onError={() => setUseGifFallback(true)}
+            onError={() => setVideoFailed(true)}
           >
             <source src={clip.webm} type="video/webm" />
           </video>
+        ) : (
+          <img
+            src={photoHover}
+            alt=""
+            className={`h-full w-full object-cover object-center ${active ? "opacity-100" : "opacity-0"}`}
+            loading="lazy"
+          />
         )}
       </div>
 
