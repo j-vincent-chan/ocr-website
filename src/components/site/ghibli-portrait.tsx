@@ -1,55 +1,21 @@
-import { useEffect, useRef, useState } from "react";
-import type { GhibliClip } from "@/data/ghibli-clips";
+import { useState } from "react";
 
 type GhibliPortraitProps = {
   name: string;
   photo: string;
   photoHover: string;
-  clip: GhibliClip | null;
 };
 
-export function GhibliPortrait({ name, photo, photoHover, clip }: GhibliPortraitProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
+export function GhibliPortrait({ name, photo, photoHover }: GhibliPortraitProps) {
   const [active, setActive] = useState(false);
-  const [motionEnabled, setMotionEnabled] = useState(true);
-  const [gestureKey, setGestureKey] = useState(0);
-  const [videoFailed, setVideoFailed] = useState(false);
-
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setMotionEnabled(!reduced);
-  }, []);
-
-  useEffect(() => {
-    if (!active || !motionEnabled || videoFailed || !clip || !videoRef.current) return;
-    const video = videoRef.current;
-    video.currentTime = 0;
-    void video.play().catch(() => setVideoFailed(true));
-  }, [active, motionEnabled, videoFailed, clip, gestureKey]);
-
-  const handleEnter = () => {
-    setGestureKey((key) => key + 1);
-    setVideoFailed(false);
-    setActive(true);
-  };
-
-  const handleLeave = () => {
-    setActive(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
-
-  const showClip = active && motionEnabled && clip && !videoFailed;
 
   return (
     <div
       className="relative w-full aspect-square rounded-2xl overflow-hidden bg-cream"
-      onPointerEnter={handleEnter}
-      onPointerLeave={handleLeave}
-      onFocus={handleEnter}
-      onBlur={handleLeave}
+      onPointerEnter={() => setActive(true)}
+      onPointerLeave={() => setActive(false)}
+      onFocus={() => setActive(true)}
+      onBlur={() => setActive(false)}
     >
       <img
         src={photo}
@@ -60,34 +26,15 @@ export function GhibliPortrait({ name, photo, photoHover, clip }: GhibliPortrait
         loading="lazy"
       />
 
-      <div
-        className={`absolute inset-0 overflow-hidden ${
-          active ? "opacity-100" : "opacity-0 pointer-events-none"
-        } motion-safe:transition-opacity motion-safe:duration-500`}
-        aria-hidden={!active}
-      >
-        {showClip ? (
-          <video
-            key={`video-${gestureKey}`}
-            ref={videoRef}
-            className="h-full w-full object-cover object-center"
-            muted
-            playsInline
-            preload="metadata"
-            poster={photoHover}
-            onError={() => setVideoFailed(true)}
-          >
-            <source src={clip.webm} type="video/webm" />
-          </video>
-        ) : (
-          <img
-            src={photoHover}
-            alt=""
-            className={`h-full w-full object-cover object-center ${active ? "opacity-100" : "opacity-0"}`}
-            loading="lazy"
-          />
-        )}
-      </div>
+      <img
+        src={photoHover}
+        alt=""
+        aria-hidden
+        className={`absolute inset-0 h-full w-full object-cover object-center motion-safe:transition-opacity motion-safe:duration-500 ${
+          active ? "opacity-100" : "opacity-0"
+        }`}
+        loading="lazy"
+      />
 
       <span
         className={`pointer-events-none absolute bottom-3 right-3 rounded-full bg-ink/70 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-white motion-safe:transition-opacity motion-safe:duration-300 ${

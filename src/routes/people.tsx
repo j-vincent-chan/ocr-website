@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
 import { GhibliPortrait } from "@/components/site/ghibli-portrait";
-import { ghibliClipFromHover } from "@/data/ghibli-clips";
 import coreyRatheImg from "@/assets/people/corey-rathe.jpg";
 import coreyRatheHoverImg from "@/assets/people/hover/corey-rathe-hover.png";
 import franciscoQuintanillaImg from "@/assets/people/francisco-quintanilla.jpg";
@@ -247,12 +246,7 @@ function Avatar({
 
   if (photoHover) {
     return (
-      <GhibliPortrait
-        name={name}
-        photo={photo}
-        photoHover={photoHover}
-        clip={ghibliClipFromHover(photoHover)}
-      />
+      <GhibliPortrait name={name} photo={photo} photoHover={photoHover} />
     );
   }
 
