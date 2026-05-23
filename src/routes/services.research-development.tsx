@@ -29,7 +29,7 @@ export const Route = createFileRoute("/services/research-development")({
       },
     ],
   }),
-  component: RDGPage;
+  component: RDGPage,
 });
 
 const META = SERVICE_META["research-development"];
