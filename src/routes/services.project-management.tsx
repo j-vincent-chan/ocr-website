@@ -1,16 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
-import {
-  ServicePageHero,
-  ServiceOverview,
-  ServiceCapabilities,
-  ServiceWhoFor,
-  ServiceHowWeSupport,
-  ServiceOutcomes,
-  ServiceRelated,
-  ServiceMotif,
-  SERVICE_META,
-} from "@/components/site/service-page";
+import { ServiceHero, ServiceHeroHighlight } from "@/components/site/service-hero";
 
 export const Route = createFileRoute("/services/project-management")({
   head: () => ({
@@ -19,214 +9,285 @@ export const Route = createFileRoute("/services/project-management")({
       {
         name: "description",
         content:
-          "Operational backbone for complex UCSF research programs — study startup, clinical research coordination, biospecimen pipelines, and multi-site logistics.",
+          "Operational backbone for complex research programs at UCSF — study startup, clinical research coordination, biospecimen pipelines, and multi-site logistics.",
       },
       { property: "og:title", content: "Project management & clinical coordination — UCSF OCR" },
-      {
-        property: "og:description",
-        content: "Run your science with a team that knows how to ship it.",
-      },
+      { property: "og:description", content: "Run your science with a team that knows how to ship it." },
     ],
   }),
   component: PMPage,
 });
 
-const META = SERVICE_META["project-management"];
-const A = META.accent;
+const T = "var(--teal)";
+
+function Hero() {
+  return (
+    <ServiceHero
+      arm="02"
+      armLabel="Operations console"
+      accent={T}
+      title={
+        <>
+          We run your study.
+          <br />
+          <ServiceHeroHighlight accent={T}>You run the science.</ServiceHeroHighlight>
+        </>
+      }
+      description="From IRB submission to final data lock, OCR runs the operational backbone of complex UCSF research programs — startup, coordination, biospecimens, and multi-site logistics."
+      below={
+        <>
+          <p className="flex items-center gap-2 text-xs text-muted-foreground font-mono mb-4">
+            <span className="w-2 h-2 rounded-full bg-lime animate-pulse" aria-hidden />
+            27 active programs · 11 CRCs on bench · live
+          </p>
+          <div className="grid md:grid-cols-4 gap-3">
+            {[
+              { l: "IRB submitted", v: "Mar 14", s: "Cleared", c: "var(--teal)" },
+              { l: "First patient enrolled", v: "Apr 22", s: "On track", c: "var(--coral)" },
+              { l: "Biospecimens", v: "412", s: "+38 this week", c: "var(--magenta)" },
+              { l: "Sites activated", v: "5 / 5", s: "Complete", c: "var(--gold)" },
+            ].map((r) => (
+              <div key={r.l} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+                <div className="text-[11px] uppercase tracking-widest text-muted-foreground">{r.l}</div>
+                <div className="font-display text-3xl text-ink mt-2">{r.v}</div>
+                <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: r.c }} aria-hidden />
+                  {r.s}
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      }
+    />
+  );
+}
+
+/* Kanban-style swimlanes */
+function Swimlanes() {
+  const lanes = [
+    {
+      title: "Startup",
+      c: "var(--teal)",
+      cards: [
+        { t: "Protocol v3.1", m: "Draft · IRB pre-review" },
+        { t: "Ancillary cmtes", m: "CHR, COI, Biosafety" },
+        { t: "Contracts", m: "Sponsor MTA in review" },
+      ],
+    },
+    {
+      title: "Activation",
+      c: "var(--coral)",
+      cards: [
+        { t: "Site training · Mission Bay", m: "Scheduled · Apr 8" },
+        { t: "REDCap build", m: "Forms 80% complete" },
+        { t: "SOP set", m: "Consent, eligibility, AE" },
+      ],
+    },
+    {
+      title: "Operations",
+      c: "var(--magenta)",
+      cards: [
+        { t: "Enrollment", m: "32 / 50 · ahead of plan" },
+        { t: "Monitoring", m: "Visit 2 of 4 closed" },
+        { t: "Specimen pipeline", m: "Cohort A in QC" },
+      ],
+    },
+    {
+      title: "Closeout",
+      c: "var(--gold)",
+      cards: [
+        { t: "Data lock prep", m: "Query resolution" },
+        { t: "Final report", m: "Outline circulated" },
+        { t: "Regulatory archive", m: "Index drafted" },
+      ],
+    },
+  ];
+  return (
+    <section className="py-24 bg-cream">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-10 mb-12 items-end">
+          <div className="lg:col-span-6">
+            <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: T }}>
+              How a study flows through OCR
+            </span>
+            <h2 className="mt-4 font-display text-5xl md:text-6xl text-ink leading-[0.98]">
+              Four lanes.<br />Always moving.
+            </h2>
+          </div>
+          <p className="lg:col-span-5 lg:col-start-8 text-muted-foreground leading-relaxed">
+            Every program OCR runs sits on the same operational board.
+            Visibility for the PI, accountability for the team, predictable
+            cadence for the sponsor.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {lanes.map((l) => (
+            <div key={l.title} className="rounded-2xl bg-card border border-border p-5">
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full" style={{ background: l.c }} />
+                  <h3 className="text-sm uppercase tracking-widest text-ink font-medium">
+                    {l.title}
+                  </h3>
+                </div>
+                <span className="text-[11px] text-muted-foreground font-mono">
+                  {l.cards.length}
+                </span>
+              </div>
+              <ul className="space-y-2.5">
+                {l.cards.map((c) => (
+                  <li
+                    key={c.t}
+                    className="rounded-xl bg-secondary/60 border border-border p-3.5"
+                  >
+                    <div
+                      className="w-6 h-0.5 mb-2 rounded-full"
+                      style={{ background: l.c }}
+                    />
+                    <div className="text-sm text-ink leading-snug">{c.t}</div>
+                    <div className="text-xs text-muted-foreground mt-1">{c.m}</div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* Pipeline diagram: biospecimen lifecycle */
+function Pipeline() {
+  const nodes = [
+    { t: "Collect", d: "Consent + SOP-driven sample collection at the site.", c: "var(--coral)" },
+    { t: "Process", d: "Centrifuge, aliquot, label — chain-of-custody logged.", c: "var(--magenta)" },
+    { t: "Bank", d: "Biorepository integration: barcoded, temperature-monitored.", c: "var(--teal)" },
+    { t: "Ship", d: "Manifested, IATA-compliant shipping to downstream cores.", c: "var(--gold)" },
+    { t: "Assay", d: "Hand-off to single-cell, proteomics, sequencing partners.", c: "var(--lime)" },
+  ];
+  return (
+    <section className="py-28">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-3xl mb-14">
+          <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: "var(--coral)" }}>
+            Biospecimen pipeline
+          </span>
+          <h2 className="mt-4 font-display text-5xl text-ink leading-[0.98]">
+            Every sample, accounted for.
+          </h2>
+        </div>
+        <div className="relative">
+          <div className="hidden md:flex items-stretch gap-2">
+            {nodes.map((n, i) => (
+              <div key={n.t} className="flex-1 flex items-stretch">
+                <div className="flex-1 rounded-2xl border border-border bg-card p-6 relative">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center font-display text-white text-sm mb-4"
+                    style={{ background: n.c }}
+                  >
+                    0{i + 1}
+                  </div>
+                  <div className="font-display text-xl text-ink">{n.t}</div>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{n.d}</p>
+                </div>
+                {i < nodes.length - 1 && (
+                  <div className="flex items-center px-1 text-muted-foreground" aria-hidden>
+                    →
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          {/* mobile stacked */}
+          <ol className="md:hidden space-y-3">
+            {nodes.map((n, i) => (
+              <li key={n.t} className="rounded-2xl border border-border bg-card p-5 flex gap-4">
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center font-display text-white text-sm flex-none"
+                  style={{ background: n.c }}
+                >
+                  0{i + 1}
+                </div>
+                <div>
+                  <div className="font-display text-lg text-ink">{n.t}</div>
+                  <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{n.d}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* Bench roster — staff grid like a roster board */
+function Bench() {
+  const rows = [
+    { r: "Senior PM", n: 3, focus: "Large mechanisms · P/U/T32", c: "var(--teal)" },
+    { r: "Project Manager", n: 4, focus: "Investigator-initiated studies", c: "var(--coral)" },
+    { r: "Senior CRC", n: 2, focus: "Oncology · Immunology", c: "var(--magenta)" },
+    { r: "Clinical Research Coordinator", n: 5, focus: "Cross-trained, multi-site", c: "var(--gold)" },
+    { r: "Regulatory Specialist", n: 1, focus: "IRB & ancillary committees", c: "var(--lime)" },
+  ];
+  return (
+    <section className="py-24 bg-ink text-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-10 items-end mb-12">
+          <div className="lg:col-span-6">
+            <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: T }}>
+              The bench
+            </span>
+            <h2 className="mt-4 font-display text-5xl text-white leading-[0.98]">
+              Shared roster.<br />Steady throughput.
+            </h2>
+          </div>
+          <p className="lg:col-span-5 lg:col-start-8 text-white/70 leading-relaxed">
+            Instead of each lab hiring and losing its own coordinator, we run a
+            cross-trained bench across partner institutes. Coverage doesn't
+            disappear when one person leaves.
+          </p>
+        </div>
+
+        <div className="rounded-3xl border border-white/10 overflow-hidden">
+          <div className="grid grid-cols-12 px-6 py-4 text-[11px] uppercase tracking-widest text-white/50 bg-white/5">
+            <div className="col-span-6">Role</div>
+            <div className="col-span-2 text-right">On bench</div>
+            <div className="col-span-4">Specialty</div>
+          </div>
+          {rows.map((r) => (
+            <div
+              key={r.r}
+              className="grid grid-cols-12 px-6 py-5 items-center border-t border-white/10 hover:bg-white/5 transition"
+            >
+              <div className="col-span-6 flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full" style={{ background: r.c }} />
+                <span className="font-display text-lg text-white">{r.r}</span>
+              </div>
+              <div className="col-span-2 text-right font-display text-2xl text-white">{r.n}</div>
+              <div className="col-span-4 text-sm text-white/70">{r.focus}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function PMPage() {
   return (
     <SiteShell>
-      <Breadcrumb trail={[{ label: "Services" }, { label: META.fullName }]} />
-
-      <ServicePageHero
-        meta={META}
-        positioning="Operations for complex programs"
-        title={
-          <>
-            We run your study.{" "}
-            <em className="not-italic" style={{ color: A }}>
-              You run the science.
-            </em>
-          </>
-        }
-        description="From IRB submission to final data lock, OCR runs the operational backbone of complex UCSF research programs — startup, coordination, biospecimens, and multi-site logistics."
-        primaryCta={{ label: "Scope a project", href: "mailto:pm@ocr.ucsf.edu" }}
-        secondaryCta={{ label: "See capabilities", href: "#capabilities" }}
-        motif={<ServiceMotif variant="lanes" accent={A} />}
-      />
-
-      <ServiceOverview
-        accent={A}
-        headline={
-          <>
-            A cross-trained bench of project managers and clinical research
-            coordinators, shared across partner programs.
-          </>
-        }
-        body={
-          <>
-            <p>
-              Most labs hire a coordinator, lose them eighteen months later, and
-              start over. OCR runs a shared bench across partner institutes so
-              coverage doesn't disappear when one person leaves — and so
-              specialized expertise is always within reach.
-            </p>
-            <p className="mt-4">
-              We work pre-award through closeout: protocol drafting, IRB,
-              activation, enrollment, monitoring, biospecimens, and data lock.
-            </p>
-          </>
-        }
-        stats={[
-          { value: "27", label: "Active programs" },
-          { value: "11", label: "CRCs on bench" },
-          { value: "5", label: "Specialty roles" },
-          { value: "ISO-style", label: "SOP library" },
-        ]}
-      />
-
-      <div id="capabilities" />
-      <ServiceCapabilities
-        accent={A}
-        title={
-          <>
-            What our team<br />actually does.
-          </>
-        }
-        lede="Drop in pre-award, mid-flight, or at closeout. We scope the engagement to where you are."
-        items={[
-          {
-            title: "Study startup",
-            desc: "Protocol drafting, IRB and ancillary committee submission, contracts and MTAs, and site activation playbooks.",
-            bullets: ["Protocol & SOPs", "IRB / CHR / COI", "Sponsor MTAs"],
-          },
-          {
-            title: "Clinical research coordination",
-            desc: "Consent, screening, enrollment, study visits, AE reporting — cross-trained CRCs who can flex across studies as census changes.",
-            bullets: ["Enrollment", "Monitoring", "AE / safety reporting"],
-          },
-          {
-            title: "Biospecimen pipeline",
-            desc: "End-to-end chain of custody from collection through assay hand-off, with barcoded tracking and IATA-compliant shipping.",
-            bullets: ["Collect → process → bank", "Repository integration", "Manifested shipping"],
-          },
-          {
-            title: "Multi-site coordination",
-            desc: "Activation, training, and monitoring across UCSF sites and external collaborators — a single source of truth for the PI.",
-            bullets: ["Site activation", "Cross-site SOPs", "Central monitoring"],
-          },
-          {
-            title: "Regulatory & compliance",
-            desc: "Submissions, amendments, continuing reviews, and audit-ready files — managed by a dedicated regulatory specialist.",
-            bullets: ["IRB amendments", "Annual reviews", "Regulatory archive"],
-          },
-          {
-            title: "Closeout & data lock",
-            desc: "Query resolution, final reports, regulatory archive, and a clean hand-off so the science can be written up.",
-            bullets: ["Data lock prep", "Final report", "Archive index"],
-          },
-        ]}
-      />
-
-      <ServiceWhoFor
-        accent={A}
-        audiences={[
-          {
-            who: "Large-program PIs",
-            fit: "P/U/T32 awardees who need a coordinated operational team rather than a string of one-off hires.",
-          },
-          {
-            who: "Investigator-initiated studies",
-            fit: "Single-PI clinical or translational studies that need a CRC plus regulatory support without standing up a full lab ops team.",
-          },
-          {
-            who: "Multi-site collaborations",
-            fit: "Programs running at Mission Bay, Parnassus, ZSFG, and beyond that need a central operations hub.",
-          },
-          {
-            who: "Biospecimen-heavy studies",
-            fit: "Immunology, oncology, and translational programs that depend on clean, traceable sample pipelines.",
-          },
-        ]}
-        note="OCR runs on a shared-bench model — coverage doesn't disappear when one person leaves."
-      />
-
-      <ServiceHowWeSupport
-        accent={A}
-        title={
-          <>
-            How a study flows<br />through OCR.
-          </>
-        }
-        lede="Every program OCR runs moves through the same four operational lanes — visibility for the PI, accountability for the team, predictable cadence for the sponsor."
-        steps={[
-          {
-            title: "Startup",
-            desc: "Protocol, IRB and ancillary committees, contracts, SOP set, and a staffing plan keyed to enrollment forecast.",
-            artifacts: ["Protocol", "IRB submission", "SOPs", "Staffing plan"],
-          },
-          {
-            title: "Activation",
-            desc: "Site training, REDCap build, eligibility and consent workflows, and a rehearsal of the first study visit before any patient is enrolled.",
-            artifacts: ["Site training", "REDCap build", "First visit rehearsal"],
-          },
-          {
-            title: "Operations",
-            desc: "Enrollment, monitoring, sample handling, amendments, AE reporting — managed against a cadence agreed with the PI and sponsor.",
-            artifacts: ["Enrollment dashboard", "Monitoring visits", "AE log"],
-          },
-          {
-            title: "Closeout",
-            desc: "Query resolution, data lock, final report, regulatory archive, and a clean hand-off back to the lab or publishing team.",
-            artifacts: ["Data lock", "Final report", "Regulatory archive"],
-          },
-        ]}
-      />
-
-      <ServiceOutcomes
-        accent={A}
-        items={[
-          {
-            kicker: "Use case · Multi-site",
-            headline: "Five sites activated on schedule.",
-            detail:
-              "A consortium study activated all five UCSF sites within the planned window, enrolled ahead of plan, and held a single source of truth in the OCR ops board.",
-          },
-          {
-            kicker: "Outcome · Biospecimens",
-            headline: "Zero chain-of-custody gaps across 400+ samples.",
-            detail:
-              "An immunology cohort processed and shipped 412 specimens across two cores with full barcoded traceability and no QC failures.",
-          },
-          {
-            kicker: "Use case · Startup",
-            headline: "IRB cleared in one cycle.",
-            detail:
-              "A new investigator-initiated study reached IRB approval on first submission — protocol, SOPs, and ancillary submissions prepared by OCR pre-award.",
-          },
-        ]}
-        quote={{
-          text: "OCR runs the operational backbone so the PI can stay focused on the science. It's the model UCSF should be scaling.",
-          attribution: "Partner institute director",
-        }}
-      />
-
-      <ServiceRelated
-        currentId="project-management"
-        accent={A}
-        note="Most ops engagements pair with a Data Management plan at startup and pull in Research Development for amendments or follow-on funding."
-      />
-
+      <Breadcrumb trail={[{ label: "Services" }, { label: "Project management & clinical coordination" }]} />
+      <Hero />
+      <Swimlanes />
+      <Pipeline />
+      <Bench />
       <CTA
         eyebrow="Run with us"
-        title={
-          <>
-            Have a study that needs
-            <br />
-            <span className="text-white/70">a steady hand?</span>
-          </>
-        }
+        title={<>Have a study that needs<br /><span className="text-white/70">a steady hand?</span></>}
         subtitle="Tell us where you are — pre-award, in startup, or mid-flight — and we'll show you exactly where our team can plug in."
         email="pm@ocr.ucsf.edu"
         primaryLabel="Scope a project →"
