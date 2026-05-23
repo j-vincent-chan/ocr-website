@@ -1,6 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
-import { ServiceHero, ServiceHeroHighlight } from "@/components/site/service-hero";
+import {
+  ServicePageHero,
+  ServiceOverview,
+  ServiceCapabilities,
+  ServiceWhoFor,
+  ServiceHowWeSupport,
+  ServiceOutcomes,
+  ServiceRelated,
+  ServiceMotif,
+  SERVICE_META,
+} from "@/components/site/service-page";
 
 export const Route = createFileRoute("/services/ai-tools")({
   head: () => ({
@@ -9,305 +19,234 @@ export const Route = createFileRoute("/services/ai-tools")({
       {
         name: "description",
         content:
-          "Signal, Prospera, and a growing suite of AI tools that move OCR from passive search to proactive matchmaking for UCSF researchers.",
+          "Signal, Prospera, Pre-Flight, and a growing suite of internal AI tools built so OCR — and the investigators we support — spend less time on paperwork and more on science.",
       },
       { property: "og:title", content: "Research resources & AI tools — UCSF OCR" },
-      { property: "og:description", content: "Software OCR is building so researchers and staff can spend more time on science." },
+      {
+        property: "og:description",
+        content: "Software OCR is building so researchers and staff can spend more time on science.",
+      },
     ],
   }),
   component: AIPage,
 });
 
-const G = "var(--gold)";
-
-function Hero() {
-  return (
-    <ServiceHero
-      arm="04"
-      armLabel="Built in-house at UCSF"
-      accent={G}
-      title={
-        <>
-          The software we
-          <br />
-          <ServiceHeroHighlight accent={G}>wish existed.</ServiceHeroHighlight>
-        </>
-      }
-      description="OCR builds the AI tools we needed for our own work — so investigators and staff spend less time on search, summarization, and paperwork, and more time on science."
-      below={
-        <p className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground font-mono">
-          <span className="px-2 py-1 rounded-md bg-secondary border border-border">v0.4</span>
-          <span>Signal · Prospera · in active pilot</span>
-        </p>
-      }
-    />
-  );
-}
-
-/* Two flagship product split panels */
-function Products() {
-  return (
-    <section className="py-24 bg-cream">
-      <div className="max-w-7xl mx-auto px-6 space-y-8">
-        {/* SIGNAL */}
-        <article className="rounded-[2rem] overflow-hidden border border-border bg-card grid lg:grid-cols-12">
-          <div className="lg:col-span-5 p-10 md:p-12 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-display" style={{ background: "var(--teal)" }}>
-                  S
-                </div>
-                <div>
-                  <div className="font-display text-3xl text-ink">Signal</div>
-                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
-                    Research intelligence
-                  </div>
-                </div>
-              </div>
-              <p className="mt-8 text-lg text-ink/85 leading-relaxed">
-                A research-intelligence platform that watches the literature,
-                grants, and news — then curates the signals that actually
-                matter for our investigators.
-              </p>
-              <ul className="mt-8 space-y-3 text-sm text-muted-foreground">
-                {[
-                  "Monitors publications, grants, awards & news",
-                  "Author-level deduplication across preprints & journals",
-                  "Editorial summaries staged for human review",
-                ].map((p) => (
-                  <li key={p} className="flex gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-none" style={{ background: "var(--teal)" }} />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mt-10 flex items-center gap-3">
-              <span className="text-[11px] uppercase tracking-widest text-muted-foreground border border-border rounded-full px-2.5 py-1">
-                Internal pilot
-              </span>
-              <span className="text-[11px] uppercase tracking-widest text-muted-foreground font-mono">
-                v0.4 · 4 institutes
-              </span>
-            </div>
-          </div>
-          {/* live feed mock */}
-          <div className="lg:col-span-7 bg-ink text-white p-6 md:p-10 relative">
-            <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full blur-3xl opacity-40" style={{ background: "var(--teal)" }} />
-            <div className="relative">
-              <div className="flex items-center justify-between mb-5 text-xs text-white/60 font-mono">
-                <span>signal · live feed</span>
-                <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-lime animate-pulse" />
-                  streaming
-                </span>
-              </div>
-              <div className="space-y-2.5">
-                {[
-                  { t: "NEW NOFO", d: "NIDDK · K23 Mentored Patient-Oriented Research", c: "var(--magenta)", time: "2m" },
-                  { t: "AWARD", d: "Bakar ImmunoX faculty · R01 awarded", c: "var(--coral)", time: "11m" },
-                  { t: "PUBLICATION", d: "Cell · Single-cell atlas, IGHS collab", c: "var(--teal)", time: "1h" },
-                  { t: "FOUNDATION", d: "Helmsley · T1D moonshot RFP open", c: "var(--gold)", time: "3h" },
-                  { t: "PREPRINT", d: "bioRxiv · merged 2 duplicates for J. Lee", c: "var(--lime)", time: "5h" },
-                ].map((r) => (
-                  <div key={r.d} className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3">
-                    <span className="mt-1.5 w-2 h-2 rounded-full flex-none" style={{ background: r.c }} />
-                    <div className="flex-1">
-                      <div className="text-[10px] uppercase tracking-widest text-white/50">{r.t}</div>
-                      <div className="text-sm text-white mt-0.5">{r.d}</div>
-                    </div>
-                    <div className="text-[10px] text-white/40 font-mono">{r.time}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </article>
-
-        {/* PROSPERA */}
-        <article className="rounded-[2rem] overflow-hidden border border-border bg-card grid lg:grid-cols-12">
-          {/* pipeline mock — on left for variation */}
-          <div className="lg:col-span-7 lg:order-1 order-2 bg-ink text-white p-6 md:p-10 relative">
-            <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full blur-3xl opacity-40" style={{ background: "var(--magenta)" }} />
-            <div className="relative">
-              <div className="flex items-center justify-between mb-5 text-xs text-white/60 font-mono">
-                <span>prospera · opportunity pipeline</span>
-                <span>14 active matches</span>
-              </div>
-              <div className="grid grid-cols-3 gap-3">
-                {[
-                  { col: "Discovered", n: 6, c: "var(--gold)" },
-                  { col: "Matched", n: 5, c: "var(--magenta)" },
-                  { col: "In dev", n: 3, c: "var(--coral)" },
-                ].map((c) => (
-                  <div key={c.col} className="rounded-xl border border-white/10 bg-white/5 p-3">
-                    <div className="flex items-center justify-between text-[10px] uppercase tracking-widest text-white/60 mb-3">
-                      <span>{c.col}</span>
-                      <span>{c.n}</span>
-                    </div>
-                    <div className="space-y-2">
-                      {Array.from({ length: c.n }).map((_, i) => (
-                        <div key={i} className="rounded-lg bg-white/5 p-2.5">
-                          <div className="w-3/4 h-1.5 rounded-full mb-1.5" style={{ background: c.c, opacity: 0.6 }} />
-                          <div className="w-1/2 h-1 rounded-full bg-white/20" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-5 text-[11px] text-white/40">
-                Illustrative preview · not live data
-              </div>
-            </div>
-          </div>
-          <div className="lg:col-span-5 lg:order-2 order-1 p-10 md:p-12 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-display" style={{ background: "var(--magenta)" }}>
-                  P
-                </div>
-                <div>
-                  <div className="font-display text-3xl text-ink">Prospera</div>
-                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
-                    Funding matchmaking
-                  </div>
-                </div>
-              </div>
-              <p className="mt-8 text-lg text-ink/85 leading-relaxed">
-                AI-assisted funding discovery and matchmaking. Aggregates
-                federal, foundation, and internal opportunities — then matches
-                them to investigator profiles with a structured pipeline.
-              </p>
-              <ul className="mt-8 space-y-3 text-sm text-muted-foreground">
-                {[
-                  "Aggregates federal, foundation & internal opportunities",
-                  "Matches NOFOs to PI profile, methods, and prior work",
-                  "Tracks outreach through a structured pipeline",
-                ].map((p) => (
-                  <li key={p} className="flex gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-none" style={{ background: "var(--magenta)" }} />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mt-10 flex items-center gap-3">
-              <span className="text-[11px] uppercase tracking-widest text-muted-foreground border border-border rounded-full px-2.5 py-1">
-                Beta · partner institutes
-              </span>
-              <span className="text-[11px] uppercase tracking-widest text-muted-foreground font-mono">
-                v0.2
-              </span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-  );
-}
-
-/* Small automations — as a "what's shipped" log */
-function Automations() {
-  const items = [
-    { t: "Aims-to-LOI drafter", d: "Turns approved Specific Aims into a tailored Letter of Intent in minutes.", c: "var(--coral)", ship: "Shipped · Q1 26" },
-    { t: "Biosketch refresh", d: "Pulls recent publications and rebuilds NIH biosketches at the click of a button.", c: "var(--teal)", ship: "Shipped · Q4 25" },
-    { t: "NOFO summarizer", d: "Reads a full FOA and returns review criteria, scored fit, and key dates.", c: "var(--magenta)", ship: "Shipped · Q4 25" },
-    { t: "Collaborator finder", d: "Suggests UCSF collaborators by topic, complementary methods, and prior co-authorship.", c: "var(--gold)", ship: "In dev · Q2 26" },
-    { t: "Submission checklist bot", d: "Tracks every artifact required for a submission, by sponsor and mechanism.", c: "var(--lime)", ship: "In dev · Q2 26" },
-    { t: "Meeting recap drafter", d: "Generates structured notes and action items from PI consults.", c: "#8b5cf6", ship: "Beta" },
-  ];
-  return (
-    <section className="py-28">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-10 items-end mb-12">
-          <div className="lg:col-span-6">
-            <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: "var(--coral)" }}>
-              Workflow innovation
-            </span>
-            <h2 className="mt-4 font-display text-5xl text-ink leading-[0.98]">
-              Small automations.<br />Compounding hours back.
-            </h2>
-          </div>
-          <p className="lg:col-span-5 lg:col-start-8 text-muted-foreground leading-relaxed">
-            Beyond Signal and Prospera, we ship internal tools that automate
-            the high-frequency, low-judgement work — and free our team to do
-            the work only humans can.
-          </p>
-        </div>
-        <ul className="divide-y divide-border border-y border-border">
-          {items.map((i) => (
-            <li
-              key={i.t}
-              className="grid grid-cols-12 gap-6 py-6 items-center group hover:bg-cream/60 px-3 -mx-3 rounded-xl transition"
-            >
-              <div className="col-span-12 md:col-span-1">
-                <span className="w-3 h-3 rounded-full inline-block" style={{ background: i.c }} />
-              </div>
-              <div className="col-span-12 md:col-span-4">
-                <h3 className="font-display text-xl text-ink">{i.t}</h3>
-              </div>
-              <div className="col-span-12 md:col-span-5 text-sm text-muted-foreground leading-relaxed">
-                {i.d}
-              </div>
-              <div className="col-span-12 md:col-span-2 text-[11px] uppercase tracking-widest text-muted-foreground font-mono md:text-right">
-                {i.ship}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
-/* Principles */
-function Principles() {
-  const ps = [
-    { n: "01", t: "Humans in the loop", d: "Every output is staged for review. We never auto-send to PIs or sponsors." },
-    { n: "02", t: "Private by default", d: "Models run against UCSF data inside approved environments. No prompts leak." },
-    { n: "03", t: "Open about limits", d: "We log accuracy, surface uncertainty, and retire tools that don't earn their keep." },
-    { n: "04", t: "Built with users", d: "Every tool starts with a PI or staff complaint. We ship, measure, iterate, repeat." },
-  ];
-  return (
-    <section className="py-24 bg-ink text-white relative overflow-hidden">
-      <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-gradient-sunburst opacity-15 blur-3xl" />
-      <div className="max-w-7xl mx-auto px-6 relative">
-        <div className="max-w-3xl">
-          <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: G }}>
-            Principles
-          </span>
-          <h2 className="mt-4 font-display text-5xl text-white leading-[0.98]">
-            How we build with AI.
-          </h2>
-        </div>
-        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {ps.map((p) => (
-            <div key={p.n} className="rounded-3xl border border-white/10 bg-white/5 p-7">
-              <div className="font-display text-xl" style={{ color: G }}>
-                {p.n}
-              </div>
-              <h3 className="mt-4 text-xl text-white">{p.t}</h3>
-              <p className="mt-3 text-sm text-white/70 leading-relaxed">{p.d}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+const META = SERVICE_META["ai-tools"];
+const A = META.accent;
 
 function AIPage() {
   return (
     <SiteShell>
-      <Breadcrumb trail={[{ label: "Services" }, { label: "Research resources & AI tools" }]} />
-      <Hero />
-      <Products />
-      <Automations />
-      <Principles />
+      <Breadcrumb trail={[{ label: "Services" }, { label: META.fullName }]} />
+
+      <ServicePageHero
+        meta={META}
+        positioning="Built in-house at UCSF"
+        title={
+          <>
+            The software we{" "}
+            <em className="not-italic" style={{ color: A }}>
+              wish existed.
+            </em>
+          </>
+        }
+        description="OCR builds the AI tools we needed for our own work — so investigators and staff spend less time on search, summarization, and paperwork, and more time on science."
+        primaryCta={{ label: "Request a pilot", href: "mailto:ai@ocr.ucsf.edu" }}
+        secondaryCta={{ label: "See the tools", href: "#capabilities" }}
+        motif={<ServiceMotif variant="circuit" accent={A} />}
+      />
+
+      <ServiceOverview
+        accent={A}
+        headline={
+          <>
+            We ship internal tools that augment our team — never replace
+            judgement — and we put them in front of partner investigators when
+            they're ready.
+          </>
+        }
+        body={
+          <>
+            <p>
+              Every tool starts with a complaint from a PI or a staff member.
+              We prototype, measure, iterate, and retire tools that don't earn
+              their keep. Humans stay in the loop on every output.
+            </p>
+            <p className="mt-4">
+              Models run against UCSF data inside approved environments. Nothing
+              ships to a sponsor or a PI without a human review step.
+            </p>
+          </>
+        }
+        stats={[
+          { value: "2", label: "Flagship products" },
+          { value: "6+", label: "Internal automations" },
+          { value: "4", label: "Partner institutes" },
+          { value: "Human", label: "In the loop" },
+        ]}
+      />
+
+      <div id="capabilities" />
+      <ServiceCapabilities
+        accent={A}
+        title={
+          <>
+            Flagship products &<br />internal automations.
+          </>
+        }
+        lede="Two flagship platforms in active pilot, plus a growing log of focused automations that compound hours back."
+        items={[
+          {
+            title: "Signal",
+            tag: "Beta · v0.4",
+            desc: "A research-intelligence platform that watches literature, grants, awards, and news — and curates the signals that actually matter to our investigators.",
+            bullets: [
+              "Publications, grants, awards & news",
+              "Author-level deduplication",
+              "Editorial summaries for human review",
+            ],
+          },
+          {
+            title: "Prospera",
+            tag: "Beta · v0.2",
+            desc: "AI-assisted funding discovery and matchmaking. Aggregates federal, foundation, and internal opportunities, then matches them to investigator portfolios.",
+            bullets: [
+              "NOFO ↔ PI matching",
+              "Grant Cards with fit + criteria",
+              "Structured outreach pipeline",
+            ],
+          },
+          {
+            title: "Pre-Flight Grant Reviewer",
+            tag: "In dev",
+            desc: "An early diagnostic for draft Aims, Research Strategy, and biosketches — flags clarity issues, jargon, weak transitions, and reviewer confusion points.",
+            bullets: [
+              "Structured editorial report",
+              "Triage ranking for writers",
+              "Tracks recurring proposal weaknesses",
+            ],
+          },
+          {
+            title: "Aims-to-LOI drafter",
+            tag: "Shipped",
+            desc: "Turns approved Specific Aims into a tailored Letter of Intent in minutes, then routes to a writer for review.",
+          },
+          {
+            title: "Biosketch refresh",
+            tag: "Shipped",
+            desc: "Pulls recent publications and rebuilds NIH biosketches with one click — checked by a writer before delivery.",
+          },
+          {
+            title: "NOFO summarizer",
+            tag: "Shipped",
+            desc: "Reads a full FOA and returns review criteria, scored fit, and key dates — the first pass before strategy.",
+          },
+        ]}
+      />
+
+      <ServiceWhoFor
+        accent={A}
+        audiences={[
+          {
+            who: "Partner institute investigators",
+            fit: "Signal and Prospera are in active pilot with Bakar ImmunoX, IGHS, Diabetes Center, and IHA — first to receive new tools.",
+          },
+          {
+            who: "OCR's own team",
+            fit: "Most tools start as internal automations for our writers, PMs, and CRCs — investigators see them once they're stable.",
+          },
+          {
+            who: "Faculty preparing R01s",
+            fit: "Pre-Flight Grant Reviewer is built specifically for investigators sharpening Aims and Research Strategy before submission.",
+          },
+          {
+            who: "Programs in planning",
+            fit: "Prospera helps program leads map a multi-year funding strategy across federal, foundation, and internal mechanisms.",
+          },
+        ]}
+        note="Want a tool we don't have yet? Tell us — every tool we ship started as a complaint."
+      />
+
+      <ServiceHowWeSupport
+        accent={A}
+        title={
+          <>
+            How we build<br />with AI.
+          </>
+        }
+        lede="A short, opinionated build loop that keeps humans in the loop and retires what doesn't earn its keep."
+        steps={[
+          {
+            title: "Start with a complaint",
+            desc: "Every tool begins with a PI or staff frustration — not a model demo. We document the workflow before we touch a model.",
+            artifacts: ["Workflow doc", "Success metric"],
+          },
+          {
+            title: "Prototype private by default",
+            desc: "Models run against UCSF data inside approved environments. Prompts and outputs stay inside OCR.",
+            artifacts: ["Sandbox", "Eval set"],
+          },
+          {
+            title: "Stage outputs for human review",
+            desc: "Nothing ships to a PI or sponsor without a human in the loop. Every output is a draft, never a send.",
+            artifacts: ["Review queue", "Edit log"],
+          },
+          {
+            title: "Pilot with one partner",
+            desc: "We onboard one partner institute at a time, measure accuracy and time saved, and iterate on real use — not synthetic demos.",
+            artifacts: ["Pilot scorecard", "Iteration log"],
+          },
+          {
+            title: "Scale or retire",
+            desc: "Tools that prove themselves graduate to broader access. Tools that don't get sunset publicly — we don't keep zombies running.",
+            artifacts: ["Graduation note", "Sunset post"],
+          },
+        ]}
+      />
+
+      <ServiceOutcomes
+        accent={A}
+        items={[
+          {
+            kicker: "Outcome · Signal",
+            headline: "Four institutes on one feed.",
+            detail:
+              "Signal pilot consolidates literature, grants, and award news for four partner institutes into a single editorial-reviewed feed.",
+          },
+          {
+            kicker: "Use case · Prospera",
+            headline: "Matched in minutes, not weeks.",
+            detail:
+              "A program lead used Prospera to short-list eight foundation opportunities for a center-scale program in a single afternoon.",
+          },
+          {
+            kicker: "Outcome · Internal",
+            headline: "Biosketch turnaround down to a day.",
+            detail:
+              "Internal biosketch refresh dropped per-biosketch turnaround from days to a few hours of writer time per PI.",
+          },
+        ]}
+        quote={{
+          text: "The tools don't replace the writers — they let the writers spend their time on the parts only humans can do.",
+          attribution: "OCR Research Development Strategist",
+        }}
+      />
+
+      <ServiceRelated
+        currentId="ai-tools"
+        accent={A}
+        note="Prospera plugs directly into Research Development matchmaking; Pre-Flight feeds the RPR queue; Signal surfaces opportunities for the bench."
+      />
+
       <CTA
         eyebrow="Get early access"
-        title={<>Want Signal or Prospera<br /><span className="text-white/70">in your lab?</span></>}
+        title={
+          <>
+            Want Signal or Prospera
+            <br />
+            <span className="text-white/70">in your lab?</span>
+          </>
+        }
         subtitle="We're onboarding new partner institutes through 2026. Tell us what you'd want it to do, and we'll find a pilot that fits."
         email="ai@ocr.ucsf.edu"
         primaryLabel="Request a pilot →"

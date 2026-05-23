@@ -1,8 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import gabeImg from "@/assets/gabe.jpg";
-import reidImg from "@/assets/reid.jpg";
-import { SiteShell, Breadcrumb, CTA, SunburstLogo } from "@/components/site/chrome";
-import { ServiceHero, ServiceHeroHighlight } from "@/components/site/service-hero";
+import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
+import {
+  ServicePageHero,
+  ServiceOverview,
+  ServiceCapabilities,
+  ServiceWhoFor,
+  ServiceHowWeSupport,
+  ServiceOutcomes,
+  ServiceRelated,
+  ServiceMotif,
+  SERVICE_META,
+} from "@/components/site/service-page";
 
 export const Route = createFileRoute("/services/research-development")({
   head: () => ({
@@ -11,309 +19,249 @@ export const Route = createFileRoute("/services/research-development")({
       {
         name: "description",
         content:
-          "Strategic consultation, matchmaking, and expert grantwriting support for UCSF principal investigators — from R-series to P/U large grants.",
+          "Strategy, matchmaking, expert grantwriting, and faculty peer review for UCSF principal investigators — from R-series to P/U large grants.",
       },
       { property: "og:title", content: "Research development & grantwriting — UCSF OCR" },
       {
         property: "og:description",
-        content: "Helping UCSF PIs compete and win in today's federal funding environment.",
+        content:
+          "Helping UCSF PIs compete and win in today's federal funding environment.",
       },
     ],
   }),
   component: RDGPage,
 });
 
-const C = "var(--coral)";
-
-function Hero() {
-  return (
-    <ServiceHero
-      arm="01"
-      armLabel="Research development & grantwriting"
-      accent={C}
-      title={
-        <>
-          From a hunch
-          <br />
-          to a <ServiceHeroHighlight accent={C}>funded program.</ServiceHeroHighlight>
-        </>
-      }
-      description="We guide UCSF principal investigators through every stage of a grant — sharpening the idea, finding the right opportunity, and shaping a competitive submission."
-    />
-  );
-}
-
-/* THE JOURNEY: vertical stepped pathway */
-function Journey() {
-  const stages = [
-    {
-      n: "01",
-      stage: "IDEA",
-      t: "Strategic Consultation",
-      d: "30-minute intake. We learn your portfolio, research vision, and timeline. Pressure-test the science before a single page is drafted.",
-      arts: ["Portfolio map", "Whiteboard session", "Vision memo"],
-      c: "var(--coral)",
-    },
-    {
-      n: "02",
-      stage: "OPPORTUNITY",
-      t: "Funding Matchmaking",
-      d: "Our matchmakers pair you with the right mechanism — federal, foundation, internal — and the right collaborators across UCSF.",
-      arts: ["NOFO short-list", "Collaborator intros", "Strategy memo"],
-      c: "var(--magenta)",
-    },
-    {
-      n: "03",
-      stage: "NARRATIVE",
-      t: "Aims & Drafting",
-      d: "Co-develop the narrative arc and Specific Aims. We sit with you through iteration — and we don't disappear after track-changes.",
-      arts: ["Specific Aims", "Outline", "Full draft"],
-      c: "var(--teal)",
-    },
-    {
-      n: "04",
-      stage: "REVIEW",
-      t: "BOOST Peer Review",
-      d: "A UCSF faculty peer reviews your science at the Aims and Full Proposal stages — closing the gap our writers can't.",
-      arts: ["Aims review", "Structural review", "Full proposal review"],
-      c: "var(--gold)",
-    },
-    {
-      n: "05",
-      stage: "SUBMISSION",
-      t: "Submit & Stay With It",
-      d: "Biosketches, budgets, letters of support, DMS plan, and submission logistics — coordinated end-to-end so you never miss a deadline.",
-      arts: ["Biosketches", "Budget", "DMS plan", "Submission"],
-      c: "var(--lime)",
-    },
-  ];
-  return (
-    <section className="py-24 bg-cream relative">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-10 mb-20">
-          <div className="lg:col-span-7">
-            <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
-              The grant journey
-            </span>
-            <h2 className="mt-4 font-display text-5xl md:text-6xl text-ink leading-[0.98]">
-              Idea → Opportunity → Narrative →<br />
-              <em className="not-italic text-gradient-sunburst">Review → Submission.</em>
-            </h2>
-          </div>
-          <p className="lg:col-span-4 lg:col-start-9 self-end text-muted-foreground leading-relaxed">
-            Drop in at any stage. Most PIs come to us at the Idea or Opportunity
-            stage — the earlier, the better.
-          </p>
-        </div>
-
-        <div className="relative">
-          {/* connecting line */}
-          <div
-            aria-hidden
-            className="absolute left-[27px] md:left-[39px] top-2 bottom-2 w-px"
-            style={{
-              background:
-                "linear-gradient(to bottom, var(--coral), var(--magenta), var(--teal), var(--gold), var(--lime))",
-            }}
-          />
-          <ol className="space-y-6">
-            {stages.map((s) => (
-              <li
-                key={s.n}
-                className="relative grid grid-cols-[56px_1fr] md:grid-cols-[80px_1fr] gap-6 items-start"
-              >
-                <div
-                  className="w-14 h-14 md:w-20 md:h-20 rounded-2xl flex items-center justify-center font-display text-2xl text-white shadow-lift relative z-10"
-                  style={{ background: s.c }}
-                >
-                  {s.n}
-                </div>
-                <div className="rounded-3xl bg-card border border-border p-7 md:p-9 hover:shadow-lift transition">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span
-                      className="text-[11px] uppercase tracking-[0.22em] font-medium"
-                      style={{ color: s.c }}
-                    >
-                      Stage · {s.stage}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-2xl md:text-3xl text-ink">{s.t}</h3>
-                  <p className="mt-3 text-muted-foreground leading-relaxed max-w-2xl">{s.d}</p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {s.arts.map((a) => (
-                      <span
-                        key={a}
-                        className="text-xs px-3 py-1.5 rounded-full bg-secondary text-ink/80"
-                      >
-                        {a}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* BOOST featured */
-function Boost() {
-  return (
-    <section className="py-24 bg-ink text-white relative overflow-hidden">
-      <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-gradient-sunburst opacity-20 blur-3xl" />
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 relative">
-        <div className="lg:col-span-5">
-          <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
-            Featured program
-          </span>
-          <h2 className="mt-4 font-display text-5xl text-white leading-[0.98]">
-            BOOST:<br />faculty peer<br />review.
-          </h2>
-          <p className="mt-6 text-white/70 leading-relaxed text-lg max-w-md">
-            Our writers are experts in narrative — but they can't be experts in
-            every PI's science. BOOST closes that gap with a UCSF faculty
-            reviewer at two key stages.
-          </p>
-        </div>
-        <div className="lg:col-span-7 lg:pl-8">
-          <div className="rounded-3xl bg-white/5 border border-white/10 p-8 backdrop-blur">
-            <div className="text-xs uppercase tracking-widest text-white/50 mb-6">
-              BOOST timeline
-            </div>
-            <div className="space-y-3">
-              {[
-                { w: "≥ 6 weeks out", t: "Specific Aims review", c: "var(--coral)", pct: 100 },
-                { w: "4 weeks out", t: "Structural review", c: "var(--magenta)", pct: 70 },
-                { w: "2 weeks out", t: "Full Proposal review", c: "var(--teal)", pct: 45 },
-                { w: "1 week out", t: "Language pass", c: "var(--gold)", pct: 20 },
-              ].map((s) => (
-                <div key={s.t} className="flex items-center gap-5">
-                  <div className="text-xs text-white/50 w-28 flex-none">{s.w}</div>
-                  <div className="flex-1 h-12 rounded-xl bg-white/5 border border-white/10 relative overflow-hidden">
-                    <div
-                      className="absolute inset-y-0 left-0 opacity-30"
-                      style={{ width: `${s.pct}%`, background: s.c }}
-                    />
-                    <div className="relative h-full flex items-center px-4 gap-3">
-                      <span className="w-2 h-2 rounded-full" style={{ background: s.c }} />
-                      <span className="text-sm">{s.t}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* Team — compact roster */
-function Team() {
-  const team = [
-    { name: "Gabe Murphy, PhD", role: "Research Development Strategist", img: gabeImg, bio: "Leads large-grant strategy across ImmunoX and partner institutes." },
-    { name: "Reid Bolus, PhD", role: "Research Development Strategist", img: reidImg, bio: "Embedded across the Diabetes Center; leads the RPR program." },
-    { name: "Open Position", role: "Research Development Strategist", img: null, bio: "We're hiring. Help us grow the team." },
-  ];
-  return (
-    <section className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-10 items-end mb-12">
-          <div className="lg:col-span-6">
-            <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
-              Your team
-            </span>
-            <h2 className="mt-4 font-display text-5xl text-ink leading-[0.98]">
-              Scientists who happen<br />to be excellent writers.
-            </h2>
-          </div>
-          <p className="lg:col-span-5 lg:col-start-8 text-muted-foreground leading-relaxed">
-            Each strategist brings deep research training and years of
-            grantwriting experience — so the conversation starts at the
-            science, not the page count.
-          </p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {team.map((p) => (
-            <div key={p.name} className="rounded-3xl bg-card border border-border overflow-hidden hover:shadow-lift transition group">
-              <div className="aspect-[4/5] bg-secondary relative overflow-hidden">
-                {p.img ? (
-                  <img src={p.img} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                ) : (
-                  <div className="w-full h-full bg-gradient-sunburst opacity-20 flex items-center justify-center">
-                    <SunburstLogo className="w-24 h-24 opacity-60" />
-                  </div>
-                )}
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl text-ink">{p.name}</h3>
-                <div className="text-sm text-coral mt-1">{p.role}</div>
-                <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{p.bio}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* Testimonials remain as evidence band */
-function Evidence() {
-  const quotes = [
-    { q: "I just heard back from my R01 — it received a fundable score!", a: "UCSF Principal Investigator" },
-    { q: "The process not only improved my grant, it taught me to be a better writer.", a: "RPR participant, 2025" },
-    { q: "This service is invaluable. I hope it continues and expands so more of the community can benefit.", a: "Large Grants Program PI" },
-  ];
-  return (
-    <section className="py-24 bg-cream">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-end justify-between flex-wrap gap-8 mb-12">
-          <h2 className="font-display text-4xl md:text-5xl text-ink leading-[1.05] max-w-2xl">
-            In the words of the<br />investigators we work with.
-          </h2>
-          <div className="flex items-center gap-6">
-            <div>
-              <div className="font-display text-5xl text-ink">9.3<span className="text-xl text-muted-foreground">/10</span></div>
-              <div className="text-xs text-muted-foreground uppercase tracking-widest mt-1">Avg. satisfaction</div>
-            </div>
-            <div className="w-px h-12 bg-border" />
-            <div>
-              <div className="font-display text-5xl text-ink">43</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-widest mt-1">Grants in 2025</div>
-            </div>
-          </div>
-        </div>
-        <div className="grid md:grid-cols-3 gap-5">
-          {quotes.map((t, i) => (
-            <figure key={i} className="rounded-3xl p-8 bg-card border border-border relative">
-              <div className="absolute top-0 left-8 right-8 h-0.5" style={{ background: ["var(--coral)", "var(--magenta)", "var(--teal)"][i] }} />
-              <blockquote className="font-display text-xl text-ink leading-snug">"{t.q}"</blockquote>
-              <figcaption className="mt-6 text-xs text-muted-foreground uppercase tracking-widest">— {t.a}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+const META = SERVICE_META["research-development"];
+const A = META.accent;
 
 function RDGPage() {
   return (
     <SiteShell>
-      <Breadcrumb trail={[{ label: "Services" }, { label: "Research development & grantwriting" }]} />
-      <Hero />
-      <Journey />
-      <Boost />
-      <Team />
-      <Evidence />
+      <Breadcrumb trail={[{ label: "Services" }, { label: META.fullName }]} />
+
+      <ServicePageHero
+        meta={META}
+        positioning="Bridging ideation and submission"
+        title={
+          <>
+            From a hunch to a{" "}
+            <em className="not-italic" style={{ color: A }}>
+              funded program.
+            </em>
+          </>
+        }
+        description="A small, embedded team of PhD-trained Research Development Strategists & Grantwriters who help UCSF investigators shape ideas, find the right mechanism, write competitive proposals, and stress-test the science before submission."
+        primaryCta={{ label: "Book a 30-min consult", href: "mailto:rdg@ocr.ucsf.edu" }}
+        secondaryCta={{ label: "Explore our programs", href: "#capabilities" }}
+        motif={<ServiceMotif variant="spiral" accent={A} />}
+      />
+
+      <ServiceOverview
+        accent={A}
+        headline={
+          <>
+            We sit in the space between a research idea and a submitted grant —
+            and we don't leave when the page count gets tight.
+          </>
+        }
+        body={
+          <>
+            <p>
+              Launched in 2024, OCR's Research Development arm was built to fill
+              the gap left when UCSF's Research Development Office stopped
+              supporting grantwriting. In a federal funding landscape with more
+              competition for fewer dollars, we help UCSF stay the #1 public
+              recipient of NIH funding — one investigator at a time.
+            </p>
+            <p className="mt-4">
+              Our strategists are scientists who happen to be excellent writers.
+              We're proactive, relationship-driven, and as interested in your
+              five-year portfolio as we are in your next deadline.
+            </p>
+          </>
+        }
+        stats={[
+          { value: "43", label: "Grants in 2025" },
+          { value: "9.3/10", label: "Avg. PI satisfaction" },
+          { value: "4", label: "Embedded partners" },
+          { value: "100%", label: "PhD-trained" },
+        ]}
+      />
+
+      <div id="capabilities" />
+      <ServiceCapabilities
+        accent={A}
+        title={
+          <>
+            Programs &<br />capabilities.
+          </>
+        }
+        lede="Most investigators come to us at the Idea or Opportunity stage. The earlier we engage, the more value we add."
+        items={[
+          {
+            title: "Large Grants Program",
+            tag: "Flagship",
+            desc: "Coordinated P-, U-, and center-scale proposals that build durable scientific programs and institutional infrastructure.",
+            bullets: [
+              "Strategy & narrative architecture",
+              "Embedded PMs, CRCs, and data managers",
+              "Effort on the grant once awarded",
+            ],
+          },
+          {
+            title: "Research Plan Reviews (RPRs)",
+            desc: "Intensive 6-week, iterative grantwriting support for R01-equivalent applications — focused on Aims, Research Plan, biosketches, and figures.",
+            bullets: [
+              "~30 hours of review per application",
+              "Subsidized for partner programs",
+              "Structural → copy edits as deadline nears",
+            ],
+          },
+          {
+            title: "BOOST Peer Review",
+            desc: "A faculty-to-faculty scientific review layer that pressure-tests premise, Aims, and feasibility about one month before submission.",
+            bullets: [
+              "Aims review at ≥ 6 weeks",
+              "Full proposal review at 2 weeks",
+              "Reviewer matched to scientific fit",
+            ],
+          },
+          {
+            title: "Grantwriting Academy",
+            tag: "In dev",
+            desc: "Workshops and seminars that scale OCR's expertise — Pre-Award training, First R21, K Grant prep, and policy-change briefings.",
+            bullets: [
+              "Pre-Award Grant Training",
+              "First R21 Workshop cohort",
+              "K Grant & SciENcv briefings",
+            ],
+          },
+          {
+            title: "AI Grantwriting Tools",
+            tag: "In dev",
+            desc: "Pre-Flight Reviewer and Prospera matchmaker — built in-house to augment, not replace, our writers. See the AI Tools page for detail.",
+            bullets: [
+              "Pre-Flight diagnostic reports",
+              "PI ↔ NOFO matching",
+              "Editorial triage for writers",
+            ],
+          },
+          {
+            title: "Funding Matchmaking",
+            desc: "Proactive sourcing of federal, foundation, and internal opportunities — and warm introductions to UCSF collaborators who strengthen the science.",
+            bullets: [
+              "NOFO short-lists by portfolio",
+              "Investigator matchmaking",
+              "Concept-stage development",
+            ],
+          },
+        ]}
+      />
+
+      <ServiceWhoFor
+        accent={A}
+        audiences={[
+          {
+            who: "Early-career investigators",
+            fit: "First R01, K, or R21 applicants who want focused, hands-on guidance through the science and the page.",
+          },
+          {
+            who: "Established PIs going big",
+            fit: "Leaders preparing P-, U-, or center-scale proposals where coordinated strategy and infrastructure matter.",
+          },
+          {
+            who: "Partner institute faculty",
+            fit: "Investigators in Bakar ImmunoX, IGHS, Diabetes Center, and IHA have embedded RDSG support built into membership.",
+          },
+          {
+            who: "Unaffiliated UCSF faculty",
+            fit: "We help non-partner faculty where bandwidth allows — bring us your deadline and we'll tell you honestly.",
+          },
+        ]}
+        note="Partners: Bakar ImmunoX Initiative · Institute for Global Health Sciences · Diabetes Center · Institute for Health and Aging."
+      />
+
+      <ServiceHowWeSupport
+        accent={A}
+        title={
+          <>
+            From idea<br />to submission.
+          </>
+        }
+        lede="A five-stage engagement we run with every PI — drop in at any stage, but the earlier the better."
+        steps={[
+          {
+            title: "Strategic consultation",
+            desc: "30-minute intake. We learn your portfolio, funding trajectory, and target mechanisms — and pressure-test the science before a page is drafted.",
+            artifacts: ["Portfolio map", "Vision memo"],
+          },
+          {
+            title: "Funding matchmaking",
+            desc: "We surface aligned federal, foundation, and internal opportunities, and introduce UCSF collaborators who sharpen the application.",
+            artifacts: ["NOFO short-list", "Collaborator intros"],
+          },
+          {
+            title: "Aims & drafting",
+            desc: "We co-develop the narrative arc and Specific Aims, then iterate through full drafts — sitting with you, not just track-changing the file.",
+            artifacts: ["Specific Aims", "Full draft"],
+          },
+          {
+            title: "BOOST peer review",
+            desc: "A UCSF faculty peer reviews your science at the Aims and Full Proposal stages — the layer our writers can't provide alone.",
+            artifacts: ["Aims review", "Full proposal review"],
+          },
+          {
+            title: "Submission & beyond",
+            desc: "Biosketches, budgets, letters of support, DMS plans, and submission logistics — coordinated end-to-end so nothing slips through the cracks.",
+            artifacts: ["Biosketches", "Budget", "DMS plan", "Submission"],
+          },
+        ]}
+      />
+
+      <ServiceOutcomes
+        accent={A}
+        items={[
+          {
+            kicker: "Outcome · R01",
+            headline: "A fundable score on a first try.",
+            detail:
+              "An early-stage investigator engaged at the Aims stage, completed BOOST review, and submitted an R01 that returned a fundable score.",
+          },
+          {
+            kicker: "Use case · P-series",
+            headline: "A center-scale program from scratch.",
+            detail:
+              "A consortium PI used the Large Grants Program to coordinate strategy across 14 investigators, with embedded PM and data support on the awarded grant.",
+          },
+          {
+            kicker: "Use case · RPR",
+            headline: "Six weeks to a sharper resubmission.",
+            detail:
+              "An NIH A1 resubmission completed an RPR that focused on the Introduction, Aims, and figures — and improved both the science and the PI's writing fluency.",
+          },
+        ]}
+        quote={{
+          text: "The process not only improved my grant, it taught me to be a better writer. This service is invaluable.",
+          attribution: "UCSF Principal Investigator, RPR participant 2025",
+        }}
+      />
+
+      <ServiceRelated
+        currentId="research-development"
+        accent={A}
+        note="A typical large grant pulls in Project Management once awarded, a Data Management plan at submission, and Prospera intelligence at the matchmaking stage."
+      />
+
       <CTA
-        eyebrow="Get started"
-        title={<>Got a grant on the horizon?<br /><span className="text-white/70">Let's talk early.</span></>}
+        eyebrow="Start early"
+        title={
+          <>
+            Got a grant on the horizon?
+            <br />
+            <span className="text-white/70">Let's talk early.</span>
+          </>
+        }
         subtitle="The earlier we engage, the more value we can add. A 30-minute consult is free — and the next federal deadline is closer than you think."
         email="rdg@ocr.ucsf.edu"
       />
