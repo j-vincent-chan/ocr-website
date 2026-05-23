@@ -1,0 +1,62 @@
+{
+  "corey-rathe": {
+    "variant": "brighten",
+    "webm": "./clips/corey-rathe-gesture.webm",
+    "gif": "./clips/corey-rathe-gesture.gif"
+  },
+  "francisco-quintanilla": {
+    "variant": "brighten",
+    "webm": "./clips/francisco-quintanilla-gesture.webm",
+    "gif": "./clips/francisco-quintanilla-gesture.gif"
+  },
+  "gabe-murphy": {
+    "variant": "nod",
+    "webm": "./clips/gabe-murphy-gesture.webm",
+    "gif": "./clips/gabe-murphy-gesture.gif"
+  },
+  "jonathan-wilson": {
+    "variant": "wave",
+    "webm": "./clips/jonathan-wilson-gesture.webm",
+    "gif": "./clips/jonathan-wilson-gesture.gif"
+  },
+  "lily-ortiz": {
+    "variant": "brighten",
+    "webm": "./clips/lily-ortiz-gesture.webm",
+    "gif": "./clips/lily-ortiz-gesture.gif"
+  },
+  "lina-kamil": {
+    "variant": "brighten",
+    "webm": "./clips/lina-kamil-gesture.webm",
+    "gif": "./clips/lina-kamil-gesture.gif"
+  },
+  "michelle-yu": {
+    "variant": "lean",
+    "webm": "./clips/michelle-yu-gesture.webm",
+    "gif": "./clips/michelle-yu-gesture.gif"
+  },
+  "natalia-dikinov": {
+    "variant": "brighten",
+    "webm": "./clips/natalia-dikinov-gesture.webm",
+    "gif": "./clips/natalia-dikinov-gesture.gif"
+  },
+  "ohnmar-chan": {
+    "variant": "wave",
+    "webm": "./clips/ohnmar-chan-gesture.webm",
+    "gif": "./clips/ohnmar-chan-gesture.gif"
+  },
+  "reid-bolus": {
+    "variant": "lean",
+    "webm": "./clips/reid-bolus-gesture.webm",
+    "gif": "./clips/reid-bolus-gesture.gif"
+  },
+  "vincent-chan": {
+    "variant": "lean",
+    "webm": "./clips/vincent-chan-gesture.webm",
+    "gif": "./clips/vincent-chan-gesture.gif"
+  },
+  "xochitl-vargas": {
+    "variant": "wave",
+    "webm": "./clips/xochitl-vargas-gesture.webm",
+    "gif": "./clips/xochitl-vargas-gesture.gif"
+  }
+}

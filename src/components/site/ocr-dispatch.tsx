@@ -1,33 +1,35 @@
+import { useEffect, useRef, useState } from "react";
 import ribbonImg from "@/assets/ribbon.png";
 
 const DISPATCH_SPOTLIGHT = {
   category: "Spotlight",
-  date: "Nov 2025",
-  title: "Signal moves from pilot to office-wide rollout",
-  desc: "Our in-house funding-match engine now scans 6,400+ opportunities weekly and routes shortlisted calls directly to PI inboxes.",
+  date: "Jul 2026",
+  title:
+    "OCR welcomes the Institute for Health & Aging as its newest research development partner",
+  desc: "OCR is partnering with IHA to expand strategic grant development support for core and affiliate faculty, helping investigators sharpen ideas, connect around shared priorities, and move promising proposals toward submission. The one-year pilot covers faculty outreach, funding opportunity matchmaking, grantwriting support, and educational programming.",
   href: "#",
 } as const;
 
 const DISPATCH_ITEMS = [
   {
-    category: "Grant win",
-    date: "Oct 2025",
-    title: "$11.2M NIH U19 awarded to ImmunoX consortium",
-    desc: "OCR led the multi-PI coordination, budget, and DMS plan from concept to submission.",
+    category: "AI tool",
+    date: "Jun 2026",
+    title: "Signal AI moves from development to beta testing across select research programs",
+    desc: "OCR’s in-house intelligence app tracks publications, grants, news, and honors, helping community managers surface the right updates to the right research communities.",
     href: "#",
   },
   {
-    category: "New partnership",
-    date: "Sep 2025",
-    title: "Institute for Health & Aging joins the OCR portfolio",
-    desc: "Embedded PM and grantwriting capacity now serving IHA investigators.",
+    category: "Team growth",
+    date: "May 2026",
+    title: "OCR opens search for a new Clinical Research Coordinator",
+    desc: "OCR is expanding its clinical research coordination team to support growing demand for patient-facing studies, biospecimen workflows, and complex collaborative research programs.",
     href: "#",
   },
   {
-    category: "Event",
-    date: "Dec 5, 2025",
-    title: "Prospera office hours — open to all UCSF PIs",
-    desc: "Bring your aims page. Leave with a sharper hypothesis and a target program.",
+    category: "Digital front door",
+    date: "Jun 2026",
+    title: "OCR launches a new digital home",
+    desc: "The new OCR website gives UCSF researchers a clearer way to understand our services, explore active partnerships, and connect with the right support for moving complex research forward.",
     href: "#",
   },
 ] as const;
@@ -78,9 +80,74 @@ function DispatchCard({
   featured?: boolean;
   className?: string;
 }) {
+  const cardRef = useRef<HTMLAnchorElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const pendingRef = useRef<{ x: number; y: number } | null>(null);
+  const defaultPosRef = useRef({ x: 280, y: 48 });
+  const [flarePos, setFlarePos] = useState(defaultPosRef.current);
+  const [flareActive, setFlareActive] = useState(false);
+  const [flareEnabled, setFlareEnabled] = useState(false);
+
+  useEffect(() => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    setFlareEnabled(featured && !reduced && !coarse);
+  }, [featured]);
+
+  useEffect(() => {
+    if (!featured || !cardRef.current) return;
+
+    const updateDefaultPos = () => {
+      if (!cardRef.current) return;
+      const { width, height } = cardRef.current.getBoundingClientRect();
+      defaultPosRef.current = { x: width * 0.82, y: height * 0.14 };
+      setFlarePos(defaultPosRef.current);
+    };
+
+    updateDefaultPos();
+    window.addEventListener("resize", updateDefaultPos);
+    return () => window.removeEventListener("resize", updateDefaultPos);
+  }, [featured]);
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  const flushFlarePosition = () => {
+    if (pendingRef.current) {
+      setFlarePos(pendingRef.current);
+      pendingRef.current = null;
+    }
+    rafRef.current = null;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!featured || !flareEnabled) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    pendingRef.current = {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    };
+    setFlareActive(true);
+    if (rafRef.current === null) {
+      rafRef.current = requestAnimationFrame(flushFlarePosition);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!featured || !flareEnabled) return;
+    setFlareActive(false);
+    setFlarePos(defaultPosRef.current);
+  };
+
   return (
     <a
+      ref={cardRef}
       href={href}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       className={`group relative flex flex-col rounded-[1.75rem] border border-white/10 bg-white/[0.08] backdrop-blur-sm p-7 md:p-8 overflow-hidden transition-colors hover:bg-white/[0.12] hover:border-white/20 ${className} ${
         featured ? "min-h-[320px] md:min-h-full justify-between" : ""
       }`}
@@ -88,11 +155,26 @@ function DispatchCard({
       {featured && (
         <div
           aria-hidden
-          className="pointer-events-none absolute -top-24 -right-16 w-72 h-72 rounded-full opacity-60 blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle, color-mix(in oklab, var(--coral) 55%, transparent), transparent 70%)",
-          }}
+          className={`pointer-events-none absolute w-72 h-72 rounded-full blur-3xl ${
+            flareEnabled
+              ? "opacity-70 transition-[left,top,opacity] duration-300 ease-out"
+              : "-top-24 -right-16 opacity-60"
+          }`}
+          style={
+            flareEnabled
+              ? {
+                  left: flarePos.x,
+                  top: flarePos.y,
+                  transform: "translate(-50%, -50%)",
+                  opacity: flareActive ? 0.75 : 0.55,
+                  background:
+                    "radial-gradient(circle, color-mix(in oklab, var(--coral) 55%, transparent), transparent 70%)",
+                }
+              : {
+                  background:
+                    "radial-gradient(circle, color-mix(in oklab, var(--coral) 55%, transparent), transparent 70%)",
+                }
+          }
         />
       )}
       <div className="relative">
@@ -168,7 +250,7 @@ export function OcrDispatch() {
             </span>
             <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl leading-[0.98] text-white">
               What&apos;s happening{" "}
-              <span className="italic text-white/50">at OCR.</span>
+              <span className="text-white/50">@ OCR.</span>
             </h2>
           </div>
           <p className="lg:col-span-5 text-white/60 leading-relaxed text-base md:text-lg">

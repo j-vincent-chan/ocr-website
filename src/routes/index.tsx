@@ -5,6 +5,7 @@ import {
   HeroInteractiveBackdrop,
   HeroMouseGlow,
 } from "@/components/site/hero-interactive-backdrop";
+import { APPROACH_ICONS } from "@/components/site/approach-icons";
 import { OcrDispatch } from "@/components/site/ocr-dispatch";
 import { PartnersSection } from "@/components/site/partners-section";
 import { SiteShell, SERVICES, CTA, SunburstLogo, CtaRotatingPhrase, ServiceTitle } from "@/components/site/chrome";
@@ -184,13 +185,12 @@ function Approach() {
     <section className="py-32 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-5xl">
-          <span className="text-xs uppercase tracking-[0.22em] text-teal font-medium">
+          <span className="text-xs uppercase tracking-[0.22rem] text-teal font-medium">
             Our approach
           </span>
           <blockquote className="mt-8 font-display text-4xl md:text-6xl leading-[1.05] text-ink">
-            "We don't run a help desk. We <em className="not-italic text-gradient-sunburst">embed</em> with
-            investigators — learning the science, the people, and the pipeline
-            before we recommend a single move."
+            &ldquo;OCR works project by project, building collaborations and infrastructure that help
+            the next project move faster.&rdquo;
           </blockquote>
           <div className="mt-8 text-sm text-muted-foreground">
             — The OCR operating principle
@@ -200,35 +200,39 @@ function Approach() {
         <div className="mt-24 grid md:grid-cols-3 gap-10 lg:gap-16">
           {[
             {
-              n: "01",
-              t: "Embedded, not transactional",
-              d: "Our teams sit alongside partner institutes — and they're around long after the grant ships.",
+              icon: "project" as const,
+              t: "Start with the project",
+              d: "We start with the science, team, and timeline at hand—shaping support around what the project needs next, not a fixed service menu.",
               c: "var(--coral)",
             },
             {
-              n: "02",
-              t: "PhD-trained, operations-fluent",
-              d: "Our strategists, PMs, and data leads are scientists first. The conversation starts at the science.",
+              icon: "embed" as const,
+              t: "Embed shared expertise",
+              d: "Experienced staff embed across projects so investigators get grant strategy, PM, clinical coordination, and data support—without building every capability alone.",
               c: "var(--magenta)",
             },
             {
-              n: "03",
-              t: "Building the tools we wish existed",
-              d: "When a workflow is slow, we build software — like Signal and Prospera — to fix it for everyone.",
+              icon: "adapt" as const,
+              t: "Adapt with the research landscape",
+              d: "Each engagement reveals emerging communities, funding areas, and operational needs—helping OCR evolve and strengthen the work that follows.",
               c: "var(--teal)",
             },
-          ].map((i) => (
-            <div key={i.n}>
+          ].map((i) => {
+            const Icon = APPROACH_ICONS[i.icon];
+            return (
+            <div key={i.icon}>
               <div
-                className="w-12 h-12 rounded-2xl flex items-center justify-center font-display text-white text-lg"
+                className="size-14 rounded-full flex items-center justify-center text-white shrink-0"
                 style={{ background: i.c }}
+                aria-hidden
               >
-                {i.n}
+                <Icon className="size-11" />
               </div>
               <h3 className="mt-6 font-display text-2xl text-ink">{i.t}</h3>
               <p className="mt-3 text-muted-foreground leading-relaxed">{i.d}</p>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

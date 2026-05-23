@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
+import { ServiceHero, ServiceHeroHighlight } from "@/components/site/service-hero";
 
 export const Route = createFileRoute("/services/project-management")({
   head: () => ({
@@ -19,63 +20,46 @@ export const Route = createFileRoute("/services/project-management")({
 
 const T = "var(--teal)";
 
-/* Operations console hero — full-width status board */
 function Hero() {
   return (
-    <section className="relative bg-ink text-white overflow-hidden">
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
-      <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-gradient-sunburst opacity-20 blur-3xl" />
-
-      <div className="relative max-w-7xl mx-auto px-6 pt-12 pb-20">
-        <div className="flex items-center justify-between flex-wrap gap-4">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-3 py-1.5 text-xs font-medium text-white">
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: T }} />
-            Service arm 02 · Operations console
-          </span>
-          <div className="flex items-center gap-2 text-xs text-white/60 font-mono">
-            <span className="w-2 h-2 rounded-full bg-lime animate-pulse" />
+    <ServiceHero
+      arm="02"
+      armLabel="Operations console"
+      accent={T}
+      title={
+        <>
+          We run your study.
+          <br />
+          <ServiceHeroHighlight accent={T}>You run the science.</ServiceHeroHighlight>
+        </>
+      }
+      description="From IRB submission to final data lock, OCR runs the operational backbone of complex UCSF research programs — startup, coordination, biospecimens, and multi-site logistics."
+      below={
+        <>
+          <p className="flex items-center gap-2 text-xs text-muted-foreground font-mono mb-4">
+            <span className="w-2 h-2 rounded-full bg-lime animate-pulse" aria-hidden />
             27 active programs · 11 CRCs on bench · live
-          </div>
-        </div>
-
-        <h1 className="mt-10 font-display text-[clamp(3rem,8vw,7rem)] leading-[0.95] tracking-tight text-white max-w-[16ch]">
-          We run your study.<br />
-          <em className="not-italic" style={{ color: T }}>You run the science.</em>
-        </h1>
-        <p className="mt-8 max-w-2xl text-xl text-white/70 leading-relaxed">
-          From IRB submission to final data lock, OCR runs the operational
-          backbone of complex UCSF research programs — startup, coordination,
-          biospecimens, and multi-site logistics.
-        </p>
-
-        {/* mini status board */}
-        <div className="mt-14 grid md:grid-cols-4 gap-3">
-          {[
-            { l: "IRB submitted", v: "Mar 14", s: "Cleared", c: "var(--teal)" },
-            { l: "First patient enrolled", v: "Apr 22", s: "On track", c: "var(--coral)" },
-            { l: "Biospecimens", v: "412", s: "+38 this week", c: "var(--magenta)" },
-            { l: "Sites activated", v: "5 / 5", s: "Complete", c: "var(--gold)" },
-          ].map((r) => (
-            <div key={r.l} className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-5">
-              <div className="text-[11px] uppercase tracking-widest text-white/50">{r.l}</div>
-              <div className="font-display text-3xl text-white mt-2">{r.v}</div>
-              <div className="mt-3 flex items-center gap-2 text-xs text-white/70">
-                <span className="w-1.5 h-1.5 rounded-full" style={{ background: r.c }} />
-                {r.s}
+          </p>
+          <div className="grid md:grid-cols-4 gap-3">
+            {[
+              { l: "IRB submitted", v: "Mar 14", s: "Cleared", c: "var(--teal)" },
+              { l: "First patient enrolled", v: "Apr 22", s: "On track", c: "var(--coral)" },
+              { l: "Biospecimens", v: "412", s: "+38 this week", c: "var(--magenta)" },
+              { l: "Sites activated", v: "5 / 5", s: "Complete", c: "var(--gold)" },
+            ].map((r) => (
+              <div key={r.l} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+                <div className="text-[11px] uppercase tracking-widest text-muted-foreground">{r.l}</div>
+                <div className="font-display text-3xl text-ink mt-2">{r.v}</div>
+                <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: r.c }} aria-hidden />
+                  {r.s}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+            ))}
+          </div>
+        </>
+      }
+    />
   );
 }
 

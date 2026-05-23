@@ -156,6 +156,327 @@
   animation: float 28s ease-in-out infinite reverse;
 }
 
+/* ── Project card motifs: living scientific abstract art ── */
+@keyframes pm-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.35; }
+  50% { transform: scale(1.04); opacity: 0.55; }
+}
+
+@keyframes pm-ring-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.22; }
+  50% { transform: scale(1.02); opacity: 0.42; }
+}
+
+@keyframes pm-orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pm-node-twinkle {
+  0%, 100% { opacity: 0.35; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes pm-core-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.12); }
+}
+
+@keyframes pm-spoke-shimmer {
+  0%, 100% { opacity: 0.12; }
+  50% { opacity: 0.28; }
+}
+
+@keyframes pm-meridian-drift {
+  0%, 100% { opacity: 0.14; transform: scaleX(1); }
+  50% { opacity: 0.28; transform: scaleX(1.06); }
+}
+
+@keyframes pm-lattice-shimmer {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.95; }
+}
+
+@keyframes pm-ray-breathe {
+  0%, 100% { opacity: 0.22; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes pm-radial-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pm-helix-flow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.75; }
+}
+
+@keyframes pm-field-wave {
+  0%, 100% { opacity: 0.14; }
+  50% { opacity: 0.32; }
+}
+
+@keyframes pm-line-wave {
+  0%, 100% { transform: translateX(0); opacity: 0.28; }
+  50% { transform: translateX(1.4px); opacity: 0.48; }
+}
+
+@keyframes pm-hoop-expand {
+  0%, 100% { transform: scale(1); opacity: 0.32; }
+  50% { transform: scale(1.03); opacity: 0.52; }
+}
+
+@keyframes pm-diagonal-shimmer {
+  0%, 100% { opacity: 0.1; stroke-dashoffset: 0; }
+  50% { opacity: 0.28; stroke-dashoffset: 8; }
+}
+
+.project-card-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.94;
+  transition: opacity 0.5s ease;
+}
+
+.project-motif-wrap {
+  width: 100%;
+  height: 100%;
+  color: var(--motif-accent);
+}
+
+.project-motif-fill {
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-motif-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.55);
+  transform-origin: center;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.5s ease;
+}
+
+.project-motif {
+  transform-origin: center;
+}
+
+/* Art-area hover: scale up + intensify motion (pointer devices only) */
+@media (hover: hover) {
+  .project-card-art:hover {
+    opacity: 1;
+  }
+
+  .project-card-art:hover .project-motif-fill {
+    transform: scale(1.04);
+  }
+
+  .project-card-art:hover .project-motif-svg {
+    transform: scale(1.68);
+  }
+
+  .project-card-art:hover .project-motif--rings .pm-ring,
+  .project-card-art:hover .project-motif--fullhoop .pm-hoop {
+    animation-duration: 7s;
+  }
+
+  .project-card-art:hover .project-motif--rings .pm-orbit-node,
+  .project-card-art:hover .project-motif--fullhoop .pm-hoop-orbit {
+    animation-duration: 18s;
+  }
+
+  .project-card-art:hover .project-motif--rings .pm-node,
+  .project-card-art:hover .project-motif--rings .pm-core {
+    animation-duration: 2.8s;
+  }
+
+  .project-card-art:hover .project-motif--dotsphere .pm-lattice-node,
+  .project-card-art:hover .project-motif--dotsquare .pm-grid-node,
+  .project-card-art:hover .project-motif--polesquare .pm-lattice-corner,
+  .project-card-art:hover .project-motif--fullhoop .pm-hoop-node {
+    animation-duration: 2.2s;
+  }
+
+  .project-card-art:hover .project-motif--dotsphere .pm-longitude-rotate,
+  .project-card-art:hover .project-motif--polesphere .pm-radial-rotate {
+    animation-duration: 32s;
+  }
+
+  .project-card-art:hover .project-motif--polesphere .pm-ray,
+  .project-card-art:hover .project-motif--polesphere .pm-orbit-dot {
+    animation-duration: 3s;
+  }
+
+  .project-card-art:hover .project-motif--helix .pm-helix-node,
+  .project-card-art:hover .project-motif--helix .pm-helix-strand {
+    animation-duration: 2s;
+  }
+
+  .project-card-art:hover .project-motif--polepole .pm-field-line,
+  .project-card-art:hover .project-motif--polepole .pm-field-wave {
+    animation-duration: 2.5s;
+  }
+
+  .project-card-art:hover .project-motif--dotsquare .pm-grid-line,
+  .project-card-art:hover .project-motif--polesquare .pm-lattice-v,
+  .project-card-art:hover .project-motif--polesquare .pm-lattice-h,
+  .project-card-art:hover .project-motif--polesquare .pm-lattice-diagonal {
+    animation-duration: 4s;
+    opacity: 0.45;
+  }
+
+  .project-card-art:hover .project-motif--dotsphere .pm-hull,
+  .project-card-art:hover .project-motif--polesphere .pm-breathe,
+  .project-card-art:hover .project-motif--fullhoop .pm-hoop-glow {
+    animation-duration: 8s;
+  }
+}
+
+.project-motif--rings .pm-ring {
+  transform-origin: 50px 50px;
+  animation: pm-ring-pulse 14s ease-in-out infinite;
+}
+.project-motif--rings .pm-ring-0 { animation-delay: 0s; }
+.project-motif--rings .pm-ring-1 { animation-delay: 1.2s; }
+.project-motif--rings .pm-ring-2 { animation-delay: 2.4s; }
+.project-motif--rings .pm-ring-3 { animation-delay: 3.6s; }
+.project-motif--rings .pm-ring-4 { animation-delay: 4.8s; }
+
+.project-motif--rings .pm-orbit-node {
+  animation: pm-orbit-spin 48s linear infinite;
+}
+.project-motif--rings .pm-orbit-node:nth-child(odd) {
+  animation-direction: reverse;
+  animation-duration: 56s;
+}
+
+.project-motif--rings .pm-node {
+  animation: pm-node-twinkle 5s ease-in-out infinite;
+}
+.project-motif--rings .pm-core {
+  transform-origin: 50px 50px;
+  animation: pm-core-pulse 8s ease-in-out infinite;
+}
+.project-motif--rings .pm-spoke {
+  animation: pm-spoke-shimmer 10s ease-in-out infinite;
+}
+
+.project-motif--dotsphere .pm-hull {
+  animation: pm-breathe 16s ease-in-out infinite;
+}
+.project-motif--dotsphere .pm-meridian {
+  transform-origin: 50px 50px;
+  animation: pm-meridian-drift 12s ease-in-out infinite;
+}
+.project-motif--dotsphere .pm-longitude-rotate {
+  animation: pm-radial-rotate 72s linear infinite;
+}
+.project-motif--dotsphere .pm-lattice-node {
+  animation: pm-lattice-shimmer 4.5s ease-in-out infinite;
+}
+.project-motif--dotsphere .pm-core {
+  animation: pm-core-pulse 7s ease-in-out infinite;
+}
+
+.project-motif--polesphere .pm-breathe {
+  transform-origin: 50px 50px;
+  animation: pm-breathe 13s ease-in-out infinite;
+}
+.project-motif--polesphere .pm-radial-rotate {
+  animation: pm-radial-rotate 90s linear infinite;
+}
+.project-motif--polesphere .pm-ray {
+  animation: pm-ray-breathe 6s ease-in-out infinite;
+}
+.project-motif--polesphere .pm-orbit-dot {
+  animation: pm-node-twinkle 4.2s ease-in-out infinite;
+}
+
+.project-motif--dotsquare .pm-grid-node {
+  animation: pm-lattice-shimmer 5.5s ease-in-out infinite;
+}
+.project-motif--dotsquare .pm-grid-line {
+  animation: pm-spoke-shimmer 9s ease-in-out infinite;
+}
+
+.project-motif--helix .pm-helix-strand {
+  animation: pm-helix-flow 11s ease-in-out infinite;
+}
+.project-motif--helix .pm-helix-b {
+  animation-delay: 1.5s;
+}
+.project-motif--helix .pm-helix-c {
+  animation-delay: 3s;
+}
+.project-motif--helix .pm-helix-node {
+  animation: pm-node-twinkle 3.8s ease-in-out infinite;
+}
+.project-motif--helix .pm-helix-rung {
+  animation: pm-spoke-shimmer 7s ease-in-out infinite;
+}
+
+.project-motif--polepole .pm-field-line {
+  animation: pm-line-wave 5s ease-in-out infinite;
+}
+.project-motif--polepole .pm-field-wave {
+  animation: pm-helix-flow 14s ease-in-out infinite;
+}
+.project-motif--polepole .pm-field-node {
+  animation: pm-core-pulse 6s ease-in-out infinite;
+}
+
+.project-motif--fullhoop .pm-hoop {
+  transform-origin: 50px 50px;
+  animation: pm-hoop-expand 12s ease-in-out infinite;
+}
+.project-motif--fullhoop .pm-hoop-0 { animation-delay: 0s; }
+.project-motif--fullhoop .pm-hoop-1 { animation-delay: 0.8s; }
+.project-motif--fullhoop .pm-hoop-2 { animation-delay: 1.6s; }
+.project-motif--fullhoop .pm-hoop-3 { animation-delay: 2.4s; }
+.project-motif--fullhoop .pm-hoop-orbit {
+  animation: pm-orbit-spin 40s linear infinite;
+}
+.project-motif--fullhoop .pm-hoop-node {
+  animation: pm-lattice-shimmer 4.8s ease-in-out infinite;
+}
+.project-motif--fullhoop .pm-hoop-glow {
+  animation: pm-breathe 18s ease-in-out infinite;
+}
+
+.project-motif--polesquare .pm-lattice-v,
+.project-motif--polesquare .pm-lattice-h {
+  animation: pm-line-wave 6.5s ease-in-out infinite;
+}
+.project-motif--polesquare .pm-lattice-diagonal {
+  stroke-dasharray: 6 10;
+  animation: pm-diagonal-shimmer 14s ease-in-out infinite;
+}
+.project-motif--polesquare .pm-lattice-corner {
+  animation: pm-node-twinkle 5.2s ease-in-out infinite;
+}
+
+@keyframes project-card-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.project-card-reveal {
+  animation: project-card-reveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-hero-constellation {
     animation: none;
@@ -169,6 +490,21 @@
   .dispatch-ribbon,
   .dispatch-ribbon-alt {
     animation: none;
+  }
+
+  .project-motif *,
+  .project-card-reveal {
+    animation: none !important;
+  }
+
+  .project-motif-svg,
+  .project-motif-fill,
+  .project-card-art {
+    transition: none;
+  }
+
+  .project-card-art:hover .project-motif-svg {
+    transform: scale(1.55);
   }
 }
 
@@ -206,3 +542,98 @@
   }
 }
 
+@keyframes timeline-column-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timeline-track::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: calc(3rem + 1.5rem + 0.5rem);
+  height: 2px;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklch, white 45%, transparent) 12%,
+    color-mix(in oklch, white 45%, transparent) 88%,
+    transparent 100%
+  );
+  box-shadow: 0 0 24px color-mix(in oklch, white 12%, transparent);
+}
+
+@media (min-width: 1024px) {
+  .timeline-track::before {
+    left: 3rem;
+    right: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .timeline-track::before {
+    left: 4rem;
+    right: 4rem;
+  }
+}
+
+.timeline-rail-zone {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 2.75rem;
+}
+
+.timeline-rail-zone::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0.5rem;
+  height: 2px;
+  pointer-events: none;
+  z-index: 0;
+  background: color-mix(in oklch, white 35%, transparent);
+  box-shadow: 0 0 16px color-mix(in oklch, white 8%, transparent);
+}
+
+@media (min-width: 1280px) {
+  .timeline-rail-zone::before {
+    display: none;
+  }
+}
+
+.timeline-dot {
+  position: relative;
+  z-index: 10;
+}
+
+.timeline-column {
+  animation: timeline-column-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (hover: hover) {
+  .timeline-beat-trigger {
+    cursor: pointer;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-column {
+    animation: none;
+  }
+
+  .timeline-beat-trigger .grid {
+    grid-template-rows: 1fr !important;
+    opacity: 1 !important;
+  }
+}

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
+import { ServiceHero, ServiceHeroHighlight } from "@/components/site/service-hero";
 
 export const Route = createFileRoute("/services/ai-tools")({
   head: () => ({
@@ -19,38 +20,27 @@ export const Route = createFileRoute("/services/ai-tools")({
 
 const G = "var(--gold)";
 
-/* Product-style hero with version badge and big product wordmark */
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-background">
-      <div
-        aria-hidden
-        className="absolute -top-40 -right-40 w-[720px] h-[720px] rounded-full blur-3xl opacity-30"
-        style={{ background: "conic-gradient(from 120deg, var(--gold), var(--magenta), var(--teal), var(--gold))" }}
-      />
-      <div className="max-w-7xl mx-auto px-6 pt-12 pb-20 relative">
-        <div className="flex items-center justify-between flex-wrap gap-4">
-          <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1.5 text-xs font-medium text-ink">
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: G }} />
-            Service arm 04 · Built in-house at UCSF
-          </span>
-          <div className="flex items-center gap-3 text-xs text-muted-foreground font-mono">
-            <span className="px-2 py-1 rounded-md bg-secondary border border-border">v0.4</span>
-            <span>Signal · Prospera · in active pilot</span>
-          </div>
-        </div>
-        <h1 className="mt-10 font-display text-[clamp(3rem,8.5vw,7.5rem)] leading-[0.92] tracking-tight text-ink max-w-[14ch]">
+    <ServiceHero
+      arm="04"
+      armLabel="Built in-house at UCSF"
+      accent={G}
+      title={
+        <>
           The software we
           <br />
-          <em className="not-italic text-gradient-sunburst">wish existed.</em>
-        </h1>
-        <p className="mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed">
-          OCR builds the AI tools we needed for our own work — so investigators
-          and staff spend less time on search, summarization, and paperwork,
-          and more time on science.
+          <ServiceHeroHighlight accent={G}>wish existed.</ServiceHeroHighlight>
+        </>
+      }
+      description="OCR builds the AI tools we needed for our own work — so investigators and staff spend less time on search, summarization, and paperwork, and more time on science."
+      below={
+        <p className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground font-mono">
+          <span className="px-2 py-1 rounded-md bg-secondary border border-border">v0.4</span>
+          <span>Signal · Prospera · in active pilot</span>
         </p>
-      </div>
-    </section>
+      }
+    />
   );
 }
 

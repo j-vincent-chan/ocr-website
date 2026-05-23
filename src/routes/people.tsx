@@ -1,6 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
+import { GhibliPortrait } from "@/components/site/ghibli-portrait";
+import { ghibliClipFromHover } from "@/data/ghibli-clips";
+import coreyRatheImg from "@/assets/people/corey-rathe.jpg";
+import coreyRatheHoverImg from "@/assets/people/hover/corey-rathe-hover.png";
+import franciscoQuintanillaImg from "@/assets/people/francisco-quintanilla.jpg";
+import franciscoQuintanillaHoverImg from "@/assets/people/hover/francisco-quintanilla-hover.png";
+import gabeMurphyImg from "@/assets/people/gabe-murphy.jpg";
+import gabeMurphyHoverImg from "@/assets/people/hover/gabe-murphy-hover.png";
+import jonathanWilsonImg from "@/assets/people/jonathan-wilson.jpg";
+import jonathanWilsonHoverImg from "@/assets/people/hover/jonathan-wilson-hover.png";
+import lilyOrtizImg from "@/assets/people/lily-ortiz.jpg";
+import lilyOrtizHoverImg from "@/assets/people/hover/lily-ortiz-hover.png";
+import linaKamilImg from "@/assets/people/lina-kamil.jpg";
+import linaKamilHoverImg from "@/assets/people/hover/lina-kamil-hover.png";
+import michelleYuImg from "@/assets/people/michelle-yu.jpg";
+import michelleYuHoverImg from "@/assets/people/hover/michelle-yu-hover.png";
+import nataliaDikinovImg from "@/assets/people/natalia-dikinov.jpg";
+import nataliaDikinovHoverImg from "@/assets/people/hover/natalia-dikinov-hover.png";
+import ohnmarChanImg from "@/assets/people/ohnmar-chan.jpg";
+import ohnmarChanHoverImg from "@/assets/people/hover/ohnmar-chan-hover.png";
+import reidBolusImg from "@/assets/people/reid-bolus.jpg";
+import reidBolusHoverImg from "@/assets/people/hover/reid-bolus-hover.png";
+import vincentChanImg from "@/assets/people/vincent-chan.jpg";
+import vincentChanHoverImg from "@/assets/people/hover/vincent-chan-hover.png";
+import xochitlVargasImg from "@/assets/people/xochitl-vargas.jpg";
+import xochitlVargasHoverImg from "@/assets/people/hover/xochitl-vargas-hover.png";
 
 export const Route = createFileRoute("/people")({
   head: () => ({
@@ -29,6 +55,8 @@ type Person = {
   arm: "Leadership" | "Research Development" | "Project Management" | "Data" | "Programs";
   bio: string;
   accent: string;
+  photo?: string;
+  photoHover?: string;
 };
 
 const TEAM: Person[] = [
@@ -39,6 +67,8 @@ const TEAM: Person[] = [
     arm: "Leadership",
     bio: "Founded OCR as an experiment in embedding PhD-trained staff with investigators. Sets strategy across the four service arms.",
     accent: "var(--coral)",
+    photo: vincentChanImg,
+    photoHover: vincentChanHoverImg,
   },
   {
     name: "Gabe Murphy",
@@ -47,6 +77,8 @@ const TEAM: Person[] = [
     arm: "Research Development",
     bio: "Translates science into competitive proposals. Pressure-tests Specific Aims with PIs from hunch to submission.",
     accent: "var(--coral)",
+    photo: gabeMurphyImg,
+    photoHover: gabeMurphyHoverImg,
   },
   {
     name: "Reid Bolus",
@@ -55,6 +87,8 @@ const TEAM: Person[] = [
     arm: "Research Development",
     bio: "Matches investigators with mechanisms — federal, foundation, and internal — and shapes the narrative arc of large team grants.",
     accent: "var(--coral)",
+    photo: reidBolusImg,
+    photoHover: reidBolusHoverImg,
   },
   {
     name: "Corey Rathe",
@@ -63,6 +97,8 @@ const TEAM: Person[] = [
     arm: "Project Management",
     bio: "Runs study startup, milestones, and operations across consortium projects. Keeps the work moving without losing the science.",
     accent: "var(--teal)",
+    photo: coreyRatheImg,
+    photoHover: coreyRatheHoverImg,
   },
   {
     name: "Francisco Quintanilla",
@@ -70,6 +106,8 @@ const TEAM: Person[] = [
     arm: "Project Management",
     bio: "Coordinates patient enrollment and biospecimen workflows across UCSF clinics.",
     accent: "var(--teal)",
+    photo: franciscoQuintanillaImg,
+    photoHover: franciscoQuintanillaHoverImg,
   },
   {
     name: "Natalia Dikinov",
@@ -77,6 +115,17 @@ const TEAM: Person[] = [
     arm: "Project Management",
     bio: "Senior CRC on autoimmune and inflammatory cohorts. IRB, consent, and chart abstraction.",
     accent: "var(--teal)",
+    photo: nataliaDikinovImg,
+    photoHover: nataliaDikinovHoverImg,
+  },
+  {
+    name: "Ohnmar Chan",
+    role: "Senior Clinical Research Coordinator",
+    arm: "Project Management",
+    bio: "Senior CRC supporting enrollment, consent, and day-to-day study operations across OCR clinical portfolios.",
+    accent: "var(--teal)",
+    photo: ohnmarChanImg,
+    photoHover: ohnmarChanHoverImg,
   },
   {
     name: "Lina Kamil",
@@ -85,12 +134,24 @@ const TEAM: Person[] = [
     arm: "Project Management",
     bio: "Patient-facing coordination and study operations for human-subjects research.",
     accent: "var(--teal)",
+    photo: linaKamilImg,
+    photoHover: linaKamilHoverImg,
   },
   {
     name: "Michelle Yu",
     role: "Data Manager",
     arm: "Data",
     bio: "Builds the databases, metadata schemas, and Data Management & Sharing plans behind every OCR study.",
+    accent: "var(--magenta)",
+    photo: michelleYuImg,
+    photoHover: michelleYuHoverImg,
+  },
+  {
+    name: "Bushra Samad",
+    credential: "MS",
+    role: "Data Manager",
+    arm: "Data",
+    bio: "Supports database design, data integrity, and sharing workflows for OCR-managed studies and consortium datasets.",
     accent: "var(--magenta)",
   },
   {
@@ -99,6 +160,8 @@ const TEAM: Person[] = [
     arm: "Leadership",
     bio: "Handles finance, contracts, and the operational backbone of the office.",
     accent: "var(--coral)",
+    photo: jonathanWilsonImg,
+    photoHover: jonathanWilsonHoverImg,
   },
   {
     name: "Xochitl Vargas",
@@ -106,6 +169,8 @@ const TEAM: Person[] = [
     arm: "Programs",
     bio: "Runs the ImmunoDiverse program — broadening participation in immunology research at UCSF.",
     accent: "var(--gold)",
+    photo: xochitlVargasImg,
+    photoHover: xochitlVargasHoverImg,
   },
   {
     name: "Lily Ortiz",
@@ -113,6 +178,16 @@ const TEAM: Person[] = [
     role: "ImmunoX Community Manager",
     arm: "Programs",
     bio: "Builds and stewards the ImmunoX community — events, comms, and collaborator connections.",
+    accent: "var(--gold)",
+    photo: lilyOrtizImg,
+    photoHover: lilyOrtizHoverImg,
+  },
+  {
+    name: "Jo Williams",
+    credential: "MPH",
+    role: "Parnassus Institutes Community Manager",
+    arm: "Programs",
+    bio: "Connects Parnassus Institutes investigators and partners — building community, communications, and collaboration across institute programs.",
     accent: "var(--gold)",
   },
 ];
@@ -134,27 +209,61 @@ const ARMS = [
 function initials(name: string) {
   return name
     .split(" ")
-    .map((p) => p[0])
+    .map((part) => part[0])
     .slice(0, 2)
     .join("");
 }
 
-function Avatar({ name, accent }: { name: string; accent: string }) {
-  return (
-    <div
-      className="relative w-full aspect-square rounded-2xl overflow-hidden flex items-center justify-center"
-      style={{
-        background: `linear-gradient(135deg, color-mix(in oklab, ${accent} 22%, var(--cream)), var(--cream))`,
-      }}
-    >
-      <span
-        aria-hidden
-        className="absolute -top-8 -right-8 w-32 h-32 rounded-full blur-2xl opacity-50"
-        style={{ background: accent }}
+function Avatar({
+  name,
+  accent,
+  photo,
+  photoHover,
+}: {
+  name: string;
+  accent: string;
+  photo?: string;
+  photoHover?: string;
+}) {
+  if (!photo) {
+    return (
+      <div
+        className="relative flex w-full aspect-square items-center justify-center overflow-hidden rounded-2xl"
+        style={{
+          background: `linear-gradient(135deg, color-mix(in oklab, ${accent} 28%, var(--cream)), var(--cream))`,
+        }}
+      >
+        <span
+          aria-hidden
+          className="absolute -top-8 -right-8 h-32 w-32 rounded-full blur-2xl opacity-50"
+          style={{ background: accent }}
+        />
+        <span className="relative font-display text-5xl tracking-tight text-ink/80">
+          {initials(name)}
+        </span>
+      </div>
+    );
+  }
+
+  if (photoHover) {
+    return (
+      <GhibliPortrait
+        name={name}
+        photo={photo}
+        photoHover={photoHover}
+        clip={ghibliClipFromHover(photoHover)}
       />
-      <span className="relative font-display text-5xl text-ink/80 tracking-tight">
-        {initials(name)}
-      </span>
+    );
+  }
+
+  return (
+    <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-cream">
+      <img
+        src={photo}
+        alt={name}
+        className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
+        loading="lazy"
+      />
     </div>
   );
 }
@@ -231,7 +340,12 @@ function Roster() {
               key={p.name}
               className="group rounded-3xl border border-border bg-card p-5 hover:shadow-lift transition"
             >
-              <Avatar name={p.name} accent={p.accent} />
+              <Avatar
+                name={p.name}
+                accent={p.accent}
+                photo={p.photo}
+                photoHover={p.photoHover}
+              />
               <div className="mt-5 flex items-start gap-2">
                 <span
                   className="mt-1.5 w-2 h-2 rounded-full flex-none"

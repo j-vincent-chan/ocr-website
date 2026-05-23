@@ -1,17 +1,29 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { PROJECTS, type Project } from "@/data/projects";
+import {
+  DEFAULT_PROJECT_FILTERS,
+  filterProjects,
+  getDisplayAreaPills,
+  getFilterOptions,
+  hasActiveFilters,
+  type ProjectFilters,
+  type StatusFilter,
+} from "@/lib/project-filters";
+import { ProjectMotif } from "@/components/site/project-motifs";
+import { cn } from "@/lib/utils";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Projects — UCSF Office of Collaborative Research" },
+      { title: "Programs & Projects — UCSF Office of Collaborative Research" },
       {
         name: "description",
         content:
-          "Active and completed OCR-managed consortium projects: Immunoprofiler, AutoImmunoprofiler, STAMP, Tuberculosis, ARDS/Sepsis, Rheumatoid Arthritis, CoProjects, Tumor Organoids.",
+          "OCR-managed programs, consortium projects, clinical research units, and biobanks across cancer, autoimmunity, infection, lung disease, and critical care.",
       },
-      { property: "og:title", content: "Projects — UCSF OCR" },
+      { property: "og:title", content: "Programs & Projects — UCSF OCR" },
       {
         property: "og:description",
         content:
@@ -22,233 +34,61 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
 });
 
-type Project = {
-  slug: string;
-  name: string;
-  area: string;
-  status: "Active" | "Complete" | "In planning";
-  blurb: string;
-  accent: string;
-  motif: "rings" | "dotsphere" | "polesphere" | "dotsquare" | "helix" | "polepole" | "fullhoop" | "polesquare";
-};
+const STATUSES: StatusFilter[] = ["All", "Active", "Closed"];
 
-const PROJECTS: Project[] = [
-  {
-    slug: "immunoprofiler",
-    name: "Immunoprofiler",
-    area: "Cancer",
-    status: "Complete",
-    blurb:
-      "Coordinates handling of human biopsy samples from cancer patients and performs deep tests of immune composition, gene expression, and interaction biology — treating cancers as discrete immunopathologies.",
-    accent: "var(--coral)",
-    motif: "rings",
-  },
-  {
-    slug: "autoimmunoprofiler",
-    name: "AutoImmunoprofiler",
-    area: "IBD · Lupus · Scleroderma · Sjögren's · Type 1 Diabetes",
-    status: "Active",
-    blurb:
-      "A consortium profiling autoimmune diseases with proteomic, transcriptomic, epigenomic, and structural analyses on freshly collected tissue with matched blood — to find pathways, targets, and better patient selection.",
-    accent: "var(--magenta)",
-    motif: "dotsphere",
-  },
-  {
-    slug: "stamp",
-    name: "Sjögren's Team for Accelerating Medicines Partnership",
-    area: "Sjögren's Disease",
-    status: "Active",
-    blurb:
-      "Interrogates the tissue and systems biology of Sjögren's Disease using deep sequencing to understand pathogenesis, identify targets, and map progression from early to advanced disease.",
-    accent: "var(--teal)",
-    motif: "polesphere",
-  },
-  {
-    slug: "tuberculosis",
-    name: "Tuberculosis",
-    area: "Tuberculosis",
-    status: "Active",
-    blurb:
-      "The Suliman group uses systems biology — GWAS, transcriptomics, metabolomics, eQTLs — to identify pathways that determine why only 5–10% of exposed individuals develop active TB.",
-    accent: "var(--gold)",
-    motif: "dotsquare",
-  },
-  {
-    slug: "ards-sepsis",
-    name: "Sepsis / ARDS",
-    area: "ARDS and Sepsis",
-    status: "Active",
-    blurb:
-      "The Calfee Lab classifies ARDS and sepsis patients into validated hyper- and hypoinflammatory phenotypes, then queries immunophenotype and metagenomic differences in blood and tracheal aspirate.",
-    accent: "var(--coral)",
-    motif: "helix",
-  },
-  {
-    slug: "rheumatoid-arthritis",
-    name: "Rheumatoid Arthritis",
-    area: "Rheumatoid Arthritis",
-    status: "Active",
-    blurb:
-      "A hypothesis-driven study of antigen-activated CD4 T cells in RA synovial tissue, plus a broad characterization of immune and non-immune cells in the synovium — toward more targeted therapeutics.",
-    accent: "var(--magenta)",
-    motif: "polepole",
-  },
-  {
-    slug: "coprojects",
-    name: "CoProjects",
-    area: "Various",
-    status: "Active",
-    blurb:
-      "OCR manages the full slate of ImmunoX CoProjects — collaborative pilot-to-program studies using CoLabs technology to build detailed immune profiles across diverse diseases.",
-    accent: "var(--teal)",
-    motif: "fullhoop",
-  },
-  {
-    slug: "tumor-organoids",
-    name: "Tumor Organoids",
-    area: "Colorectal & Pancreatic Cancer",
-    status: "Active",
-    blurb:
-      "Patient-derived organoids studied to understand aberrant pathways in colorectal and pancreatic cancer — EGFR signaling, anti-EGFR therapy, Ras driver mutations, and experimental Ras inhibitors.",
-    accent: "var(--gold)",
-    motif: "polesquare",
-  },
-];
+function FilterSelect({
+  label,
+  value,
+  options,
+  onChange,
+  className = "",
+}: {
+  label: string;
+  value: string;
+  options: string[];
+  onChange: (value: string) => void;
+  className?: string;
+}) {
+  return (
+    <label className={cn("flex flex-col gap-1.5 min-w-[9.5rem] flex-1", className)}>
+      <span className="text-[10px] uppercase tracking-[0.18rem] text-muted-foreground font-medium">
+        {label}
+      </span>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full appearance-none rounded-full border border-border bg-cream/80 px-3.5 py-2 text-sm text-ink hover:border-ink/30 focus:outline-none focus:ring-2 focus:ring-ink/15 transition cursor-pointer"
+      >
+        <option value="">All</option>
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
 
-const STATUSES = ["All", "Active", "Complete", "In planning"] as const;
-
-function Motif({ motif, accent }: { motif: Project["motif"]; accent: string }) {
-  // simple SVG motifs evoking the original OCR project iconography
-  const common = { stroke: accent, strokeWidth: 1.2, fill: "none" } as const;
-  switch (motif) {
-    case "rings":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          <circle cx="50" cy="50" r="36" {...common} opacity={0.5} />
-          <circle cx="50" cy="50" r="24" {...common} opacity={0.7} />
-          <circle cx="50" cy="50" r="12" fill={accent} opacity={0.85} />
-        </svg>
-      );
-    case "dotsphere":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          <circle cx="50" cy="50" r="38" {...common} opacity={0.35} />
-          {Array.from({ length: 36 }).map((_, i) => {
-            const a = (i / 36) * Math.PI * 2;
-            const r = 30 + ((i * 7) % 9);
-            return (
-              <circle
-                key={i}
-                cx={50 + Math.cos(a) * r}
-                cy={50 + Math.sin(a) * r}
-                r={1.4}
-                fill={accent}
-                opacity={0.85}
-              />
-            );
-          })}
-        </svg>
-      );
-    case "polesphere":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          <circle cx="50" cy="50" r="34" {...common} opacity={0.5} />
-          {Array.from({ length: 16 }).map((_, i) => {
-            const a = (i / 16) * Math.PI * 2;
-            return (
-              <line
-                key={i}
-                x1={50}
-                y1={50}
-                x2={50 + Math.cos(a) * 34}
-                y2={50 + Math.sin(a) * 34}
-                stroke={accent}
-                strokeWidth={0.8}
-                opacity={0.6}
-              />
-            );
-          })}
-        </svg>
-      );
-    case "dotsquare":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          <rect x="18" y="18" width="64" height="64" {...common} opacity={0.4} />
-          {Array.from({ length: 7 }).map((_, r) =>
-            Array.from({ length: 7 }).map((_, c) => (
-              <circle
-                key={`${r}-${c}`}
-                cx={22 + c * 9.5}
-                cy={22 + r * 9.5}
-                r={1.4}
-                fill={accent}
-                opacity={0.8}
-              />
-            )),
-          )}
-        </svg>
-      );
-    case "helix":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          {Array.from({ length: 22 }).map((_, i) => {
-            const y = 12 + i * 3.6;
-            const x = 50 + Math.sin(i / 1.8) * 22;
-            const x2 = 50 - Math.sin(i / 1.8) * 22;
-            return (
-              <g key={i}>
-                <line x1={x} y1={y} x2={x2} y2={y} stroke={accent} strokeWidth={0.6} opacity={0.4} />
-                <circle cx={x} cy={y} r={1.6} fill={accent} />
-                <circle cx={x2} cy={y} r={1.6} fill={accent} opacity={0.6} />
-              </g>
-            );
-          })}
-        </svg>
-      );
-    case "polepole":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          {Array.from({ length: 14 }).map((_, i) => (
-            <line
-              key={i}
-              x1={14 + i * 5.5}
-              y1={20}
-              x2={14 + i * 5.5}
-              y2={80}
-              stroke={accent}
-              strokeWidth={1}
-              opacity={0.45 + (i % 3) * 0.15}
-            />
-          ))}
-        </svg>
-      );
-    case "fullhoop":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          <circle cx="50" cy="50" r="36" fill={accent} opacity={0.18} />
-          <circle cx="50" cy="50" r="36" {...common} />
-          <circle cx="50" cy="50" r="22" {...common} opacity={0.6} />
-        </svg>
-      );
-    case "polesquare":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          <rect x="20" y="20" width="60" height="60" {...common} />
-          {Array.from({ length: 10 }).map((_, i) => (
-            <line
-              key={i}
-              x1={20 + i * 6.5}
-              y1={20}
-              x2={20 + i * 6.5}
-              y2={80}
-              stroke={accent}
-              strokeWidth={0.8}
-              opacity={0.5}
-            />
-          ))}
-        </svg>
-      );
-  }
+function ProjectAreaPills({ project }: { project: Project }) {
+  const tags = useMemo(() => getDisplayAreaPills(project), [project]);
+  return (
+    <div className="flex flex-wrap gap-1.5">
+      {tags.map((tag) => (
+        <span
+          key={tag}
+          className="inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-medium leading-snug"
+          style={{
+            background: `color-mix(in oklab, ${project.accent} 24%, var(--card))`,
+            color: `color-mix(in oklab, ${project.accent} 55%, var(--ink))`,
+            border: `1px solid color-mix(in oklab, ${project.accent} 38%, transparent)`,
+          }}
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
 }
 
 function Hero() {
@@ -261,7 +101,7 @@ function Hero() {
       />
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-20 relative">
         <span className="text-xs uppercase tracking-[0.22em] text-magenta font-medium">
-          Projects
+          Programs & Projects
         </span>
         <h1 className="mt-6 font-display text-[clamp(2.75rem,7.5vw,6.5rem)] leading-[0.95] tracking-tight text-ink max-w-[16ch]">
           Science we're <em className="not-italic text-gradient-sunburst">moving forward.</em>
@@ -276,50 +116,192 @@ function Hero() {
   );
 }
 
-function Grid() {
-  const [status, setStatus] = useState<(typeof STATUSES)[number]>("All");
-  const filtered = useMemo(
-    () => (status === "All" ? PROJECTS : PROJECTS.filter((p) => p.status === status)),
-    [status],
+function ProjectFiltersPanel({
+  filters,
+  options,
+  onFilterChange,
+  onClear,
+  layout,
+}: {
+  filters: ProjectFilters;
+  options: ReturnType<typeof getFilterOptions>;
+  onFilterChange: <K extends keyof ProjectFilters>(key: K, value: ProjectFilters[K]) => void;
+  onClear: () => void;
+  layout: "bar" | "sidebar";
+}) {
+  const setFilter = onFilterChange;
+  const isBar = layout === "bar";
+
+  const statusButtons = STATUSES.map((s) => {
+    const active = s === filters.status;
+    return (
+      <button
+        key={s}
+        type="button"
+        onClick={() => setFilter("status", s)}
+        className={cn(
+          "rounded-full text-sm font-medium border transition",
+          isBar ? "px-4 py-2" : "w-full px-3.5 py-2 text-left",
+          active
+            ? "bg-ink text-white border-ink"
+            : "bg-cream/80 text-ink border-border hover:border-ink/40",
+        )}
+      >
+        {s}
+      </button>
+    );
+  });
+
+  const filterSelects = (
+    <>
+      <FilterSelect
+        label="Program / project"
+        value={filters.kind}
+        options={options.kinds}
+        onChange={(v) => setFilter("kind", v)}
+        className={isBar ? "" : "min-w-0 flex-none w-full"}
+      />
+      <FilterSelect
+        label="Project type"
+        value={filters.projectType}
+        options={options.projectTypes}
+        onChange={(v) => setFilter("projectType", v)}
+        className={isBar ? "" : "min-w-0 flex-none w-full"}
+      />
+      <FilterSelect
+        label="Sponsor"
+        value={filters.sponsor}
+        options={options.sponsors}
+        onChange={(v) => setFilter("sponsor", v)}
+        className={isBar ? "" : "min-w-0 flex-none w-full"}
+      />
+      <FilterSelect
+        label="OCR service"
+        value={filters.service}
+        options={options.services}
+        onChange={(v) => setFilter("service", v)}
+        className={isBar ? "" : "min-w-0 flex-none w-full"}
+      />
+      <FilterSelect
+        label="Disease area"
+        value={filters.disease}
+        options={options.diseases}
+        onChange={(v) => setFilter("disease", v)}
+        className={isBar ? "" : "min-w-0 flex-none w-full"}
+      />
+    </>
   );
+
   return (
-    <section className="py-20">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-          <div>
-            <span className="text-xs uppercase tracking-[0.22em] text-teal font-medium">
-              Portfolio
+    <div
+      className={cn(
+        "rounded-2xl border border-border bg-card/95 backdrop-blur-md shadow-[0_12px_40px_rgba(26,26,46,0.07)]",
+        isBar ? "p-4 md:p-5" : "p-5 space-y-5",
+      )}
+    >
+      <div className={cn("flex items-center justify-between gap-3", isBar && "mb-4")}>
+        <span className="text-[10px] uppercase tracking-[0.18rem] text-muted-foreground font-medium">
+          {isBar ? "Filter by" : "Filters"}
+        </span>
+        {hasActiveFilters(filters) && (
+          <button
+            type="button"
+            onClick={onClear}
+            className="text-[11px] font-medium text-teal hover:text-teal/80 transition shrink-0"
+          >
+            Clear filters
+          </button>
+        )}
+      </div>
+
+      {isBar ? (
+        <>
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            <span className="text-[10px] uppercase tracking-[0.18rem] text-muted-foreground font-medium mr-1">
+              Status
             </span>
-            <h2 className="mt-3 font-display text-4xl md:text-5xl text-ink">
-              {filtered.length} projects
-              <span className="text-muted-foreground"> · {status}</span>
-            </h2>
+            {statusButtons}
           </div>
-          <div className="flex flex-wrap gap-2">
-            {STATUSES.map((s) => {
-              const active = s === status;
-              return (
-                <button
-                  key={s}
-                  onClick={() => setStatus(s)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium border transition ${
-                    active
-                      ? "bg-ink text-white border-ink"
-                      : "bg-card text-ink border-border hover:border-ink/40"
-                  }`}
-                >
-                  {s}
-                </button>
-              );
-            })}
+          <div className="flex flex-wrap gap-3 md:gap-4">{filterSelects}</div>
+        </>
+      ) : (
+        <>
+          <div className="space-y-2">
+            <span className="text-[10px] uppercase tracking-[0.18rem] text-muted-foreground font-medium">
+              Status
+            </span>
+            <div className="flex flex-col gap-1.5">{statusButtons}</div>
           </div>
+          <div className="h-px bg-border/80" aria-hidden />
+          <div className="space-y-4">{filterSelects}</div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function Grid() {
+  const [filters, setFilters] = useState<ProjectFilters>(DEFAULT_PROJECT_FILTERS);
+  const options = useMemo(() => getFilterOptions(PROJECTS), []);
+  const filtered = useMemo(() => filterProjects(PROJECTS, filters), [filters]);
+
+  const setFilter = <K extends keyof ProjectFilters>(key: K, value: ProjectFilters[K]) => {
+    setFilters((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const statusLabel = filters.status === "All" ? "all statuses" : filters.status.toLowerCase();
+
+  const filterPanelProps = {
+    filters,
+    options,
+    onFilterChange: setFilter,
+    onClear: () => setFilters(DEFAULT_PROJECT_FILTERS),
+  };
+
+  return (
+    <section className="py-20 overflow-visible">
+      <div className="max-w-7xl mx-auto px-6 overflow-visible">
+        <div className="mb-8 xl:mb-10">
+          <span className="text-xs uppercase tracking-[0.22em] text-teal font-medium">
+            Portfolio
+          </span>
+          <h2 className="mt-3 font-display text-4xl md:text-5xl text-ink">
+            {filtered.length} programs & projects
+            <span className="text-muted-foreground"> · {statusLabel}</span>
+          </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((p) => (
+        {/* Inline filter bar on smaller screens */}
+        <div className="xl:hidden mb-8">
+          <ProjectFiltersPanel layout="bar" {...filterPanelProps} />
+        </div>
+
+        <div className="relative overflow-visible">
+          {/* Sticky sidebar — only within the portfolio section, left of the grid */}
+          <div className="hidden xl:block absolute top-0 right-full mr-5 w-[15.5rem]">
+            <div className="sticky top-24 z-10" aria-label="Portfolio filters">
+              <ProjectFiltersPanel layout="sidebar" {...filterPanelProps} />
+            </div>
+          </div>
+
+        {filtered.length === 0 ? (
+          <p className="text-center text-muted-foreground py-16 text-lg">
+            No programs or projects match these filters.{" "}
+            <button
+              type="button"
+              onClick={() => setFilters(DEFAULT_PROJECT_FILTERS)}
+              className="text-teal font-medium hover:underline"
+            >
+              Reset filters
+            </button>
+          </p>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map((p, index) => (
             <article
               key={p.slug}
-              className="group relative rounded-3xl border border-border bg-card overflow-hidden hover:shadow-lift transition flex flex-col"
+              className="project-card-reveal group relative rounded-3xl border border-border bg-card overflow-hidden hover:shadow-lift transition-shadow duration-500 flex flex-col"
+              style={{ animationDelay: `${index * 70}ms` }}
             >
               <div
                 className="relative aspect-[16/10] overflow-hidden"
@@ -327,11 +309,11 @@ function Grid() {
                   background: `linear-gradient(135deg, color-mix(in oklab, ${p.accent} 18%, var(--cream)), var(--cream))`,
                 }}
               >
-                <div className="absolute inset-0 p-8 opacity-90 group-hover:scale-105 transition-transform duration-500">
-                  <Motif motif={p.motif} accent={p.accent} />
+                <div className="project-card-art absolute inset-0 z-0">
+                  <ProjectMotif motif={p.motif} accent={p.accent} />
                 </div>
                 <span
-                  className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-card/85 backdrop-blur px-3 py-1 text-[11px] uppercase tracking-widest text-ink"
+                  className="absolute top-4 left-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-card/85 backdrop-blur px-3 py-1 text-[11px] uppercase tracking-widest text-ink pointer-events-none"
                 >
                   <span
                     className="w-1.5 h-1.5 rounded-full"
@@ -341,9 +323,7 @@ function Grid() {
                 </span>
               </div>
               <div className="p-6 flex flex-col gap-3 flex-1">
-                <div className="text-[11px] uppercase tracking-widest text-muted-foreground">
-                  {p.area}
-                </div>
+                <ProjectAreaPills project={p} />
                 <h3 className="font-display text-2xl text-ink leading-tight">
                   {p.name}
                 </h3>
@@ -362,6 +342,8 @@ function Grid() {
               </div>
             </article>
           ))}
+          </div>
+        )}
         </div>
       </div>
     </section>
@@ -401,7 +383,7 @@ function PitchBand() {
 function ProjectsPage() {
   return (
     <SiteShell>
-      <Breadcrumb trail={[{ label: "Projects" }]} />
+      <Breadcrumb trail={[{ label: "Programs & Projects" }]} />
       <Hero />
       <Grid />
       <PitchBand />

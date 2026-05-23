@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import gabeImg from "@/assets/gabe.jpg";
 import reidImg from "@/assets/reid.jpg";
 import { SiteShell, Breadcrumb, CTA, SunburstLogo } from "@/components/site/chrome";
+import { ServiceHero, ServiceHeroHighlight } from "@/components/site/service-hero";
 
 export const Route = createFileRoute("/services/research-development")({
   head: () => ({
@@ -22,31 +23,23 @@ export const Route = createFileRoute("/services/research-development")({
   component: RDGPage,
 });
 
-/* Hero framed as the start of a journey */
+const C = "var(--coral)";
+
 function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      <div
-        aria-hidden
-        className="absolute -top-32 -right-40 w-[720px] h-[720px] rounded-full blur-3xl opacity-20"
-        style={{ background: "var(--gradient-sunburst)" }}
-      />
-      <div className="max-w-7xl mx-auto px-6 pt-12 pb-20 relative">
-        <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1.5 text-xs font-medium text-ink">
-          <span className="w-1.5 h-1.5 rounded-full bg-coral" />
-          Service arm 01 · Research development & grantwriting
-        </span>
-        <h1 className="mt-8 font-display text-[clamp(3rem,8vw,7.5rem)] leading-[0.95] tracking-tight text-ink max-w-[14ch]">
-          From a hunch<br />
-          to a <em className="not-italic text-gradient-sunburst">funded program.</em>
-        </h1>
-        <p className="mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed">
-          We guide UCSF principal investigators through every stage of a grant —
-          sharpening the idea, finding the right opportunity, and shaping a
-          competitive submission.
-        </p>
-      </div>
-    </section>
+    <ServiceHero
+      arm="01"
+      armLabel="Research development & grantwriting"
+      accent={C}
+      title={
+        <>
+          From a hunch
+          <br />
+          to a <ServiceHeroHighlight accent={C}>funded program.</ServiceHeroHighlight>
+        </>
+      }
+      description="We guide UCSF principal investigators through every stage of a grant — sharpening the idea, finding the right opportunity, and shaping a competitive submission."
+    />
   );
 }
 

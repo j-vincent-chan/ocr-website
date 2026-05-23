@@ -232,7 +232,7 @@ export function Header() {
               className="px-4 py-2 rounded-full hover:bg-secondary font-medium"
               activeProps={{ className: "px-4 py-2 rounded-full bg-secondary font-medium" }}
             >
-              Projects
+              Programs & Projects
             </Link>
             <a href="#" className="px-4 py-2 rounded-full hover:bg-secondary font-medium">
               Funding
@@ -330,15 +330,14 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-12 gap-10 pb-14 border-b border-white/10">
           <div className="md:col-span-5">
-            <div className="flex items-center gap-3">
-              <SunburstLogo className="w-10 h-10" />
-              <span className="font-display text-white text-base leading-tight">
+            <div className="flex items-center gap-4">
+              <SunburstLogo className="w-14 h-14 shrink-0" />
+              <span className="font-display text-white text-lg leading-tight">
                 Office of<br />Collaborative Research
               </span>
             </div>
             <p className="mt-6 text-sm max-w-sm leading-relaxed">
-              The strategic hub of ImmunoX and the Parnassus Institutes at UCSF —
-              advancing research and fostering meaningful collaborations.
+              We work in the space between inspiration and impact.
             </p>
           </div>
           <div className="md:col-span-3">
@@ -356,7 +355,7 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm">
               <li><Link to="/about" className="hover:text-white">About</Link></li>
               <li><a href="#" className="hover:text-white">People</a></li>
-              <li><a href="#" className="hover:text-white">Projects</a></li>
+              <li><a href="/projects" className="hover:text-white">Programs & Projects</a></li>
               <li><a href="#" className="hover:text-white">Funding</a></li>
             </ul>
           </div>

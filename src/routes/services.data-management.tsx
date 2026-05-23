@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
+import { ServiceHero, ServiceHeroHighlight } from "@/components/site/service-hero";
 
 export const Route = createFileRoute("/services/data-management")({
   head: () => ({
@@ -19,41 +20,32 @@ export const Route = createFileRoute("/services/data-management")({
 
 const M = "var(--magenta)";
 
-/* Schematic hero — diagrammatic feel */
 function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-ink/10">
-      <div className="max-w-7xl mx-auto px-6 pt-12 pb-20 grid lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-6">
-          <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1.5 text-xs font-medium text-ink">
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: M }} />
-            Service arm 03 · Data infrastructure
-          </span>
-          <h1 className="mt-8 font-display text-[clamp(2.8rem,7vw,6.5rem)] leading-[0.95] tracking-tight text-ink">
-            Structured by<br />
-            <em className="not-italic" style={{ color: M }}>design.</em>
-          </h1>
-          <p className="mt-8 max-w-xl text-xl text-muted-foreground leading-relaxed">
-            Databases, metadata standards, and NIH-compliant Data Management &
-            Sharing plans — built with your team from study design, not
-            retrofit at the end.
-          </p>
-          <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
-            {[["62", "DMS plans authored"], ["100%", "NIH 2023 compliant"], ["FAIR", "By default"]].map(([n, l]) => (
-              <div key={l} className="border-l-2 pl-4" style={{ borderColor: M }}>
-                <div className="font-display text-3xl text-ink">{n}</div>
-                <div className="text-[11px] text-muted-foreground uppercase tracking-widest mt-1">{l}</div>
-              </div>
-            ))}
-          </div>
+    <ServiceHero
+      arm="03"
+      armLabel="Data infrastructure"
+      accent={M}
+      title={
+        <>
+          Structured by
+          <br />
+          <ServiceHeroHighlight accent={M}>design.</ServiceHeroHighlight>
+        </>
+      }
+      description="Databases, metadata standards, and NIH-compliant Data Management & Sharing plans — built with your team from study design, not retrofit at the end."
+      aside={<LifecycleRing />}
+      below={
+        <div className="grid grid-cols-3 gap-6 max-w-md">
+          {[["62", "DMS plans authored"], ["100%", "NIH 2023 compliant"], ["FAIR", "By default"]].map(([n, l]) => (
+            <div key={l} className="border-l-2 pl-4" style={{ borderColor: M }}>
+              <div className="font-display text-3xl text-ink">{n}</div>
+              <div className="text-[11px] text-muted-foreground uppercase tracking-widest mt-1">{l}</div>
+            </div>
+          ))}
         </div>
-
-        {/* Lifecycle ring */}
-        <div className="lg:col-span-6 relative flex items-center justify-center">
-          <LifecycleRing />
-        </div>
-      </div>
-    </section>
+      }
+    />
   );
 }
 
