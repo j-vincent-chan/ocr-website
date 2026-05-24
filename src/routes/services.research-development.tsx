@@ -25,7 +25,7 @@ export const Route = createFileRoute("/services/research-development")({
       },
     ],
   }),
-  component: RDGPage;
+  component: RDGPage,
 });
 
 const C = "var(--coral)";
