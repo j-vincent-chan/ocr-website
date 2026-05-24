@@ -2,7 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import gabeImg from "@/assets/gabe.jpg";
 import reidImg from "@/assets/reid.jpg";
 import { SiteShell, Breadcrumb, CTA, SunburstLogo } from "@/components/site/chrome";
-import { ServiceHero, ServiceHeroHighlight } from "@/components/site/service-hero";
+import {
+  ArmEyebrow,
+  PullQuote,
+  ServiceCrossNav,
+} from "@/components/site/service-family";
 
 export const Route = createFileRoute("/services/research-development")({
   head: () => ({
@@ -11,12 +15,13 @@ export const Route = createFileRoute("/services/research-development")({
       {
         name: "description",
         content:
-          "Strategic consultation, matchmaking, and expert grantwriting support for UCSF principal investigators — from R-series to P/U large grants.",
+          "Proactive matchmaking, large-grant strategy, and hands-on grantwriting support for UCSF investigators — built around relationships, not RFP triage.",
       },
       { property: "og:title", content: "Research development & grantwriting — UCSF OCR" },
       {
         property: "og:description",
-        content: "Helping UCSF PIs compete and win in today's federal funding environment.",
+        content:
+          "Sharpening UCSF's competitiveness one investigator, one portfolio, one proposal at a time.",
       },
     ],
   }),
@@ -24,225 +29,396 @@ export const Route = createFileRoute("/services/research-development")({
 });
 
 const C = "var(--coral)";
+const ARM = "01";
 
+/* ───────── HERO ───────── */
 function Hero() {
   return (
-    <ServiceHero
-      arm="01"
-      armLabel="Research development & grantwriting"
-      accent={C}
-      title={
-        <>
+    <section className="relative overflow-hidden bg-cream border-b border-border">
+      <div
+        aria-hidden
+        className="absolute -top-40 -right-40 w-[720px] h-[720px] rounded-full opacity-30 blur-3xl"
+        style={{ background: "var(--gradient-sunburst)" }}
+      />
+      <div className="max-w-7xl mx-auto px-6 pt-12 pb-24 relative">
+        <ArmEyebrow arm={ARM} label="Research development & grantwriting" accent={C} />
+        <h1 className="mt-8 font-display text-[clamp(2.8rem,7.5vw,7rem)] leading-[0.92] tracking-tight text-ink max-w-5xl">
           From a hunch
           <br />
-          to a <ServiceHeroHighlight accent={C}>funded program.</ServiceHeroHighlight>
-        </>
-      }
-      description="We guide UCSF principal investigators through every stage of a grant — sharpening the idea, finding the right opportunity, and shaping a competitive submission."
-    />
+          to a{" "}
+          <em className="not-italic" style={{ color: C }}>
+            funded program.
+          </em>
+        </h1>
+        <div className="mt-12 grid lg:grid-cols-12 gap-10">
+          <p className="lg:col-span-6 text-xl text-muted-foreground leading-relaxed">
+            We sit in the space between an idea and an award — sharpening the
+            science, finding the right opportunity, and shaping submissions
+            that compete in a tougher federal landscape.
+          </p>
+          <div className="lg:col-span-5 lg:col-start-8 grid grid-cols-3 gap-6">
+            {[
+              ["43", "Grants supported in 2025"],
+              ["120+", "Investigators served"],
+              ["9.3/10", "Avg. PI satisfaction"],
+            ].map(([n, l]) => (
+              <div key={l} className="border-l-2 pl-4" style={{ borderColor: C }}>
+                <div className="font-display text-3xl text-ink leading-none">{n}</div>
+                <div className="text-[11px] text-muted-foreground uppercase tracking-widest mt-2 leading-snug">
+                  {l}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
-/* THE JOURNEY: vertical stepped pathway */
-function Journey() {
-  const stages = [
+/* ───────── ORIGIN — why this arm exists, told as a 3-beat editorial ───────── */
+function Origin() {
+  const beats = [
     {
-      n: "01",
-      stage: "IDEA",
-      t: "Strategic Consultation",
-      d: "30-minute intake. We learn your portfolio, research vision, and timeline. Pressure-test the science before a single page is drafted.",
-      arts: ["Portfolio map", "Whiteboard session", "Vision memo"],
-      c: "var(--coral)",
+      label: "The shift",
+      t: "The funding floor moved.",
+      d: "Federal pressure on indirects, agency downsizing, and stalled awards meant more investigators competing for fewer dollars — exactly when UCSF needed to defend its place as the #1 public recipient of NIH funding.",
     },
     {
-      n: "02",
-      stage: "OPPORTUNITY",
-      t: "Funding Matchmaking",
-      d: "Our matchmakers pair you with the right mechanism — federal, foundation, internal — and the right collaborators across UCSF.",
-      arts: ["NOFO short-list", "Collaborator intros", "Strategy memo"],
-      c: "var(--magenta)",
+      label: "The gap",
+      t: "Central grantwriting went away.",
+      d: "UCSF's Research Development Office stepped back from grantwriting and was eventually wound down. A proposed Faculty Writing Center didn't get funded. Faculty were left without the support they'd come to expect.",
     },
     {
-      n: "03",
-      stage: "NARRATIVE",
-      t: "Aims & Drafting",
-      d: "Co-develop the narrative arc and Specific Aims. We sit with you through iteration — and we don't disappear after track-changes.",
-      arts: ["Specific Aims", "Outline", "Full draft"],
-      c: "var(--teal)",
-    },
-    {
-      n: "04",
-      stage: "REVIEW",
-      t: "BOOST Peer Review",
-      d: "A UCSF faculty peer reviews your science at the Aims and Full Proposal stages — closing the gap our writers can't.",
-      arts: ["Aims review", "Structural review", "Full proposal review"],
-      c: "var(--gold)",
-    },
-    {
-      n: "05",
-      stage: "SUBMISSION",
-      t: "Submit & Stay With It",
-      d: "Biosketches, budgets, letters of support, DMS plan, and submission logistics — coordinated end-to-end so you never miss a deadline.",
-      arts: ["Biosketches", "Budget", "DMS plan", "Submission"],
-      c: "var(--lime)",
+      label: "The response",
+      t: "OCR built a new arm.",
+      d: "Launched in September 2024, our Research Development team works hand-in-hand with partner institutes to help PIs compete — proactively, relationally, and at every stage of the proposal.",
     },
   ];
   return (
-    <section className="py-24 bg-cream relative">
+    <section className="py-28">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-10 mb-20">
+        <div className="max-w-2xl mb-16">
+          <ArmEyebrow arm={ARM} label="Origin" accent={C} />
+          <h2 className="mt-6 font-display text-5xl text-ink leading-[0.98]">
+            Built for the<br />moment we're in.
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-px bg-border rounded-3xl overflow-hidden border border-border">
+          {beats.map((b, i) => (
+            <article key={b.label} className="bg-cream p-8 md:p-10 flex flex-col">
+              <div className="flex items-center gap-3 mb-6">
+                <span
+                  className="font-display text-xl"
+                  style={{ color: C }}
+                >
+                  0{i + 1}
+                </span>
+                <span className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                  {b.label}
+                </span>
+              </div>
+              <h3 className="font-display text-2xl text-ink leading-snug">{b.t}</h3>
+              <p className="mt-4 text-muted-foreground leading-relaxed text-[15px]">
+                {b.d}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── ETHOS — what makes us different, stated cleanly ───────── */
+function Ethos() {
+  const points = [
+    {
+      k: "Proactive",
+      t: "We don't wait for the RFP to land.",
+      d: "We sit with investigators early — mapping their portfolio and trajectory — so opportunities find people, not the other way around.",
+    },
+    {
+      k: "Relational",
+      t: "Matchmaking is the work.",
+      d: "Connecting investigators to mechanisms, collaborators, and one another is where the most leverage lives.",
+    },
+    {
+      k: "End-to-end",
+      t: "Aims to submission, in one team.",
+      d: "Strategy, narrative, biosketches, budgets, letters, DMS plan, logistics — coordinated through one point of contact.",
+    },
+  ];
+  return (
+    <section className="py-28 bg-ink text-white relative overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full bg-gradient-sunburst opacity-20 blur-3xl"
+      />
+      <div className="max-w-7xl mx-auto px-6 relative">
+        <div className="grid lg:grid-cols-12 gap-10 items-end mb-16">
           <div className="lg:col-span-7">
-            <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
-              The grant journey
-            </span>
-            <h2 className="mt-4 font-display text-5xl md:text-6xl text-ink leading-[0.98]">
-              Idea → Opportunity → Narrative →<br />
-              <em className="not-italic text-gradient-sunburst">Review → Submission.</em>
+            <div className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] font-medium text-white/60">
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: C }} />
+              Arm {ARM} · Ethos
+            </div>
+            <h2 className="mt-6 font-display text-5xl md:text-6xl text-white leading-[0.98]">
+              We work in the space<br />
+              <em className="not-italic" style={{ color: C }}>between ideation and submission.</em>
             </h2>
           </div>
-          <p className="lg:col-span-4 lg:col-start-9 self-end text-muted-foreground leading-relaxed">
-            Drop in at any stage. Most PIs come to us at the Idea or Opportunity
-            stage — the earlier, the better.
+          <p className="lg:col-span-4 lg:col-start-9 text-white/70 leading-relaxed">
+            Our writers are PhDs. They know the science — and they know the
+            page. That changes what's possible at every stage.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-5">
+          {points.map((p) => (
+            <div key={p.k} className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
+              <div
+                className="text-[11px] uppercase tracking-[0.24em] font-medium"
+                style={{ color: C }}
+              >
+                {p.k}
+              </div>
+              <h3 className="mt-5 font-display text-2xl text-white leading-snug">
+                {p.t}
+              </h3>
+              <p className="mt-4 text-sm text-white/70 leading-relaxed">{p.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── PROGRAMS — 4 program cards, hierarchically weighted ───────── */
+function Programs() {
+  const featured = {
+    tag: "Flagship program",
+    name: "Large Grants",
+    rule: "P-series · U-series · Center grants",
+    d: "Coordinated scientific programs that build institutional capability — infrastructure, visibility, and durable ecosystems. Our strategists embed as part of the team, and OCR project managers, CRCs, and data managers can be written into the award.",
+    c: "var(--coral)",
+  };
+  const others = [
+    {
+      name: "Research Plan Reviews",
+      tag: "RPR",
+      d: "Six weeks of focused, iterative feedback on R01-scale applications — Specific Aims, Research Plan, biosketch, figures. Roughly 30 hours of editorial work per proposal, subsidized for participating partners.",
+      c: "var(--magenta)",
+      tags: ["R01", "Subsidized", "~6 weeks"],
+    },
+    {
+      name: "BOOST peer review",
+      tag: "Scientific layer",
+      d: "Pairs investigators with senior UCSF faculty for a scientific pressure-test of the premise, Aims, and approach — about a month before deadline. Designed especially for early-career R01 applicants.",
+      c: "var(--teal)",
+      tags: ["Faculty reviewer", "~1 mo. out", "By inquiry"],
+    },
+    {
+      name: "Grantwriting Academy",
+      tag: "Developing",
+      d: "A workshop series translating our day-to-day work into training — from R21 cohorts to mechanics like biosketches, budgets, and DMS plans. Built with partners across the campus.",
+      c: "var(--gold)",
+      tags: ["Pre-award", "First R21", "K-grant"],
+    },
+    {
+      name: "Grantwriting AI tools",
+      tag: "In development",
+      d: "Internal tools to augment — not replace — experienced writers. Pre-flight diagnostics for draft proposals, and Prospera for funding intelligence and PI-to-NOFO matching.",
+      c: "var(--lime)",
+      tags: ["Pre-Flight", "Prospera"],
+    },
+  ];
+  return (
+    <section className="py-28 bg-cream">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-10 mb-14 items-end">
+          <div className="lg:col-span-7">
+            <ArmEyebrow arm={ARM} label="Programs" accent={C} />
+            <h2 className="mt-6 font-display text-5xl md:text-6xl text-ink leading-[0.98]">
+              Five programs.<br />
+              <em className="not-italic text-muted-foreground/70">One coordinated practice.</em>
+            </h2>
+          </div>
+          <p className="lg:col-span-4 lg:col-start-9 text-muted-foreground leading-relaxed">
+            Drop in wherever you are — exploration, drafting, or final review.
+            The earlier we engage, the more value we can add.
           </p>
         </div>
 
-        <div className="relative">
-          {/* connecting line */}
-          <div
-            aria-hidden
-            className="absolute left-[27px] md:left-[39px] top-2 bottom-2 w-px"
-            style={{
-              background:
-                "linear-gradient(to bottom, var(--coral), var(--magenta), var(--teal), var(--gold), var(--lime))",
-            }}
-          />
-          <ol className="space-y-6">
-            {stages.map((s) => (
-              <li
-                key={s.n}
-                className="relative grid grid-cols-[56px_1fr] md:grid-cols-[80px_1fr] gap-6 items-start"
+        {/* Flagship — full-width card with visual weight */}
+        <article className="rounded-[2rem] overflow-hidden border border-border bg-card grid lg:grid-cols-12 mb-5">
+          <div className="lg:col-span-5 p-10 md:p-12 flex flex-col justify-between bg-ink text-white relative">
+            <div
+              aria-hidden
+              className="absolute -top-20 -left-20 w-72 h-72 rounded-full blur-3xl opacity-40"
+              style={{ background: featured.c }}
+            />
+            <div className="relative">
+              <div
+                className="text-[11px] uppercase tracking-[0.24em] font-medium"
+                style={{ color: featured.c }}
               >
-                <div
-                  className="w-14 h-14 md:w-20 md:h-20 rounded-2xl flex items-center justify-center font-display text-2xl text-white shadow-lift relative z-10"
-                  style={{ background: s.c }}
-                >
-                  {s.n}
+                {featured.tag}
+              </div>
+              <h3 className="mt-5 font-display text-4xl md:text-5xl text-white leading-[1.02]">
+                {featured.name}
+              </h3>
+              <div className="mt-3 text-xs text-white/50 font-mono">
+                {featured.rule}
+              </div>
+            </div>
+            <div className="relative mt-10 text-white/40 text-[11px] uppercase tracking-[0.22em]">
+              OCR priority program
+            </div>
+          </div>
+          <div className="lg:col-span-7 p-10 md:p-14 flex items-center">
+            <p className="text-lg text-ink/85 leading-relaxed">{featured.d}</p>
+          </div>
+        </article>
+
+        {/* The other four */}
+        <div className="grid md:grid-cols-2 gap-5">
+          {others.map((p) => (
+            <article
+              key={p.name}
+              className="rounded-3xl bg-card border border-border p-8 hover:shadow-lift transition relative overflow-hidden"
+            >
+              <div
+                aria-hidden
+                className="absolute top-0 left-8 right-8 h-0.5"
+                style={{ background: p.c }}
+              />
+              <div
+                className="text-[11px] uppercase tracking-[0.24em] font-medium"
+                style={{ color: p.c }}
+              >
+                {p.tag}
+              </div>
+              <h3 className="mt-4 font-display text-2xl text-ink">{p.name}</h3>
+              <p className="mt-4 text-muted-foreground leading-relaxed text-[15px]">
+                {p.d}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {p.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-[11px] px-2.5 py-1 rounded-full bg-secondary text-ink/80 font-mono"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── PARTNERS — institutional embedding ───────── */
+function Partners() {
+  const partners = [
+    { n: "Bakar ImmunoX Initiative", since: "Founding partner" },
+    { n: "Diabetes Center", since: "Embedded since 2024" },
+    { n: "Institute for Global Health Sciences", since: "Joined Jan 2025" },
+    { n: "Institute for Health and Aging", since: "Joining Jul 2026" },
+  ];
+  return (
+    <section className="py-28">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-10 items-start">
+          <div className="lg:col-span-5">
+            <ArmEyebrow arm={ARM} label="Partners" accent={C} />
+            <h2 className="mt-6 font-display text-5xl text-ink leading-[0.98]">
+              Embedded with<br />the institutes<br />we serve.
+            </h2>
+            <p className="mt-6 text-muted-foreground leading-relaxed max-w-md">
+              Our model is partnership, not procurement. Strategists are
+              embedded inside the institutes they support — closer to the
+              science, faster to the page. We also help unaffiliated UCSF
+              faculty as bandwidth allows.
+            </p>
+          </div>
+          <ul className="lg:col-span-7 grid sm:grid-cols-2 gap-px bg-border rounded-3xl overflow-hidden border border-border">
+            {partners.map((p) => (
+              <li
+                key={p.n}
+                className="bg-card p-7 flex flex-col justify-between min-h-[170px]"
+              >
+                <div className="font-display text-xl text-ink leading-snug">
+                  {p.n}
                 </div>
-                <div className="rounded-3xl bg-card border border-border p-7 md:p-9 hover:shadow-lift transition">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span
-                      className="text-[11px] uppercase tracking-[0.22em] font-medium"
-                      style={{ color: s.c }}
-                    >
-                      Stage · {s.stage}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-2xl md:text-3xl text-ink">{s.t}</h3>
-                  <p className="mt-3 text-muted-foreground leading-relaxed max-w-2xl">{s.d}</p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {s.arts.map((a) => (
-                      <span
-                        key={a}
-                        className="text-xs px-3 py-1.5 rounded-full bg-secondary text-ink/80"
-                      >
-                        {a}
-                      </span>
-                    ))}
-                  </div>
+                <div className="mt-6 flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                  <span
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ background: C }}
+                  />
+                  {p.since}
                 </div>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       </div>
     </section>
   );
 }
 
-/* BOOST featured */
-function Boost() {
-  return (
-    <section className="py-24 bg-ink text-white relative overflow-hidden">
-      <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-gradient-sunburst opacity-20 blur-3xl" />
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 relative">
-        <div className="lg:col-span-5">
-          <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
-            Featured program
-          </span>
-          <h2 className="mt-4 font-display text-5xl text-white leading-[0.98]">
-            BOOST:<br />faculty peer<br />review.
-          </h2>
-          <p className="mt-6 text-white/70 leading-relaxed text-lg max-w-md">
-            Our writers are experts in narrative — but they can't be experts in
-            every PI's science. BOOST closes that gap with a UCSF faculty
-            reviewer at two key stages.
-          </p>
-        </div>
-        <div className="lg:col-span-7 lg:pl-8">
-          <div className="rounded-3xl bg-white/5 border border-white/10 p-8 backdrop-blur">
-            <div className="text-xs uppercase tracking-widest text-white/50 mb-6">
-              BOOST timeline
-            </div>
-            <div className="space-y-3">
-              {[
-                { w: "≥ 6 weeks out", t: "Specific Aims review", c: "var(--coral)", pct: 100 },
-                { w: "4 weeks out", t: "Structural review", c: "var(--magenta)", pct: 70 },
-                { w: "2 weeks out", t: "Full Proposal review", c: "var(--teal)", pct: 45 },
-                { w: "1 week out", t: "Language pass", c: "var(--gold)", pct: 20 },
-              ].map((s) => (
-                <div key={s.t} className="flex items-center gap-5">
-                  <div className="text-xs text-white/50 w-28 flex-none">{s.w}</div>
-                  <div className="flex-1 h-12 rounded-xl bg-white/5 border border-white/10 relative overflow-hidden">
-                    <div
-                      className="absolute inset-y-0 left-0 opacity-30"
-                      style={{ width: `${s.pct}%`, background: s.c }}
-                    />
-                    <div className="relative h-full flex items-center px-4 gap-3">
-                      <span className="w-2 h-2 rounded-full" style={{ background: s.c }} />
-                      <span className="text-sm">{s.t}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* Team — compact roster */
+/* ───────── TEAM ───────── */
 function Team() {
   const team = [
-    { name: "Gabe Murphy, PhD", role: "Research Development Strategist", img: gabeImg, bio: "Leads large-grant strategy across ImmunoX and partner institutes." },
-    { name: "Reid Bolus, PhD", role: "Research Development Strategist", img: reidImg, bio: "Embedded across the Diabetes Center; leads the RPR program." },
-    { name: "Open Position", role: "Research Development Strategist", img: null, bio: "We're hiring. Help us grow the team." },
+    {
+      name: "Gabe Murphy, PhD",
+      role: "Senior Research Development Strategist",
+      img: gabeImg,
+      bio: "First hire on the arm. Leads large-grant strategy and the growing team.",
+    },
+    {
+      name: "Reid Bolus, PhD",
+      role: "Research Development Strategist",
+      img: reidImg,
+      bio: "Embedded across the Diabetes Center and the RPR program.",
+    },
+    {
+      name: "Open Position",
+      role: "Research Development Strategist",
+      img: null,
+      bio: "Joining alongside IHA in mid-2026. We're hiring.",
+    },
   ];
   return (
-    <section className="py-24">
+    <section className="py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-10 items-end mb-12">
           <div className="lg:col-span-6">
-            <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
-              Your team
-            </span>
-            <h2 className="mt-4 font-display text-5xl text-ink leading-[0.98]">
-              Scientists who happen<br />to be excellent writers.
+            <ArmEyebrow arm={ARM} label="The team" accent={C} />
+            <h2 className="mt-6 font-display text-5xl text-ink leading-[0.98]">
+              Scientists who<br />happen to write.
             </h2>
           </div>
           <p className="lg:col-span-5 lg:col-start-8 text-muted-foreground leading-relaxed">
-            Each strategist brings deep research training and years of
-            grantwriting experience — so the conversation starts at the
-            science, not the page count.
+            Every strategist holds a research doctorate. The conversation
+            starts at the science, not the page count.
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {team.map((p) => (
-            <div key={p.name} className="rounded-3xl bg-card border border-border overflow-hidden hover:shadow-lift transition group">
+            <div
+              key={p.name}
+              className="rounded-3xl bg-card border border-border overflow-hidden hover:shadow-lift transition group"
+            >
               <div className="aspect-[4/5] bg-secondary relative overflow-hidden">
                 {p.img ? (
-                  <img src={p.img} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  />
                 ) : (
                   <div className="w-full h-full bg-gradient-sunburst opacity-20 flex items-center justify-center">
                     <SunburstLogo className="w-24 h-24 opacity-60" />
@@ -251,8 +427,12 @@ function Team() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl text-ink">{p.name}</h3>
-                <div className="text-sm text-coral mt-1">{p.role}</div>
-                <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{p.bio}</p>
+                <div className="text-sm mt-1" style={{ color: C }}>
+                  {p.role}
+                </div>
+                <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
+                  {p.bio}
+                </p>
               </div>
             </div>
           ))}
@@ -262,39 +442,56 @@ function Team() {
   );
 }
 
-/* Testimonials remain as evidence band */
+/* ───────── EVIDENCE ───────── */
 function Evidence() {
   const quotes = [
-    { q: "I just heard back from my R01 — it received a fundable score!", a: "UCSF Principal Investigator" },
-    { q: "The process not only improved my grant, it taught me to be a better writer.", a: "RPR participant, 2025" },
-    { q: "This service is invaluable. I hope it continues and expands so more of the community can benefit.", a: "Large Grants Program PI" },
+    {
+      q: "I just heard back from my R01 — it received a fundable score.",
+      a: "UCSF Principal Investigator",
+      c: "var(--coral)",
+    },
+    {
+      q: "The process not only improved my grant, it taught me to be a better writer.",
+      a: "RPR participant, 2025",
+      c: "var(--magenta)",
+    },
+    {
+      q: "This service is invaluable. I hope it continues and expands so more of the community can benefit.",
+      a: "Large Grants Program PI",
+      c: "var(--teal)",
+    },
   ];
   return (
-    <section className="py-24 bg-cream">
+    <section className="py-28">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-end justify-between flex-wrap gap-8 mb-12">
-          <h2 className="font-display text-4xl md:text-5xl text-ink leading-[1.05] max-w-2xl">
-            In the words of the<br />investigators we work with.
-          </h2>
+          <div>
+            <ArmEyebrow arm={ARM} label="In their words" accent={C} />
+            <h2 className="mt-6 font-display text-4xl md:text-5xl text-ink leading-[1.04] max-w-2xl">
+              From the investigators<br />we work with.
+            </h2>
+          </div>
           <div className="flex items-center gap-6">
             <div>
-              <div className="font-display text-5xl text-ink">9.3<span className="text-xl text-muted-foreground">/10</span></div>
-              <div className="text-xs text-muted-foreground uppercase tracking-widest mt-1">Avg. satisfaction</div>
+              <div className="font-display text-5xl text-ink">
+                9.3<span className="text-xl text-muted-foreground">/10</span>
+              </div>
+              <div className="text-[11px] text-muted-foreground uppercase tracking-widest mt-1">
+                Avg. satisfaction
+              </div>
             </div>
             <div className="w-px h-12 bg-border" />
             <div>
               <div className="font-display text-5xl text-ink">43</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-widest mt-1">Grants in 2025</div>
+              <div className="text-[11px] text-muted-foreground uppercase tracking-widest mt-1">
+                Grants in 2025
+              </div>
             </div>
           </div>
         </div>
         <div className="grid md:grid-cols-3 gap-5">
           {quotes.map((t, i) => (
-            <figure key={i} className="rounded-3xl p-8 bg-card border border-border relative">
-              <div className="absolute top-0 left-8 right-8 h-0.5" style={{ background: ["var(--coral)", "var(--magenta)", "var(--teal)"][i] }} />
-              <blockquote className="font-display text-xl text-ink leading-snug">"{t.q}"</blockquote>
-              <figcaption className="mt-6 text-xs text-muted-foreground uppercase tracking-widest">— {t.a}</figcaption>
-            </figure>
+            <PullQuote key={i} quote={t.q} attribution={t.a} accent={t.c} />
           ))}
         </div>
       </div>
@@ -305,16 +502,30 @@ function Evidence() {
 function RDGPage() {
   return (
     <SiteShell>
-      <Breadcrumb trail={[{ label: "Services" }, { label: "Research development & grantwriting" }]} />
+      <Breadcrumb
+        trail={[
+          { label: "Services" },
+          { label: "Research development & grantwriting" },
+        ]}
+      />
       <Hero />
-      <Journey />
-      <Boost />
+      <Origin />
+      <Ethos />
+      <Programs />
+      <Partners />
       <Team />
       <Evidence />
+      <ServiceCrossNav currentPath="/services/research-development" />
       <CTA
         eyebrow="Get started"
-        title={<>Got a grant on the horizon?<br /><span className="text-white/70">Let's talk early.</span></>}
-        subtitle="The earlier we engage, the more value we can add. A 30-minute consult is free — and the next federal deadline is closer than you think."
+        title={
+          <>
+            Got a grant on the horizon?
+            <br />
+            <span className="text-white/70">Let's talk early.</span>
+          </>
+        }
+        subtitle="The earlier we engage, the more we can add. A 30-minute consult is free — and the next federal deadline is closer than you think."
         email="rdg@ocr.ucsf.edu"
       />
     </SiteShell>

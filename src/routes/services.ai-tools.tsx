@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
-import { ServiceHero, ServiceHeroHighlight } from "@/components/site/service-hero";
+import { ArmEyebrow, ServiceCrossNav } from "@/components/site/service-family";
 
 export const Route = createFileRoute("/services/ai-tools")({
   head: () => ({
@@ -19,30 +19,46 @@ export const Route = createFileRoute("/services/ai-tools")({
 });
 
 const G = "var(--gold)";
+const ARM = "04";
 
 function Hero() {
   return (
-    <ServiceHero
-      arm="04"
-      armLabel="Built in-house at UCSF"
-      accent={G}
-      title={
-        <>
+    <section className="relative overflow-hidden bg-cream border-b border-border">
+      <div
+        aria-hidden
+        className="absolute top-1/2 -right-40 -translate-y-1/2 w-[680px] h-[680px] rounded-full opacity-25 blur-3xl"
+        style={{ background: "var(--gradient-sunburst)" }}
+      />
+      <div className="max-w-7xl mx-auto px-6 pt-12 pb-24 relative">
+        <ArmEyebrow arm={ARM} label="Research resources & AI tools" accent={G} />
+        <h1 className="mt-8 font-display text-[clamp(2.8rem,7.5vw,7rem)] leading-[0.92] tracking-tight text-ink max-w-5xl">
           The software we
           <br />
-          <ServiceHeroHighlight accent={G}>wish existed.</ServiceHeroHighlight>
-        </>
-      }
-      description="OCR builds the AI tools we needed for our own work — so investigators and staff spend less time on search, summarization, and paperwork, and more time on science."
-      below={
-        <p className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground font-mono">
-          <span className="px-2 py-1 rounded-md bg-secondary border border-border">v0.4</span>
-          <span>Signal · Prospera · in active pilot</span>
-        </p>
-      }
-    />
+          <em className="not-italic" style={{ color: G }}>wish existed.</em>
+        </h1>
+        <div className="mt-12 grid lg:grid-cols-12 gap-10 items-end">
+          <p className="lg:col-span-6 text-xl text-muted-foreground leading-relaxed">
+            OCR builds the AI tools we needed for our own work — so
+            investigators and staff spend less time on search, summarization,
+            and paperwork, and more time on science.
+          </p>
+          <div className="lg:col-span-5 lg:col-start-8">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground font-mono">
+              <span className="px-2.5 py-1 rounded-md bg-card border border-border">Signal v0.4</span>
+              <span className="px-2.5 py-1 rounded-md bg-card border border-border">Prospera v0.2</span>
+              <span className="px-2.5 py-1 rounded-md bg-card border border-border">+ 6 internal tools</span>
+              <span className="flex items-center gap-2 ml-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-lime animate-pulse" />
+                <span>in active pilot</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
+
 
 /* Two flagship product split panels */
 function Products() {
@@ -305,6 +321,7 @@ function AIPage() {
       <Products />
       <Automations />
       <Principles />
+      <ServiceCrossNav currentPath="/services/ai-tools" />
       <CTA
         eyebrow="Get early access"
         title={<>Want Signal or Prospera<br /><span className="text-white/70">in your lab?</span></>}
