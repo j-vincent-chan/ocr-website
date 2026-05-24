@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
-import { ServiceHero, ServiceHeroHighlight } from "@/components/site/service-hero";
+import { ArmEyebrow, ServiceCrossNav } from "@/components/site/service-family";
 
 export const Route = createFileRoute("/services/project-management")({
   head: () => ({
@@ -19,49 +19,55 @@ export const Route = createFileRoute("/services/project-management")({
 });
 
 const T = "var(--teal)";
+const ARM = "02";
 
 function Hero() {
   return (
-    <ServiceHero
-      arm="02"
-      armLabel="Operations console"
-      accent={T}
-      title={
-        <>
-          We run your study.
+    <section className="relative overflow-hidden bg-cream border-b border-border">
+      <div
+        aria-hidden
+        className="absolute -top-40 -left-40 w-[720px] h-[720px] rounded-full opacity-25 blur-3xl"
+        style={{ background: "var(--gradient-sunburst)" }}
+      />
+      <div className="max-w-7xl mx-auto px-6 pt-12 pb-24 relative">
+        <ArmEyebrow arm={ARM} label="Project management & clinical coordination" accent={T} />
+        <h1 className="mt-8 font-display text-[clamp(2.8rem,7.5vw,7rem)] leading-[0.92] tracking-tight text-ink max-w-5xl">
+          We run the study.
           <br />
-          <ServiceHeroHighlight accent={T}>You run the science.</ServiceHeroHighlight>
-        </>
-      }
-      description="From IRB submission to final data lock, OCR runs the operational backbone of complex UCSF research programs — startup, coordination, biospecimens, and multi-site logistics."
-      below={
-        <>
-          <p className="flex items-center gap-2 text-xs text-muted-foreground font-mono mb-4">
-            <span className="w-2 h-2 rounded-full bg-lime animate-pulse" aria-hidden />
-            27 active programs · 11 CRCs on bench · live
+          <em className="not-italic" style={{ color: T }}>You run the science.</em>
+        </h1>
+        <div className="mt-12 grid lg:grid-cols-12 gap-10">
+          <p className="lg:col-span-6 text-xl text-muted-foreground leading-relaxed">
+            From IRB submission to final data lock, OCR runs the operational
+            backbone of complex UCSF research programs — startup, coordination,
+            biospecimens, and multi-site logistics.
           </p>
-          <div className="grid md:grid-cols-4 gap-3">
-            {[
-              { l: "IRB submitted", v: "Mar 14", s: "Cleared", c: "var(--teal)" },
-              { l: "First patient enrolled", v: "Apr 22", s: "On track", c: "var(--coral)" },
-              { l: "Biospecimens", v: "412", s: "+38 this week", c: "var(--magenta)" },
-              { l: "Sites activated", v: "5 / 5", s: "Complete", c: "var(--gold)" },
-            ].map((r) => (
-              <div key={r.l} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
-                <div className="text-[11px] uppercase tracking-widest text-muted-foreground">{r.l}</div>
-                <div className="font-display text-3xl text-ink mt-2">{r.v}</div>
-                <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
-                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: r.c }} aria-hidden />
-                  {r.s}
+          <div className="lg:col-span-5 lg:col-start-8">
+            <p className="flex items-center gap-2 text-xs text-muted-foreground font-mono mb-4">
+              <span className="w-2 h-2 rounded-full bg-lime animate-pulse" aria-hidden />
+              27 active programs · 11 CRCs on bench · live
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { l: "First patient enrolled", v: "Apr 22", c: "var(--coral)" },
+                { l: "Biospecimens", v: "412", c: "var(--magenta)" },
+                { l: "Sites activated", v: "5/5", c: "var(--gold)" },
+                { l: "Studies in flight", v: "27", c: T },
+              ].map((r) => (
+                <div key={r.l} className="rounded-2xl border border-border bg-card p-4">
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground">{r.l}</div>
+                  <div className="font-display text-2xl text-ink mt-1">{r.v}</div>
+                  <div className="mt-2 w-6 h-0.5 rounded-full" style={{ background: r.c }} />
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </>
-      }
-    />
+        </div>
+      </div>
+    </section>
   );
 }
+
 
 /* Kanban-style swimlanes */
 function Swimlanes() {
@@ -285,6 +291,7 @@ function PMPage() {
       <Swimlanes />
       <Pipeline />
       <Bench />
+      <ServiceCrossNav currentPath="/services/project-management" />
       <CTA
         eyebrow="Run with us"
         title={<>Have a study that needs<br /><span className="text-white/70">a steady hand?</span></>}
