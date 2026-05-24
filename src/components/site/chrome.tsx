@@ -29,18 +29,18 @@ export function CtaRotatingPhrase({
   useEffect(() => {
     if (reducedMotion || phrases.length < 2) return;
 
-    let clearPrev: ReturnType<typeof setTimeout> | undefined;
+    let clearPrev: number | undefined;
     const intervalId = window.setInterval(() => {
       setIndex((current) => {
         setPrevIndex(current);
-        clearPrev = setTimeout(() => setPrevIndex(null), 1300);
+        clearPrev = window.setTimeout(() => setPrevIndex(null), 1300) as unknown as number;
         return (current + 1) % phrases.length;
       });
     }, intervalMs);
 
     return () => {
       window.clearInterval(intervalId);
-      if (clearPrev) clearTimeout(clearPrev);
+      window.clearTimeout(clearPrev);
     };
   }, [reducedMotion, phrases, intervalMs]);
 

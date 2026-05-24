@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
-import { ServiceSubnav } from "@/components/site/service-subnav";
 import { ServiceHero, ServiceHeroHighlight } from "@/components/site/service-hero";
 
 export const Route = createFileRoute("/services/project-management")({
@@ -283,7 +282,6 @@ function PMPage() {
     <SiteShell>
       <Breadcrumb trail={[{ label: "Services" }, { label: "Project management & clinical coordination" }]} />
       <Hero />
-      <ServiceSubnav />
       <Swimlanes />
       <Pipeline />
       <Bench />
