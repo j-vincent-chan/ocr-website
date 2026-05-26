@@ -202,19 +202,19 @@ function Approach() {
             {
               icon: "project" as const,
               t: "Start with the project",
-              d: "We start with the science, team, and timeline at hand—shaping support around what the project needs next, not a fixed service menu.",
+              d: "We start with the science, team, and timeline at hand, shaping support around what the project needs next, not a fixed service menu.",
               c: "var(--coral)",
             },
             {
               icon: "embed" as const,
               t: "Embed shared expertise",
-              d: "Experienced staff embed across projects so investigators get grant strategy, PM, clinical coordination, and data support—without building every capability alone.",
+              d: "Experienced staff embed across projects so investigators get grant strategy, PM, clinical coordination, and data support, without building every capability alone.",
               c: "var(--magenta)",
             },
             {
               icon: "adapt" as const,
               t: "Adapt with the research landscape",
-              d: "Each engagement reveals emerging communities, funding areas, and operational needs—helping OCR evolve and strengthen the work that follows.",
+              d: "Each engagement reveals emerging communities, funding areas, and operational needs, helping OCR evolve and strengthen the work that follows.",
               c: "var(--teal)",
             },
           ].map((i) => {

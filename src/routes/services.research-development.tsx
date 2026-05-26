@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import gabeImg from "@/assets/gabe.jpg";
-import reidImg from "@/assets/reid.jpg";
+import gabeImg from "@/assets/people/gabe-murphy.jpg";
+import reidImg from "@/assets/people/reid-bolus.jpg";
 import { SiteShell, Breadcrumb, CTA, SunburstLogo } from "@/components/site/chrome";
 import {
   ArmEyebrow,
@@ -196,8 +196,8 @@ function Ethos() {
 /* ───────── PROGRAMS — 4 program cards, hierarchically weighted ───────── */
 function Programs() {
   const featured = {
-    tag: "Flagship program",
-    name: "Large Grants",
+    tag: "Large Grants",
+    name: "Large Grant Development Program",
     rule: "P-series · U-series · Center grants",
     d: "Coordinated scientific programs that build institutional capability — infrastructure, visibility, and durable ecosystems. Our strategists embed as part of the team, and OCR project managers, CRCs, and data managers can be written into the award.",
     c: "var(--coral)",
@@ -205,21 +205,21 @@ function Programs() {
   const others = [
     {
       name: "Research Plan Reviews",
-      tag: "RPR",
+      tag: "Small Grants",
       d: "Six weeks of focused, iterative feedback on R01-scale applications — Specific Aims, Research Plan, biosketch, figures. Roughly 30 hours of editorial work per proposal, subsidized for participating partners.",
       c: "var(--magenta)",
       tags: ["R01", "Subsidized", "~6 weeks"],
     },
     {
-      name: "BOOST peer review",
-      tag: "Scientific layer",
+      name: "BOOST: Scientific Peer Reviews",
+      tag: "Scientific Peer Reviews",
       d: "Pairs investigators with senior UCSF faculty for a scientific pressure-test of the premise, Aims, and approach — about a month before deadline. Designed especially for early-career R01 applicants.",
       c: "var(--teal)",
       tags: ["Faculty reviewer", "~1 mo. out", "By inquiry"],
     },
     {
       name: "Grantwriting Academy",
-      tag: "Developing",
+      tag: "In Development",
       d: "A workshop series translating our day-to-day work into training — from R21 cohorts to mechanics like biosketches, budgets, and DMS plans. Built with partners across the campus.",
       c: "var(--gold)",
       tags: ["Pre-award", "First R21", "K-grant"],
@@ -280,37 +280,47 @@ function Programs() {
           </div>
         </article>
 
-        {/* The other four */}
+        {/* The other four — same DNA as flagship, scaled down */}
         <div className="grid md:grid-cols-2 gap-5">
           {others.map((p) => (
             <article
               key={p.name}
-              className="rounded-3xl bg-card border border-border p-8 hover:shadow-lift transition relative overflow-hidden"
+              className="group rounded-3xl border border-border bg-card overflow-hidden grid grid-rows-[auto_1fr] hover:shadow-lift transition"
             >
-              <div
-                aria-hidden
-                className="absolute top-0 left-8 right-8 h-0.5"
-                style={{ background: p.c }}
-              />
-              <div
-                className="text-[11px] uppercase tracking-[0.24em] font-medium"
-                style={{ color: p.c }}
-              >
-                {p.tag}
-              </div>
-              <h3 className="mt-4 font-display text-2xl text-ink">{p.name}</h3>
-              <p className="mt-4 text-muted-foreground leading-relaxed text-[15px]">
-                {p.d}
-              </p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {p.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="text-[11px] px-2.5 py-1 rounded-full bg-secondary text-ink/80 font-mono"
+              {/* Dark accent zone — mirrors the flagship's left panel */}
+              <div className="relative bg-ink text-white p-7 overflow-hidden">
+                <div
+                  aria-hidden
+                  className="absolute -top-16 -left-16 w-56 h-56 rounded-full blur-3xl opacity-40 group-hover:opacity-55 transition-opacity duration-500"
+                  style={{ background: p.c }}
+                />
+                <div className="relative">
+                  <div
+                    className="text-[11px] uppercase tracking-[0.24em] font-medium"
+                    style={{ color: p.c }}
                   >
-                    {t}
-                  </span>
-                ))}
+                    {p.tag}
+                  </div>
+                  <h3 className="mt-4 font-display text-2xl md:text-3xl text-white leading-tight">
+                    {p.name}
+                  </h3>
+                </div>
+              </div>
+              {/* Light body */}
+              <div className="p-7 flex flex-col">
+                <p className="text-muted-foreground leading-relaxed text-[15px]">
+                  {p.d}
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="text-[11px] px-2.5 py-1 rounded-full bg-secondary text-ink/80 font-mono"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
             </article>
           ))}
@@ -323,10 +333,34 @@ function Programs() {
 /* ───────── PARTNERS — institutional embedding ───────── */
 function Partners() {
   const partners = [
-    { n: "Bakar ImmunoX Initiative", since: "Founding partner" },
-    { n: "Diabetes Center", since: "Embedded since 2024" },
-    { n: "Institute for Global Health Sciences", since: "Joined Jan 2025" },
-    { n: "Institute for Health and Aging", since: "Joining Jul 2026" },
+    {
+      n: "Bakar ImmunoX Initiative",
+      short: "ImmunoX",
+      since: "Founding partner",
+      focus: "Immunology across UCSF",
+      c: "var(--coral)",
+    },
+    {
+      n: "Diabetes Center",
+      short: "DC",
+      since: "Embedded since 2024",
+      focus: "Diabetes & metabolism",
+      c: "var(--magenta)",
+    },
+    {
+      n: "Institute for Global Health Sciences",
+      short: "IGHS",
+      since: "Joined Jan 2025",
+      focus: "Global health equity",
+      c: "var(--teal)",
+    },
+    {
+      n: "Institute for Health and Aging",
+      short: "IHA",
+      since: "Joining Jul 2026",
+      focus: "Aging & longevity",
+      c: "var(--gold)",
+    },
   ];
   return (
     <section className="py-28">
@@ -344,21 +378,57 @@ function Partners() {
               faculty as bandwidth allows.
             </p>
           </div>
-          <ul className="lg:col-span-7 grid sm:grid-cols-2 gap-px bg-border rounded-3xl overflow-hidden border border-border">
-            {partners.map((p) => (
+          <ul className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+            {partners.map((p, i) => (
               <li
                 key={p.n}
-                className="bg-card p-7 flex flex-col justify-between min-h-[170px]"
+                className="group relative overflow-hidden rounded-3xl border border-border bg-card p-7 min-h-[210px] flex flex-col justify-between hover:shadow-lift hover:-translate-y-0.5 transition-all duration-300"
               >
-                <div className="font-display text-xl text-ink leading-snug">
-                  {p.n}
-                </div>
-                <div className="mt-6 flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                {/* Corner gradient blob — intensifies on hover */}
+                <span
+                  aria-hidden
+                  className="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-25 group-hover:opacity-60 transition-opacity duration-500"
+                  style={{ background: p.c }}
+                />
+                {/* Animated top accent line */}
+                <span
+                  aria-hidden
+                  className="absolute top-0 left-7 h-[2px] w-10 group-hover:w-[calc(100%-3.5rem)] transition-all duration-500 ease-out"
+                  style={{ background: p.c }}
+                />
+
+                <div className="relative flex items-start justify-between gap-4">
+                  <div>
+                    <div
+                      className="text-[11px] uppercase tracking-[0.24em] font-medium"
+                      style={{ color: p.c }}
+                    >
+                      {p.short}
+                    </div>
+                    <div className="mt-2 font-display text-xl text-ink leading-snug max-w-[14ch]">
+                      {p.n}
+                    </div>
+                  </div>
                   <span
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ background: C }}
-                  />
-                  {p.since}
+                    aria-hidden
+                    className="font-display text-3xl tabular-nums opacity-50 group-hover:opacity-90 transition-opacity duration-300"
+                    style={{ color: p.c }}
+                  >
+                    0{i + 1}
+                  </span>
+                </div>
+
+                <div className="relative mt-6 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                    <span
+                      className="w-1.5 h-1.5 rounded-full"
+                      style={{ background: p.c }}
+                    />
+                    {p.since}
+                  </div>
+                  <span className="text-[11px] text-muted-foreground/70 italic">
+                    {p.focus}
+                  </span>
                 </div>
               </li>
             ))}
@@ -457,7 +527,7 @@ function Evidence() {
     },
     {
       q: "This service is invaluable. I hope it continues and expands so more of the community can benefit.",
-      a: "Large Grants Program PI",
+      a: "Large Grant Development Program PI",
       c: "var(--teal)",
     },
   ];
