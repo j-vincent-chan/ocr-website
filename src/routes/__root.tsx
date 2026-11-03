@@ -72,18 +72,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Research Boost supports UCSF PIs in securing research funding through strategic consultation and grantwriting assistance." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Research Boost supports UCSF PIs in securing research funding through strategic consultation and grantwriting assistance." },
+      { title: "Office of Collaborative Research — UCSF" },
+      {
+        name: "description",
+        content:
+          "The strategic hub of ImmunoX and the Parnassus Institutes at UCSF — research development, project management and clinical coordination, data sharing, AI tools, and community management for research communities.",
+      },
+      { name: "author", content: "UCSF Office of Collaborative Research" },
+      { property: "og:site_name", content: "UCSF Office of Collaborative Research" },
+      { property: "og:title", content: "Office of Collaborative Research — UCSF" },
+      {
+        property: "og:description",
+        content: "Where great science finds great partners. Research development, project management, data, AI tools, and community management for UCSF investigators.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "Research Boost supports UCSF PIs in securing research funding through strategic consultation and grantwriting assistance." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0d16d1bf-0194-4469-b520-f748ab68b012/id-preview-0b2b94c8--70310063-b11d-4a69-a6bf-0d0a5b2191d2.lovable.app-1779568075630.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0d16d1bf-0194-4469-b520-f748ab68b012/id-preview-0b2b94c8--70310063-b11d-4a69-a6bf-0d0a5b2191d2.lovable.app-1779568075630.png" },
+      { name: "twitter:title", content: "Office of Collaborative Research — UCSF" },
+      {
+        name: "twitter:description",
+        content: "Where great science finds great partners. Research development, project management, data, AI tools, and community management for UCSF investigators.",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

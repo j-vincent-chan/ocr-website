@@ -2,6 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
 import { GhibliPortrait } from "@/components/site/ghibli-portrait";
+import { OPEN_POSITIONS } from "@/components/site/open-positions";
+import bushraSamadImg from "@/assets/people/bushra-samad.jpg";
+import bushraSamadHoverImg from "@/assets/people/hover/bushra-samad-hover.jpg";
 import coreyRatheImg from "@/assets/people/corey-rathe.jpg";
 import coreyRatheHoverImg from "@/assets/people/hover/corey-rathe-hover.jpg";
 import franciscoQuintanillaImg from "@/assets/people/francisco-quintanilla.jpg";
@@ -10,16 +13,18 @@ import gabeMurphyImg from "@/assets/people/gabe-murphy.jpg";
 import gabeMurphyHoverImg from "@/assets/people/hover/gabe-murphy-hover.jpg";
 import jonathanWilsonImg from "@/assets/people/jonathan-wilson.jpg";
 import jonathanWilsonHoverImg from "@/assets/people/hover/jonathan-wilson-hover.jpg";
-import lilyOrtizImg from "@/assets/people/lily-ortiz.jpg";
-import lilyOrtizHoverImg from "@/assets/people/hover/lily-ortiz-hover.jpg";
 import linaKamilImg from "@/assets/people/lina-kamil.jpg";
 import linaKamilHoverImg from "@/assets/people/hover/lina-kamil-hover.jpg";
+import lindsayBreithauptImg from "@/assets/people/lindsay-breithaupt.jpg";
+import lindsayBreithauptHoverImg from "@/assets/people/hover/lindsay-breithaupt-hover.jpg";
 import michelleYuImg from "@/assets/people/michelle-yu.jpg";
 import michelleYuHoverImg from "@/assets/people/hover/michelle-yu-hover.jpg";
 import nataliaDikinovImg from "@/assets/people/natalia-dikinov.jpg";
 import nataliaDikinovHoverImg from "@/assets/people/hover/natalia-dikinov-hover.jpg";
 import ohnmarChanImg from "@/assets/people/ohnmar-chan.jpg";
 import ohnmarChanHoverImg from "@/assets/people/hover/ohnmar-chan-hover.jpg";
+import oliviaMurleyImg from "@/assets/people/olivia-murley.jpg";
+import oliviaMurleyHoverImg from "@/assets/people/hover/olivia-murley-hover.jpg";
 import reidBolusImg from "@/assets/people/reid-bolus.jpg";
 import reidBolusHoverImg from "@/assets/people/hover/reid-bolus-hover.jpg";
 import vincentChanImg from "@/assets/people/vincent-chan.jpg";
@@ -40,22 +45,31 @@ export const Route = createFileRoute("/people")({
       {
         property: "og:description",
         content:
-          "PhDs, coordinators, and program leads embedded with UCSF investigators.",
+          "Scientists, coordinators, and program leads embedded with UCSF investigators.",
       },
     ],
   }),
   component: PeoplePage,
 });
 
+type Arm =
+  | "Leadership"
+  | "Research Development"
+  | "Project Management"
+  | "Clinical Coordination"
+  | "Data"
+  | "Community Management";
+
 type Person = {
   name: string;
   credential?: string;
   role: string;
-  arm: "Leadership" | "Research Development" | "Project Management" | "Data" | "Programs";
+  arms: Arm[];
   bio: string;
   accent: string;
   photo?: string;
   photoHover?: string;
+  applyHref?: string;
 };
 
 const TEAM: Person[] = [
@@ -63,8 +77,8 @@ const TEAM: Person[] = [
     name: "Vincent Chan",
     credential: "PhD",
     role: "Director",
-    arm: "Leadership",
-    bio: "Founded OCR as an experiment in embedding PhD-trained staff with investigators. Sets strategy across the four service arms.",
+    arms: ["Leadership"],
+    bio: "Founded OCR as an experiment in embedding scientifically trained staff with investigators. Sets strategy across the five service arms.",
     accent: "var(--coral)",
     photo: vincentChanImg,
     photoHover: vincentChanHoverImg,
@@ -72,8 +86,8 @@ const TEAM: Person[] = [
   {
     name: "Gabe Murphy",
     credential: "PhD",
-    role: "Senior Research Development Strategist & Grantwriter",
-    arm: "Research Development",
+    role: "Senior Research Development Strategist",
+    arms: ["Leadership", "Research Development"],
     bio: "First hire on the arm. Leads large-grant strategy and the growing team.",
     accent: "var(--coral)",
     photo: gabeMurphyImg,
@@ -82,25 +96,36 @@ const TEAM: Person[] = [
   {
     name: "Reid Bolus",
     credential: "PhD",
-    role: "Research Development Strategist & Grantwriter",
-    arm: "Research Development",
+    role: "Research Development Strategist",
+    arms: ["Research Development"],
     bio: "Embedded across the Diabetes Center and the RPR program.",
     accent: "var(--coral)",
     photo: reidBolusImg,
     photoHover: reidBolusHoverImg,
   },
   {
-    name: "Open Position",
-    role: "Research Development Strategist & Grantwriter",
-    arm: "Research Development",
-    bio: "Joining alongside IHA in mid-2026. We're hiring.",
+    name: "Lindsay Breithaupt",
+    credential: "MPH",
+    role: "Research Development Strategist",
+    arms: ["Research Development"],
+    bio: "Helps investigators shape the scientific story and craft competitive proposals across funders.",
     accent: "var(--coral)",
+    photo: lindsayBreithauptImg,
+    photoHover: lindsayBreithauptHoverImg,
+  },
+  {
+    name: "Open Position",
+    role: "Research Development Strategist",
+    arms: ["Research Development"],
+    bio: "Joining as IHA comes on board in 2026. We're hiring.",
+    accent: "var(--coral)",
+    applyHref: OPEN_POSITIONS.researchDevelopmentStrategist.href,
   },
   {
     name: "Corey Rathe",
     credential: "MS",
     role: "Project Manager",
-    arm: "Project Management",
+    arms: ["Leadership", "Project Management"],
     bio: "Runs study startup, milestones, and operations across consortium projects. Keeps the work moving without losing the science.",
     accent: "var(--teal)",
     photo: coreyRatheImg,
@@ -109,7 +134,7 @@ const TEAM: Person[] = [
   {
     name: "Francisco Quintanilla",
     role: "Senior Clinical Research Coordinator",
-    arm: "Project Management",
+    arms: ["Clinical Coordination"],
     bio: "Coordinates patient enrollment and biospecimen workflows across UCSF clinics.",
     accent: "var(--teal)",
     photo: franciscoQuintanillaImg,
@@ -118,7 +143,7 @@ const TEAM: Person[] = [
   {
     name: "Natalia Dikinov",
     role: "Senior Clinical Research Coordinator",
-    arm: "Project Management",
+    arms: ["Leadership", "Clinical Coordination"],
     bio: "Senior CRC on autoimmune and inflammatory cohorts. IRB, consent, and chart abstraction.",
     accent: "var(--teal)",
     photo: nataliaDikinovImg,
@@ -127,7 +152,7 @@ const TEAM: Person[] = [
   {
     name: "Ohnmar Chan",
     role: "Senior Clinical Research Coordinator",
-    arm: "Project Management",
+    arms: ["Clinical Coordination"],
     bio: "Senior CRC supporting enrollment, consent, and day-to-day study operations across OCR clinical portfolios.",
     accent: "var(--teal)",
     photo: ohnmarChanImg,
@@ -137,16 +162,25 @@ const TEAM: Person[] = [
     name: "Lina Kamil",
     credential: "MPH",
     role: "Clinical Research Coordinator",
-    arm: "Project Management",
+    arms: ["Clinical Coordination"],
     bio: "Patient-facing coordination and study operations for human-subjects research.",
     accent: "var(--teal)",
     photo: linaKamilImg,
     photoHover: linaKamilHoverImg,
   },
   {
+    name: "Olivia Murley",
+    role: "Clinical Research Coordinator",
+    arms: ["Clinical Coordination"],
+    bio: "Coordinates participant visits, consent, and day-to-day study operations for OCR clinical portfolios.",
+    accent: "var(--teal)",
+    photo: oliviaMurleyImg,
+    photoHover: oliviaMurleyHoverImg,
+  },
+  {
     name: "Michelle Yu",
     role: "Data Manager",
-    arm: "Data",
+    arms: ["Data"],
     bio: "Builds the databases, metadata schemas, and Data Management & Sharing plans behind every OCR study.",
     accent: "var(--magenta)",
     photo: michelleYuImg,
@@ -156,14 +190,16 @@ const TEAM: Person[] = [
     name: "Bushra Samad",
     credential: "MS",
     role: "Data Manager",
-    arm: "Data",
+    arms: ["Data"],
     bio: "Supports database design, data integrity, and sharing workflows for OCR-managed studies and consortium datasets.",
     accent: "var(--magenta)",
+    photo: bushraSamadImg,
+    photoHover: bushraSamadHoverImg,
   },
   {
     name: "Jonathan Wilson",
     role: "Research Administrative Officer",
-    arm: "Leadership",
+    arms: ["Leadership", "Community Management"],
     bio: "Handles finance, contracts, and the operational backbone of the office.",
     accent: "var(--coral)",
     photo: jonathanWilsonImg,
@@ -172,33 +208,25 @@ const TEAM: Person[] = [
   {
     name: "Xochitl Vargas",
     role: "ImmunoDiverse Program Administrator",
-    arm: "Programs",
+    arms: ["Community Management"],
     bio: "Runs the ImmunoDiverse program — broadening participation in immunology research at UCSF.",
-    accent: "var(--gold)",
+    accent: "var(--lime)",
     photo: xochitlVargasImg,
     photoHover: xochitlVargasHoverImg,
   },
   {
-    name: "Lily Ortiz",
-    credential: "MS",
+    name: "Open Position",
     role: "ImmunoX Community Manager",
-    arm: "Programs",
-    bio: "Builds and stewards the ImmunoX community — events, comms, and collaborator connections.",
-    accent: "var(--gold)",
-    photo: lilyOrtizImg,
-    photoHover: lilyOrtizHoverImg,
-  },
-  {
-    name: "Jo Williams",
-    credential: "MPH",
-    role: "Parnassus Institutes Community Manager",
-    arm: "Programs",
-    bio: "Connects Parnassus Institutes investigators and partners — building community, communications, and collaboration across institute programs.",
-    accent: "var(--gold)",
+    arms: ["Community Management"],
+    bio: "Will steward the ImmunoX research community through convenings, communications, outreach, and collaborator connections.",
+    accent: "var(--lime)",
+    applyHref: OPEN_POSITIONS.immunoxCommunityManager.href,
   },
 ];
 
 const ALUMNI = [
+  { name: "Lily Ortiz", role: "ImmunoX Community Manager" },
+  { name: "Jo Williams", role: "Parnassus Institutes Community Manager" },
   { name: "Nora Hazenbos", role: "Project Manager" },
   { name: "Nelson Wu", role: "Data Manager" },
 ];
@@ -208,9 +236,47 @@ const ARMS = [
   "Leadership",
   "Research Development",
   "Project Management",
+  "Clinical Coordination",
   "Data",
-  "Programs",
+  "Community Management",
 ] as const;
+
+const FILTER_ORDER: Record<Arm, string[]> = {
+  Leadership: [
+    "Vincent Chan|Director",
+    "Gabe Murphy|Senior Research Development Strategist",
+    "Natalia Dikinov|Senior Clinical Research Coordinator",
+    "Corey Rathe|Project Manager",
+    "Jonathan Wilson|Research Administrative Officer",
+  ],
+  "Research Development": [
+    "Gabe Murphy|Senior Research Development Strategist",
+    "Reid Bolus|Research Development Strategist",
+    "Lindsay Breithaupt|Research Development Strategist",
+    "Open Position|Research Development Strategist",
+  ],
+  "Project Management": ["Corey Rathe|Project Manager"],
+  "Clinical Coordination": [
+    "Natalia Dikinov|Senior Clinical Research Coordinator",
+    "Francisco Quintanilla|Senior Clinical Research Coordinator",
+    "Lina Kamil|Clinical Research Coordinator",
+    "Ohnmar Chan|Senior Clinical Research Coordinator",
+    "Olivia Murley|Clinical Research Coordinator",
+  ],
+  Data: [
+    "Michelle Yu|Data Manager",
+    "Bushra Samad|Data Manager",
+  ],
+  "Community Management": [
+    "Open Position|ImmunoX Community Manager",
+    "Xochitl Vargas|ImmunoDiverse Program Administrator",
+    "Jonathan Wilson|Research Administrative Officer",
+  ],
+};
+
+function personKey(p: Person) {
+  return `${p.name}|${p.role}`;
+}
 
 function initials(name: string) {
   return name
@@ -297,10 +363,13 @@ function Hero() {
 
 function Roster() {
   const [filter, setFilter] = useState<(typeof ARMS)[number]>("All");
-  const filtered = useMemo(
-    () => (filter === "All" ? TEAM : TEAM.filter((p) => p.arm === filter)),
-    [filter],
-  );
+  const filtered = useMemo(() => {
+    if (filter === "All") return TEAM;
+    const order = FILTER_ORDER[filter];
+    return TEAM.filter((p) => p.arms.includes(filter)).sort(
+      (a, b) => order.indexOf(personKey(a)) - order.indexOf(personKey(b)),
+    );
+  }, [filter]);
 
   return (
     <section className="py-20">
@@ -338,7 +407,7 @@ function Roster() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filtered.map((p) => (
             <article
-              key={p.name}
+              key={`${p.name}-${p.role}`}
               className="group rounded-3xl border border-border bg-card p-5 hover:shadow-lift transition"
             >
               <Avatar
@@ -353,9 +422,11 @@ function Roster() {
                   style={{ background: p.accent }}
                 />
                 <div className="min-w-0">
-                  <div className="text-[11px] uppercase tracking-widest text-muted-foreground">
-                    {p.arm}
-                  </div>
+                  {p.arms.length > 0 ? (
+                    <div className="text-[11px] uppercase tracking-widest text-muted-foreground">
+                      {filter === "All" ? p.arms.join(" · ") : filter}
+                    </div>
+                  ) : null}
                   <h3 className="mt-1 font-display text-xl text-ink leading-tight">
                     {p.name}
                     {p.credential && (
@@ -370,6 +441,20 @@ function Roster() {
               <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
                 {p.bio}
               </p>
+              {p.applyHref ? (
+                <a
+                  href={p.applyHref}
+                  {...(p.applyHref.startsWith("http")
+                    ? { target: "_blank", rel: "noreferrer" }
+                    : {})}
+                  className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary px-4 py-2 text-sm font-medium text-ink hover:border-ink/30 hover:bg-cream transition"
+                >
+                  {p.applyHref.startsWith("http")
+                    ? "View job posting"
+                    : "Contact about role"}{" "}
+                  <span aria-hidden>→</span>
+                </a>
+              ) : null}
             </article>
           ))}
         </div>

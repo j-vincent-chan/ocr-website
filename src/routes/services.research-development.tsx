@@ -1,7 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import gabeImg from "@/assets/people/gabe-murphy.jpg";
 import reidImg from "@/assets/people/reid-bolus.jpg";
+import lindsayImg from "@/assets/people/lindsay-breithaupt.jpg";
 import { SiteShell, Breadcrumb, CTA, SunburstLogo } from "@/components/site/chrome";
+import { armName } from "@/components/site/arms";
 import {
   ArmEyebrow,
   PullQuote,
@@ -11,13 +13,13 @@ import {
 export const Route = createFileRoute("/services/research-development")({
   head: () => ({
     meta: [
-      { title: "Research development & grantwriting — UCSF OCR" },
+      { title: "Research development — UCSF OCR" },
       {
         name: "description",
         content:
-          "Proactive matchmaking, large-grant strategy, and hands-on grantwriting support for UCSF investigators — built around relationships, not RFP triage.",
+          "We help UCSF faculty turn an idea into a compelling, competitive grant application — finding the right funding opportunity, sharpening the rationale and promise of the work, and supporting the proposal through submission.",
       },
-      { property: "og:title", content: "Research development & grantwriting — UCSF OCR" },
+      { property: "og:title", content: "Research development — UCSF OCR" },
       {
         property: "og:description",
         content:
@@ -41,7 +43,7 @@ function Hero() {
         style={{ background: "var(--gradient-sunburst)" }}
       />
       <div className="max-w-7xl mx-auto px-6 pt-12 pb-24 relative">
-        <ArmEyebrow arm={ARM} label="Research development & grantwriting" accent={C} />
+        <ArmEyebrow arm={ARM} label="One of five service arms" accent={C} />
         <h1 className="mt-8 font-display text-[clamp(2.8rem,7.5vw,7rem)] leading-[0.92] tracking-tight text-ink max-w-5xl">
           From a hunch
           <br />
@@ -51,11 +53,31 @@ function Hero() {
           </em>
         </h1>
         <div className="mt-12 grid lg:grid-cols-12 gap-10">
-          <p className="lg:col-span-6 text-xl text-muted-foreground leading-relaxed">
-            We sit in the space between an idea and an award — sharpening the
-            science, finding the right opportunity, and shaping submissions
-            that compete in a tougher federal landscape.
-          </p>
+          <div className="lg:col-span-6">
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              We pair investigators with the right opportunity, sharpen the
+              rationale and promise of the proposed work, and shape submissions
+              that compete in a tough funding landscape.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-ink text-white px-6 py-3.5 text-sm font-medium hover:bg-ink/90 transition shadow-lift"
+              >
+                Request support <span aria-hidden>→</span>
+              </Link>
+              <a
+                href="#stages"
+                className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-card px-6 py-3.5 text-sm font-medium hover:bg-secondary transition"
+              >
+                How we work with you <span aria-hidden>↓</span>
+              </a>
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Found a NOFO and need a hand? Start there — a 30-minute consult is
+              free, and no deadline is required.
+            </p>
+          </div>
           <div className="lg:col-span-5 lg:col-start-8 grid grid-cols-3 gap-6">
             {[
               ["43", "Grants supported in 2025"],
@@ -80,19 +102,19 @@ function Hero() {
 function Origin() {
   const beats = [
     {
-      label: "The shift",
-      t: "The funding floor moved.",
-      d: "Federal pressure on indirects, agency downsizing, and stalled awards meant more investigators competing for fewer dollars — exactly when UCSF needed to defend its place as the #1 public recipient of NIH funding.",
+      label: "The gap",
+      t: "A strong idea isn't yet a strong proposal.",
+      d: "Finding the right opportunity, pressure-testing the premise, and shaping a narrative reviewers can follow takes time and a second set of eyes most faculty don't have. Moreover, the funding landscape has shifted significantly over the last several years — more investigators competing for fewer dollars, with less room for a good idea to carry a rough draft.",
     },
     {
-      label: "The gap",
-      t: "Central grantwriting went away.",
-      d: "UCSF's Research Development Office stepped back from grantwriting and was eventually wound down. A proposed Faculty Writing Center didn't get funded. Faculty were left without the support they'd come to expect.",
+      label: "The rationale",
+      t: "UCSF is built to collaborate.",
+      d: "UCSF is a uniquely collaborative institution. Faculty are genuinely eager to pursue large-scale, multi-investigator grant applications — and with some logistical and conceptual support, they are likely to be very competitive.",
     },
     {
       label: "The response",
-      t: "OCR built a new arm.",
-      d: "Launched in September 2024, our Research Development team works hand-in-hand with partner institutes to help PIs compete — proactively, relationally, and at every stage of the proposal.",
+      t: "OCR added a new service arm.",
+      d: "Launched in 2024, our Research Development team works hand-in-hand with partner institutes to help investigators compete — proactively, relationally, and at every stage of the proposal.",
     },
   ];
   return (
@@ -136,17 +158,17 @@ function Ethos() {
     {
       k: "Proactive",
       t: "We don't wait for the RFP to land.",
-      d: "We sit with investigators early — mapping their portfolio and trajectory — so opportunities find people, not the other way around.",
+      d: "We're ready and eager to help if you've already found an appropriate NOFO. That said, by talking with investigators early and often, we often route relevant funding opportunities to people, not the other way around.",
     },
     {
       k: "Relational",
       t: "Matchmaking is the work.",
-      d: "Connecting investigators to mechanisms, collaborators, and one another is where the most leverage lives.",
+      d: "Connecting investigators to the right mechanisms, and to collaborators within and outside of UCSF, is where the most leverage lives.",
     },
     {
       k: "End-to-end",
       t: "Aims to submission, in one team.",
-      d: "Strategy, narrative, biosketches, budgets, letters, DMS plan, logistics — coordinated through one point of contact.",
+      d: "Strategy, narrative, biosketches, letters, logistics — coordinated through one point of contact, from the first conversation to the day you submit.",
     },
   ];
   return (
@@ -160,16 +182,19 @@ function Ethos() {
           <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] font-medium text-white/60">
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: C }} />
-              Arm {ARM} · Ethos
+              {armName(ARM)} · Ethos
             </div>
             <h2 className="mt-6 font-display text-5xl md:text-6xl text-white leading-[0.98]">
               We work in the space<br />
-              <em className="not-italic" style={{ color: C }}>between ideation and submission.</em>
+              <em className="not-italic" style={{ color: C }}>between an idea and an award.</em>
             </h2>
           </div>
           <p className="lg:col-span-4 lg:col-start-9 text-white/70 leading-relaxed">
-            Our writers are PhDs. They know the science — and they know the
-            page. That changes what's possible at every stage.
+            Our strategists are trained scientists and practiced editors. We
+            won't know your field the way you do — and that's the point. We see
+            the assumptions, the leaps in logic, and the arguments that won't
+            land with a reviewer, in a way that's hard to do from inside the
+            work.
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-5">
@@ -193,82 +218,111 @@ function Ethos() {
   );
 }
 
-/* ───────── PROGRAMS — 4 program cards, hierarchically weighted ───────── */
-function Programs() {
-  const featured = {
-    tag: "Large Grants",
+/* ───────── STAGES — how we work with you, from flagship program back to early support ─────────
+ * Team feedback: lead with the Large Grant Development Program, then show the
+ * upstream supports in reverse order so readers can see what often leads into it.
+ * Programs still in development sit in a visually subordinate row so they don't
+ * read as live offerings. */
+function Stages() {
+  const stages = [
+    {
+      n: "02",
+      name: "BOOST: Scientific peer reviews",
+      when: "~1 month before deadline",
+      d: "Pairs investigators with senior UCSF faculty for a scientific pressure-test of the premise, Aims, and approach. Designed especially for early-career R01 applicants.",
+      c: "var(--teal)",
+      tags: ["Faculty reviewer", "Early-career", "By inquiry"],
+    },
+    {
+      n: "03",
+      name: "Research Plan Reviews",
+      when: "~6 weeks before deadline",
+      d: "Six weeks of iterative editorial feedback on R01-scale applications — Specific Aims, Research Plan, biosketch, figures. Roughly 30 hours of work per proposal, subsidized for participating partners.",
+      c: "var(--magenta)",
+      tags: ["R01-scale", "Subsidized for partners", "~30 hrs"],
+    },
+    {
+      n: "04",
+      name: "Rapid Aims & LOI reviews",
+      when: "Early drafting",
+      d: "Fast, focused feedback on a Specific Aims page or letter of intent — is the premise clear, is the gap real, will a reviewer follow the logic? A quick way to course-correct before the full proposal takes shape.",
+      c: "var(--gold)",
+      tags: ["Specific Aims", "LOI", "Quick turnaround"],
+    },
+    {
+      n: "05",
+      name: "Strategic consults",
+      when: "Anytime · No deadline required",
+      d: "A conversation about where you're headed — mapping your portfolio, scanning the funding landscape, and matching your next idea to the right mechanism. Many investigators start here with nothing more than a hunch.",
+      c: "var(--coral)",
+      tags: ["Free", "30–60 min", "Portfolio mapping"],
+    },
+  ];
+  const flagship = {
+    n: "01",
+    tag: "Large grants",
     name: "Large Grant Development Program",
     rule: "P-series · U-series · Center grants",
-    d: "Coordinated scientific programs that build institutional capability — infrastructure, visibility, and durable ecosystems. Our strategists embed as part of the team, and OCR project managers, CRCs, and data managers can be written into the award.",
+    d: "Coordinated scientific programs that build institutional capability — infrastructure, visibility, and durable ecosystems. Our strategists embed as part of the team from concept through submission, and OCR project managers, clinical research coordinators, and data managers can be written into the award.",
     c: "var(--coral)",
   };
-  const others = [
-    {
-      name: "Research Plan Reviews",
-      tag: "Small Grants",
-      d: "Six weeks of focused, iterative feedback on R01-scale applications — Specific Aims, Research Plan, biosketch, figures. Roughly 30 hours of editorial work per proposal, subsidized for participating partners.",
-      c: "var(--magenta)",
-      tags: ["R01", "Subsidized", "~6 weeks"],
-    },
-    {
-      name: "BOOST: Scientific Peer Reviews",
-      tag: "Scientific Peer Reviews",
-      d: "Pairs investigators with senior UCSF faculty for a scientific pressure-test of the premise, Aims, and approach — about a month before deadline. Designed especially for early-career R01 applicants.",
-      c: "var(--teal)",
-      tags: ["Faculty reviewer", "~1 mo. out", "By inquiry"],
-    },
+  const inDevelopment = [
     {
       name: "Grantwriting Academy",
-      tag: "In Development",
-      d: "A workshop series translating our day-to-day work into training — from R21 cohorts to mechanics like biosketches, budgets, and DMS plans. Built with partners across the campus.",
-      c: "var(--gold)",
-      tags: ["Pre-award", "First R21", "K-grant"],
+      d: "A workshop series translating our day-to-day work into training — from first-R21 cohorts to the mechanics of biosketches, budgets, and data management plans.",
+      tags: ["First R21", "K-grant", "Pre-award"],
     },
     {
-      name: "Grantwriting AI tools",
-      tag: "In development",
-      d: "Internal tools to augment — not replace — experienced writers. Pre-flight diagnostics for draft proposals, and Prospera for funding intelligence and PI-to-NOFO matching.",
-      c: "var(--lime)",
+      name: "AI tools for research development",
+      d: "Internal tools that augment — not replace — experienced strategists: pre-flight diagnostics for draft proposals, and funding intelligence that matches investigators to opportunities.",
       tags: ["Pre-Flight", "Prospera"],
     },
   ];
   return (
-    <section className="py-28 bg-cream">
+    <section id="stages" className="py-28 bg-cream scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-10 mb-14 items-end">
           <div className="lg:col-span-7">
-            <ArmEyebrow arm={ARM} label="Programs" accent={C} />
+            <ArmEyebrow arm={ARM} label="How we work with you" accent={C} />
             <h2 className="mt-6 font-display text-5xl md:text-6xl text-ink leading-[0.98]">
-              Five programs.<br />
+              Five stages.<br />
               <em className="not-italic text-muted-foreground/70">One coordinated practice.</em>
             </h2>
           </div>
           <p className="lg:col-span-4 lg:col-start-9 text-muted-foreground leading-relaxed">
-            Drop in wherever you are — exploration, drafting, or final review.
-            The earlier we engage, the more value we can add.
+            Start with the flagship program, then trace the upstream supports
+            that often help investigators get there.
           </p>
         </div>
 
-        {/* Flagship — full-width card with visual weight */}
+        {/* Stage 01 — flagship, full-width with visual weight */}
         <article className="rounded-[2rem] overflow-hidden border border-border bg-card grid lg:grid-cols-12 mb-5">
           <div className="lg:col-span-5 p-10 md:p-12 flex flex-col justify-between bg-ink text-white relative">
             <div
               aria-hidden
               className="absolute -top-20 -left-20 w-72 h-72 rounded-full blur-3xl opacity-40"
-              style={{ background: featured.c }}
+              style={{ background: flagship.c }}
             />
             <div className="relative">
-              <div
-                className="text-[11px] uppercase tracking-[0.24em] font-medium"
-                style={{ color: featured.c }}
-              >
-                {featured.tag}
+              <div className="flex items-baseline gap-4">
+                <span
+                  className="font-display text-3xl tabular-nums"
+                  style={{ color: flagship.c }}
+                >
+                  {flagship.n}
+                </span>
+                <span
+                  className="text-[11px] uppercase tracking-[0.24em] font-medium"
+                  style={{ color: flagship.c }}
+                >
+                  {flagship.tag}
+                </span>
               </div>
               <h3 className="mt-5 font-display text-4xl md:text-5xl text-white leading-[1.02]">
-                {featured.name}
+                {flagship.name}
               </h3>
               <div className="mt-3 text-xs text-white/50 font-mono">
-                {featured.rule}
+                {flagship.rule}
               </div>
             </div>
             <div className="relative mt-10 text-white/40 text-[11px] uppercase tracking-[0.22em]">
@@ -276,43 +330,46 @@ function Programs() {
             </div>
           </div>
           <div className="lg:col-span-7 p-10 md:p-14 flex items-center">
-            <p className="text-lg text-ink/85 leading-relaxed">{featured.d}</p>
+            <p className="text-lg text-ink/85 leading-relaxed">{flagship.d}</p>
           </div>
         </article>
 
-        {/* The other four — same DNA as flagship, scaled down */}
-        <div className="grid md:grid-cols-2 gap-5">
-          {others.map((p) => (
-            <article
-              key={p.name}
+        {/* Stages 02–05 — upstream supports, in reverse path order */}
+        <ol className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+          {stages.map((s) => (
+            <li
+              key={s.n}
               className="group rounded-3xl border border-border bg-card overflow-hidden grid grid-rows-[auto_1fr] hover:shadow-lift transition"
             >
-              {/* Dark accent zone — mirrors the flagship's left panel */}
               <div className="relative bg-ink text-white p-7 overflow-hidden">
                 <div
                   aria-hidden
                   className="absolute -top-16 -left-16 w-56 h-56 rounded-full blur-3xl opacity-40 group-hover:opacity-55 transition-opacity duration-500"
-                  style={{ background: p.c }}
+                  style={{ background: s.c }}
                 />
                 <div className="relative">
-                  <div
-                    className="text-[11px] uppercase tracking-[0.24em] font-medium"
-                    style={{ color: p.c }}
-                  >
-                    {p.tag}
+                  <div className="flex items-baseline justify-between gap-3">
+                    <span
+                      className="font-display text-3xl tabular-nums"
+                      style={{ color: s.c }}
+                    >
+                      {s.n}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 text-right">
+                      {s.when}
+                    </span>
                   </div>
-                  <h3 className="mt-4 font-display text-2xl md:text-3xl text-white leading-tight">
-                    {p.name}
+                  <h3 className="mt-4 font-display text-2xl text-white leading-tight">
+                    {s.name}
                   </h3>
                 </div>
               </div>
-              {/* Light body */}
               <div className="p-7 flex flex-col">
                 <p className="text-muted-foreground leading-relaxed text-[15px]">
-                  {p.d}
+                  {s.d}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {p.tags.map((t) => (
+                  {s.tags.map((t) => (
                     <span
                       key={t}
                       className="text-[11px] px-2.5 py-1 rounded-full bg-secondary text-ink/80 font-mono"
@@ -322,8 +379,43 @@ function Programs() {
                   ))}
                 </div>
               </div>
-            </article>
+            </li>
           ))}
+        </ol>
+
+        {/* In development — deliberately quieter than the live stages */}
+        <div className="mt-14">
+          <div className="flex items-center gap-4 mb-5">
+            <span className="text-[11px] uppercase tracking-[0.24em] font-medium text-muted-foreground">
+              In development
+            </span>
+            <span className="h-px flex-1 bg-border" />
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            {inDevelopment.map((p) => (
+              <article
+                key={p.name}
+                className="rounded-2xl border border-dashed border-ink/20 bg-transparent p-6"
+              >
+                <h3 className="font-display text-xl text-ink/80 leading-tight">
+                  {p.name}
+                </h3>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  {p.d}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="text-[11px] px-2.5 py-1 rounded-full border border-border text-muted-foreground font-mono"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -343,24 +435,29 @@ function Partners() {
     {
       n: "Diabetes Center",
       short: "DC",
-      since: "Embedded since 2024",
+      since: "Partner since 2024",
       focus: "Diabetes & metabolism",
       c: "var(--magenta)",
     },
     {
       n: "Institute for Global Health Sciences",
       short: "IGHS",
-      since: "Joined Jan 2025",
+      since: "Partner since 2025",
       focus: "Global health equity",
       c: "var(--teal)",
     },
     {
       n: "Institute for Health and Aging",
       short: "IHA",
-      since: "Joining Jul 2026",
+      since: "Partner from 2026",
       focus: "Aging & longevity",
       c: "var(--gold)",
     },
+  ];
+  const benefits = [
+    "Dedicated strategist capacity, embedded in your institute",
+    "Subsidized Research Plan Reviews and priority access to BOOST",
+    "Proactive matchmaking and portfolio mapping for your faculty",
   ];
   return (
     <section className="py-28">
@@ -369,14 +466,40 @@ function Partners() {
           <div className="lg:col-span-5">
             <ArmEyebrow arm={ARM} label="Partners" accent={C} />
             <h2 className="mt-6 font-display text-5xl text-ink leading-[0.98]">
-              Embedded with<br />the institutes<br />we serve.
+              Embedded within<br />the institutes<br />we serve.
             </h2>
             <p className="mt-6 text-muted-foreground leading-relaxed max-w-md">
-              Our model is partnership, not procurement. Strategists are
-              embedded inside the institutes they support — closer to the
-              science, faster to the page. We also help unaffiliated UCSF
-              faculty as bandwidth allows.
+              Our model is partnership, not procurement. Partner institutes
+              fund dedicated strategist time, and those strategists work from
+              inside the institute — attending faculty meetings, learning the
+              portfolio, and getting to know investigators before a deadline
+              ever appears. Closer to the science, faster to the page.
             </p>
+            <div className="mt-8 rounded-2xl border border-border bg-card p-6 max-w-md">
+              <div className="text-[11px] uppercase tracking-[0.24em] font-medium text-muted-foreground">
+                What partners get
+              </div>
+              <ul className="mt-4 space-y-3">
+                {benefits.map((b) => (
+                  <li key={b} className="flex gap-3 text-sm text-ink/85 leading-relaxed">
+                    <span
+                      aria-hidden
+                      className="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
+                      style={{ background: C }}
+                    />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-sm text-muted-foreground leading-relaxed">
+                Not affiliated with a partner? We still help unaffiliated UCSF
+                faculty as bandwidth allows — and we're glad to talk with
+                institutes considering partnership.{" "}
+                <Link to="/contact" className="underline underline-offset-4 text-ink hover:text-coral transition">
+                  Start a conversation →
+                </Link>
+              </p>
+            </div>
           </div>
           <ul className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
             {partners.map((p, i) => (
@@ -455,10 +578,16 @@ function Team() {
       bio: "Embedded across the Diabetes Center and the RPR program.",
     },
     {
+      name: "Lindsay Breithaupt, MPH",
+      role: "Research Development Strategist",
+      img: lindsayImg,
+      bio: "Helps investigators shape the scientific story and craft competitive proposals across funders.",
+    },
+    {
       name: "Open Position",
       role: "Research Development Strategist",
       img: null,
-      bio: "Joining alongside IHA in mid-2026. We're hiring.",
+      bio: "Joining as IHA comes on board in 2026. We're hiring.",
     },
   ];
   return (
@@ -472,11 +601,12 @@ function Team() {
             </h2>
           </div>
           <p className="lg:col-span-5 lg:col-start-8 text-muted-foreground leading-relaxed">
-            Every strategist holds a research doctorate. The conversation
-            starts at the science, not the page count.
+            Our strategists come from the bench and the field, and they've
+            spent years learning how reviewers read. The conversation starts
+            at the science, not the page count.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {team.map((p) => (
             <div
               key={p.name}
@@ -505,6 +635,103 @@ function Team() {
                 </p>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── AWARDED GRANTS ───────── */
+function AwardedGrants() {
+  const grants = [
+    {
+      investigator: "Nahid",
+      mechanism: "R24",
+      url: "https://reporter.nih.gov/project-details/11412163",
+    },
+    {
+      investigator: "Anderson / Ku",
+      mechanism: "DRC P30",
+      url: "https://reporter.nih.gov/project-details/11121266",
+    },
+    {
+      investigator: "Vaisse",
+      mechanism: "NORC P30",
+      url: "https://reporter.nih.gov/project-details/8975559",
+    },
+    {
+      investigator: "Turnbaugh",
+      mechanism: "R01",
+      url: "https://reporter.nih.gov/project-details/11447313",
+    },
+    {
+      investigator: "Scharschmidt",
+      mechanism: "R01",
+      url: "https://reporter.nih.gov/search/qn2l-PAaTEGxA_kyEvsn7Q/project-details/11319891",
+    },
+    {
+      investigator: "Phillips",
+      mechanism: "R01",
+      url: "https://reporter.nih.gov/project-details/11293150",
+    },
+    {
+      investigator: "Hsiang",
+      mechanism: "K24",
+      url: "https://reporter.nih.gov/project-details/11452101",
+    },
+    {
+      investigator: "Ashouri",
+      mechanism: "R01",
+      url: "https://reporter.nih.gov/project-details/11130765",
+    },
+  ];
+
+  return (
+    <section className="py-28 bg-cream">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-10 items-end mb-12">
+          <div className="lg:col-span-7">
+            <ArmEyebrow arm={ARM} label="Awarded grants" accent={C} />
+            <h2 className="mt-6 font-display text-5xl text-ink leading-[0.98]">
+              Funded applications
+              <br />
+              shaped with OCR.
+            </h2>
+          </div>
+          <p className="lg:col-span-4 lg:col-start-9 text-muted-foreground leading-relaxed">
+            Selected awarded applications supported by the Research Development
+            team. Each award links to its NIH RePORTER record.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {grants.map((grant) => (
+            <a
+              key={`${grant.investigator}-${grant.mechanism}`}
+              href={grant.url}
+              target="_blank"
+              rel="noreferrer"
+              className="group rounded-3xl border border-border bg-card p-6 hover:shadow-lift transition"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <span
+                  className="text-[11px] uppercase tracking-[0.22em] font-medium"
+                  style={{ color: C }}
+                >
+                  NIH RePORTER
+                </span>
+                <span className="text-ink/35 transition group-hover:translate-x-0.5 group-hover:text-ink">
+                  ↗
+                </span>
+              </div>
+              <h3 className="mt-6 font-display text-2xl text-ink leading-tight">
+                {grant.investigator}
+              </h3>
+              <div className="mt-2 text-sm font-medium text-ink/75">
+                {grant.mechanism}
+              </div>
+            </a>
           ))}
         </div>
       </div>
@@ -575,15 +802,16 @@ function RDGPage() {
       <Breadcrumb
         trail={[
           { label: "Services" },
-          { label: "Research development & grantwriting" },
+          { label: "Research development" },
         ]}
       />
       <Hero />
-      <Origin />
       <Ethos />
-      <Programs />
+      <Origin />
+      <Stages />
       <Partners />
       <Team />
+      <AwardedGrants />
       <Evidence />
       <ServiceCrossNav currentPath="/services/research-development" />
       <CTA
@@ -596,7 +824,7 @@ function RDGPage() {
           </>
         }
         subtitle="The earlier we engage, the more we can add. A 30-minute consult is free — and the next federal deadline is closer than you think."
-        email="rdg@ocr.ucsf.edu"
+        email="ocr@ucsf.edu"
       />
     </SiteShell>
   );

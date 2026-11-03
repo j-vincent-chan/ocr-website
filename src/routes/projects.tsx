@@ -116,6 +116,129 @@ function Hero() {
   );
 }
 
+function ServiceArmHighlights() {
+  const arms = [
+    {
+      n: "01",
+      arm: "Research development",
+      title: "From hunch to fundable program",
+      description:
+        "Strategic consults, Aims and LOI reviews, BOOST, Research Plan Reviews, and large-grant development programs help investigators turn promising ideas into competitive proposals.",
+      proof: "Highlighted work: Large Grant Development Program, RPR, BOOST",
+      to: "/services/research-development",
+      accent: "var(--coral)",
+    },
+    {
+      n: "02",
+      arm: "Project management",
+      title: "Studies, CRUs, and biospecimen pipelines",
+      description:
+        "The portfolio below is strongest here: clinical research units, biospecimen workflows, CoProjects, and investigator-initiated or industry-sponsored clinical studies.",
+      proof: "Highlighted work: Pulmonary CRUs, SMSF, CoProjects",
+      to: "/services/project-management",
+      accent: "var(--teal)",
+    },
+    {
+      n: "03",
+      arm: "Data management",
+      title: "Databases, DMS plans, and shareable datasets",
+      description:
+        "Data work often travels with clinical coordination: REDCap/database setup, data dictionaries, QC, metadata, and NIH-compliant data management and sharing.",
+      proof: "Highlighted work: Data Library RFAs, DMS platforms",
+      to: "/services/data-management",
+      accent: "var(--magenta)",
+    },
+    {
+      n: "04",
+      arm: "AI tools",
+      title: "Signal, Prospera, Atlas, and Runway",
+      description:
+        "OCR's in-house tools surface publications, match investigators to opportunities, assemble research intelligence, and help PIs plan personnel and finances.",
+      proof: "Highlighted work: Signal beta, Prospera pilots, Runway",
+      to: "/services/ai-tools",
+      accent: "var(--gold)",
+    },
+    {
+      n: "05",
+      arm: "Community management",
+      title: "Retreats, seminars, newsletters, and outreach",
+      description:
+        "Community managers turn partner institutes into active networks: convening investigators, translating science, promoting opportunities, and keeping momentum visible.",
+      proof: "Highlighted work: retreats, lightning talks, Breaking Down Biology",
+      to: "/services/community-management",
+      accent: "var(--lime)",
+    },
+  ];
+
+  return (
+    <section className="py-20 border-b border-border bg-background">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-10 items-end mb-12">
+          <div className="lg:col-span-7">
+            <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
+              Organized by service arm
+            </span>
+            <h2 className="mt-4 font-display text-4xl md:text-5xl text-ink leading-[1.02]">
+              Five ways OCR moves work forward.
+            </h2>
+          </div>
+          <p className="lg:col-span-4 lg:col-start-9 text-muted-foreground leading-relaxed">
+            The filterable portfolio below is strongest for active managed
+            studies and programs. These cards orient visitors first by OCR's
+            five service arms, then point them to the detailed examples.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+          {arms.map((arm) => (
+            <Link
+              key={arm.n}
+              to={arm.to}
+              className="group rounded-3xl border border-border bg-card p-7 hover:shadow-lift hover:-translate-y-0.5 transition-all duration-300"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <span
+                  className="font-display text-3xl tabular-nums"
+                  style={{ color: arm.accent }}
+                >
+                  {arm.n}
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground text-right">
+                  {arm.arm}
+                </span>
+              </div>
+              <h3 className="mt-5 font-display text-2xl text-ink leading-tight">
+                {arm.title}
+              </h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                {arm.description}
+              </p>
+              <div
+                className="mt-5 rounded-2xl px-4 py-3 text-xs leading-relaxed"
+                style={{
+                  background: `color-mix(in oklab, ${arm.accent} 12%, var(--card))`,
+                  color: `color-mix(in oklab, ${arm.accent} 45%, var(--ink))`,
+                }}
+              >
+                {arm.proof}
+              </div>
+              <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-ink">
+                Explore the arm
+                <span
+                  aria-hidden
+                  className="transition-transform group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ProjectFiltersPanel({
   filters,
   options,
@@ -385,9 +508,11 @@ function ProjectsPage() {
     <SiteShell>
       <Breadcrumb trail={[{ label: "Programs & Projects" }]} />
       <Hero />
+      <ServiceArmHighlights />
       <Grid />
       <PitchBand />
       <CTA
+        id="funding"
         eyebrow="Funding"
         title={<>Or apply to an open RFA.</>}
         subtitle="CoProjects, Data Library Analysis, and Data Library Development RFAs run on rolling cycles."

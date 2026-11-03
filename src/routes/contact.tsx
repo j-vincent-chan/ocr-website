@@ -23,7 +23,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 const SERVICE_OPTIONS = [
-  "Research Development & Grantwriting",
+  "Research Development",
   "Project Management & Clinical Coordination",
   "Data Management & Sharing",
   "Research Resources & AI Tools",

@@ -326,7 +326,7 @@ function AIPage() {
         eyebrow="Get early access"
         title={<>Want Signal or Prospera<br /><span className="text-white/70">in your lab?</span></>}
         subtitle="We're onboarding new partner institutes through 2026. Tell us what you'd want it to do, and we'll find a pilot that fits."
-        email="ai@ocr.ucsf.edu"
+        email="ocr@ucsf.edu"
         primaryLabel="Request a pilot →"
       />
     </SiteShell>

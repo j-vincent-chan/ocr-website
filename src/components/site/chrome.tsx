@@ -114,8 +114,8 @@ export function SunburstLogo({ className = "" }: { className?: string }) {
 export const SERVICES = [
   {
     to: "/services/research-development",
-    name: "Research development & grantwriting",
-    desc: "Strategy, matchmaking & writing",
+    name: "Research development",
+    desc: "Funding strategy, matchmaking & proposal development",
     accent: "var(--coral)",
   },
   {
@@ -136,6 +136,12 @@ export const SERVICES = [
     desc: "Signal, Prospera & automation",
     accent: "var(--gold)",
   },
+  {
+    to: "/services/community-management",
+    name: "Community management",
+    desc: "Retreats, seminars & outreach",
+    accent: "var(--lime)",
+  },
 ] as const;
 
 export function Header() {
@@ -149,9 +155,9 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
           <span className="opacity-80">University of California San Francisco</span>
           <div className="hidden sm:flex items-center gap-6 opacity-80">
-            <a href="#" className="hover:opacity-100">About UCSF</a>
-            <a href="#" className="hover:opacity-100">UCSF Medical Center</a>
-            <a href="#" className="rounded-full bg-white text-ink px-3 py-1 font-medium hover:bg-cream">Donate</a>
+            <a href="https://www.ucsf.edu/about" className="hover:opacity-100">About UCSF</a>
+            <a href="https://www.ucsfhealth.org/" className="hover:opacity-100">UCSF Health</a>
+            <a href="https://giving.ucsf.edu/" className="rounded-full bg-white text-ink px-3 py-1 font-medium hover:bg-cream">Donate</a>
           </div>
         </div>
       </div>
@@ -234,9 +240,13 @@ export function Header() {
             >
               Programs & Projects
             </Link>
-            <a href="#" className="px-4 py-2 rounded-full hover:bg-secondary font-medium">
+            <Link
+              to="/projects"
+              hash="funding"
+              className="px-4 py-2 rounded-full hover:bg-secondary font-medium"
+            >
               Funding
-            </a>
+            </Link>
           </nav>
 
           <Link
@@ -271,12 +281,14 @@ export function Breadcrumb({ trail }: { trail: { label: string; to?: string }[] 
 }
 
 export function CTA({
+  id = "contact",
   eyebrow = "Get started",
   title,
   subtitle,
   email,
   primaryLabel = "Book a 30-min consult →",
 }: {
+  id?: string;
   eyebrow?: string;
   title: React.ReactNode;
   subtitle: string;
@@ -284,7 +296,7 @@ export function CTA({
   primaryLabel?: string;
 }) {
   return (
-    <section id="contact" className="py-24">
+    <section id={id} className="py-24 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="relative rounded-[2.5rem] overflow-hidden bg-ink text-white p-12 md:p-20">
           <div className="absolute inset-0 bg-gradient-sunburst opacity-25" />
@@ -308,12 +320,12 @@ export function CTA({
                   >
                     {primaryLabel}
                   </a>
-                  <a
-                    href="#"
+                  <Link
+                    to="/contact"
                     className="inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-3 text-sm font-medium hover:bg-white/10 transition"
                   >
                     Partner with OCR
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -326,7 +338,7 @@ export function CTA({
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-white/70 pt-20 pb-10">
+    <footer className="bg-ink text-white/70 pt-20 pb-10 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-12 gap-10 pb-14 border-b border-white/10">
           <div className="md:col-span-5">
@@ -337,7 +349,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-6 text-sm max-w-sm leading-relaxed">
-              We work in the space between inspiration and impact.
+              OCR works in the space between inspiration and impact.
             </p>
           </div>
           <div className="md:col-span-3">
@@ -354,26 +366,33 @@ export function Footer() {
             <div className="text-xs uppercase tracking-widest text-white/50 mb-4">OCR</div>
             <ul className="space-y-2.5 text-sm">
               <li><Link to="/about" className="hover:text-white">About</Link></li>
-              <li><a href="#" className="hover:text-white">People</a></li>
-              <li><a href="/projects" className="hover:text-white">Programs & Projects</a></li>
-              <li><a href="#" className="hover:text-white">Funding</a></li>
+              <li><Link to="/people" className="hover:text-white">People</Link></li>
+              <li><Link to="/projects" className="hover:text-white">Programs & Projects</Link></li>
+              <li><Link to="/projects" hash="funding" className="hover:text-white">Funding</Link></li>
             </ul>
           </div>
           <div className="md:col-span-2">
             <div className="text-xs uppercase tracking-widest text-white/50 mb-4">Connect</div>
             <ul className="space-y-2.5 text-sm">
               <li><a href="mailto:ocr@ucsf.edu" className="hover:text-white">ocr@ucsf.edu</a></li>
-              <li><a href="#" className="hover:text-white">Newsletter</a></li>
-              <li><a href="#" className="hover:text-white">LinkedIn</a></li>
+              <li><Link to="/contact" className="hover:text-white">Get in touch</Link></li>
+              <li>
+                <a
+                  href={`mailto:ocr@ucsf.edu?subject=${encodeURIComponent("Subscribe me to the OCR dispatch")}`}
+                  className="hover:text-white"
+                >
+                  Newsletter
+                </a>
+              </li>
             </ul>
           </div>
         </div>
         <div className="flex flex-wrap justify-between gap-4 mt-8 text-xs text-white/50">
           <div>© {new Date().getFullYear()} The Regents of the University of California</div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white">Accessibility</a>
-            <a href="#" className="hover:text-white">Privacy</a>
-            <a href="#" className="hover:text-white">Terms</a>
+            <a href="https://www.ucsf.edu/accessibility-resources" className="hover:text-white">Accessibility</a>
+            <a href="https://www.ucsf.edu/website-privacy-policy" className="hover:text-white">Privacy</a>
+            <a href="https://www.ucsf.edu/terms-of-use" className="hover:text-white">Terms</a>
           </div>
         </div>
       </div>

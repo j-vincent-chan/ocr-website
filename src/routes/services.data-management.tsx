@@ -298,7 +298,7 @@ function DMSPage() {
         eyebrow="Plan early"
         title={<>Data plan due<br /><span className="text-white/70">with the grant?</span></>}
         subtitle="Loop us in at Specific Aims — we'll write a DMS plan that aligns with your study, repositories, and budget."
-        email="data@ocr.ucsf.edu"
+        email="ocr@ucsf.edu"
         primaryLabel="Draft my DMS plan →"
       />
     </SiteShell>

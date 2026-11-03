@@ -8,6 +8,8 @@ const PARTNERS = [
     since: 2023,
     description:
       "OCR began inside ImmunoX and still anchors our model: embedded grant strategists, project managers, and data leads who work alongside immunology investigators from concept through award and into study execution.",
+    services: ["Research development", "Project management", "Data", "AI tools", "Community management"],
+    proof: "Founding partner; the model OCR now adapts for other institutes.",
   },
   {
     n: "UCSF Diabetes Center",
@@ -15,6 +17,8 @@ const PARTNERS = [
     since: 2024,
     description:
       "The Diabetes Center was our first institute partner outside ImmunoX. OCR provides dedicated research development and operational support for multi-PI programs, clinical studies, and center-wide grant pipelines.",
+    services: ["Research development", "BOOST/RPR", "Clinical coordination"],
+    proof: "Dedicated embedded capacity for grant pipelines and center-wide programs.",
   },
   {
     n: "Institute for Global Health Sciences",
@@ -22,6 +26,8 @@ const PARTNERS = [
     since: 2024,
     description:
       "With IGHS, OCR supports global health investigators on large collaborative awards — coordinating partners, DMS plans, and proposal strategy for research that spans UCSF and international sites.",
+    services: ["Research development", "DMS plans", "Proposal coordination", "Community convenings"],
+    proof: "Expanding toward cohort-based grant writing training and large collaborative awards.",
   },
   {
     n: "UCSF Health Affiliates Network",
@@ -29,6 +35,8 @@ const PARTNERS = [
     since: 2024,
     description:
       "OCR works with the Affiliates Network to extend our playbook to aligned health system partners — helping bridge academic science, clinical operations, and shared funding opportunities.",
+    services: ["Clinical research operations", "CRC capacity", "Protocol startup"],
+    proof: "On-site CRC pilot connects affiliate hospitals to UCSF research infrastructure.",
   },
   {
     n: "Zuckerberg San Francisco General Hospital",
@@ -36,13 +44,17 @@ const PARTNERS = [
     since: 2025,
     description:
       "At ZSFG, OCR embeds with mission-driven research teams on the public hospital campus — supporting startup, regulatory navigation, and grant development for community-facing clinical and translational work.",
+    services: ["Clinical coordination", "Regulatory navigation", "Grant development"],
+    proof: "Extends OCR's operational model to community-facing translational research.",
   },
   {
     n: "School of Nursing",
     c: "oklch(0.55 0.2 280)",
     since: 2026,
     description:
-      "Our newest academic partner brings OCR grantwriting and program management capacity to nursing science — from training and implementation studies to multi-site trials led by nursing faculty.",
+      "Our newest academic partner brings OCR research development and program management capacity to nursing science — from training and implementation studies to multi-site trials led by nursing faculty.",
+    services: ["Research development", "Program management", "Training studies"],
+    proof: "New partner framed around nursing-led implementation and multi-site research.",
   },
   {
     n: "Division of Pulmonary, Critical Care, Allergy, and Sleep Medicine",
@@ -50,6 +62,8 @@ const PARTNERS = [
     since: 2026,
     description:
       "OCR supports pulmonary and critical care investigators with proposal strategy, clinical research coordination, and data infrastructure for bench-to-bedside programs across the division.",
+    services: ["CRU management", "Clinical coordination", "Data infrastructure"],
+    proof: "Interstitial Lung Disease and Bronchiectasis CRUs brought into the OCR model.",
   },
   {
     n: "Institute for Health & Aging",
@@ -57,6 +71,8 @@ const PARTNERS = [
     since: 2026,
     description:
       "With IHA, OCR provides embedded research development and project management for aging-focused cohorts, trials, and center grants — helping teams move faster from pilot data to fundable programs.",
+    services: ["Research development", "Project management", "Faculty outreach", "Community management"],
+    proof: "New partnership is already generating earlier-than-expected requests for support.",
   },
 ] as const;
 
@@ -160,10 +176,36 @@ export function PartnersSection() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="pb-8 pl-[4.25rem] pr-6 md:pl-20 max-w-3xl">
+                    <div className="pb-8 pl-[4.25rem] pr-6 md:pl-20 max-w-4xl">
                       <p className="text-base text-muted-foreground leading-relaxed">
                         {p.description}
                       </p>
+                      <div className="mt-5 grid md:grid-cols-[1.4fr_1fr] gap-4">
+                        <div>
+                          <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
+                            OCR provides
+                          </div>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {p.services.map((service) => (
+                              <span
+                                key={service}
+                                className="rounded-full border border-border bg-card px-3 py-1 text-[11px] text-ink/75"
+                              >
+                                {service}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <div
+                          className="rounded-2xl px-4 py-3 text-sm leading-relaxed"
+                          style={{
+                            background: `color-mix(in oklab, ${p.c} 12%, var(--card))`,
+                            color: `color-mix(in oklab, ${p.c} 48%, var(--ink))`,
+                          }}
+                        >
+                          {p.proof}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

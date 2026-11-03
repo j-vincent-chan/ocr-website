@@ -1,5 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
+import { armName } from "@/components/site/arms";
 import {
   ArmEyebrow,
   PullQuote,
@@ -458,67 +459,116 @@ function CoordIcon({ variant, accent }: { variant: string; accent: string }) {
   );
 }
 
-/* ───────── BIOSPECIMEN PIPELINE — kept from previous version, accent-tuned ───────── */
+/* ───────── PIPELINES — biospecimen flow and the data flow that shadows it ───────── */
+type FlowNode = { t: string; d: string; c: string };
+
+const SPECIMEN_FLOW: FlowNode[] = [
+  { t: "Collect", d: "Consent + SOP-driven sample collection at the site.", c: "var(--coral)" },
+  { t: "Process", d: "Centrifuge, aliquot, label — chain-of-custody logged.", c: "var(--magenta)" },
+  { t: "Bank", d: "Biorepository integration: barcoded, temperature-monitored.", c: "var(--teal)" },
+  { t: "Ship", d: "Manifested, IATA-compliant shipping to downstream cores.", c: "var(--gold)" },
+  { t: "Assay", d: "Hand-off to single-cell, proteomics, sequencing partners.", c: "var(--lime)" },
+];
+
+const DATA_FLOW: FlowNode[] = [
+  { t: "Collect", d: "Clinical and sample metadata captured at the source, in REDCap or the study database.", c: "var(--coral)" },
+  { t: "De-identify", d: "PHI stripped or coded under the IRB-approved plan before anything leaves the clinic.", c: "var(--magenta)" },
+  { t: "Upload", d: "Secure transfer to the study's data environment — logged, versioned, and access-controlled.", c: "var(--teal)" },
+  { t: "Store", d: "Structured, backed-up storage linked to the specimen record by a shared ID.", c: "var(--gold)" },
+  { t: "QC & curate", d: "Range checks, missingness reports, and harmonized variables — in partnership with OCR data management.", c: "var(--lime)" },
+  { t: "QA", d: "Periodic audits against source so the dataset is ready for analysis and sharing.", c: "var(--teal)" },
+];
+
+function FlowStrip({ nodes, compact = false }: { nodes: FlowNode[]; compact?: boolean }) {
+  // Six compact nodes need more room than five, so the row layout kicks in at `lg`.
+  // Tailwind only emits classes it can read as literal strings — keep these spelled out.
+  const rowClass = compact ? "hidden lg:flex" : "hidden md:flex";
+  const listClass = compact ? "lg:hidden" : "md:hidden";
+  return (
+    <>
+      <div className={`${rowClass} items-stretch gap-2`}>
+        {nodes.map((n, i) => (
+          <div key={n.t} className="flex-1 flex items-stretch">
+            <div className={`flex-1 rounded-2xl border border-border bg-card relative ${compact ? "p-5" : "p-6"}`}>
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center font-display text-white text-sm mb-4"
+                style={{ background: n.c }}
+              >
+                0{i + 1}
+              </div>
+              <div className={`font-display text-ink ${compact ? "text-lg" : "text-xl"}`}>{n.t}</div>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{n.d}</p>
+            </div>
+            {i < nodes.length - 1 && (
+              <div className="flex items-center px-1 text-muted-foreground" aria-hidden>
+                →
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      <ol className={`${listClass} space-y-3`}>
+        {nodes.map((n, i) => (
+          <li key={n.t} className="rounded-2xl border border-border bg-card p-5 flex gap-4">
+            <div
+              className="w-10 h-10 rounded-xl flex items-center justify-center font-display text-white text-sm flex-none"
+              style={{ background: n.c }}
+            >
+              0{i + 1}
+            </div>
+            <div>
+              <div className="font-display text-lg text-ink">{n.t}</div>
+              <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{n.d}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </>
+  );
+}
+
 function Pipeline() {
-  const nodes = [
-    { t: "Collect", d: "Consent + SOP-driven sample collection at the site.", c: "var(--coral)" },
-    { t: "Process", d: "Centrifuge, aliquot, label — chain-of-custody logged.", c: "var(--magenta)" },
-    { t: "Bank", d: "Biorepository integration: barcoded, temperature-monitored.", c: "var(--teal)" },
-    { t: "Ship", d: "Manifested, IATA-compliant shipping to downstream cores.", c: "var(--gold)" },
-    { t: "Assay", d: "Hand-off to single-cell, proteomics, sequencing partners.", c: "var(--lime)" },
-  ];
   return (
     <section className="py-28">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-10 items-end mb-14">
           <div className="lg:col-span-7">
-            <ArmEyebrow arm={ARM} label="Biospecimen pipeline" accent={T} />
+            <ArmEyebrow arm={ARM} label="Specimen & data pipelines" accent={T} />
             <h2 className="mt-6 font-display text-5xl text-ink leading-[0.98]">
-              Every sample,<br />accounted for.
+              Every sample — and<br />every data point — accounted for.
             </h2>
           </div>
           <p className="lg:col-span-4 lg:col-start-9 text-muted-foreground leading-relaxed">
             From the clinic to the assay, our lifecycle keeps science moving
-            and provenance intact.
+            and provenance intact. Alongside every specimen runs a data
+            pipeline we build and maintain with the same care.
           </p>
         </div>
-        <div className="hidden md:flex items-stretch gap-2">
-          {nodes.map((n, i) => (
-            <div key={n.t} className="flex-1 flex items-stretch">
-              <div className="flex-1 rounded-2xl border border-border bg-card p-6 relative">
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center font-display text-white text-sm mb-4"
-                  style={{ background: n.c }}
-                >
-                  0{i + 1}
-                </div>
-                <div className="font-display text-xl text-ink">{n.t}</div>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{n.d}</p>
-              </div>
-              {i < nodes.length - 1 && (
-                <div className="flex items-center px-1 text-muted-foreground" aria-hidden>
-                  →
-                </div>
-              )}
-            </div>
-          ))}
+
+        <div className="flex items-center gap-4 mb-5">
+          <span className="text-[11px] uppercase tracking-[0.24em] font-medium text-ink/70">
+            Biospecimen flow
+          </span>
+          <span className="h-px flex-1 bg-border" />
         </div>
-        <ol className="md:hidden space-y-3">
-          {nodes.map((n, i) => (
-            <li key={n.t} className="rounded-2xl border border-border bg-card p-5 flex gap-4">
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center font-display text-white text-sm flex-none"
-                style={{ background: n.c }}
-              >
-                0{i + 1}
-              </div>
-              <div>
-                <div className="font-display text-lg text-ink">{n.t}</div>
-                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{n.d}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+        <FlowStrip nodes={SPECIMEN_FLOW} />
+
+        <div className="flex items-center gap-4 mt-14 mb-5">
+          <span className="text-[11px] uppercase tracking-[0.24em] font-medium text-ink/70">
+            Data flow
+          </span>
+          <span className="h-px flex-1 bg-border" />
+          <span className="text-xs text-muted-foreground">
+            Built with{" "}
+            <Link
+              to="/services/data-management"
+              className="underline underline-offset-4 hover:text-ink transition"
+            >
+              OCR data management
+            </Link>
+          </span>
+        </div>
+        <FlowStrip nodes={DATA_FLOW} compact />
       </div>
     </section>
   );
@@ -640,7 +690,7 @@ function Bench() {
           <div className="lg:col-span-6">
             <div className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-white/60 font-medium">
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: T }} aria-hidden />
-              <span>Arm {ARM}</span>
+              <span>{armName(ARM)}</span>
               <span className="opacity-40">·</span>
               <span className="text-white/85">The bench</span>
             </div>
@@ -750,7 +800,7 @@ function PMPage() {
           </>
         }
         subtitle="Tell us where you are — pre-award, in startup, or mid-flight — and we'll show you exactly where our team can plug in."
-        email="pm@ocr.ucsf.edu"
+        email="ocr@ucsf.edu"
         primaryLabel="Scope a project →"
       />
     </SiteShell>

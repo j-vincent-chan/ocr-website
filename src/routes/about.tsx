@@ -30,7 +30,7 @@ function Cover() {
           </div>
           <div>
             <div>Volume</div>
-            <div className="text-ink mt-1">2023 — 2026</div>
+            <div className="text-ink mt-1">2022 — 2026</div>
           </div>
         </aside>
         <div className="lg:col-span-10">
@@ -44,10 +44,62 @@ function Cover() {
           <p className="mt-10 max-w-3xl text-xl text-muted-foreground leading-relaxed">
             OCR began as an experiment in proximity: a research office embedded
             with investigators, staffed by scientists and science allies, and
-            entrusted to build whatever the work required. Three years and eight
-            partner institutes later, the experiment is the model.
+            entrusted to build whatever the work required. Four years and eight
+            partners later, the experiment is the model.
           </p>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* The short version — for readers who want the shape of the story before the story */
+function AtAGlance() {
+  const beats = [
+    { y: "2022", t: "OCR launches, seeded by the Bakar ImmunoX Initiative, to help basic researchers reach the clinic." },
+    { y: "2024", t: "A research development arm is added. UCSF Health engages OCR to run a new clinical research unit." },
+    { y: "2025", t: "IGHS and the Diabetes Center adopt the OCR model as institute partners." },
+    { y: "2026", t: "AI Tools and Community Management complete OCR's five-arm model. OCR takes on the Pulmonary clinical research units." },
+  ];
+  const facts = [
+    { n: "5", l: "Service arms" },
+    { n: "8", l: "Partners" },
+    { n: "120+", l: "Investigators served" },
+  ];
+  return (
+    <section className="py-20 border-b border-ink/10">
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-start">
+        <div className="lg:col-span-4">
+          <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
+            At a glance
+          </span>
+          <h2 className="mt-4 font-display text-4xl text-ink leading-[1.02]">
+            The short version.
+          </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            An office that started with one mission and grew an arm each time
+            investigators needed something that didn't yet exist. The full
+            story follows.
+          </p>
+          <dl className="mt-8 grid grid-cols-3 gap-4">
+            {facts.map((f) => (
+              <div key={f.l} className="border-l-2 border-coral pl-4">
+                <dd className="font-display text-3xl text-ink leading-none">{f.n}</dd>
+                <dt className="text-[11px] text-muted-foreground uppercase tracking-widest mt-2 leading-snug">
+                  {f.l}
+                </dt>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <ol className="lg:col-span-7 lg:col-start-6 divide-y divide-border">
+          {beats.map((b) => (
+            <li key={b.y} className="grid grid-cols-[5rem_1fr] gap-6 py-5 first:pt-0 last:pb-0">
+              <span className="font-display text-2xl text-ink tabular-nums leading-tight">{b.y}</span>
+              <p className="text-muted-foreground leading-relaxed">{b.t}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
@@ -71,7 +123,7 @@ function OriginPartOne() {
 
         <div className="mt-12 space-y-6 text-[17px] leading-[1.75] text-ink/85">
           <p className="font-display text-xl text-ink/90 leading-snug">
-            OCR did not begin as a four-arm research office.
+            OCR did not begin as a five-arm research office.
           </p>
           <p>
             It began with a very practical problem: ImmunoX investigators were moving closer to
@@ -99,7 +151,7 @@ function OriginPartOne() {
             tissue: people who could shape early concepts, build grant narratives, coordinate
             collaborators, and help proposals become competitive before the deadline panic set in.
           </p>
-          <p>So in January 2024, OCR launched its Research Development arm.</p>
+          <p>So in 2024, OCR launched its Research Development arm.</p>
           <p>
             That changed the trajectory. OCR was no longer just helping research reach the clinic.
             It was helping ideas become programs.
@@ -146,11 +198,12 @@ function OriginPartTwo() {
           <p>By May 2026, the pattern was impossible to miss.</p>
           <p>OCR had become more than a service office. It had become a platform.</p>
           <p>
-            Research Development and Grantwriting. Clinical Coordination and Project Management.
+            Research Development. Clinical Coordination and Project Management.
             Data Management and Sharing. Research Resources and AI Tools.
+            Community Management.
           </p>
           <p>
-            Four service arms, each added because a real bottleneck appeared and OCR decided to
+            Five service arms, each added because a real bottleneck appeared and OCR decided to
             build the thing that was missing.
           </p>
           <p>That is still the philosophy.</p>
@@ -162,7 +215,7 @@ function OriginPartTwo() {
           </p>
           <p>Then we build around it.</p>
           <p>
-            Five years and four partner institutes later, OCR is still the same experiment at
+            Four years and eight partners later, OCR is still the same experiment at
             heart: a research office embedded close enough to the science to understand what
             matters, nimble enough to adapt as needs change, and practical enough to turn ambition
             into something fundable, executable, and durable.
@@ -318,7 +371,7 @@ function Timeline() {
 
   const groups = [
     {
-      year: "2023",
+      year: "2022",
       milestones: [
         {
           id: "launch",
@@ -333,8 +386,8 @@ function Timeline() {
       milestones: [
         {
           id: "rd-arm",
-          t: "OCR launches its Research Development & Grantwriting arm",
-          d: "Grantwriting becomes a formal service arm for investigators across UCSF research communities.",
+          t: "OCR launches its Research Development arm",
+          d: "Research development becomes a formal service arm — helping investigators across UCSF research communities turn ideas into competitive proposals.",
           c: "var(--teal)",
         },
         {
@@ -373,9 +426,15 @@ function Timeline() {
         },
         {
           id: "ai-tools",
-          t: "AI Tools completes the fourth arm",
-          d: "Research Resources & AI Tools launches, completing OCR's four coordinated service arms, built in-house for the work we wished someone else had already done.",
+          t: "AI Tools expands the fourth arm",
+          d: "Research Resources & AI Tools launches, adding in-house workflow experiments and software for the work we wished someone else had already done.",
           c: "oklch(0.75 0.14 50)",
+        },
+        {
+          id: "community-management",
+          t: "Community Management becomes the fifth arm",
+          d: "OCR formalizes convenings, communications, outreach, and community intelligence as a service arm for partner research communities.",
+          c: "var(--lime)",
         },
       ],
     },
@@ -435,7 +494,7 @@ function PullQuote() {
 function Principles() {
   const items = [
     { n: "01", t: "Closer is better", d: "Embedded staff outperform shared services. We invest in proximity.", c: "var(--coral)" },
-    { n: "02", t: "Scientists serve scientists", d: "Our team holds PhDs across immunology, endocrinology, global health, and computation.", c: "var(--teal)" },
+    { n: "02", t: "Scientists serve scientists", d: "Our team comes from the bench, the clinic, and the field — immunology, endocrinology, global health, computation. We speak the language before we touch the page.", c: "var(--teal)" },
     { n: "03", t: "Build, don't buy", d: "When existing tools don't fit, we build our own — and share what we learn.", c: "var(--magenta)" },
     { n: "04", t: "Measure what matters", d: "Funded dollars, hours saved, PI satisfaction. We publish our scorecard.", c: "var(--gold)" },
   ];
@@ -487,6 +546,7 @@ function AboutPage() {
     <SiteShell>
       <Breadcrumb trail={[{ label: "About" }]} />
       <Cover />
+      <AtAGlance />
       <OriginPartOne />
       <Timeline />
       <OriginPartTwo />

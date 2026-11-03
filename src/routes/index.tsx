@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "The strategic hub of ImmunoX and the Parnassus Institutes at UCSF — research development, project management, data sharing, and AI workflow innovation.",
+          "The strategic hub of ImmunoX and the Parnassus Institutes at UCSF — research development, project management, data sharing, AI workflow innovation, and community management.",
       },
       { property: "og:title", content: "Office of Collaborative Research — UCSF" },
       {
@@ -73,18 +73,18 @@ function Hero() {
 
         <div className="mt-12 grid lg:grid-cols-12 gap-10 items-end">
           <p className="lg:col-span-5 text-lg md:text-xl text-muted-foreground leading-relaxed">
-            We work in the space between inspiration and impact, helping
+            OCR works in the space between inspiration and impact, helping
             researchers turn ambitious ideas into fundable, executable programs
             that carry discovery forward.
           </p>
 
           <div className="lg:col-span-7 lg:col-start-6 flex flex-wrap gap-3">
-            <Link
-              to="/services/research-development"
+            <a
+              href="#services"
               className="inline-flex items-center gap-2 rounded-full bg-ink text-white px-6 py-3.5 text-sm font-medium hover:bg-ink/90 transition shadow-lift"
             >
-              Explore our services <span aria-hidden>→</span>
-            </Link>
+              Explore our services <span aria-hidden>↓</span>
+            </a>
             <Link
               to="/about"
               className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-card px-6 py-3.5 text-sm font-medium hover:bg-secondary transition"
@@ -101,26 +101,28 @@ function Hero() {
   );
 }
 
-/* ─────────── FOUR ARMS: oversized editorial, not a card grid ─────────── */
+/* ─────────── FIVE ARMS: oversized editorial, not a card grid ─────────── */
 function ServicesEditorial() {
   const blurbs: Record<string, string> = {
     "/services/research-development":
-      "PhD-trained grantwriters who help sharpen your research narrative and position proposals for increasingly competitive funding opportunities.",
+      "Research development strategists who help you find the right funding opportunity, sharpen the rationale and promise of the work, and position proposals to compete.",
     "/services/project-management":
       "Operational backbone for complex projects and programs: study startup, regulatory compliance, clinical research coordination, and biospecimen pipelines.",
     "/services/data-management":
       "Databases, metadata standards, and NIH-compliant Data Management & Sharing plans, built with you from day one.",
     "/services/ai-tools":
       "A growing set of research resources and in-house developed AI tools for research communities.",
+    "/services/community-management":
+      "Convenings, communications, and outreach that help research communities cohere, grow, and turn shared energy into collaborations.",
   };
 
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section id="services" className="py-32 relative overflow-hidden scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-10 items-end mb-20">
           <div className="lg:col-span-7">
             <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
-              Four service arms
+              Five service arms
             </span>
             <div className="mt-4 flex items-start gap-5 md:gap-7">
               <SunburstLogo className="w-14 h-14 md:w-[4.5rem] md:h-[4.5rem] shrink-0 mt-1 md:mt-2 animate-[spin_60s_linear_infinite]" />
@@ -239,14 +241,17 @@ function Approach() {
   );
 }
 
+/*
+ * Section order follows the team's launch review: lead with how OCR works
+ * (the operating principle), then the five arms, then the ask — with partners
+ * as proof and the dispatch as the running record for returning visitors.
+ */
 function HomePage() {
   return (
     <SiteShell>
       <Hero />
-      <ServicesEditorial />
-      <OcrDispatch />
       <Approach />
-      <PartnersSection />
+      <ServicesEditorial />
       <CTA
         eyebrow="Work with us"
         title={
@@ -259,6 +264,8 @@ function HomePage() {
         subtitle="Whether you have a deadline next month or a five-year vision, the earlier we engage, the more value we can add."
         email="ocr@ucsf.edu"
       />
+      <PartnersSection />
+      <OcrDispatch />
     </SiteShell>
   );
 }

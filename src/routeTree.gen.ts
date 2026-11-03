@@ -17,6 +17,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesResearchDevelopmentRouteImport } from './routes/services.research-development'
 import { Route as ServicesProjectManagementRouteImport } from './routes/services.project-management'
 import { Route as ServicesDataManagementRouteImport } from './routes/services.data-management'
+import { Route as ServicesCommunityManagementRouteImport } from './routes/services.community-management'
 import { Route as ServicesAiToolsRouteImport } from './routes/services.ai-tools'
 
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -61,6 +62,12 @@ const ServicesDataManagementRoute = ServicesDataManagementRouteImport.update({
   path: '/services/data-management',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesCommunityManagementRoute =
+  ServicesCommunityManagementRouteImport.update({
+    id: '/services/community-management',
+    path: '/services/community-management',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesAiToolsRoute = ServicesAiToolsRouteImport.update({
   id: '/services/ai-tools',
   path: '/services/ai-tools',
@@ -74,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/people': typeof PeopleRoute
   '/projects': typeof ProjectsRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
+  '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
   '/services/research-development': typeof ServicesResearchDevelopmentRoute
@@ -85,6 +93,7 @@ export interface FileRoutesByTo {
   '/people': typeof PeopleRoute
   '/projects': typeof ProjectsRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
+  '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
   '/services/research-development': typeof ServicesResearchDevelopmentRoute
@@ -97,6 +106,7 @@ export interface FileRoutesById {
   '/people': typeof PeopleRoute
   '/projects': typeof ProjectsRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
+  '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
   '/services/research-development': typeof ServicesResearchDevelopmentRoute
@@ -110,6 +120,7 @@ export interface FileRouteTypes {
     | '/people'
     | '/projects'
     | '/services/ai-tools'
+    | '/services/community-management'
     | '/services/data-management'
     | '/services/project-management'
     | '/services/research-development'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/people'
     | '/projects'
     | '/services/ai-tools'
+    | '/services/community-management'
     | '/services/data-management'
     | '/services/project-management'
     | '/services/research-development'
@@ -132,6 +144,7 @@ export interface FileRouteTypes {
     | '/people'
     | '/projects'
     | '/services/ai-tools'
+    | '/services/community-management'
     | '/services/data-management'
     | '/services/project-management'
     | '/services/research-development'
@@ -144,6 +157,7 @@ export interface RootRouteChildren {
   PeopleRoute: typeof PeopleRoute
   ProjectsRoute: typeof ProjectsRoute
   ServicesAiToolsRoute: typeof ServicesAiToolsRoute
+  ServicesCommunityManagementRoute: typeof ServicesCommunityManagementRoute
   ServicesDataManagementRoute: typeof ServicesDataManagementRoute
   ServicesProjectManagementRoute: typeof ServicesProjectManagementRoute
   ServicesResearchDevelopmentRoute: typeof ServicesResearchDevelopmentRoute
@@ -207,6 +221,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesDataManagementRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/community-management': {
+      id: '/services/community-management'
+      path: '/services/community-management'
+      fullPath: '/services/community-management'
+      preLoaderRoute: typeof ServicesCommunityManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/ai-tools': {
       id: '/services/ai-tools'
       path: '/services/ai-tools'
@@ -224,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   PeopleRoute: PeopleRoute,
   ProjectsRoute: ProjectsRoute,
   ServicesAiToolsRoute: ServicesAiToolsRoute,
+  ServicesCommunityManagementRoute: ServicesCommunityManagementRoute,
   ServicesDataManagementRoute: ServicesDataManagementRoute,
   ServicesProjectManagementRoute: ServicesProjectManagementRoute,
   ServicesResearchDevelopmentRoute: ServicesResearchDevelopmentRoute,

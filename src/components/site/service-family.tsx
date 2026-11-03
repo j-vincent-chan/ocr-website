@@ -1,17 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import { SERVICES } from "./chrome";
+import { armName } from "./arms";
 
 const ARM_BY_PATH: Record<string, string> = {
   "/services/research-development": "01",
   "/services/project-management": "02",
   "/services/data-management": "03",
   "/services/ai-tools": "04",
+  "/services/community-management": "05",
 };
 
 /**
- * Family signature appearing across all four service pages.
- * - Same eyebrow grammar ("Arm 0N · …")
- * - Same micro-rhythm (label, big display number, accent dot)
+ * Family signature appearing across all service pages.
+ * - Same eyebrow grammar ("Research development · …")
+ * - Same micro-rhythm (arm name, section label, accent dot)
  * Use at the top of distinctive sections to telegraph "you're inside the OCR system".
  */
 export function ArmEyebrow({
@@ -30,7 +32,7 @@ export function ArmEyebrow({
         style={{ background: accent }}
         aria-hidden
       />
-      <span>Arm {arm}</span>
+      <span>{armName(arm)}</span>
       <span className="opacity-40">·</span>
       <span className="text-ink/80">{label}</span>
     </div>
@@ -46,18 +48,18 @@ export function ServiceCrossNav({ currentPath }: { currentPath: string }) {
         <div className="flex items-end justify-between flex-wrap gap-6 mb-10">
           <div>
             <div className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground font-medium">
-              The four arms
+              The five arms
             </div>
             <h2 className="mt-3 font-display text-3xl md:text-4xl text-ink leading-[1.05] max-w-xl">
-              One office. Four ways<br className="hidden md:block" /> we plug in.
+              One office. Five ways<br className="hidden md:block" /> to support your research.
             </h2>
           </div>
           <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
-            Most programs touch more than one arm. Engage one, and the others
-            are a doorway away.
+            Most projects draw on more than one arm. Start with one, and the
+            others are a conversation away.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {others.map((s) => {
             const arm = ARM_BY_PATH[s.to] ?? "··";
             return (
@@ -72,7 +74,7 @@ export function ServiceCrossNav({ currentPath }: { currentPath: string }) {
                   style={{ background: s.accent }}
                 />
                 <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-                  <span>Arm {arm}</span>
+                  <span className="font-display text-base normal-case tracking-normal text-muted-foreground/70">{arm}</span>
                   <span
                     className="w-1.5 h-1.5 rounded-full"
                     style={{ background: s.accent }}
