@@ -392,7 +392,7 @@ function Timeline() {
         },
         {
           id: "ucsf-health",
-          t: "UCSF Health Affiliate Network partners with OCR to create a new clinical research unit",
+          t: "UCSF Health Network partners with OCR to create a new clinical research unit",
           d: "UCSF Health engages OCR to manage the Clinical Research Unit at Stanyan and Hyde.",
           c: "var(--magenta)",
         },

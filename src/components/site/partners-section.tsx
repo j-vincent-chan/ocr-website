@@ -30,11 +30,11 @@ const PARTNERS = [
     proof: "Expanding toward cohort-based grant writing training and large collaborative awards.",
   },
   {
-    n: "UCSF Health Affiliates Network",
+    n: "UCSF Health Network",
     c: "oklch(0.65 0.15 265)",
     since: 2024,
     description:
-      "OCR works with the Affiliates Network to extend our playbook to aligned health system partners — helping bridge academic science, clinical operations, and shared funding opportunities.",
+      "OCR works with the UCSF Health Network to extend our playbook to aligned health system partners — helping bridge academic science, clinical operations, and shared funding opportunities.",
     services: ["Clinical research operations", "CRC capacity", "Protocol startup"],
     proof: "On-site CRC pilot connects affiliate hospitals to UCSF research infrastructure.",
   },
@@ -57,13 +57,22 @@ const PARTNERS = [
     proof: "New partner framed around nursing-led implementation and multi-site research.",
   },
   {
-    n: "Division of Pulmonary, Critical Care, Allergy, and Sleep Medicine",
+    n: "Program for Bronchiectasis and Pulmonary NTM",
     c: "var(--lime)",
     since: 2026,
     description:
-      "OCR supports pulmonary and critical care investigators with proposal strategy, clinical research coordination, and data infrastructure for bench-to-bedside programs across the division.",
+      "OCR supports the program's investigators with clinical research unit management, study coordination, and data infrastructure for research on bronchiectasis and nontuberculous mycobacterial lung disease.",
     services: ["CRU management", "Clinical coordination", "Data infrastructure"],
-    proof: "Interstitial Lung Disease and Bronchiectasis CRUs brought into the OCR model.",
+    proof: "Bronchiectasis CRU brought into the OCR model.",
+  },
+  {
+    n: "Mechanisms of Neurological Disorders",
+    c: "oklch(0.6 0.13 160)",
+    since: 2026,
+    description:
+      "OCR provides research development support to Mechanisms of Neurological Disorders investigators — shaping proposal strategy and coordinating grant submissions for research into the biology of neurological disease.",
+    services: ["Research development"],
+    proof: "Research development capacity extended to neuroscience investigators.",
   },
   {
     n: "Institute for Health & Aging",
@@ -81,8 +90,9 @@ function sortPartners(partners: typeof PARTNERS) {
     if (a.since !== b.since) return a.since - b.since;
     const order2026 = [
       "School of Nursing",
-      "Division of Pulmonary, Critical Care, Allergy, and Sleep Medicine",
+      "Program for Bronchiectasis and Pulmonary NTM",
       "Institute for Health & Aging",
+      "Mechanisms of Neurological Disorders",
     ];
     const ai = order2026.indexOf(a.n);
     const bi = order2026.indexOf(b.n);
