@@ -152,7 +152,13 @@ export const record = {
 
 export type OcrProgram = "Research plan review" | "Large grant development program";
 
-/** award: USD total. TODO: fill all eight — the headline total renders only when every award is known. */
+/**
+ * award: USD over the life of the current funding period, from NIH RePORTER (Nov 2026).
+ * Awarded years are summed as reported; years not yet awarded are projected at the most
+ * recent annual award through the project end date. RePORTER does not publish out-year
+ * commitments, so replace with Notice of Award totals if OCR has them.
+ * The headline total renders only when every award is known.
+ */
 export const grants: {
   mech: string;
   kind: string;
@@ -169,7 +175,7 @@ export const grants: {
     title: "FAST-TB: Accelerating TB regimen development",
     pis: "Payam Nahid & Radojka Savic",
     url: "https://reporter.nih.gov/project-details/11412163",
-    award: null,
+    award: 17_496_830, // 5 budget years × $3,499,366 (FY26 award)
   },
   {
     mech: "P30",
@@ -178,7 +184,7 @@ export const grants: {
     title: "UCSF Type 1 Diabetes Research Center",
     pis: "Mark Anderson & Gregory Ku",
     url: "https://reporter.nih.gov/project-details/11121266",
-    award: null,
+    award: 8_395_461, // FY25 $1,835,461 + FY26 $1,640,000, plus 3 years at $1,640,000
   },
   {
     mech: "P30",
@@ -187,7 +193,7 @@ export const grants: {
     title: "UCSF Nutrition Obesity Research Center",
     pis: "Christian Vaisse",
     url: "https://reporter.nih.gov/project-details/11350322",
-    award: null,
+    award: 6_150_000, // 5 budget years × $1,230,000 (FY26 award)
   },
   {
     mech: "R01",
@@ -196,7 +202,7 @@ export const grants: {
     title: "Predicting and preventing drug metabolism by the human gut microbiome",
     pis: "Peter Turnbaugh",
     url: "https://reporter.nih.gov/project-details/11447313",
-    award: null,
+    award: 3_279_992, // 4 budget years × $819,998 (FY26 award)
   },
   {
     mech: "R01",
@@ -205,7 +211,7 @@ export const grants: {
     title: "Uncovering the fundamental biology of neonatal Tregs in skin",
     pis: "Tiffany Scharschmidt & Michael Rosenblum",
     url: "https://reporter.nih.gov/project-details/11319891",
-    award: null,
+    award: 2_869_330, // 5 budget years × $573,866 (FY26 award)
   },
   {
     mech: "R01",
@@ -214,7 +220,7 @@ export const grants: {
     title: "Biophysical constraints on antibody affinity maturation to SARS-CoV-2",
     pis: "Angela Phillips",
     url: "https://reporter.nih.gov/project-details/11293150",
-    award: null,
+    award: 4_078_810, // 5 budget years × $815,762 (FY26 award)
   },
   {
     mech: "K24",
@@ -223,7 +229,7 @@ export const grants: {
     title: "Mentoring in infectious disease and global health clinical research",
     pis: "Michelle Hsiang",
     url: "https://reporter.nih.gov/project-details/11452101",
-    award: null,
+    award: 1_038_440, // 5 budget years × $207,688 (FY26 award)
   },
   {
     mech: "R01",
@@ -232,7 +238,7 @@ export const grants: {
     title: "Endogenous retroviruses in autoimmunity",
     pis: "Judith Ashouri",
     url: "https://reporter.nih.gov/project-details/11130765",
-    award: null,
+    award: 2_544_228, // FY25 $527,760 + FY26 $504,117, plus 3 years at $504,117
   },
 ];
 

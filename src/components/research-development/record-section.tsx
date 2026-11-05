@@ -33,8 +33,7 @@ function StatValue({ value, smallClass }: { value: string; smallClass: string })
 }
 
 export function RecordSection() {
-  // TODO (OCR open item 1): supply the eight award amounts in src/data/research-development.ts.
-  // The headline total is computed from grants[].award and renders once every award is non-null.
+  // The headline total is computed from grants[].award; a `$XXM` placeholder shows if any is null.
   const total = awardTotal();
   const money = total.complete ? splitMoney(formatMoney(total.total)) : null;
   const featured = grants.slice(0, FEATURED_GRANTS);
