@@ -144,10 +144,77 @@ export const SERVICES = [
   },
 ] as const;
 
-export function Header() {
+export type NavTone = "light" | "dark";
+
+/**
+ * Adaptive nav tone: the sticky header turns dark while it sits over a section marked
+ * `data-tone="dark"` (e.g. a dark hero, booking block, or the footer) and light otherwise.
+ * An IntersectionObserver watches a 1px band at the header's midline (once it is stuck to
+ * the top). When nothing crosses that band — at the very top of the page, before the header
+ * sticks — we fall back to the tone of the section touching the header's bottom edge.
+ */
+function useNavTone(initial: NavTone): NavTone {
+  const [tone, setTone] = useState<NavTone>(initial);
+
+  useEffect(() => {
+    const header = document.querySelector<HTMLElement>("[data-site-header]");
+    if (!header || typeof IntersectionObserver === "undefined") return;
+
+    let observer: IntersectionObserver | null = null;
+    const crossing = new Set<Element>();
+
+    const compute = () => {
+      if (crossing.size > 0) {
+        setTone("dark");
+        return;
+      }
+      const bottom = header.getBoundingClientRect().bottom;
+      const touching = Array.from(document.querySelectorAll<HTMLElement>("[data-tone]")).find((el) => {
+        const r = el.getBoundingClientRect();
+        return r.top <= bottom + 1 && r.bottom > bottom;
+      });
+      setTone(touching?.dataset.tone === "dark" ? "dark" : "light");
+    };
+
+    const connect = () => {
+      observer?.disconnect();
+      crossing.clear();
+      const midline = Math.round(header.getBoundingClientRect().height / 2);
+      const below = Math.max(0, window.innerHeight - midline - 1);
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) crossing.add(entry.target);
+            else crossing.delete(entry.target);
+          }
+          compute();
+        },
+        { rootMargin: `-${midline}px 0px -${below}px 0px`, threshold: 0 },
+      );
+      document.querySelectorAll('[data-tone="dark"]').forEach((el) => observer?.observe(el));
+      compute();
+    };
+
+    connect();
+    window.addEventListener("resize", connect);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("resize", connect);
+    };
+  }, []);
+
+  return tone;
+}
+
+export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
   const isServices = pathname.startsWith("/services");
+  const dark = useNavTone(initialTone) === "dark";
+
+  const navLink = "px-4 py-2 rounded-full font-medium transition-colors";
+  const navIdle = dark ? "hover:bg-white/10" : "hover:bg-secondary";
+  const navActive = dark ? "bg-white/10" : "bg-secondary";
 
   return (
     <>
@@ -162,20 +229,25 @@ export function Header() {
         </div>
       </div>
 
-      <header className="sticky top-0 z-40 bg-background/85 backdrop-blur-md border-b border-border">
+      <header
+        data-site-header
+        className={`sticky top-0 z-40 backdrop-blur-md border-b transition-colors duration-300 ${
+          dark ? "bg-ink/[0.88] border-white/10 text-white" : "bg-background/85 border-border text-ink"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
             <SunburstLogo className="w-11 h-11" />
-            <span className="font-display text-[15px] leading-tight text-ink">
+            <span className="font-display text-[15px] leading-tight transition-colors duration-300">
               Office of<br />Collaborative Research
             </span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1 text-[15px] text-ink">
+          <nav className="hidden lg:flex items-center gap-1 text-[15px]">
             <Link
               to="/about"
-              className="px-4 py-2 rounded-full hover:bg-secondary font-medium"
-              activeProps={{ className: "px-4 py-2 rounded-full bg-secondary font-medium" }}
+              className={`${navLink} ${navIdle}`}
+              activeProps={{ className: navActive }}
             >
               About
             </Link>
@@ -186,9 +258,7 @@ export function Header() {
               onMouseLeave={() => setOpen(false)}
             >
               <button
-                className={`px-4 py-2 rounded-full flex items-center gap-1.5 font-medium ${
-                  isServices ? "bg-secondary" : "hover:bg-secondary"
-                }`}
+                className={`${navLink} flex items-center gap-1.5 ${isServices ? navActive : navIdle}`}
               >
                 Services
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -228,22 +298,22 @@ export function Header() {
 
             <Link
               to="/people"
-              className="px-4 py-2 rounded-full hover:bg-secondary font-medium"
-              activeProps={{ className: "px-4 py-2 rounded-full bg-secondary font-medium" }}
+              className={`${navLink} ${navIdle}`}
+              activeProps={{ className: navActive }}
             >
               People
             </Link>
             <Link
               to="/projects"
-              className="px-4 py-2 rounded-full hover:bg-secondary font-medium"
-              activeProps={{ className: "px-4 py-2 rounded-full bg-secondary font-medium" }}
+              className={`${navLink} ${navIdle}`}
+              activeProps={{ className: navActive }}
             >
               Programs & Projects
             </Link>
             <Link
               to="/projects"
               hash="funding"
-              className="px-4 py-2 rounded-full hover:bg-secondary font-medium"
+              className={`${navLink} ${navIdle}`}
             >
               Funding
             </Link>
@@ -251,7 +321,9 @@ export function Header() {
 
           <Link
             to="/contact"
-            className="hidden md:inline-flex items-center gap-2 rounded-full bg-ink text-white px-5 py-2.5 text-sm font-medium hover:bg-ink/90 transition"
+            className={`hidden md:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ${
+              dark ? "bg-white text-ink hover:bg-cream" : "bg-ink text-white hover:bg-ink/90"
+            }`}
           >
             Get in touch
             <span aria-hidden>→</span>
@@ -338,7 +410,7 @@ export function CTA({
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-white/70 pt-20 pb-10 border-t border-white/10">
+    <footer data-tone="dark" className="bg-ink text-white/70 pt-20 pb-10 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-12 gap-10 pb-14 border-b border-white/10">
           <div className="md:col-span-5">
@@ -400,10 +472,17 @@ export function Footer() {
   );
 }
 
-export function SiteShell({ children }: { children: React.ReactNode }) {
+export function SiteShell({
+  children,
+  navTone = "light",
+}: {
+  children: React.ReactNode;
+  /** Tone the sticky nav renders with before scrolling (use "dark" when the page opens on a dark hero). */
+  navTone?: NavTone;
+}) {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Header initialTone={navTone} />
       {children}
       <Footer />
     </div>
