@@ -9,30 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ProjectsRouteImport } from './routes/projects'
-import { Route as PeopleRouteImport } from './routes/people'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicesResearchDevelopmentRouteImport } from './routes/services.research-development'
-import { Route as ServicesProjectManagementRouteImport } from './routes/services.project-management'
-import { Route as ServicesDataManagementRouteImport } from './routes/services.data-management'
-import { Route as ServicesCommunityManagementRouteImport } from './routes/services.community-management'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as PeopleRouteImport } from './routes/people'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ServicesAiToolsRouteImport } from './routes/services.ai-tools'
+import { Route as ServicesCommunityManagementRouteImport } from './routes/services.community-management'
+import { Route as ServicesDataManagementRouteImport } from './routes/services.data-management'
+import { Route as ServicesProjectManagementRouteImport } from './routes/services.project-management'
+import { Route as ServicesResearchDevelopmentRouteImport } from './routes/services.research-development'
 
-const ProjectsRoute = ProjectsRouteImport.update({
-  id: '/projects',
-  path: '/projects',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PeopleRoute = PeopleRouteImport.update({
-  id: '/people',
-  path: '/people',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -40,26 +30,24 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesResearchDevelopmentRoute =
-  ServicesResearchDevelopmentRouteImport.update({
-    id: '/services/research-development',
-    path: '/services/research-development',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ServicesProjectManagementRoute =
-  ServicesProjectManagementRouteImport.update({
-    id: '/services/project-management',
-    path: '/services/project-management',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ServicesDataManagementRoute = ServicesDataManagementRouteImport.update({
-  id: '/services/data-management',
-  path: '/services/data-management',
+const PeopleRoute = PeopleRouteImport.update({
+  id: '/people',
+  path: '/people',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesAiToolsRoute = ServicesAiToolsRouteImport.update({
+  id: '/services/ai-tools',
+  path: '/services/ai-tools',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesCommunityManagementRoute =
@@ -68,11 +56,23 @@ const ServicesCommunityManagementRoute =
     path: '/services/community-management',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ServicesAiToolsRoute = ServicesAiToolsRouteImport.update({
-  id: '/services/ai-tools',
-  path: '/services/ai-tools',
+const ServicesDataManagementRoute = ServicesDataManagementRouteImport.update({
+  id: '/services/data-management',
+  path: '/services/data-management',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesProjectManagementRoute =
+  ServicesProjectManagementRouteImport.update({
+    id: '/services/project-management',
+    path: '/services/project-management',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesResearchDevelopmentRoute =
+  ServicesResearchDevelopmentRouteImport.update({
+    id: '/services/research-development',
+    path: '/services/research-development',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -165,25 +165,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/projects': {
-      id: '/projects'
-      path: '/projects'
-      fullPath: '/projects'
-      preLoaderRoute: typeof ProjectsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/people': {
-      id: '/people'
-      path: '/people'
-      fullPath: '/people'
-      preLoaderRoute: typeof PeopleRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -193,32 +179,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/research-development': {
-      id: '/services/research-development'
-      path: '/services/research-development'
-      fullPath: '/services/research-development'
-      preLoaderRoute: typeof ServicesResearchDevelopmentRouteImport
+    '/people': {
+      id: '/people'
+      path: '/people'
+      fullPath: '/people'
+      preLoaderRoute: typeof PeopleRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/project-management': {
-      id: '/services/project-management'
-      path: '/services/project-management'
-      fullPath: '/services/project-management'
-      preLoaderRoute: typeof ServicesProjectManagementRouteImport
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/data-management': {
-      id: '/services/data-management'
-      path: '/services/data-management'
-      fullPath: '/services/data-management'
-      preLoaderRoute: typeof ServicesDataManagementRouteImport
+    '/services/ai-tools': {
+      id: '/services/ai-tools'
+      path: '/services/ai-tools'
+      fullPath: '/services/ai-tools'
+      preLoaderRoute: typeof ServicesAiToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/community-management': {
@@ -228,11 +214,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesCommunityManagementRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/ai-tools': {
-      id: '/services/ai-tools'
-      path: '/services/ai-tools'
-      fullPath: '/services/ai-tools'
-      preLoaderRoute: typeof ServicesAiToolsRouteImport
+    '/services/data-management': {
+      id: '/services/data-management'
+      path: '/services/data-management'
+      fullPath: '/services/data-management'
+      preLoaderRoute: typeof ServicesDataManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/project-management': {
+      id: '/services/project-management'
+      path: '/services/project-management'
+      fullPath: '/services/project-management'
+      preLoaderRoute: typeof ServicesProjectManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/research-development': {
+      id: '/services/research-development'
+      path: '/services/research-development'
+      fullPath: '/services/research-development'
+      preLoaderRoute: typeof ServicesResearchDevelopmentRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

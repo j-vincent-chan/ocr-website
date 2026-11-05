@@ -114,32 +114,32 @@ export function SunburstLogo({ className = "" }: { className?: string }) {
 export const SERVICES = [
   {
     to: "/services/research-development",
-    name: "Research development",
-    desc: "Funding strategy, matchmaking & proposal development",
+    name: "Research Development",
+    desc: "Transforming research ideas into competitive funding proposals.",
     accent: "var(--coral)",
   },
   {
     to: "/services/project-management",
-    name: "Project management & clinical coordination",
-    desc: "Study startup, CRCs & operations",
+    name: "Project Management & Clinical Coordination",
+    desc: "Coordinating people, processes, and operations to execute research.",
     accent: "var(--teal)",
   },
   {
     to: "/services/data-management",
-    name: "Data management & sharing",
-    desc: "Databases, metadata & DMS plans",
+    name: "Data Management",
+    desc: "Organizing, managing, and sharing research data.",
     accent: "var(--magenta)",
   },
   {
     to: "/services/ai-tools",
-    name: "Research resources & AI tools",
-    desc: "Signal, Prospera & automation",
+    name: "Research Resources & AI Tools",
+    desc: "Developing innovative tools and resources to accelerate research.",
     accent: "var(--gold)",
   },
   {
     to: "/services/community-management",
-    name: "Community management",
-    desc: "Retreats, seminars & outreach",
+    name: "Community Management",
+    desc: "Building connections, fostering collaboration, and strengthening research communities.",
     accent: "var(--lime)",
   },
 ] as const;
@@ -196,7 +196,7 @@ export function Header() {
                 </svg>
               </button>
               {open && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[min(100vw-2rem,22rem)]">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[min(100vw-2rem,26rem)]">
                   <div className="bg-card rounded-2xl shadow-lift border border-border p-2 flex flex-col gap-0.5">
                     {SERVICES.map((s) => {
                       const active = pathname === s.to;

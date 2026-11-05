@@ -123,8 +123,8 @@ function ServiceArmHighlights() {
       arm: "Research development",
       title: "From hunch to fundable program",
       description:
-        "Strategic consults, Aims and LOI reviews, BOOST, Research Plan Reviews, and large-grant development programs help investigators turn promising ideas into competitive proposals.",
-      proof: "Highlighted work: Large Grant Development Program, RPR, BOOST",
+        "Strategic Consultations, Specific Aims Reviews, Scientific Peer Reviews, Research Plan Reviews, and large-grant development programs help investigators turn promising ideas into competitive proposals.",
+      proof: "Highlighted work: Large Grant Development Program, Research Plan Reviews, Scientific Peer Reviews",
       to: "/services/research-development",
       accent: "var(--coral)",
     },
@@ -161,10 +161,10 @@ function ServiceArmHighlights() {
     {
       n: "05",
       arm: "Community management",
-      title: "Retreats, seminars, newsletters, and outreach",
+      title: "Enrichment programs for centers and P30s",
       description:
-        "Community managers turn partner institutes into active networks: convening investigators, translating science, promoting opportunities, and keeping momentum visible.",
-      proof: "Highlighted work: retreats, lightning talks, Breaking Down Biology",
+        "Community Managers run the seminar series, retreats, pilot and travel awards, mentorship pipelines, communications, and annual reporting that center grants commit to.",
+      proof: "Running today: Diabetes Center NORC & DRC P30s, ImmunoX",
       to: "/services/community-management",
       accent: "var(--lime)",
     },

@@ -113,7 +113,7 @@ function ServicesEditorial() {
     "/services/ai-tools":
       "A growing set of research resources and in-house developed AI tools for research communities.",
     "/services/community-management":
-      "Convenings, communications, and outreach that help research communities cohere, grow, and turn shared energy into collaborations.",
+      "Community Manager effort, partial or embedded full-time, to run the enrichment programs centers and P30 grants promise: seminars, retreats, pilot and travel awards, mentorship, communications, and reporting.",
   };
 
   return (

@@ -433,7 +433,7 @@ function Timeline() {
         {
           id: "community-management",
           t: "Community Management becomes the fifth arm",
-          d: "OCR formalizes convenings, communications, outreach, and community intelligence as a service arm for partner research communities.",
+          d: "OCR formalizes enrichment program staffing as a service arm: Community Managers who run seminars, retreats, award programs, mentorship, communications, and reporting for centers and P30 grants.",
           c: "var(--lime)",
         },
       ],
