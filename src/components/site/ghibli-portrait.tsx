@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   DEFAULT_BADGE,
-  currentSeason,
+  activeSeason,
   seasonalPortrait,
   type GhibliSeason,
 } from "./ghibli-seasons";
@@ -16,7 +16,7 @@ export function GhibliPortrait({ name, photo, photoHover }: GhibliPortraitProps)
   const [active, setActive] = useState(false);
   // Resolved on the client so the server's timezone can't cause a hydration mismatch.
   const [season, setSeason] = useState<GhibliSeason>();
-  useEffect(() => setSeason(currentSeason()), []);
+  useEffect(() => setSeason(activeSeason()), []);
 
   const hoverSrc = seasonalPortrait(season, name) ?? photoHover;
 

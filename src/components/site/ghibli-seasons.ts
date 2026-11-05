@@ -17,6 +17,13 @@ export const GHIBLI_SEASONS: GhibliSeason[] = [
     end: [11, 30],
     particles: ["🍁", "🍂", "🍁", "🍂", "🍁", "🍂"],
   },
+  {
+    id: "winter",
+    badge: "❄️ Winter Ghibli mode",
+    start: [12, 1],
+    end: [1, 6],
+    particles: ["❄️", "❅", "❆", "❄️", "❅", "❆"],
+  },
 ];
 
 const SEASONAL_PORTRAITS = import.meta.glob<string>(
@@ -35,6 +42,12 @@ export function currentSeason(date = new Date()): GhibliSeason | undefined {
     const end = toOrdinal(s.end);
     return start <= end ? today >= start && today <= end : today >= start || today <= end;
   });
+}
+
+/** `?season=<id>` previews a season outside its dates. */
+export function activeSeason(): GhibliSeason | undefined {
+  const preview = new URLSearchParams(window.location.search).get("season");
+  return GHIBLI_SEASONS.find((s) => s.id === preview) ?? currentSeason();
 }
 
 export function seasonalPortrait(season: GhibliSeason | undefined, name: string) {

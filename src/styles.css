@@ -161,6 +161,7 @@
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-fill-mode: both;
+  color: white;
   filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.25));
 }
 
