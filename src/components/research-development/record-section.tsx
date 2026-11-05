@@ -67,7 +67,7 @@ export function RecordSection() {
             )}
           </div>
           <p className="mt-4 max-w-[380px] text-[15px] text-ink-muted lg:text-base">
-            {recordCopy.caption.replace("{n}", String(total.count))}
+            {recordCopy.caption}
           </p>
 
           {/* Mobile: 3-up stats */}

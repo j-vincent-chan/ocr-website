@@ -432,7 +432,7 @@ export const recordCopy = {
   eyebrow: "Our record",
   heading: "Our record so far.",
   /** `{n}` is replaced with the number of grants listed. */
-  caption: "awarded across the {n} applications listed here",
+  caption: "awarded",
   fundedHeading: "Recently funded with our support",
   allGrants: "All grants funded with our support",
 };
