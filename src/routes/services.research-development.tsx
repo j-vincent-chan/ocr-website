@@ -1,8 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import gabeImg from "@/assets/people/gabe-murphy.jpg";
+import gabeHoverImg from "@/assets/people/hover/gabe-murphy-hover.jpg";
 import reidImg from "@/assets/people/reid-bolus.jpg";
+import reidHoverImg from "@/assets/people/hover/reid-bolus-hover.jpg";
 import lindsayImg from "@/assets/people/lindsay-breithaupt.jpg";
+import lindsayHoverImg from "@/assets/people/hover/lindsay-breithaupt-hover.jpg";
 import { SiteShell, Breadcrumb, CTA, SunburstLogo } from "@/components/site/chrome";
+import { GhibliPortrait } from "@/components/site/ghibli-portrait";
 import { armName } from "@/components/site/arms";
 import {
   ArmEyebrow,
@@ -339,30 +343,28 @@ function Stages() {
           {stages.map((s) => (
             <li
               key={s.n}
-              className="group rounded-3xl border border-border bg-card overflow-hidden grid grid-rows-[auto_1fr] hover:shadow-lift transition"
+              className="group rounded-3xl border border-border bg-card overflow-hidden grid grid-rows-subgrid row-span-3 gap-0 hover:shadow-lift transition"
             >
-              <div className="relative bg-ink text-white p-7 overflow-hidden">
+              <div className="relative bg-ink text-white p-7 overflow-hidden grid grid-rows-subgrid row-span-2 gap-y-4">
                 <div
                   aria-hidden
                   className="absolute -top-16 -left-16 w-56 h-56 rounded-full blur-3xl opacity-40 group-hover:opacity-55 transition-opacity duration-500"
                   style={{ background: s.c }}
                 />
-                <div className="relative">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <span
-                      className="font-display text-3xl tabular-nums"
-                      style={{ color: s.c }}
-                    >
-                      {s.n}
-                    </span>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 text-right">
-                      {s.when}
-                    </span>
-                  </div>
-                  <h3 className="mt-4 font-display text-2xl text-white leading-tight">
-                    {s.name}
-                  </h3>
+                <div className="relative flex items-baseline justify-between gap-3">
+                  <span
+                    className="font-display text-3xl tabular-nums"
+                    style={{ color: s.c }}
+                  >
+                    {s.n}
+                  </span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 text-right">
+                    {s.when}
+                  </span>
                 </div>
+                <h3 className="relative font-display text-2xl text-white leading-tight">
+                  {s.name}
+                </h3>
               </div>
               <div className="p-7 flex flex-col">
                 <p className="text-muted-foreground leading-relaxed text-[15px]">
@@ -566,21 +568,27 @@ function Partners() {
 function Team() {
   const team = [
     {
-      name: "Gabe Murphy, PhD",
+      name: "Gabe Murphy",
+      credential: "PhD",
       role: "Senior Research Development Strategist",
       img: gabeImg,
+      imgHover: gabeHoverImg,
       bio: "First hire on the arm. Leads large-grant strategy and the growing team.",
     },
     {
-      name: "Reid Bolus, PhD",
+      name: "Reid Bolus",
+      credential: "PhD",
       role: "Research Development Strategist",
       img: reidImg,
+      imgHover: reidHoverImg,
       bio: "Embedded across the Diabetes Center and the RPR program.",
     },
     {
-      name: "Lindsay Breithaupt, MPH",
+      name: "Lindsay Breithaupt",
+      credential: "MPH",
       role: "Research Development Strategist",
       img: lindsayImg,
+      imgHover: lindsayHoverImg,
       bio: "Helps investigators shape the scientific story and craft competitive proposals across funders.",
     },
     {
@@ -612,21 +620,24 @@ function Team() {
               key={p.name}
               className="rounded-3xl bg-card border border-border overflow-hidden hover:shadow-lift transition group"
             >
-              <div className="aspect-[4/5] bg-secondary relative overflow-hidden">
-                {p.img ? (
-                  <img
-                    src={p.img}
-                    alt={p.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                  />
-                ) : (
+              {p.img && p.imgHover ? (
+                <GhibliPortrait
+                  name={p.name}
+                  photo={p.img}
+                  photoHover={p.imgHover}
+                  className="aspect-[4/5] rounded-none bg-secondary"
+                />
+              ) : (
+                <div className="aspect-[4/5] bg-secondary relative overflow-hidden">
                   <div className="w-full h-full bg-gradient-sunburst opacity-20 flex items-center justify-center">
                     <SunburstLogo className="w-24 h-24 opacity-60" />
                   </div>
-                )}
-              </div>
+                </div>
+              )}
               <div className="p-6">
-                <h3 className="text-xl text-ink">{p.name}</h3>
+                <h3 className="text-xl text-ink">
+                  {p.credential ? `${p.name}, ${p.credential}` : p.name}
+                </h3>
                 <div className="text-sm mt-1" style={{ color: C }}>
                   {p.role}
                 </div>

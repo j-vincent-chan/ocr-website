@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 import {
   DEFAULT_BADGE,
   activeSeason,
@@ -10,9 +11,10 @@ type GhibliPortraitProps = {
   name: string;
   photo: string;
   photoHover: string;
+  className?: string;
 };
 
-export function GhibliPortrait({ name, photo, photoHover }: GhibliPortraitProps) {
+export function GhibliPortrait({ name, photo, photoHover, className }: GhibliPortraitProps) {
   const [active, setActive] = useState(false);
   // Resolved on the client so the server's timezone can't cause a hydration mismatch.
   const [season, setSeason] = useState<GhibliSeason>();
@@ -22,7 +24,7 @@ export function GhibliPortrait({ name, photo, photoHover }: GhibliPortraitProps)
 
   return (
     <div
-      className="relative w-full aspect-square rounded-2xl overflow-hidden bg-cream"
+      className={cn("relative w-full aspect-square rounded-2xl overflow-hidden bg-cream", className)}
       onPointerEnter={() => setActive(true)}
       onPointerLeave={() => setActive(false)}
       onFocus={() => setActive(true)}

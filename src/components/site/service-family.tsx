@@ -41,7 +41,6 @@ export function ArmEyebrow({
 
 /** Sibling service navigator. Lives just above the page CTA. */
 export function ServiceCrossNav({ currentPath }: { currentPath: string }) {
-  const others = SERVICES.filter((s) => s.to !== currentPath);
   return (
     <section className="py-20 bg-cream border-t border-border">
       <div className="max-w-7xl mx-auto px-6">
@@ -60,8 +59,29 @@ export function ServiceCrossNav({ currentPath }: { currentPath: string }) {
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {others.map((s) => {
+          {SERVICES.map((s) => {
             const arm = ARM_BY_PATH[s.to] ?? "··";
+            if (s.to === currentPath) {
+              return (
+                <div
+                  key={s.to}
+                  aria-current="page"
+                  className="rounded-3xl border border-dashed border-ink/20 p-7 cursor-default select-none"
+                >
+                  <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.24em] text-muted-foreground/60">
+                    <span className="font-display text-base normal-case tracking-normal">{arm}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-ink/20" />
+                  </div>
+                  <h3 className="mt-6 font-display text-2xl text-ink/35 leading-tight">
+                    {s.name}
+                  </h3>
+                  <p className="mt-3 text-sm text-muted-foreground/60">{s.desc}</p>
+                  <div className="mt-6 inline-flex items-center gap-1.5 rounded-full bg-ink/5 px-2.5 py-1 text-[11px] uppercase tracking-[0.18em] font-medium text-muted-foreground">
+                    You are here
+                  </div>
+                </div>
+              );
+            }
             return (
               <Link
                 key={s.to}
