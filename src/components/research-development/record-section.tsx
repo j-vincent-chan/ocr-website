@@ -45,7 +45,7 @@ export function RecordSection() {
       <div className="mx-auto max-w-7xl px-6 lg:grid lg:grid-cols-[5fr_7fr] lg:items-start lg:gap-[88px]">
         <div>
           <Eyebrow>{recordCopy.eyebrow}</Eyebrow>
-          <h2 className="font-display text-[32px] font-medium leading-[1.05] tracking-[-0.02em] text-ink md:text-[40px] lg:text-[48px] lg:leading-[1.02]">
+          <h2 className="font-display text-[32px] font-medium leading-[1.05] tracking-[-0.02em] text-balance text-ink md:text-[40px] lg:text-[48px] lg:leading-[1.02]">
             {recordCopy.heading}
           </h2>
 

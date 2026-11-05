@@ -144,8 +144,8 @@ export const whatWeDo = {
 
 export const record = {
   stats: [
-    { value: "57", label: "full applications completed, including 31 still under review" },
-    { value: "94", label: "unique investigators served across 125 engagements" },
+    { value: "57", label: "full applications completed, including 31 still pending or under review" },
+    { value: "94", label: "unique investigator engagements" },
     { value: "9.2/10", label: "average overall PI satisfaction" },
   ],
 };
@@ -430,9 +430,9 @@ export const hero = {
 
 export const recordCopy = {
   eyebrow: "Our record",
-  heading: "Our record so far.",
+  heading: "Our track record so far.",
   /** `{n}` is replaced with the number of grants listed. */
-  caption: "awarded",
+  caption: "in grants awarded since 2024",
   fundedHeading: "Recently funded with our support",
   allGrants: "All grants funded with our support",
 };
