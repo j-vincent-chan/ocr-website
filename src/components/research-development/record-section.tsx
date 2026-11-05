@@ -14,7 +14,7 @@ import {
 import { tint } from "./lib";
 import { Arrow, Eyebrow, pillOutline } from "./primitives";
 
-const FEATURED_GRANTS = 5;
+const FEATURED_GRANTS = 4;
 
 /** "$12.3M" → { big: "$12.3", unit: "M" } */
 function splitMoney(formatted: string) {
@@ -38,7 +38,9 @@ export function RecordSection() {
   // The headline total is computed from grants[].award; a `$XXM` placeholder shows if any is null.
   const total = awardTotal();
   const money = total.complete ? splitMoney(formatMoney(total.total)) : null;
-  const featured = grants.slice(0, FEATURED_GRANTS);
+  const featured = [...grants]
+    .sort((a, b) => b.awarded.localeCompare(a.awarded))
+    .slice(0, FEATURED_GRANTS);
 
   return (
     <section className="bg-cream py-12 md:py-20 lg:py-24">

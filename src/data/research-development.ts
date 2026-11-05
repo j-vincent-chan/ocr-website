@@ -169,6 +169,8 @@ export const grants: {
   title: string;
   pis: string;
   url: string;
+  /** Budget start of the award on NIH RePORTER (YYYY-MM-DD); orders the featured list. */
+  awarded: string;
   award: number | null;
 }[] = [
   {
@@ -178,6 +180,7 @@ export const grants: {
     title: "FAST-TB: Accelerating TB regimen development",
     pis: "Payam Nahid & Radojka Savic",
     url: "https://reporter.nih.gov/project-details/11412163",
+    awarded: "2026-06-08",
     award: 17_496_830, // 5 budget years × $3,499,366 (FY26 award)
   },
   {
@@ -187,6 +190,7 @@ export const grants: {
     title: "UCSF Type 1 Diabetes Research Center",
     pis: "Mark Anderson & Gregory Ku",
     url: "https://reporter.nih.gov/project-details/11121266",
+    awarded: "2025-09-01",
     award: 8_395_461, // FY25 $1,835,461 + FY26 $1,640,000, plus 3 years at $1,640,000
   },
   {
@@ -196,6 +200,7 @@ export const grants: {
     title: "UCSF Nutrition Obesity Research Center",
     pis: "Christian Vaisse",
     url: "https://reporter.nih.gov/project-details/11350322",
+    awarded: "2026-08-20",
     award: 6_150_000, // 5 budget years × $1,230,000 (FY26 award)
   },
   {
@@ -205,6 +210,7 @@ export const grants: {
     title: "Predicting and preventing drug metabolism by the human gut microbiome",
     pis: "Peter Turnbaugh",
     url: "https://reporter.nih.gov/project-details/11447313",
+    awarded: "2026-09-05",
     award: 3_279_992, // 4 budget years × $819,998 (FY26 award)
   },
   {
@@ -214,6 +220,7 @@ export const grants: {
     title: "Uncovering the fundamental biology of neonatal Tregs in skin",
     pis: "Tiffany Scharschmidt & Michael Rosenblum",
     url: "https://reporter.nih.gov/project-details/11319891",
+    awarded: "2026-09-10",
     award: 2_869_330, // 5 budget years × $573,866 (FY26 award)
   },
   {
@@ -223,6 +230,7 @@ export const grants: {
     title: "Biophysical constraints on antibody affinity maturation to SARS-CoV-2",
     pis: "Angela Phillips",
     url: "https://reporter.nih.gov/project-details/11293150",
+    awarded: "2026-02-19",
     award: 4_078_810, // 5 budget years × $815,762 (FY26 award)
   },
   {
@@ -232,6 +240,7 @@ export const grants: {
     title: "Mentoring in infectious disease and global health clinical research",
     pis: "Michelle Hsiang",
     url: "https://reporter.nih.gov/project-details/11452101",
+    awarded: "2026-09-01",
     award: 1_038_440, // 5 budget years × $207,688 (FY26 award)
   },
   {
@@ -241,6 +250,7 @@ export const grants: {
     title: "Endogenous retroviruses in autoimmunity",
     pis: "Judith Ashouri",
     url: "https://reporter.nih.gov/project-details/11130765",
+    awarded: "2025-07-01",
     award: 2_544_228, // FY25 $527,760 + FY26 $504,117, plus 3 years at $504,117
   },
 ];

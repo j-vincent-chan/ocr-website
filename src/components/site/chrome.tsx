@@ -232,7 +232,7 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
       <header
         data-site-header
         className={`sticky top-0 z-40 backdrop-blur-md border-b transition-colors duration-300 ${
-          dark ? "bg-ink/[0.88] border-white/10 text-white" : "bg-background/85 border-border text-ink"
+          dark ? "bg-ink border-white/10 text-white" : "bg-background/85 border-border text-ink"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
