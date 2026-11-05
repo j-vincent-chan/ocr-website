@@ -83,11 +83,11 @@ export function RecordSection() {
           </div>
 
           {/* Tablet and up: stat rows */}
-          <div className="mt-11 hidden border-t border-ink md:block">
+          <div className="mt-11 hidden auto-rows-fr border-t border-ink md:grid">
             {record.stats.map((s, i) => (
               <div
                 key={s.label}
-                className={`flex items-baseline gap-5 py-4 border-b ${
+                className={`flex items-center gap-5 py-4 border-b ${
                   i === record.stats.length - 1 ? "border-ink" : "border-rule"
                 }`}
               >

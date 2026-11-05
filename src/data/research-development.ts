@@ -144,9 +144,9 @@ export const whatWeDo = {
 
 export const record = {
   stats: [
-    { value: "43", label: "applications supported in 2025, including those still under review" },
-    { value: "120+", label: "investigators served" },
-    { value: "9.3/10", label: "average PI satisfaction" },
+    { value: "57", label: "full applications completed, including 31 still under review" },
+    { value: "94", label: "unique investigators served across 125 engagements" },
+    { value: "9.2/10", label: "average overall PI satisfaction" },
   ],
 };
 
