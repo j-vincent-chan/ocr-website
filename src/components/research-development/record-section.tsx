@@ -8,6 +8,8 @@ import {
   programFor,
   record,
   recordCopy,
+  serviceById,
+  type OcrProgram,
 } from "@/data/research-development";
 import { tint } from "./lib";
 import { Arrow, Eyebrow, pillOutline } from "./primitives";
@@ -123,6 +125,28 @@ export function RecordSection() {
   );
 }
 
+const PROGRAM_SERVICE = {
+  "Research plan review": "plan",
+  "Large grant development program": "large",
+} as const satisfies Record<OcrProgram, string>;
+
+function ProgramPill({ program, className = "" }: { program: OcrProgram; className?: string }) {
+  const s = serviceById(PROGRAM_SERVICE[program]);
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-[3px] text-xs font-medium leading-[1.35] ${className}`}
+      style={{ background: tint(s.color, 0.2), color: s.textColor }}
+    >
+      <span
+        aria-hidden
+        className="h-1.5 w-1.5 flex-none rounded-full"
+        style={{ background: s.color }}
+      />
+      {program}
+    </span>
+  );
+}
+
 function GrantRow({ grant: g }: { grant: (typeof grants)[number] }) {
   const type = grantType(g.mech);
   const program = programFor(g.mech);
@@ -158,16 +182,11 @@ function GrantRow({ grant: g }: { grant: (typeof grants)[number] }) {
           <div className="text-[15px] font-medium leading-[1.3] text-ink md:text-[17px]">
             {g.title}
           </div>
-          <div className="mt-1 text-[13px] text-ink-muted-2 md:mt-1.5 md:text-sm">
-            {g.pis}
-            {program ? <span className="md:hidden"> · {program}</span> : null}
-          </div>
+          <div className="mt-1 text-[13px] text-ink-muted-2 md:mt-1.5 md:text-sm">{g.pis}</div>
+          {program ? <ProgramPill program={program} className="mt-2 md:mt-2.5" /> : null}
         </div>
         <div className="hidden md:block">
           <div className="pt-1 text-[13px] font-semibold tracking-[0.06em] text-ink">{g.ic}</div>
-          {program ? (
-            <div className="mt-2 text-[13px] leading-[1.35] text-ink-muted">{program}</div>
-          ) : null}
           {g.award != null ? (
             <div className="mt-1.5 text-sm font-medium text-ink">{formatMoney(g.award)}</div>
           ) : null}
