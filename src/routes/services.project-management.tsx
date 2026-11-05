@@ -10,13 +10,13 @@ import {
 export const Route = createFileRoute("/services/project-management")({
   head: () => ({
     meta: [
-      { title: "Project management & clinical coordination — UCSF OCR" },
+      { title: "Project Management & Clinical Coordination — UCSF OCR" },
       {
         name: "description",
         content:
           "The service arm OCR was built on — biospecimen pipelines, clinical studies and trials, and clinical research operations for UCSF investigators moving translational science into the clinic.",
       },
-      { property: "og:title", content: "Project management & clinical coordination — UCSF OCR" },
+      { property: "og:title", content: "Project Management & Clinical Coordination — UCSF OCR" },
       {
         property: "og:description",
         content:
@@ -40,11 +40,11 @@ function Hero() {
         style={{ background: "var(--gradient-sunburst)" }}
       />
       <div className="max-w-7xl mx-auto px-6 pt-12 pb-24 relative">
-        <ArmEyebrow arm={ARM} label="Project management & clinical coordination" accent={T} />
-        <h1 className="mt-8 font-display text-[clamp(2.8rem,7.5vw,7rem)] leading-[0.92] tracking-tight text-ink max-w-5xl">
-          The arm OCR was{" "}
+        <ArmEyebrow arm={ARM} label="One of five service arms" accent={T} />
+        <h1 className="mt-8 font-display text-[clamp(2.15rem,4.2vw,3.75rem)] leading-[1.08] tracking-tight text-ink max-w-4xl">
+          Coordinating people, processes, and operations to{" "}
           <em className="not-italic" style={{ color: T }}>
-            built on.
+            execute research.
           </em>
         </h1>
         <div className="mt-12 grid lg:grid-cols-12 gap-10">
@@ -777,7 +777,7 @@ function PMPage() {
       <Breadcrumb
         trail={[
           { label: "Services" },
-          { label: "Project management & clinical coordination" },
+          { label: "Project Management & Clinical Coordination" },
         ]}
       />
       <Hero />

@@ -17,7 +17,7 @@ const PARTNERS = [
     since: 2024,
     description:
       "The Diabetes Center was our first institute partner outside ImmunoX. OCR provides dedicated research development and operational support for multi-PI programs, clinical studies, and center-wide grant pipelines.",
-    services: ["Research development", "BOOST/RPR", "Clinical coordination"],
+    services: ["Research development", "Large grants", "Research Plan Reviews", "Clinical coordination"],
     proof: "Dedicated embedded capacity for grant pipelines and center-wide programs.",
   },
   {

@@ -5,11 +5,11 @@
  * so it can be shared without tripping React Fast Refresh.
  */
 export const ARM_NAMES: Record<string, string> = {
-  "01": "Research development",
-  "02": "Project management",
-  "03": "Data management",
-  "04": "AI tools",
-  "05": "Community management",
+  "01": "Research Development",
+  "02": "Project Management",
+  "03": "Data Management",
+  "04": "AI Tools",
+  "05": "Community Management",
 };
 
 export function armName(arm: string) {

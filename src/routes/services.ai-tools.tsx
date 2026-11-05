@@ -5,13 +5,13 @@ import { ArmEyebrow, ServiceCrossNav } from "@/components/site/service-family";
 export const Route = createFileRoute("/services/ai-tools")({
   head: () => ({
     meta: [
-      { title: "Research resources & AI tools — UCSF OCR" },
+      { title: "Research Resources & AI Tools — UCSF OCR" },
       {
         name: "description",
         content:
           "Signal, Prospera, and a growing suite of AI tools that move OCR from passive search to proactive matchmaking for UCSF researchers.",
       },
-      { property: "og:title", content: "Research resources & AI tools — UCSF OCR" },
+      { property: "og:title", content: "Research Resources & AI Tools — UCSF OCR" },
       { property: "og:description", content: "Software OCR is building so researchers and staff can spend more time on science." },
     ],
   }),
@@ -30,11 +30,12 @@ function Hero() {
         style={{ background: "var(--gradient-sunburst)" }}
       />
       <div className="max-w-7xl mx-auto px-6 pt-12 pb-24 relative">
-        <ArmEyebrow arm={ARM} label="Research resources & AI tools" accent={G} />
-        <h1 className="mt-8 font-display text-[clamp(2.8rem,7.5vw,7rem)] leading-[0.92] tracking-tight text-ink max-w-5xl">
-          The software we
-          <br />
-          <em className="not-italic" style={{ color: G }}>wish existed.</em>
+        <ArmEyebrow arm={ARM} label="One of five service arms" accent={G} />
+        <h1 className="mt-8 font-display text-[clamp(2.15rem,4.2vw,3.75rem)] leading-[1.08] tracking-tight text-ink max-w-4xl">
+          Developing innovative tools and resources to{" "}
+          <em className="not-italic" style={{ color: G }}>
+            accelerate research.
+          </em>
         </h1>
         <div className="mt-12 grid lg:grid-cols-12 gap-10 items-end">
           <p className="lg:col-span-6 text-xl text-muted-foreground leading-relaxed">
@@ -316,7 +317,7 @@ function Principles() {
 function AIPage() {
   return (
     <SiteShell>
-      <Breadcrumb trail={[{ label: "Services" }, { label: "Research resources & AI tools" }]} />
+      <Breadcrumb trail={[{ label: "Services" }, { label: "Research Resources & AI Tools" }]} />
       <Hero />
       <Products />
       <Automations />

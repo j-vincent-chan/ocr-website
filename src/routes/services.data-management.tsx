@@ -5,13 +5,13 @@ import { ArmEyebrow, ServiceCrossNav } from "@/components/site/service-family";
 export const Route = createFileRoute("/services/data-management")({
   head: () => ({
     meta: [
-      { title: "Data management & sharing — UCSF OCR" },
+      { title: "Data Management — UCSF OCR" },
       {
         name: "description",
         content:
           "REDCap and custom databases, metadata standards, and NIH-compliant Data Management & Sharing plans for UCSF research programs.",
       },
-      { property: "og:title", content: "Data management & sharing — UCSF OCR" },
+      { property: "og:title", content: "Data Management — UCSF OCR" },
       { property: "og:description", content: "Make your data findable, accessible, interoperable, and reusable — from day one." },
     ],
   }),
@@ -31,11 +31,12 @@ function Hero() {
       />
       <div className="max-w-7xl mx-auto px-6 pt-12 pb-20 grid lg:grid-cols-12 gap-10 items-center relative">
         <div className="lg:col-span-6">
-          <ArmEyebrow arm={ARM} label="Data management & sharing" accent={M} />
-          <h1 className="mt-8 font-display text-[clamp(2.8rem,7vw,6.5rem)] leading-[0.92] tracking-tight text-ink">
-            Structured by
-            <br />
-            <em className="not-italic" style={{ color: M }}>design.</em>
+          <ArmEyebrow arm={ARM} label="One of five service arms" accent={M} />
+          <h1 className="mt-8 font-display text-[clamp(2.15rem,4.2vw,3.75rem)] leading-[1.08] tracking-tight text-ink">
+            Organizing, managing, and{" "}
+            <em className="not-italic" style={{ color: M }}>
+              sharing research data.
+            </em>
           </h1>
           <p className="mt-8 max-w-xl text-xl text-muted-foreground leading-relaxed">
             Databases, metadata standards, and NIH-compliant Data Management
@@ -288,7 +289,7 @@ function Policy() {
 function DMSPage() {
   return (
     <SiteShell>
-      <Breadcrumb trail={[{ label: "Services" }, { label: "Data management & sharing" }]} />
+      <Breadcrumb trail={[{ label: "Services" }, { label: "Data Management" }]} />
       <Hero />
       <FAIR />
       <Architecture />

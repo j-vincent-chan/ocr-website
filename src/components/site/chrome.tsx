@@ -115,31 +115,31 @@ export const SERVICES = [
   {
     to: "/services/research-development",
     name: "Research Development",
-    desc: "Transforming research ideas into competitive funding proposals.",
+    desc: "Grant strategy, writing, and funding support",
     accent: "var(--coral)",
   },
   {
     to: "/services/project-management",
     name: "Project Management & Clinical Coordination",
-    desc: "Coordinating people, processes, and operations to execute research.",
+    desc: "Research operations and study coordination",
     accent: "var(--teal)",
   },
   {
     to: "/services/data-management",
     name: "Data Management",
-    desc: "Organizing, managing, and sharing research data.",
+    desc: "Data organization, management, and sharing",
     accent: "var(--magenta)",
   },
   {
     to: "/services/ai-tools",
     name: "Research Resources & AI Tools",
-    desc: "Developing innovative tools and resources to accelerate research.",
+    desc: "Tools and resources to accelerate research",
     accent: "var(--gold)",
   },
   {
     to: "/services/community-management",
     name: "Community Management",
-    desc: "Building connections, fostering collaboration, and strengthening research communities.",
+    desc: "Community building and collaboration",
     accent: "var(--lime)",
   },
 ] as const;
