@@ -1,14 +1,23 @@
+import { useId, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { booking, links, placeholderOpenings } from "@/data/research-development";
+import {
+  booking,
+  bookingPages,
+  links,
+  partners,
+  strategistFor,
+  type InstituteChoice,
+} from "@/data/research-development";
 import { GradientBlob } from "./hero";
-import { ON_DARK_LABEL } from "./lib";
-import { Arrow, Eyebrow, pillOutlineOnDark, pillWhite, StrategistAvatars } from "./primitives";
+import { ON_DARK_LABEL, TRANSITION, tint } from "./lib";
+import { Arrow, Eyebrow, pillOutlineOnDark, StrategistAvatars } from "./primitives";
 
 export function BookingSection() {
   return (
     <section
+      id="book"
       data-tone="dark"
-      className="relative isolate overflow-hidden bg-ink py-11 text-white md:py-16 lg:py-[72px]"
+      className="relative isolate scroll-mt-24 overflow-hidden bg-ink py-11 text-white md:py-16 lg:py-[72px]"
     >
       <GradientBlob className="-top-[260px] -right-[140px]" />
       <div className="mx-auto max-w-7xl px-6 md:grid md:grid-cols-2 md:items-center md:gap-12 lg:gap-[72px]">
@@ -23,24 +32,17 @@ export function BookingSection() {
             {booking.body}
           </p>
 
-          {/* Mobile: stacked buttons instead of the scheduler card */}
-          <div className="mt-5 flex flex-col gap-2.5 md:hidden">
-            <a href={links.bookConsult} className={`${pillWhite} min-h-12`}>
-              {booking.card.button} <Arrow />
-            </a>
-            <Link to={links.partnership} className={`${pillOutlineOnDark} min-h-12`}>
-              {booking.partnershipButton} <Arrow />
-            </Link>
-          </div>
-
-          <div className="mt-7 hidden max-w-[480px] border-t border-white/[0.14] pt-6 md:block">
+          <div className="mt-7 max-w-[480px] border-t border-white/[0.14] pt-6">
             <div
               className="text-xs font-medium uppercase tracking-[0.16em]"
               style={{ color: ON_DARK_LABEL }}
             >
               {booking.institutesLabel}
             </div>
-            <Link to={links.partnership} className={`${pillOutlineOnDark} mt-3`}>
+            <Link
+              to={links.partnership}
+              className={`${pillOutlineOnDark} mt-3 min-h-12 w-full md:min-h-0 md:w-auto`}
+            >
               {booking.partnershipButton} <Arrow />
             </Link>
           </div>
@@ -52,11 +54,23 @@ export function BookingSection() {
   );
 }
 
-/** Styled to match the Start-here card: white, radius 20, 5px coral top border. */
+/**
+ * Styled to match the Start-here card: white, radius 20, 5px coral top border.
+ * The visitor picks their institute; that selects the strategist (see `consultRouting`)
+ * and embeds that strategist's Microsoft Bookings page once its URL is set.
+ */
 function SchedulerCard() {
+  const [choice, setChoice] = useState<InstituteChoice | "">("");
+  const selectId = useId();
+  const strategist = choice ? strategistFor(choice) : null;
+  const instituteName =
+    choice && choice !== "none" ? (partners.find((q) => q.id === choice)?.name ?? null) : null;
+  const pageUrl = strategist ? bookingPages[strategist.id] : null;
+  const firstName = strategist?.name.split(" ")[0] ?? "";
+
   return (
     <div
-      className="mt-10 hidden rounded-[20px] bg-white px-7 pt-[22px] pb-5 text-[oklch(0.18_0.06_265)] md:mt-0 md:block"
+      className="mt-10 rounded-[20px] bg-white px-5 pt-[22px] pb-5 text-[oklch(0.18_0.06_265)] md:mt-0 md:px-7"
       style={{
         borderTop: "5px solid var(--coral)",
         boxShadow: "0 30px 60px oklch(0.05 0.04 265 / 0.35)",
@@ -79,44 +93,109 @@ function SchedulerCard() {
         </div>
       </div>
 
-      {/* TODO (OCR open item 3): wire these openings to a real scheduler (Calendly / Bookings / etc.).
-          Until then they are placeholders: hide the chips or point the button at the scheduler URL. */}
-      <div
-        className="mt-4 rounded-2xl px-4 py-3.5"
-        style={{ background: "oklch(0.72 0.19 30 / 0.12)" }}
+      <label
+        htmlFor={selectId}
+        className="mt-5 block text-[11px] uppercase tracking-[0.14em] text-ink-muted-2"
       >
-        <div className="mb-2.5 text-[11px] uppercase tracking-[0.14em] text-ink-muted-2">
-          {booking.card.openings}
-        </div>
-        <div className="grid grid-cols-3 items-start gap-3">
-          {placeholderOpenings.days.map((d) => (
-            <div key={`${d.weekday}-${d.date}`} className="flex flex-col gap-1.5">
-              <div className="pb-0.5 text-center">
-                <div className="text-[11px] uppercase tracking-[0.14em] text-ink-muted-2">
-                  {d.weekday}
-                </div>
-                <div className="font-display text-2xl leading-[1.1] text-ink">{d.date}</div>
-                <div className="text-xs text-ink-muted-2">{d.month}</div>
-              </div>
-              {d.times.map((t) => (
-                <span
-                  key={t}
-                  className="block rounded-[10px] border border-ink/15 bg-white py-[7px] text-center text-sm font-medium text-ink"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
+        {booking.card.instituteLabel}
+      </label>
+      <div className="relative mt-2">
+        <select
+          id={selectId}
+          value={choice}
+          onChange={(e) => setChoice(e.target.value as InstituteChoice)}
+          className="min-h-12 w-full cursor-pointer appearance-none rounded-xl border border-ink/20 bg-white py-3 pr-11 pl-4 text-[15px] text-ink transition-colors hover:border-ink/40 focus-visible:border-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink/40"
+        >
+          <option value="" disabled>
+            {booking.card.institutePlaceholder}
+          </option>
+          {partners.map((q) => (
+            <option key={q.id} value={q.id}>
+              {q.name}
+            </option>
           ))}
-        </div>
+          <option value="none">{booking.card.nonPartner}</option>
+        </select>
+        <svg
+          aria-hidden
+          viewBox="0 0 16 16"
+          className="pointer-events-none absolute top-1/2 right-4 h-4 w-4 -translate-y-1/2 text-ink-muted-2"
+        >
+          <path
+            d="M4 6l4 4 4-4"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </div>
 
-      <a
-        href={links.bookConsult}
-        className="mt-4 flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-ink/90"
-      >
-        {booking.card.button} <Arrow />
-      </a>
+      <div aria-live="polite">
+        {strategist ? (
+          <>
+            <div
+              className={`mt-4 flex items-center gap-4 rounded-2xl px-4 py-3.5 ${TRANSITION}`}
+              style={{ background: tint(strategist.color, 0.14) }}
+            >
+              <div
+                className="h-14 w-14 flex-none rounded-full p-[3px]"
+                style={{ background: strategist.color }}
+              >
+                {strategist.photo ? (
+                  <img
+                    src={strategist.photo}
+                    alt=""
+                    className="h-full w-full rounded-full border-2 border-white bg-secondary object-cover"
+                  />
+                ) : null}
+              </div>
+              <div className="min-w-0">
+                <div className="text-[11px] uppercase tracking-[0.14em] text-ink-muted-2">
+                  {booking.card.youllMeet}
+                </div>
+                <div className="font-display text-xl leading-tight text-ink">{strategist.name}</div>
+                <div className="mt-0.5 text-[13px]" style={{ color: strategist.textColor }}>
+                  {instituteName ? `Supports ${instituteName}` : booking.card.nonPartnerNote}
+                </div>
+              </div>
+            </div>
+
+            {pageUrl ? (
+              <>
+                <iframe
+                  key={pageUrl}
+                  src={pageUrl}
+                  title={`Book a consult with ${strategist.name}`}
+                  loading="lazy"
+                  className="mt-4 h-[620px] w-full rounded-2xl border border-ink/10 bg-white"
+                />
+                <a
+                  href={pageUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2.5 block text-center text-[13px] text-ink-muted-2 underline-offset-2 hover:text-ink hover:underline"
+                >
+                  {booking.card.openInNewTab} ↗
+                </a>
+              </>
+            ) : (
+              <a
+                href={links.consultRequest(strategist.name, instituteName)}
+                className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-ink/90"
+              >
+                {booking.card.requestTime(firstName)} <Arrow />
+              </a>
+            )}
+          </>
+        ) : (
+          <p className="mt-4 rounded-2xl bg-[oklch(0.72_0.19_30/0.12)] px-4 py-3.5 text-sm text-ink-muted text-pretty">
+            {booking.card.prompt}
+          </p>
+        )}
+      </div>
+
       <div className="mt-2.5 text-center text-[13px] text-ink-muted-2">
         {booking.card.caption}{" "}
         <a

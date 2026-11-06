@@ -477,12 +477,47 @@ export const booking = {
     eyebrow: "Strategic consultation",
     title: "Meet a strategist",
     meta: ["30 min", "Free"],
-    openings: "Next openings",
-    button: "Choose a time",
+    instituteLabel: "Which institute are you with?",
+    institutePlaceholder: "Choose your institute",
+    nonPartner: "Not with a partner institute",
+    prompt: "Choose your institute and we'll match you with your strategist and their calendar.",
+    youllMeet: "You'll meet with",
+    nonPartnerNote: "Handles inquiries from outside our partner institutes",
+    requestTime: (firstName: string) => `Request a time with ${firstName}`,
+    openInNewTab: "Open the booking page in a new tab",
     caption: "No deadline or draft required · or email",
     email: "ocr@ucsf.edu",
   },
 };
+
+/* ───────── Consult routing ─────────
+ * Which strategist a consult goes to, by the requester's partner institute. Everyone else,
+ * including non-partner inquiries, goes to the fallback. */
+export type InstituteChoice = PartnerId | "none";
+
+export const consultRouting: { byPartner: Partial<Record<PartnerId, string>>; fallback: string } = {
+  byPartner: { dc: "reid" },
+  fallback: "gabe",
+};
+
+/**
+ * One Microsoft Bookings shared booking page per strategist, with only that person assigned
+ * (Bookings can't preselect a staff member from a link). The page is embedded in the card.
+ * TODO: paste each page's URL from Bookings → Shared booking pages → Share. While a URL is
+ * null, the card offers an email request to that strategist instead.
+ */
+export const bookingPages: Record<string, string | null> = {
+  gabe: null,
+  reid: null,
+};
+
+export function strategistFor(choice: InstituteChoice): Strategist {
+  const id =
+    choice === "none"
+      ? consultRouting.fallback
+      : (consultRouting.byPartner[choice] ?? consultRouting.fallback);
+  return strategists.find((s) => s.id === id) ?? strategists[0];
+}
 
 export const inDevelopmentCopy = {
   eyebrow: "In development",
@@ -500,8 +535,10 @@ export const inDevelopmentCopy = {
 const mail = (subject: string) => `mailto:ocr@ucsf.edu?subject=${encodeURIComponent(subject)}`;
 
 export const links = {
-  /** TODO: scheduler (Calendly / Bookings / etc.). Until wired, the consult buttons open an email. */
-  bookConsult: mail("Book a free 30-minute consult"),
+  /** Consult buttons jump to the booking card, which routes to the right strategist's calendar. */
+  bookConsult: "#book",
+  consultRequest: (strategistName: string, institute: string | null) =>
+    mail(`Consult request: ${strategistName}${institute ? ` (${institute})` : ""}`),
   /** TODO: destination for "All grants funded with our support". */
   allGrants: mail("Grants funded with OCR support"),
   /** TODO: destination for "Talk to us about partnership" (currently the site contact page). */
@@ -516,9 +553,4 @@ export const links = {
  */
 export const placeholderOpenings = {
   chips: ["Tue 10:00", "Wed 2:30", "Thu 9:30"],
-  days: [
-    { weekday: "Tue", date: "10", month: "Nov", times: ["10:00", "14:30"] },
-    { weekday: "Thu", date: "12", month: "Nov", times: ["9:30", "13:00", "16:00"] },
-    { weekday: "Mon", date: "16", month: "Nov", times: ["11:00"] },
-  ],
 };
