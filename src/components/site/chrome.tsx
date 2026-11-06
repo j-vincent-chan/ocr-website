@@ -114,31 +114,31 @@ export function SunburstLogo({ className = "" }: { className?: string }) {
 export const SERVICES = [
   {
     to: "/services/research-development",
-    name: "Research Development",
+    name: "Research development",
     desc: "Grant strategy, writing, and funding support",
     accent: "var(--coral)",
   },
   {
     to: "/services/research-operations",
-    name: "Research Operations & Management",
+    name: "Research operations & management",
     desc: "Launching, coordinating, and managing research",
     accent: "var(--teal)",
   },
   {
     to: "/services/data-management",
-    name: "Data Management",
+    name: "Data management",
     desc: "Data organization, management, and sharing",
     accent: "var(--magenta)",
   },
   {
     to: "/services/ai-tools",
-    name: "Research Resources & AI Tools",
+    name: "Research resources & AI tools",
     desc: "Tools and resources to accelerate research",
     accent: "var(--gold)",
   },
   {
     to: "/services/community-management",
-    name: "Community Management",
+    name: "Community management",
     desc: "Community building and collaboration",
     accent: "var(--lime)",
   },
