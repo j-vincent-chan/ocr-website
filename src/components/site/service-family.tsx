@@ -4,7 +4,7 @@ import { armName } from "./arms";
 
 const ARM_BY_PATH: Record<string, string> = {
   "/services/research-development": "01",
-  "/services/project-management": "02",
+  "/services/research-operations": "02",
   "/services/data-management": "03",
   "/services/ai-tools": "04",
   "/services/community-management": "05",

@@ -1,4 +1,4 @@
-// Content for the Research Operations & Management page (/services/project-management).
+// Content for the Research Operations & Management page (/services/research-operations).
 // Source of truth for copy and data. Moved from design_handoff_research_operations/
 // research-operations.data.ts; photo paths were swapped for Vite asset imports, the service
 // palette was aligned with the Research Development page's service hues, and the record
@@ -738,7 +738,7 @@ export const getStarted = {
 export const arm = {
   name: "Research Operations & Management",
   short: "Launching, coordinating, and managing research",
-  href: "/services/project-management" as const,
+  href: "/services/research-operations" as const,
 };
 
 export const mailto = (subject: string) =>

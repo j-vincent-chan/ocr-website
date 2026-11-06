@@ -106,7 +106,7 @@ function ServicesEditorial() {
   const blurbs: Record<string, string> = {
     "/services/research-development":
       "Research development strategists who help you find the right funding opportunity, sharpen the rationale and promise of the work, and position proposals to compete.",
-    "/services/project-management":
+    "/services/research-operations":
       "Operational backbone for complex projects and programs: study startup, regulatory compliance, clinical research coordination, and biospecimen pipelines.",
     "/services/data-management":
       "Databases, metadata standards, and NIH-compliant Data Management & Sharing plans, built with you from day one.",

@@ -19,6 +19,7 @@ import { Route as ServicesCommunityManagementRouteImport } from './routes/servic
 import { Route as ServicesDataManagementRouteImport } from './routes/services.data-management'
 import { Route as ServicesProjectManagementRouteImport } from './routes/services.project-management'
 import { Route as ServicesResearchDevelopmentRouteImport } from './routes/services.research-development'
+import { Route as ServicesResearchOperationsRouteImport } from './routes/services.research-operations'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -73,6 +74,12 @@ const ServicesResearchDevelopmentRoute =
     path: '/services/research-development',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ServicesResearchOperationsRoute =
+  ServicesResearchOperationsRouteImport.update({
+    id: '/services/research-operations',
+    path: '/services/research-operations',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -85,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
   '/services/research-development': typeof ServicesResearchDevelopmentRoute
+  '/services/research-operations': typeof ServicesResearchOperationsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -97,6 +105,7 @@ export interface FileRoutesByTo {
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
   '/services/research-development': typeof ServicesResearchDevelopmentRoute
+  '/services/research-operations': typeof ServicesResearchOperationsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -110,6 +119,7 @@ export interface FileRoutesById {
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
   '/services/research-development': typeof ServicesResearchDevelopmentRoute
+  '/services/research-operations': typeof ServicesResearchOperationsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -124,6 +134,7 @@ export interface FileRouteTypes {
     | '/services/data-management'
     | '/services/project-management'
     | '/services/research-development'
+    | '/services/research-operations'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -136,6 +147,7 @@ export interface FileRouteTypes {
     | '/services/data-management'
     | '/services/project-management'
     | '/services/research-development'
+    | '/services/research-operations'
   id:
     | '__root__'
     | '/'
@@ -148,6 +160,7 @@ export interface FileRouteTypes {
     | '/services/data-management'
     | '/services/project-management'
     | '/services/research-development'
+    | '/services/research-operations'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -161,6 +174,7 @@ export interface RootRouteChildren {
   ServicesDataManagementRoute: typeof ServicesDataManagementRoute
   ServicesProjectManagementRoute: typeof ServicesProjectManagementRoute
   ServicesResearchDevelopmentRoute: typeof ServicesResearchDevelopmentRoute
+  ServicesResearchOperationsRoute: typeof ServicesResearchOperationsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -235,6 +249,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesResearchDevelopmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/research-operations': {
+      id: '/services/research-operations'
+      path: '/services/research-operations'
+      fullPath: '/services/research-operations'
+      preLoaderRoute: typeof ServicesResearchOperationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -249,6 +270,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesDataManagementRoute: ServicesDataManagementRoute,
   ServicesProjectManagementRoute: ServicesProjectManagementRoute,
   ServicesResearchDevelopmentRoute: ServicesResearchDevelopmentRoute,
+  ServicesResearchOperationsRoute: ServicesResearchOperationsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

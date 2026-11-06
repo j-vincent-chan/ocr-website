@@ -135,7 +135,7 @@ function ServiceArmHighlights() {
       description:
         "The portfolio below is strongest here: clinical research units, biospecimen workflows, CoProjects, and investigator-initiated or industry-sponsored clinical studies.",
       proof: "Highlighted work: Pulmonary CRUs, SMSF, CoProjects",
-      to: "/services/project-management",
+      to: "/services/research-operations",
       accent: "var(--teal)",
     },
     {

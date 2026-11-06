@@ -119,7 +119,7 @@ export const SERVICES = [
     accent: "var(--coral)",
   },
   {
-    to: "/services/project-management",
+    to: "/services/research-operations",
     name: "Research Operations & Management",
     desc: "Launching, coordinating, and managing research",
     accent: "var(--teal)",

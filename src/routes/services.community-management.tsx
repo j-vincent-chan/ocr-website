@@ -539,7 +539,7 @@ function FeedsOtherArms() {
       c: "var(--coral)",
     },
     {
-      to: "/services/project-management" as const,
+      to: "/services/research-operations" as const,
       arm: "Research operations & management",
       d: "Core utilization and biospecimen pipeline awards hand directly to OCR coordinators who stand the studies up.",
       c: "var(--teal)",
