@@ -16,22 +16,10 @@ const ARM_BY_PATH: Record<string, string> = {
  * - Same micro-rhythm (arm name, section label, accent dot)
  * Use at the top of distinctive sections to telegraph "you're inside the OCR system".
  */
-export function ArmEyebrow({
-  arm,
-  label,
-  accent,
-}: {
-  arm: string;
-  label: string;
-  accent: string;
-}) {
+export function ArmEyebrow({ arm, label, accent }: { arm: string; label: string; accent: string }) {
   return (
     <div className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-muted-foreground font-medium">
-      <span
-        className="w-1.5 h-1.5 rounded-full"
-        style={{ background: accent }}
-        aria-hidden
-      />
+      <span className="w-1.5 h-1.5 rounded-full" style={{ background: accent }} aria-hidden />
       <span>{armName(arm)}</span>
       <span className="opacity-40">·</span>
       <span className="text-ink/80">{label}</span>
@@ -39,8 +27,18 @@ export function ArmEyebrow({
   );
 }
 
+const DEFAULT_LEDE =
+  "Most projects draw on more than one arm. Start with one, and the others are a conversation away.";
+
 /** Sibling service navigator. Lives just above the page CTA. */
-export function ServiceCrossNav({ currentPath }: { currentPath: string }) {
+export function ServiceCrossNav({
+  currentPath,
+  lede = DEFAULT_LEDE,
+}: {
+  currentPath: string;
+  /** Short paragraph beside the heading; pages can explain how their arm relates to the others. */
+  lede?: string;
+}) {
   return (
     <section className="py-20 bg-cream border-t border-border">
       <div className="max-w-7xl mx-auto px-6">
@@ -50,13 +48,11 @@ export function ServiceCrossNav({ currentPath }: { currentPath: string }) {
               The five arms
             </div>
             <h2 className="mt-3 font-display text-3xl md:text-4xl text-ink leading-[1.05] max-w-xl">
-              One office. Five ways<br className="hidden md:block" /> to support your research.
+              One office. Five ways
+              <br className="hidden md:block" /> to support your research.
             </h2>
           </div>
-          <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
-            Most projects draw on more than one arm. Start with one, and the
-            others are a conversation away.
-          </p>
+          <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">{lede}</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {SERVICES.map((s) => {
@@ -69,12 +65,12 @@ export function ServiceCrossNav({ currentPath }: { currentPath: string }) {
                   className="rounded-3xl border border-dashed border-ink/20 p-7 cursor-default select-none"
                 >
                   <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.24em] text-muted-foreground/60">
-                    <span className="font-display text-base normal-case tracking-normal">{arm}</span>
+                    <span className="font-display text-base normal-case tracking-normal">
+                      {arm}
+                    </span>
                     <span className="w-1.5 h-1.5 rounded-full bg-ink/20" />
                   </div>
-                  <h3 className="mt-6 font-display text-2xl text-ink/35 leading-tight">
-                    {s.name}
-                  </h3>
+                  <h3 className="mt-6 font-display text-2xl text-ink/35 leading-tight">{s.name}</h3>
                   <p className="mt-3 text-sm text-muted-foreground/60">{s.desc}</p>
                   <div className="mt-6 inline-flex items-center gap-1.5 rounded-full bg-ink/5 px-2.5 py-1 text-[11px] uppercase tracking-[0.18em] font-medium text-muted-foreground">
                     You are here
@@ -94,15 +90,12 @@ export function ServiceCrossNav({ currentPath }: { currentPath: string }) {
                   style={{ background: s.accent }}
                 />
                 <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-                  <span className="font-display text-base normal-case tracking-normal text-muted-foreground/70">{arm}</span>
-                  <span
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ background: s.accent }}
-                  />
+                  <span className="font-display text-base normal-case tracking-normal text-muted-foreground/70">
+                    {arm}
+                  </span>
+                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: s.accent }} />
                 </div>
-                <h3 className="mt-6 font-display text-2xl text-ink leading-tight">
-                  {s.name}
-                </h3>
+                <h3 className="mt-6 font-display text-2xl text-ink leading-tight">{s.name}</h3>
                 <p className="mt-3 text-sm text-muted-foreground">{s.desc}</p>
                 <div
                   className="mt-6 text-sm font-medium inline-flex items-center gap-1.5 transition-transform group-hover:translate-x-0.5"

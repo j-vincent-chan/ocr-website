@@ -512,6 +512,56 @@
   animation: pm-node-twinkle 5.2s ease-in-out infinite;
 }
 
+/* ── Research operations: service detail drawer (shadcn Sheet) ──
+   Panel slides in 48px → 0 with a fade over .3s; the backdrop fades over .25s.
+   Unlayered so it overrides the Sheet's default full-width slide. */
+@keyframes ro-drawer-in {
+  from { transform: translateX(48px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@keyframes ro-drawer-out {
+  from { transform: none; opacity: 1; }
+  to { transform: translateX(48px); opacity: 0; }
+}
+
+@keyframes ro-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ro-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.ro-drawer[data-state="open"] {
+  animation: ro-drawer-in 0.3s ease both;
+}
+
+.ro-drawer[data-state="closed"] {
+  animation: ro-drawer-out 0.25s ease both;
+}
+
+.ro-drawer-backdrop[data-state="open"] {
+  animation: ro-fade-in 0.25s ease both;
+}
+
+.ro-drawer-backdrop[data-state="closed"] {
+  animation: ro-fade-out 0.25s ease both;
+}
+
+/* Research operations: 36px project sprites reuse the project-card motifs.
+   Undo the card-art zoom and thicken strokes so the art reads at icon size. */
+.ro-sprite .project-motif-svg {
+  transform: none;
+  overflow: visible;
+}
+
+.ro-sprite .project-motif-svg * {
+  stroke-width: 1.8;
+}
+
 @keyframes project-card-reveal {
   from {
     opacity: 0;
@@ -543,7 +593,9 @@
   }
 
   .project-motif *,
-  .project-card-reveal {
+  .project-card-reveal,
+  .ro-drawer,
+  .ro-drawer-backdrop {
     animation: none !important;
   }
 

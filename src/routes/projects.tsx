@@ -130,7 +130,7 @@ function ServiceArmHighlights() {
     },
     {
       n: "02",
-      arm: "Project management",
+      arm: "Research operations & management",
       title: "Studies, CRUs, and biospecimen pipelines",
       description:
         "The portfolio below is strongest here: clinical research units, biospecimen workflows, CoProjects, and investigator-initiated or industry-sponsored clinical studies.",
@@ -423,7 +423,8 @@ function Grid() {
           {filtered.map((p, index) => (
             <article
               key={p.slug}
-              className="project-card-reveal group relative rounded-3xl border border-border bg-card overflow-hidden hover:shadow-lift transition-shadow duration-500 flex flex-col"
+              id={p.slug}
+              className="project-card-reveal group relative scroll-mt-28 rounded-3xl border border-border bg-card overflow-hidden hover:shadow-lift transition-shadow duration-500 flex flex-col"
               style={{ animationDelay: `${index * 70}ms` }}
             >
               <div

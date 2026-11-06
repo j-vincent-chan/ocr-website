@@ -24,7 +24,7 @@ export const Route = createFileRoute("/contact")({
 
 const SERVICE_OPTIONS = [
   "Research Development",
-  "Project Management & Clinical Coordination",
+  "Research Operations & Management",
   "Data Management & Sharing",
   "Research Resources & AI Tools",
   "Other",

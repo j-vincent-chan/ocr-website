@@ -6,7 +6,7 @@
  */
 export const ARM_NAMES: Record<string, string> = {
   "01": "Research Development",
-  "02": "Project Management",
+  "02": "Research Operations & Management",
   "03": "Data Management",
   "04": "AI Tools",
   "05": "Community Management",

@@ -120,8 +120,8 @@ export const SERVICES = [
   },
   {
     to: "/services/project-management",
-    name: "Project Management & Clinical Coordination",
-    desc: "Research operations and study coordination",
+    name: "Research Operations & Management",
+    desc: "Launching, coordinating, and managing research",
     accent: "var(--teal)",
   },
   {

@@ -540,7 +540,7 @@ function FeedsOtherArms() {
     },
     {
       to: "/services/project-management" as const,
-      arm: "Project management",
+      arm: "Research operations & management",
       d: "Core utilization and biospecimen pipeline awards hand directly to OCR coordinators who stand the studies up.",
       c: "var(--teal)",
     },

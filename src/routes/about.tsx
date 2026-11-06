@@ -198,7 +198,7 @@ function OriginPartTwo() {
           <p>By May 2026, the pattern was impossible to miss.</p>
           <p>OCR had become more than a service office. It had become a platform.</p>
           <p>
-            Research Development. Clinical Coordination and Project Management.
+            Research Development. Research Operations and Management.
             Data Management and Sharing. Research Resources and AI Tools.
             Community Management.
           </p>

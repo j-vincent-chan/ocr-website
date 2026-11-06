@@ -404,7 +404,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "gi-crc",
     name: "Colorectal Cancer",
-    area: "Colorectal Cancer",
+    area: "Colorectal cancer",
     status: "Active",
     blurb: "Project overview coming soon.",
     accent: "var(--teal)",
