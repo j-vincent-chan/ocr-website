@@ -66,9 +66,9 @@ export const hero = {
 };
 
 export const trackStops: { key: ServiceKey; kicker: string; name: string }[] = [
-  { key: "bio", kicker: "Clinic to lab", name: "Biospecimen & Translational Coordination" },
-  { key: "clinical", kicker: "Studies & trials", name: "Clinical Research Coordination" },
-  { key: "pm", kicker: "Complex initiatives", name: "Project & Program Management" },
+  { key: "bio", kicker: "Clinic to lab", name: "Biospecimen & translational coordination" },
+  { key: "clinical", kicker: "Studies & trials", name: "Clinical research coordination" },
+  { key: "pm", kicker: "Complex initiatives", name: "Project & program management" },
 ];
 
 /** In-page or in-site destination for a linked phrase inside a fact. */
@@ -106,7 +106,7 @@ export const needs: Need[] = [
     chip: "I need human biospecimens for my lab",
     lit: ["bio"],
     color: "bio",
-    title: "Biospecimen & Translational Research Coordination",
+    title: "Biospecimen & translational research coordination",
     body: "We build the pipeline from clinic to bench: clinical collaborators, protocol and regulatory approvals, consent, collection, processing, and handoff to your lab or UCSF CoLabs, with clinical metadata that travels with every sample.",
     facts: [
       {
@@ -133,7 +133,7 @@ export const needs: Need[] = [
     chip: "I'm launching a clinical study or trial",
     lit: ["clinical"],
     color: "clinical",
-    title: "Clinical Research Coordination",
+    title: "Clinical research coordination",
     body: "Coordinators who take your protocol from feasibility through activation, enrollment, and close-out: IRB and regulatory submissions, consent, study visits, documentation, and monitoring support.",
     facts: [
       {
@@ -160,7 +160,7 @@ export const needs: Need[] = [
     chip: "I need someone to manage a project or program",
     lit: ["pm"],
     color: "pm",
-    title: "Research Project & Program Management",
+    title: "Research project & program management",
     body: "A project or program manager who runs the operational side of a complex initiative: planning, milestones, budgets, governance, partner coordination, and the communication that keeps a consortium moving.",
     alsoDrawsOn: ["bio", "clinical"],
     facts: [
@@ -188,7 +188,7 @@ export const needs: Need[] = [
     chip: "I need more research coordination capacity",
     lit: ["bio", "clinical"],
     color: "clinical",
-    title: "Clinical Research Coordination",
+    title: "Clinical research coordination",
     subtitle: "as shared or embedded capacity",
     body: "Senior coordinators who extend a clinical research unit stretched by trial volume, embed inside a department or hospital, or bring structure and supervision to a group that is still being established.",
     facts: [
@@ -258,7 +258,7 @@ export const services: Service[] = [
   {
     key: "bio",
     number: "01",
-    name: "Biospecimen & Translational Research Coordination",
+    name: "Biospecimen & translational research coordination",
     headline: "Connect your lab to the clinic.",
     summary:
       "We build and run the pipeline that brings human samples from clinical settings to research laboratories, with the clinical metadata that makes them useful.",
@@ -298,7 +298,7 @@ export const services: Service[] = [
   {
     key: "clinical",
     number: "02",
-    name: "Clinical Research Coordination",
+    name: "Clinical research coordination",
     headline: "Start up and run human-subjects studies.",
     summary:
       "Coordinators who take a protocol from feasibility through activation, enrollment, and close-out, for investigator-initiated and industry-sponsored studies alike.",
@@ -335,7 +335,7 @@ export const services: Service[] = [
   {
     key: "pm",
     number: "03",
-    name: "Research Project & Program Management",
+    name: "Research project & program management",
     headline: "Keep complex initiatives on track.",
     summary:
       "Project and program managers who run the operational side of multi-investigator and multi-institutional science, in basic, clinical, and translational work.",
