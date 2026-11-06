@@ -739,8 +739,6 @@ export const arm = {
   name: "Research Operations & Management",
   short: "Launching, coordinating, and managing research",
   href: "/services/project-management" as const,
-  fiveArmsBlurb:
-    "Research Development helps investigators develop ideas, build collaborations, and secure funding. Research Operations & Management helps them launch, execute, coordinate, and manage the work. Each stands on its own; most projects draw on more than one.",
 };
 
 export const mailto = (subject: string) =>

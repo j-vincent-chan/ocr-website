@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/chrome";
-import { ServiceCrossNav } from "@/components/site/service-family";
 import { GetStarted } from "@/components/research-operations/get-started";
 import { Hero } from "@/components/research-operations/hero";
 import { HowWeWork } from "@/components/research-operations/how-we-work";
@@ -35,7 +34,7 @@ export const Route = createFileRoute("/services/project-management")({
 /**
  * Sibling of /services/research-development (see design_handoff_research_operations/README.md).
  * Background rhythm: dark hero → paper → cream → paper → cream → paper → cream → dark CTA →
- * cream arms → dark footer. Copy and data live in src/data/research-operations.ts.
+ * dark footer. Copy and data live in src/data/research-operations.ts.
  */
 function ResearchOperationsPage() {
   return (
@@ -48,7 +47,6 @@ function ResearchOperationsPage() {
       <StaffingSection />
       <TeamAndPartners />
       <GetStarted />
-      <ServiceCrossNav currentPath={arm.href} lede={arm.fiveArmsBlurb} />
     </SiteShell>
   );
 }
