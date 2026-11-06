@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import { SunburstLogo } from "@/components/site/chrome";
 import {
@@ -12,35 +12,26 @@ import {
 import { joinList, TRANSITION, tint } from "./lib";
 import { Arrow, Eyebrow } from "./primitives";
 
-/** `p:{strategist id}` or `q:{partner id}` */
-type Focus = `p:${string}` | `q:${string}` | null;
+/** `p:{strategist id}` */
+type Focus = `p:${string}` | null;
 
 const ownersOf = (id: PartnerId) => strategists.filter((p) => p.partners.includes(id));
 const shortName = (p: Strategist) => (p.id === "open" ? "Our open position" : p.name.split(",")[0]);
 const partnerName = (id: PartnerId) => partners.find((q) => q.id === id)?.name ?? id;
 
 function hintFor(focus: Focus): string {
-  if (!focus) return teamCopy.hint;
-  const [kind, id] = focus.split(":") as ["p" | "q", string];
-  if (kind === "p") {
-    const p = strategists.find((x) => x.id === id);
-    if (!p) return teamCopy.hint;
-    const names = p.partners.map(partnerName);
-    const verb = p.id === "open" ? "will support" : "supports";
-    const list = p.hintExtra ? `${names.join(", ")}, ${p.hintExtra}` : joinList(names);
-    return `${shortName(p)} ${verb} ${list}.`;
-  }
-  const q = partners.find((x) => x.id === id);
-  if (!q) return teamCopy.hint;
-  const owners = ownersOf(q.id);
-  return owners.length
-    ? `${q.name} is supported by ${joinList(owners.map((p) => (p.id === "open" ? "our open position" : shortName(p))))}.`
-    : `${q.name} is supported by the research development team.`;
+  const p = focus ? strategists.find((x) => `p:${x.id}` === focus) : undefined;
+  if (!p) return teamCopy.hint;
+  const names = p.partners.map(partnerName);
+  const verb = p.id === "open" ? "will support" : "supports";
+  const list = p.hintExtra ? `${names.join(", ")}, ${p.hintExtra}` : joinList(names);
+  return `${shortName(p)} ${verb} ${list}.`;
 }
 
 /**
- * Strategists and partner institutes with linked highlighting: hovering (or clicking to pin)
- * a strategist lights that person and their partners; hovering a partner works in reverse.
+ * Strategists and partner institutes with one-way linked highlighting: hovering (or clicking
+ * to pin) a strategist lights that person and their partners. Partner rows are plain links
+ * to the institute's site.
  */
 export function TeamAndPartners() {
   const [hover, setHover] = useState<Focus>(null);
@@ -50,19 +41,11 @@ export function TeamAndPartners() {
   let litPeople: Set<string> | null = null;
   let litPartners: Set<PartnerId> | null = null;
   let focusColor: string | null = null;
-  if (focus) {
-    const [kind, id] = focus.split(":") as ["p" | "q", string];
-    if (kind === "p") {
-      const p = strategists.find((x) => x.id === id);
-      if (p) {
-        litPeople = new Set([p.id]);
-        litPartners = new Set(p.partners);
-        focusColor = p.color;
-      }
-    } else {
-      litPartners = new Set([id as PartnerId]);
-      litPeople = new Set(ownersOf(id as PartnerId).map((p) => p.id));
-    }
+  const focused = focus ? strategists.find((x) => `p:${x.id}` === focus) : undefined;
+  if (focused) {
+    litPeople = new Set([focused.id]);
+    litPartners = new Set(focused.partners);
+    focusColor = focused.color;
   }
 
   const togglePin = (key: Focus) => setPin((prev) => (prev === key ? null : key));
@@ -193,35 +176,29 @@ export function TeamAndPartners() {
             </p>
             <ul className="border-t border-ink">
               {partners.map((q) => {
-                const key: Focus = `q:${q.id}`;
                 const owners = ownersOf(q.id);
                 const hot = !!litPartners && litPartners.has(q.id);
                 const dim = !!litPartners && !hot;
                 const arrowColor = owners[0]?.textColor ?? "var(--coral-text)";
+                const lit = hot && focusColor ? tint(focusColor, 0.14) : null;
                 return (
                   <li key={q.id} className="border-b border-rule py-[5px]">
-                    <div
-                      {...rowHandlers(key)}
-                      className={`relative flex items-center gap-3.5 rounded-[14px] px-3.5 py-[11px] ${TRANSITION}`}
-                      style={{
-                        background: hot
-                          ? focusColor
-                            ? tint(focusColor, 0.14)
-                            : "oklch(0.14 0.06 265 / 0.05)"
-                          : "transparent",
-                        opacity: dim ? 0.38 : 1,
-                      }}
+                    <a
+                      href={q.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`group flex items-center gap-3.5 rounded-[14px] bg-[var(--row-bg)] px-3.5 py-[11px] text-inherit no-underline hover:bg-[var(--row-hover)] hover:opacity-100! focus-visible:bg-[var(--row-hover)] focus-visible:opacity-100! focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ink/50 ${TRANSITION}`}
+                      style={
+                        {
+                          "--row-bg": lit ?? "transparent",
+                          "--row-hover": lit ?? "oklch(0.14 0.06 265 / 0.06)",
+                          opacity: dim ? 0.38 : 1,
+                        } as CSSProperties
+                      }
                     >
-                      <button
-                        type="button"
-                        aria-pressed={pin === key}
-                        aria-label={`${q.name}: highlight strategists`}
-                        {...buttonHandlers(key)}
-                        className="absolute inset-0 cursor-pointer rounded-[14px] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ink/50"
-                      />
-                      <div className="pointer-events-none relative flex w-[26px] flex-none flex-wrap items-center gap-1.5 md:w-[58px] md:flex-nowrap">
+                      <div className="flex w-[26px] flex-none flex-wrap items-center gap-1.5 md:w-[58px] md:flex-nowrap">
                         {owners.map((o) => {
-                          const ringed = hot && (!focusColor || focusColor === o.color);
+                          const ringed = hot && focusColor === o.color;
                           return (
                             <span
                               key={o.id}
@@ -235,22 +212,19 @@ export function TeamAndPartners() {
                           );
                         })}
                       </div>
-                      <div className="pointer-events-none relative min-w-0 flex-1">
+                      <div className="min-w-0 flex-1">
                         <div className="font-display text-[19px] text-ink">{q.name}</div>
                         <div className="mt-0.5 text-[13px] text-ink-muted-2">{q.since}</div>
                       </div>
-                      <a
-                        href={q.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`${q.name} website`}
-                        onClick={(e) => e.stopPropagation()}
-                        className="relative flex-none p-1 text-base no-underline transition-transform hover:-translate-y-0.5 hover:translate-x-0.5"
+                      <span
+                        aria-hidden
+                        className="flex-none p-1 text-base transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                         style={{ color: arrowColor }}
                       >
                         ↗
-                      </a>
-                    </div>
+                      </span>
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
                   </li>
                 );
               })}

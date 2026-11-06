@@ -463,7 +463,7 @@ export const teamCopy = {
       "We work closely with partner institutes to understand their faculty, research priorities, and portfolios.",
     button: "Talk to us about partnership",
   },
-  hint: "Hover or click a strategist or an institute to see who works where.",
+  hint: "Hover or click a strategist to see the institutes they support.",
 };
 
 export const booking = {
