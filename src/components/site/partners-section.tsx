@@ -8,7 +8,7 @@ const PARTNERS = [
     since: 2023,
     description:
       "OCR began inside ImmunoX and still anchors our model: embedded grant strategists, project managers, and data leads who work alongside immunology investigators from concept through award and into study execution.",
-    services: ["Research development", "Project management", "Data", "AI tools", "Community management"],
+    services: ["Research development", "Project management", "Data management", "AI tools", "Community management"],
     proof: "Founding partner; the model OCR now adapts for other institutes.",
   },
   {

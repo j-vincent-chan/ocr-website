@@ -55,9 +55,8 @@ export const Route = createFileRoute("/people")({
 type Arm =
   | "Leadership"
   | "Research Development"
-  | "Project Management"
-  | "Clinical Coordination"
-  | "Data"
+  | "Research Operations & Management"
+  | "Data Management"
   | "Community Management";
 
 type Person = {
@@ -125,7 +124,7 @@ const TEAM: Person[] = [
     name: "Corey Rathe",
     credential: "MS",
     role: "Project Manager",
-    arms: ["Leadership", "Project Management"],
+    arms: ["Leadership", "Research Operations & Management"],
     bio: "Runs study startup, milestones, and operations across consortium projects. Keeps the work moving without losing the science.",
     accent: "var(--teal)",
     photo: coreyRatheImg,
@@ -134,7 +133,7 @@ const TEAM: Person[] = [
   {
     name: "Francisco Quintanilla",
     role: "Senior Clinical Research Coordinator",
-    arms: ["Clinical Coordination"],
+    arms: ["Research Operations & Management"],
     bio: "Coordinates patient enrollment and biospecimen workflows across UCSF clinics.",
     accent: "var(--teal)",
     photo: franciscoQuintanillaImg,
@@ -143,7 +142,7 @@ const TEAM: Person[] = [
   {
     name: "Natalia Dikinov",
     role: "Senior Clinical Research Coordinator",
-    arms: ["Leadership", "Clinical Coordination"],
+    arms: ["Leadership", "Research Operations & Management"],
     bio: "Senior CRC on autoimmune and inflammatory cohorts. IRB, consent, and chart abstraction.",
     accent: "var(--teal)",
     photo: nataliaDikinovImg,
@@ -152,7 +151,7 @@ const TEAM: Person[] = [
   {
     name: "Ohnmar Chan",
     role: "Senior Clinical Research Coordinator",
-    arms: ["Clinical Coordination"],
+    arms: ["Research Operations & Management"],
     bio: "Senior CRC supporting enrollment, consent, and day-to-day study operations across OCR clinical portfolios.",
     accent: "var(--teal)",
     photo: ohnmarChanImg,
@@ -162,7 +161,7 @@ const TEAM: Person[] = [
     name: "Lina Kamil",
     credential: "MPH",
     role: "Clinical Research Coordinator",
-    arms: ["Clinical Coordination"],
+    arms: ["Research Operations & Management"],
     bio: "Patient-facing coordination and study operations for human-subjects research.",
     accent: "var(--teal)",
     photo: linaKamilImg,
@@ -171,7 +170,7 @@ const TEAM: Person[] = [
   {
     name: "Olivia Murley",
     role: "Clinical Research Coordinator",
-    arms: ["Clinical Coordination"],
+    arms: ["Research Operations & Management"],
     bio: "Coordinates participant visits, consent, and day-to-day study operations for OCR clinical portfolios.",
     accent: "var(--teal)",
     photo: oliviaMurleyImg,
@@ -180,7 +179,7 @@ const TEAM: Person[] = [
   {
     name: "Michelle Yu",
     role: "Data Manager",
-    arms: ["Data"],
+    arms: ["Data Management"],
     bio: "Builds the databases, metadata schemas, and Data Management & Sharing plans behind every OCR study.",
     accent: "var(--magenta)",
     photo: michelleYuImg,
@@ -190,7 +189,7 @@ const TEAM: Person[] = [
     name: "Bushra Samad",
     credential: "MS",
     role: "Data Manager",
-    arms: ["Data"],
+    arms: ["Data Management"],
     bio: "Supports database design, data integrity, and sharing workflows for OCR-managed studies and consortium datasets.",
     accent: "var(--magenta)",
     photo: bushraSamadImg,
@@ -235,9 +234,8 @@ const ARMS = [
   "All",
   "Leadership",
   "Research Development",
-  "Project Management",
-  "Clinical Coordination",
-  "Data",
+  "Research Operations & Management",
+  "Data Management",
   "Community Management",
 ] as const;
 
@@ -255,15 +253,15 @@ const FILTER_ORDER: Record<Arm, string[]> = {
     "Lindsay Breithaupt|Research Development Strategist",
     "Open Position|Research Development Strategist",
   ],
-  "Project Management": ["Corey Rathe|Project Manager"],
-  "Clinical Coordination": [
+  "Research Operations & Management": [
+    "Corey Rathe|Project Manager",
     "Natalia Dikinov|Senior Clinical Research Coordinator",
     "Francisco Quintanilla|Senior Clinical Research Coordinator",
     "Lina Kamil|Clinical Research Coordinator",
     "Ohnmar Chan|Senior Clinical Research Coordinator",
     "Olivia Murley|Clinical Research Coordinator",
   ],
-  Data: [
+  "Data Management": [
     "Michelle Yu|Data Manager",
     "Bushra Samad|Data Manager",
   ],
