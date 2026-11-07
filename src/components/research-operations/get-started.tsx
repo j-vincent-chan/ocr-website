@@ -49,14 +49,15 @@ export function GetStarted() {
 
 /**
  * Styled to match the Start-here card: white, radius 20, 5px teal top border.
- * The visitor picks where their research is; the hint and the mailto subject follow.
- * No booking system: everything goes through email or /contact.
+ * Every first conversation goes to Vincent Chan; the primary action is his Microsoft
+ * Bookings page. The stage select tailors the "helpful to include" hint and offers
+ * email as the secondary path.
  */
 function ScopeCard() {
   const [stage, setStage] = useState<StageKey | "">("");
   const selectId = useId();
   const current = stage ? getStarted.stages.find((s) => s.key === stage) : null;
-  const { card } = getStarted;
+  const { card, booking } = getStarted;
 
   return (
     <div
@@ -82,6 +83,34 @@ function ScopeCard() {
           {card.side[1]}
         </div>
       </div>
+
+      <div
+        className={`mt-5 flex items-center gap-4 rounded-2xl px-4 py-3.5 ${TRANSITION}`}
+        style={{ background: tint(TEAL, 0.14) }}
+      >
+        <div className="h-14 w-14 flex-none rounded-full p-[3px]" style={{ background: TEAL }}>
+          <img
+            src={booking.photo}
+            alt=""
+            className="h-full w-full rounded-full border-2 border-white bg-secondary object-cover"
+          />
+        </div>
+        <div className="min-w-0">
+          <div className="text-[11px] uppercase tracking-[0.14em] text-ink-muted-2">
+            {booking.label}
+          </div>
+          <div className="font-display text-xl leading-tight text-ink">{booking.name}</div>
+          <div className="mt-0.5 text-[13px] text-teal-text">{booking.role}</div>
+        </div>
+      </div>
+      <a
+        href={booking.url}
+        target="_blank"
+        rel="noreferrer"
+        className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-ink/90"
+      >
+        {booking.button} <Arrow />
+      </a>
 
       <label
         htmlFor={selectId}
@@ -135,7 +164,7 @@ function ScopeCard() {
             </div>
             <a
               href={mailto(current.subject)}
-              className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-ink/90"
+              className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/20 px-6 py-3 text-[15px] font-medium text-ink transition-colors hover:border-ink/50"
             >
               {current.button} <Arrow />
             </a>

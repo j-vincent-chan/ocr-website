@@ -7,6 +7,7 @@
 // before launch and render a review pill while SHOW_REVIEW_FLAGS is on.
 
 import coreyImg from "@/assets/people/corey-rathe.jpg";
+import vincentImg from "@/assets/people/vincent-chan.jpg";
 import nataliaImg from "@/assets/people/natalia-dikinov.jpg";
 import ohnmarImg from "@/assets/people/ohnmar-chan.jpg";
 import franciscoImg from "@/assets/people/francisco-quintanilla.jpg";
@@ -15,7 +16,7 @@ import oliviaImg from "@/assets/people/olivia-murley.jpg";
 
 export type ServiceKey = "bio" | "clinical" | "pm";
 export type NeedKey = "samples" | "study" | "program" | "capacity";
-export type StageKey = "early" | "startup" | "active" | "expand";
+export type StageKey = "early" | "startup" | "active" | "expand" | "other";
 
 /** Design-review annotations (yellow "Confirm …" pills). Never shown in production builds. */
 export const SHOW_REVIEW_FLAGS = import.meta.env.DEV;
@@ -185,31 +186,32 @@ export const needs: Need[] = [
   },
   {
     key: "capacity",
-    chip: "I need more research coordination capacity",
-    lit: ["bio", "clinical"],
+    chip: "I need experienced clinical research management",
+    lit: ["clinical", "pm"],
     color: "clinical",
     title: "Clinical research coordination",
-    subtitle: "as shared or embedded capacity",
-    body: "Senior coordinators who extend a clinical research unit stretched by trial volume, embed inside a department or hospital, or bring structure and supervision to a group that is still being established.",
+    subtitle: "without the full-time hire",
+    body: "Senior coordinators who supervise a clinical research program at the effort it needs: a new PI starting a program in their specialty, an established program whose supervisor has left, or a portfolio that needs experienced management part-time.",
+    alsoDrawsOn: ["pm"],
     facts: [
       {
         term: "When",
-        text: "When trial volume outpaces your unit, or before a new group hires its own staff.",
+        text: "Whenever a program needs experienced management it cannot, or does not need to, hire full-time: at the start, during a staffing gap, or ongoing.",
       },
       {
         term: "For whom",
-        text: "Clinical research units, departments, and hospitals, established or just starting.",
+        text: "New clinical research PIs in any specialty, and established programs between supervisors or with part-time needs.",
       },
       {
         term: "Structure",
-        text: "Shared senior coordinators, embedded on-site staff, or operational oversight for your existing unit.",
+        text: "Experienced coordinators who join your program at the effort you can support, for as long as the need lasts.",
       },
       {
         term: "Cost",
-        text: "Scoped to need and capacity. Staff effort through grants or institutional partnership.",
+        text: "Scoped to the program and our capacity. Staff effort through grants or an institutional partnership.",
       },
     ],
-    ctaHint: "Tell us about the unit, its portfolio, and the gap.",
+    ctaHint: "Tell us your specialty and what the program needs managed.",
   },
 ];
 
@@ -692,14 +694,24 @@ export const getStarted = {
   card: {
     eyebrow: "Scoping conversation",
     title: "Scope a project with us",
-    side: ["By email", "Free to ask"],
+    side: ["30 min", "Free"],
     selectLabel: "Where is your research right now?",
     placeholder: "Choose a stage",
-    emptyHint: "Choose a stage and we'll tell you what is useful to include in a first email.",
+    emptyHint:
+      "Choose a stage and we'll tell you what is useful to bring to a first conversation or email.",
     includeLabel: "Helpful to include",
     /** Rendered as "{note} <a>{email}</a>". */
     note: "No protocol, budget, or IRB approval required · or email",
     email: "ocr@ucsf.edu",
+  },
+  /** The person every first conversation goes to, with their Microsoft Bookings page. */
+  booking: {
+    label: "You'll meet with",
+    name: "Vincent Chan, PhD",
+    role: "OCR Director",
+    photo: vincentImg,
+    button: "Book a time with Vincent",
+    url: "https://bookings.cloud.microsoft/bookwithme/user/6f03d87cc5d9466085201515215922bc@ucsf.edu/meetingtype/djDh-ywfK0CFR__joKskWA2?anonymous&ismsaljsauthenabled&ep=mlink",
   },
   stages: [
     {
@@ -731,6 +743,14 @@ export const getStarted = {
       include: "The unit or program, its current portfolio, and what is changing.",
       button: "Email us about your program",
       subject: "Scope a project: program expansion or restructuring",
+    },
+    {
+      key: "other",
+      label: "Other",
+      include:
+        "Whatever you can share: the research or program, what kind of support you think you need, and your timeline.",
+      button: "Email us about your research",
+      subject: "Scope a project",
     },
   ] satisfies { key: StageKey; label: string; include: string; button: string; subject: string }[],
 };
