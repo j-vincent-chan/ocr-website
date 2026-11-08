@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import { TRANSITION, tint } from "@/components/research-development/lib";
+import { OffsetPortrait } from "@/components/site/offset-portrait";
 import { Arrow } from "@/components/research-development/primitives";
 import { partners, SERVICE_COLOR, team, type ServiceKey } from "@/data/research-operations";
 import { Dot, Eyebrow, ReviewFlag } from "./primitives";
@@ -61,16 +62,13 @@ export function TeamAndPartners() {
                       className={`flex items-center gap-5 rounded-[14px] px-3.5 py-3 hover:bg-[var(--tint)] ${TRANSITION}`}
                       style={{ "--tint": tint(ring.color, 0.14) } as CSSProperties}
                     >
-                      <div
-                        className="h-20 w-20 flex-none rounded-full p-[3px]"
-                        style={{ background: tint(ring.color, 0.55) }}
-                      >
+                      <OffsetPortrait ring={tint(ring.color, 0.55)}>
                         <img
                           src={p.photo}
                           alt=""
-                          className="h-full w-full rounded-full border-[3px] border-white bg-secondary object-cover [object-position:center_18%]"
+                          className="size-full bg-secondary object-cover [object-position:center_18%]"
                         />
-                      </div>
+                      </OffsetPortrait>
                       <div className="min-w-0 flex-1">
                         <h3 className="font-display text-[22px] font-normal leading-[1.2] tracking-normal text-ink">
                           {p.name}

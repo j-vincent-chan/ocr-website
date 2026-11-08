@@ -1,6 +1,7 @@
 import { useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import { SunburstLogo } from "@/components/site/chrome";
+import { OffsetPortrait } from "@/components/site/offset-portrait";
 import {
   links,
   partners,
@@ -119,22 +120,19 @@ export function TeamAndPartners() {
                         {...buttonHandlers(key)}
                         className="absolute inset-0 cursor-pointer rounded-[14px] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ink/50"
                       />
-                      <div
-                        className={`pointer-events-none relative h-20 w-20 flex-none rounded-full p-[3px] ${TRANSITION}`}
-                        style={{ background: hot ? p.color : tint(p.color, 0.55) }}
-                      >
+                      <OffsetPortrait ring={hot ? p.color : tint(p.color, 0.55)}>
                         {p.photo ? (
                           <img
                             src={p.photo}
                             alt=""
-                            className="h-full w-full rounded-full border-[3px] border-white bg-secondary object-cover"
+                            className="size-full bg-secondary object-cover"
                           />
                         ) : (
-                          <div className="flex h-full w-full items-center justify-center rounded-full bg-white">
+                          <div className="flex size-full items-center justify-center">
                             <SunburstLogo className="h-[38px] w-[38px]" />
                           </div>
                         )}
-                      </div>
+                      </OffsetPortrait>
                       <div className="pointer-events-none relative min-w-0 flex-1">
                         <div className="flex items-center gap-2.5">
                           <h3 className="font-display text-[22px] font-normal tracking-normal text-ink">
