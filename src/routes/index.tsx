@@ -9,6 +9,7 @@ import { APPROACH_ICONS } from "@/components/site/approach-icons";
 import { OcrDispatch } from "@/components/site/ocr-dispatch";
 import { PartnersSection } from "@/components/site/partners-section";
 import { SiteShell, SERVICES, CTA, SunburstLogo, CtaRotatingPhrase, ServiceTitle } from "@/components/site/chrome";
+import { IntroSplash } from "@/components/site/intro/IntroSplash";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,6 +35,7 @@ export const Route = createFileRoute("/")({
 function Hero() {
   return (
     <section className="relative bg-cream">
+      <IntroSplash />
       {/* hero panel: clip graphic here so it cannot bleed into dark band or past viewport */}
       <HeroInteractiveBackdrop>
         <div
@@ -59,7 +61,7 @@ function Hero() {
         />
         <HeroMouseGlow />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-32">
+        <div data-intro-hero className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-32">
           <div className="flex items-center gap-3 text-xs font-medium text-ink/70 uppercase tracking-[0.22em]">
           <span className="w-8 h-px bg-coral" />
           UCSF - Office of Collaborative Research (OCR)

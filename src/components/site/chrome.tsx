@@ -81,7 +81,10 @@ export function ServiceTitle({ name }: { name: string }) {
   );
 }
 
-export function SunburstLogo({ className = "" }: { className?: string }) {
+export function SunburstLogo({
+  className = "",
+  ...svgProps
+}: { className?: string } & Omit<React.SVGProps<SVGSVGElement>, "className">) {
   const colors = [
     "#1e3a8a",
     "#0ea5e9",
@@ -101,7 +104,7 @@ export function SunburstLogo({ className = "" }: { className?: string }) {
     "#0ea5e9",
   ];
   return (
-    <svg viewBox="0 0 100 100" className={className} aria-hidden>
+    <svg viewBox="0 0 100 100" {...svgProps} className={className} aria-hidden>
       {Array.from({ length: 32 }).map((_, i) => {
         const angle = (i / 32) * 360;
         return (
@@ -260,9 +263,12 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
-            <SunburstLogo className="w-11 h-11" />
-            <span className="font-display text-[15px] leading-tight transition-colors duration-300">
+          <Link to="/" data-intro-header-lockup className="flex items-center gap-3">
+            <SunburstLogo data-intro-header-logo className="w-11 h-11" />
+            <span
+              data-intro-header-text
+              className="font-display text-[15px] leading-tight transition-colors duration-300"
+            >
               Office of
               <br />
               Collaborative Research

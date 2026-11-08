@@ -955,6 +955,25 @@
   }
 }
 
+/* Intro splash gate. The head script sets data-intro before first paint. */
+html[data-intro="skip"] [data-intro-overlay] {
+  display: none;
+}
+
+html[data-intro="play"] [data-intro-header-lockup] {
+  opacity: 0;
+}
+
+html[data-intro="play"] body {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-intro="play"] [data-intro-overlay] {
+    background: var(--cream) !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .timeline-column {
     animation: none;

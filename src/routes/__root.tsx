@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -103,6 +104,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap",
       },
     ],
+    scripts: [
+      {
+        children:
+          "(function(){try{var p=location.pathname==='/'&&!sessionStorage.getItem('ocr-intro-seen');document.documentElement.dataset.intro=p?'play':'skip'}catch(e){document.documentElement.dataset.intro='play'}})();",
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -112,9 +119,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: "<style>[data-intro-overlay]{display:none}</style>",
+          }}
+        />
       </head>
       <body>
         {children}
@@ -127,6 +139,16 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useLocation({ select: (location) => location.pathname });
+  // Clear the play gate before paint when leaving /, so the header lockup
+  // and page scroll are not stuck hidden on the next route.
+  if (
+    typeof document !== "undefined" &&
+    pathname !== "/" &&
+    document.documentElement.dataset.intro === "play"
+  ) {
+    document.documentElement.dataset.intro = "skip";
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
