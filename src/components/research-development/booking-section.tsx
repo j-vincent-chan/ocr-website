@@ -57,7 +57,7 @@ export function BookingSection() {
 /**
  * Styled to match the Start-here card: white, radius 20, 5px coral top border.
  * The visitor picks their institute; that selects the strategist (see `consultRouting`)
- * and embeds that strategist's Microsoft Bookings page once its URL is set.
+ * and links to that strategist's Microsoft Bookings page once its URL is set.
  */
 function SchedulerCard() {
   const [choice, setChoice] = useState<InstituteChoice | "">("");
@@ -163,23 +163,15 @@ function SchedulerCard() {
             </div>
 
             {pageUrl ? (
-              <>
-                <iframe
-                  key={pageUrl}
-                  src={pageUrl}
-                  title={`Book a consult with ${strategist.name}`}
-                  loading="lazy"
-                  className="mt-4 h-[620px] w-full rounded-2xl border border-ink/10 bg-white"
-                />
-                <a
-                  href={pageUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-2.5 block text-center text-[13px] text-ink-muted-2 underline-offset-2 hover:text-ink hover:underline"
-                >
-                  {booking.card.openInNewTab} ↗
-                </a>
-              </>
+              <a
+                href={pageUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-ink/90"
+              >
+                {booking.card.bookTime(firstName)} <span aria-hidden>↗</span>
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
             ) : (
               <a
                 href={links.consultRequest(strategist.name, instituteName)}

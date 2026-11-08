@@ -484,7 +484,7 @@ export const booking = {
     youllMeet: "You'll meet with",
     nonPartnerNote: "Handles inquiries from outside our partner institutes",
     requestTime: (firstName: string) => `Request a time with ${firstName}`,
-    openInNewTab: "Open the booking page in a new tab",
+    bookTime: (firstName: string) => `Book a time with ${firstName}`,
     caption: "No deadline or draft required · or email",
     email: "ocr@ucsf.edu",
   },
@@ -501,8 +501,8 @@ export const consultRouting: { byPartner: Partial<Record<PartnerId, string>>; fa
 };
 
 /**
- * Each strategist's personal Microsoft Bookings (Book with me) consult page, embedded in the
- * card. While a URL is null, the card offers an email request to that strategist instead.
+ * Each strategist's personal Microsoft Bookings (Book with me) consult page, opened in a new
+ * tab from the card. While a URL is null, the card offers an email request to that strategist instead.
  */
 export const bookingPages: Record<string, string | null> = {
   gabe: "https://bookings.cloud.microsoft/bookwithme/user/847fb6868990452d97471d83492e2e70@ucsf.edu/meetingtype/PX0cE2GHJE6zFY1nwezOVA2?anonymous&ismsaljsauthenabled",
