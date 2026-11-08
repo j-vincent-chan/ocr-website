@@ -142,8 +142,8 @@ export const AWARDS: FundingOpportunity[] = [
       "Up to a quarter of an OCR clinical research coordinator's time for a year, to launch or expand a clinical biospecimen stream.",
     amount: "Up to 25% CRC effort for one year",
     who: "Anyone in the UCSF research community",
-    deadline: "February 27, 2026",
-    tag: "Feb 27, 2026",
+    deadline: "February 2026",
+    tag: "Feb 2026",
     status: "Annual cycle",
     headA: "Open a steady line",
     headB: "from the clinic to your bench.",
@@ -151,7 +151,7 @@ export const AWARDS: FundingOpportunity[] = [
     facts: [
       ["Support", "Up to 25% CRC effort for one year, plus launch-phase data management"],
       ["Eligible", "Anyone in the UCSF research community"],
-      ["Deadline", "Friday, February 27, 2026"],
+      ["Deadline", "February 2026"],
       ["Apply", "Online application form"],
     ],
     applyLabel: "Apply online",
@@ -191,7 +191,7 @@ export const AWARDS: FundingOpportunity[] = [
         t: "Scope it",
         d: "Optional and useful: talk with OCR about the clinic, sample types, and realistic collection rates.",
       },
-      { t: "Apply", d: "Complete the online form by February 27, 2026." },
+      { t: "Apply", d: "Complete the online form by February 2026." },
       {
         t: "Review",
         d: "A committee of UCSF faculty and staff scores merit, feasibility, collaboration, and community benefit.",
@@ -564,8 +564,8 @@ export const AWARDS: FundingOpportunity[] = [
       "Up to $100,000 for physician-scientists to embed with OCR or a CoLab and profile clinical samples.",
     amount: "Up to $100,000 over one or two years",
     who: "MDs and MD/PhDs not yet independent",
-    deadline: "May 8, 2026, 6:00 PM PT",
-    tag: "May 8, 2026",
+    deadline: "May 2026",
+    tag: "May 2026",
     status: "Annual cycle",
     headA: "Protected time to turn clinical insight",
     headB: "into immune biology.",
@@ -573,7 +573,7 @@ export const AWARDS: FundingOpportunity[] = [
     facts: [
       ["Award", "Up to $100,000 over one or two years"],
       ["Eligible", "MD or MD/PhD, not yet an independent investigator"],
-      ["Deadline", "May 8, 2026, 6:00 PM PT"],
+      ["Deadline", "May 2026"],
       ["Apply", "Application form and mentor letters, by email"],
     ],
     applyLabel: "Email your application",
@@ -671,7 +671,7 @@ export const AWARDS: FundingOpportunity[] = [
       },
       {
         t: "Apply",
-        d: "Email the form, appendix, CV, and mentor letters by May 8, 2026, 6:00 PM PT.",
+        d: "Email the form, appendix, CV, and mentor letters by May 2026.",
       },
       {
         t: "Review",
