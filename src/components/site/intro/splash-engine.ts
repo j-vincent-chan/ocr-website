@@ -43,9 +43,9 @@ export const T = {
   bloom: 2.1, // centre opens, rays retract, cream disc grows
   word: 2.9, // wordmark slides in
   logo: 3.0, // logo is canonical (final size, position, colour); stage is fully cream
-  flight: 3.7, // lockup flies into the header
+  flight: 4.2, // lockup flies into the header
   flightDur: 0.8,
-  end: 4.5,
+  end: 5.0,
 } as const;
 
 /** Lines lock 10° early and settle to 0° during the bloom. */
