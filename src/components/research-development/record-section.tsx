@@ -44,15 +44,15 @@ export function RecordSection() {
 
   return (
     <section className="bg-cream py-12 md:py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:grid lg:grid-cols-[5fr_7fr] lg:items-start lg:gap-[88px]">
-        <div>
+      <div className="mx-auto grid max-w-7xl min-w-0 gap-10 px-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start lg:gap-12 xl:gap-[88px]">
+        <div className="min-w-0">
           <Eyebrow>{recordCopy.eyebrow}</Eyebrow>
           <h2 className="font-display text-[32px] font-medium leading-[1.05] tracking-[-0.02em] text-balance text-ink md:text-[40px] lg:text-[48px] lg:leading-[1.02]">
             {recordCopy.heading}
           </h2>
 
           <div
-            className="mt-5 inline-block pb-1.5 font-display text-[88px] font-medium leading-none tracking-[-0.04em] text-gradient-sunburst tabular-nums lg:mt-11 lg:text-[136px]"
+            className="mt-5 inline-block max-w-full pb-1.5 font-display text-[4.25rem] font-medium leading-none tracking-[-0.04em] text-gradient-sunburst tabular-nums sm:text-[5.5rem] lg:mt-11 lg:text-[5.25rem] xl:text-[8.5rem]"
             style={money ? undefined : { borderBottom: "4px dotted var(--coral-deep)" }}
             aria-label={
               money ? `${formatMoney(total.total)} awarded` : "Total awarded: amount pending"
@@ -61,12 +61,16 @@ export function RecordSection() {
             {money ? (
               <>
                 {money.big}
-                <span className="text-[52px] tracking-[-0.02em] lg:text-[80px]">{money.unit}</span>
+                <span className="text-[2.5rem] tracking-[-0.02em] sm:text-[3.25rem] lg:text-[3rem] xl:text-[5rem]">
+                  {money.unit}
+                </span>
               </>
             ) : (
               <>
                 $XX
-                <span className="text-[52px] tracking-[-0.02em] lg:text-[80px]">M</span>
+                <span className="text-[2.5rem] tracking-[-0.02em] sm:text-[3.25rem] lg:text-[3rem] xl:text-[5rem]">
+                  M
+                </span>
               </>
             )}
           </div>
@@ -104,7 +108,7 @@ export function RecordSection() {
           </div>
         </div>
 
-        <div className="mt-8 lg:mt-0">
+        <div className="mt-8 min-w-0 lg:mt-0">
           <h3 className="font-display text-[22px] font-normal leading-[1.15] tracking-normal text-ink lg:text-[28px]">
             {recordCopy.fundedHeading}
           </h3>
@@ -136,7 +140,7 @@ function ProgramPill({ program, className = "" }: { program: OcrProgram; classNa
   const s = serviceById(PROGRAM_SERVICE[program]);
   return (
     <span
-      className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-[3px] text-xs font-medium leading-[1.35] ${className}`}
+      className={`inline-flex max-w-full items-center gap-1.5 rounded-full px-2.5 py-[3px] text-xs font-medium leading-[1.35] ${className}`}
       style={{ background: tint(s.color, 0.2), color: s.textColor }}
     >
       <span
@@ -144,7 +148,7 @@ function ProgramPill({ program, className = "" }: { program: OcrProgram; classNa
         className="h-1.5 w-1.5 flex-none rounded-full"
         style={{ background: s.color }}
       />
-      {program}
+      <span className="min-w-0">{program}</span>
     </span>
   );
 }
@@ -159,13 +163,13 @@ function GrantRow({ grant: g }: { grant: (typeof grants)[number] }) {
         target="_blank"
         rel="noreferrer"
         style={{ "--tint": tint(type.color, 0.14) } as CSSProperties}
-        className="grid grid-cols-[64px_1fr] items-start gap-x-3 py-3.5 text-inherit no-underline transition-colors duration-[250ms] md:grid-cols-[100px_1fr_170px_20px] md:gap-x-[22px] md:rounded-[14px] md:p-3.5 md:hover:bg-[var(--tint)] md:focus-visible:bg-[var(--tint)] focus-visible:outline-none"
+        className="grid grid-cols-[64px_minmax(0,1fr)] items-start gap-x-3 py-3.5 text-inherit no-underline transition-colors duration-[250ms] xl:grid-cols-[100px_minmax(0,1fr)_9.5rem_20px] xl:gap-x-5 xl:rounded-[14px] xl:p-3.5 xl:hover:bg-[var(--tint)] xl:focus-visible:bg-[var(--tint)] focus-visible:outline-none"
       >
         <div>
           <div className="flex items-center gap-2">
             <span
               aria-hidden
-              className="hidden h-2.5 w-2.5 rounded-full md:block"
+              className="hidden h-2.5 w-2.5 rounded-full xl:block"
               style={{ background: type.color }}
             />
             <span
@@ -175,10 +179,15 @@ function GrantRow({ grant: g }: { grant: (typeof grants)[number] }) {
               {g.mech}
             </span>
           </div>
-          <div className="mt-1.5 text-[11px] font-semibold tracking-[0.06em] text-ink-muted-2 md:hidden">
+          <div className="mt-1.5 text-[11px] font-semibold tracking-[0.06em] text-ink-muted-2 xl:hidden">
             {g.ic}
+            {g.award != null ? (
+              <span className="mt-1 block text-sm font-medium normal-case tracking-normal text-ink">
+                {formatMoney(g.award)}
+              </span>
+            ) : null}
           </div>
-          <div className="mt-2 hidden text-xs text-ink-muted-2 md:block">{g.kind}</div>
+          <div className="mt-2 hidden text-xs text-ink-muted-2 xl:block">{g.kind}</div>
         </div>
         <div>
           <div className="text-[15px] font-medium leading-[1.3] text-ink md:text-[17px]">
@@ -187,13 +196,13 @@ function GrantRow({ grant: g }: { grant: (typeof grants)[number] }) {
           <div className="mt-1 text-[13px] text-ink-muted-2 md:mt-1.5 md:text-sm">{g.pis}</div>
           {program ? <ProgramPill program={program} className="mt-2 md:mt-2.5" /> : null}
         </div>
-        <div className="hidden md:block">
+        <div className="hidden xl:block">
           <div className="pt-1 text-[13px] font-semibold tracking-[0.06em] text-ink">{g.ic}</div>
           {g.award != null ? (
             <div className="mt-1.5 text-sm font-medium text-ink">{formatMoney(g.award)}</div>
           ) : null}
         </div>
-        <div aria-hidden className="hidden pt-0.5 md:block" style={{ color: type.text }}>
+        <div aria-hidden className="hidden pt-0.5 xl:block" style={{ color: type.text }}>
           ↗
         </div>
       </a>

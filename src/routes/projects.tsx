@@ -386,73 +386,77 @@ function Grid() {
           </h2>
         </div>
 
-        {/* Inline filter bar on smaller screens */}
-        <div className="xl:hidden mb-8">
-          <ProjectFiltersPanel layout="bar" {...filterPanelProps} />
-        </div>
-
-        <div className="relative overflow-visible">
-          {/* Sticky sidebar — only within the portfolio section, left of the grid */}
-          <div className="hidden xl:block absolute top-0 right-full mr-5 w-[15.5rem]">
-            <div className="sticky top-24 z-10" aria-label="Portfolio filters">
-              <ProjectFiltersPanel layout="sidebar" {...filterPanelProps} />
+        <div className="xl:grid xl:grid-cols-[15.5rem_minmax(0,1fr)] xl:items-start xl:gap-10">
+          <div className="mb-8 xl:mb-0">
+            <div className="xl:sticky xl:top-24" aria-label="Portfolio filters">
+              <div className="xl:hidden">
+                <ProjectFiltersPanel layout="bar" {...filterPanelProps} />
+              </div>
+              <div className="hidden xl:block">
+                <ProjectFiltersPanel layout="sidebar" {...filterPanelProps} />
+              </div>
             </div>
           </div>
 
-          {filtered.length === 0 ? (
-            <p className="text-center text-muted-foreground py-16 text-lg">
-              No programs or projects match these filters.{" "}
-              <button
-                type="button"
-                onClick={() => setFilters(DEFAULT_PROJECT_FILTERS)}
-                className="text-teal font-medium hover:underline"
-              >
-                Reset filters
-              </button>
-            </p>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filtered.map((p, index) => (
-                <article
-                  key={p.slug}
-                  id={p.slug}
-                  className="project-card-reveal group relative scroll-mt-28 rounded-3xl border border-border bg-card overflow-hidden hover:shadow-lift transition-shadow duration-500 flex flex-col"
-                  style={{ animationDelay: `${index * 70}ms` }}
+          <div className="min-w-0">
+            {filtered.length === 0 ? (
+              <p className="text-center text-muted-foreground py-16 text-lg">
+                No programs or projects match these filters.{" "}
+                <button
+                  type="button"
+                  onClick={() => setFilters(DEFAULT_PROJECT_FILTERS)}
+                  className="text-teal font-medium hover:underline"
                 >
-                  <div
-                    className="relative aspect-[16/10] overflow-hidden"
-                    style={{
-                      background: `linear-gradient(135deg, color-mix(in oklab, ${p.accent} 18%, var(--cream)), var(--cream))`,
-                    }}
+                  Reset filters
+                </button>
+              </p>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filtered.map((p, index) => (
+                  <article
+                    key={p.slug}
+                    id={p.slug}
+                    className="project-card-reveal group relative scroll-mt-28 rounded-3xl border border-border bg-card overflow-hidden hover:shadow-lift transition-shadow duration-500 flex flex-col"
+                    style={{ animationDelay: `${index * 70}ms` }}
                   >
-                    <div className="project-card-art absolute inset-0 z-0">
-                      <ProjectMotif motif={p.motif} accent={p.accent} />
-                    </div>
-                    <span className="absolute top-4 left-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-card/85 backdrop-blur px-3 py-1 text-[11px] uppercase tracking-widest text-ink pointer-events-none">
-                      <span className="w-1.5 h-1.5 rounded-full" style={{ background: p.accent }} />
-                      {p.status}
-                    </span>
-                  </div>
-                  <div className="p-6 flex flex-col gap-3 flex-1">
-                    <ProjectAreaPills project={p} />
-                    <h3 className="font-display text-2xl text-ink leading-tight">{p.name}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                      {p.blurb}
-                    </p>
-                    <div className="pt-2 flex items-center text-sm font-medium text-ink">
-                      Read more
-                      <span
-                        className="ml-1 transition-transform group-hover:translate-x-1"
-                        aria-hidden
-                      >
-                        →
+                    <div
+                      className="relative aspect-[16/10] overflow-hidden"
+                      style={{
+                        background: `linear-gradient(135deg, color-mix(in oklab, ${p.accent} 18%, var(--cream)), var(--cream))`,
+                      }}
+                    >
+                      <div className="project-card-art absolute inset-0 z-0">
+                        <ProjectMotif motif={p.motif} accent={p.accent} />
+                      </div>
+                      <span className="absolute top-4 left-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-card/85 backdrop-blur px-3 py-1 text-[11px] uppercase tracking-widest text-ink pointer-events-none">
+                        <span
+                          className="w-1.5 h-1.5 rounded-full"
+                          style={{ background: p.accent }}
+                        />
+                        {p.status}
                       </span>
                     </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          )}
+                    <div className="p-6 flex flex-col gap-3 flex-1">
+                      <ProjectAreaPills project={p} />
+                      <h3 className="font-display text-2xl text-ink leading-tight">{p.name}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                        {p.blurb}
+                      </p>
+                      <div className="pt-2 flex items-center text-sm font-medium text-ink">
+                        Read more
+                        <span
+                          className="ml-1 transition-transform group-hover:translate-x-1"
+                          aria-hidden
+                        >
+                          →
+                        </span>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>

@@ -117,9 +117,7 @@ export function IntroSplash() {
       w.style.transform = `translate(${f.word.tx.toFixed(2)}px,${f.word.ty.toFixed(2)}px) scale(${f.word.k.toFixed(4)})`;
       if (hero && !reduced) hero.style.transform = `translateY(${f.heroShift.toFixed(2)}px)`;
       const sk = skipBtn.current!;
-      sk.style.color = f.stageVisible
-        ? "rgba(242,239,232,0.6)"
-        : "color-mix(in oklch, var(--ink) 50%, transparent)";
+      sk.style.color = f.stageVisible ? "rgba(242,239,232,0.92)" : "var(--ink)";
       if (skipState === "hidden" && f.skipVisible) {
         skipState = "shown";
         sk.style.opacity = "1";
@@ -272,8 +270,7 @@ export function IntroSplash() {
       <button
         ref={skipBtn}
         type="button"
-        className="absolute right-5 bottom-[18px] cursor-pointer border-0 bg-transparent p-2.5 text-[11px] leading-none font-medium tracking-[0.22em] uppercase opacity-0 transition-[opacity,color] duration-300"
-        style={{ color: "rgba(242,239,232,0.6)" }}
+        className="absolute right-4 bottom-4 min-h-11 cursor-pointer rounded-full border border-current/25 bg-white/15 px-4 text-[13px] leading-none font-medium tracking-[0.14em] uppercase opacity-0 backdrop-blur-sm transition-[opacity,color] duration-300"
       >
         Skip intro
       </button>

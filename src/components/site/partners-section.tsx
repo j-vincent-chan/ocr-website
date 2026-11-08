@@ -120,7 +120,7 @@ export function PartnersSection() {
             Partners
           </span>
           <h2 className="mt-4 font-display text-5xl md:text-6xl text-ink leading-[0.98]">
-            <span className="block md:whitespace-nowrap">
+            <span className="block text-balance lg:whitespace-nowrap">
               Many partners, different needs.
             </span>
             <span className="block italic text-muted-foreground/60">
