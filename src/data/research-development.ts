@@ -255,11 +255,10 @@ export const grants: {
   },
 ];
 
-/** R01 → Research plan review; R24 and P-series → Large grant development program; others → TODO */
+/** R01 and K-series → Research plan review; R24 and P-series → Large grant development program */
 export function programFor(mech: string): OcrProgram | null {
-  if (mech === "R01") return "Research plan review";
+  if (mech === "R01" || mech.startsWith("K")) return "Research plan review";
   if (mech === "R24" || mech.startsWith("P")) return "Large grant development program";
-  // TODO (OCR open item 2): which OCR program supported the K24 (Hsiang) grant?
   return null;
 }
 
