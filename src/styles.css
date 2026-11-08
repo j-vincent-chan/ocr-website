@@ -50,6 +50,8 @@
   --color-amber-text: var(--amber-text);
   --color-magenta-text: var(--magenta-text);
   --color-teal-text: var(--teal-text);
+  --color-teal-light: var(--teal-light);
+  --color-lime-text: var(--lime-text);
   --color-violet: var(--violet);
   --color-violet-text: var(--violet-text);
   --font-display: "Fraunces", "Georgia", serif;
@@ -102,6 +104,8 @@
   --amber-text: oklch(0.55 0.14 75);
   --magenta-text: oklch(0.5 0.2 340);
   --teal-text: oklch(0.45 0.1 195);
+  --teal-light: oklch(0.78 0.13 195);
+  --lime-text: oklch(0.46 0.12 130);
   --violet: oklch(0.72 0.16 290);
   --violet-text: oklch(0.48 0.18 285);
 
@@ -131,7 +135,10 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
     color: var(--color-ink);
@@ -158,18 +165,28 @@
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-14.7px) rotate(2.1deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14.7px) rotate(2.1deg);
+  }
 }
 
 /* Hero constellation: vertical drift only (rotate expands bounds and clips awkwardly) */
 @keyframes hero-constellation-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -182,11 +199,23 @@
 }
 
 @keyframes ghibli-particle-fall {
-  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.95; }
-  50% { transform: translate(14px, 55cqh) rotate(160deg); }
-  90% { opacity: 0.9; }
-  100% { transform: translate(-10px, 115cqh) rotate(320deg); opacity: 0; }
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.95;
+  }
+  50% {
+    transform: translate(14px, 55cqh) rotate(160deg);
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-10px, 115cqh) rotate(320deg);
+    opacity: 0;
+  }
 }
 
 .ghibli-particle {
@@ -208,78 +237,167 @@
 
 /* ── Project card motifs: living scientific abstract art ── */
 @keyframes pm-breathe {
-  0%, 100% { transform: scale(1); opacity: 0.35; }
-  50% { transform: scale(1.04); opacity: 0.55; }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.55;
+  }
 }
 
 @keyframes pm-ring-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.22; }
-  50% { transform: scale(1.02); opacity: 0.42; }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.22;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.42;
+  }
 }
 
 @keyframes pm-orbit-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pm-node-twinkle {
-  0%, 100% { opacity: 0.35; transform: scale(0.85); }
-  50% { opacity: 1; transform: scale(1.15); }
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
 }
 
 @keyframes pm-core-pulse {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.12); }
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
 }
 
 @keyframes pm-spoke-shimmer {
-  0%, 100% { opacity: 0.12; }
-  50% { opacity: 0.28; }
+  0%,
+  100% {
+    opacity: 0.12;
+  }
+  50% {
+    opacity: 0.28;
+  }
 }
 
 @keyframes pm-meridian-drift {
-  0%, 100% { opacity: 0.14; transform: scaleX(1); }
-  50% { opacity: 0.28; transform: scaleX(1.06); }
+  0%,
+  100% {
+    opacity: 0.14;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.28;
+    transform: scaleX(1.06);
+  }
 }
 
 @keyframes pm-lattice-shimmer {
-  0%, 100% { opacity: 0.25; }
-  50% { opacity: 0.95; }
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.95;
+  }
 }
 
 @keyframes pm-ray-breathe {
-  0%, 100% { opacity: 0.22; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 0.22;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 @keyframes pm-radial-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pm-helix-flow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.75; }
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.75;
+  }
 }
 
 @keyframes pm-field-wave {
-  0%, 100% { opacity: 0.14; }
-  50% { opacity: 0.32; }
+  0%,
+  100% {
+    opacity: 0.14;
+  }
+  50% {
+    opacity: 0.32;
+  }
 }
 
 @keyframes pm-line-wave {
-  0%, 100% { transform: translateX(0); opacity: 0.28; }
-  50% { transform: translateX(1.4px); opacity: 0.48; }
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 0.28;
+  }
+  50% {
+    transform: translateX(1.4px);
+    opacity: 0.48;
+  }
 }
 
 @keyframes pm-hoop-expand {
-  0%, 100% { transform: scale(1); opacity: 0.32; }
-  50% { transform: scale(1.03); opacity: 0.52; }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.32;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.52;
+  }
 }
 
 @keyframes pm-diagonal-shimmer {
-  0%, 100% { opacity: 0.1; stroke-dashoffset: 0; }
-  50% { opacity: 0.28; stroke-dashoffset: 8; }
+  0%,
+  100% {
+    opacity: 0.1;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    opacity: 0.28;
+    stroke-dashoffset: 8;
+  }
 }
 
 .project-card-art {
@@ -393,11 +511,21 @@
   transform-origin: 50px 50px;
   animation: pm-ring-pulse 14s ease-in-out infinite;
 }
-.project-motif--rings .pm-ring-0 { animation-delay: 0s; }
-.project-motif--rings .pm-ring-1 { animation-delay: 1.2s; }
-.project-motif--rings .pm-ring-2 { animation-delay: 2.4s; }
-.project-motif--rings .pm-ring-3 { animation-delay: 3.6s; }
-.project-motif--rings .pm-ring-4 { animation-delay: 4.8s; }
+.project-motif--rings .pm-ring-0 {
+  animation-delay: 0s;
+}
+.project-motif--rings .pm-ring-1 {
+  animation-delay: 1.2s;
+}
+.project-motif--rings .pm-ring-2 {
+  animation-delay: 2.4s;
+}
+.project-motif--rings .pm-ring-3 {
+  animation-delay: 3.6s;
+}
+.project-motif--rings .pm-ring-4 {
+  animation-delay: 4.8s;
+}
 
 .project-motif--rings .pm-orbit-node {
   animation: pm-orbit-spin 48s linear infinite;
@@ -486,10 +614,18 @@
   transform-origin: 50px 50px;
   animation: pm-hoop-expand 12s ease-in-out infinite;
 }
-.project-motif--fullhoop .pm-hoop-0 { animation-delay: 0s; }
-.project-motif--fullhoop .pm-hoop-1 { animation-delay: 0.8s; }
-.project-motif--fullhoop .pm-hoop-2 { animation-delay: 1.6s; }
-.project-motif--fullhoop .pm-hoop-3 { animation-delay: 2.4s; }
+.project-motif--fullhoop .pm-hoop-0 {
+  animation-delay: 0s;
+}
+.project-motif--fullhoop .pm-hoop-1 {
+  animation-delay: 0.8s;
+}
+.project-motif--fullhoop .pm-hoop-2 {
+  animation-delay: 1.6s;
+}
+.project-motif--fullhoop .pm-hoop-3 {
+  animation-delay: 2.4s;
+}
 .project-motif--fullhoop .pm-hoop-orbit {
   animation: pm-orbit-spin 40s linear infinite;
 }
@@ -512,27 +648,115 @@
   animation: pm-node-twinkle 5.2s ease-in-out infinite;
 }
 
+/* Sabbatical "orbit": two tilted ellipses breathing, dots twinkling, core pulsing. */
+@keyframes pm-orbit-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.9;
+  }
+}
+
+@keyframes pm-orbit-twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.project-motif--orbit .pm-orbit-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pm-orbit-breathe 7s ease-in-out infinite;
+}
+
+.project-motif--orbit .pm-orbit-dot,
+.project-motif--orbit .pm-orbit-core {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pm-orbit-twinkle 4s ease-in-out infinite;
+}
+
+@keyframes funding-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.funding-menu {
+  animation: funding-menu-in 0.2s ease;
+}
+
+@keyframes funding-faq-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.funding-faq-answer {
+  animation: funding-faq-in 0.25s ease;
+}
+
 /* ── Research operations: service detail drawer (shadcn Sheet) ──
    Panel slides in 48px → 0 with a fade over .3s; the backdrop fades over .25s.
    Unlayered so it overrides the Sheet's default full-width slide. */
 @keyframes ro-drawer-in {
-  from { transform: translateX(48px); opacity: 0; }
-  to { transform: none; opacity: 1; }
+  from {
+    transform: translateX(48px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
 }
 
 @keyframes ro-drawer-out {
-  from { transform: none; opacity: 1; }
-  to { transform: translateX(48px); opacity: 0; }
+  from {
+    transform: none;
+    opacity: 1;
+  }
+  to {
+    transform: translateX(48px);
+    opacity: 0;
+  }
 }
 
 @keyframes ro-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes ro-fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .ro-drawer[data-state="open"] {
@@ -595,7 +819,9 @@
   .project-motif *,
   .project-card-reveal,
   .ro-drawer,
-  .ro-drawer-backdrop {
+  .ro-drawer-backdrop,
+  .funding-menu,
+  .funding-faq-answer {
     animation: none !important;
   }
 

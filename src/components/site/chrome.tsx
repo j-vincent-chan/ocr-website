@@ -1,5 +1,6 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { FundingMenu } from "@/components/funding/funding-menu";
 
 const CTA_ROTATING_PHRASES = [
   "worth funding.",
@@ -54,9 +55,7 @@ export function CtaRotatingPhrase({
           {phrases[prevIndex]}
         </span>
       )}
-      <span
-        className={`absolute inset-0 ${prevIndex !== null ? "cta-phrase-enter" : ""}`}
-      >
+      <span className={`absolute inset-0 ${prevIndex !== null ? "cta-phrase-enter" : ""}`}>
         {phrases[index]}
       </span>
     </span>
@@ -77,18 +76,29 @@ export function ServiceTitle({ name }: { name: string }) {
   return (
     <>
       {formatServiceTitlePart(parts[0])}
-      <br />
-      & {formatServiceTitlePart(parts.slice(1).join(" & "))}
+      <br />& {formatServiceTitlePart(parts.slice(1).join(" & "))}
     </>
   );
 }
 
 export function SunburstLogo({ className = "" }: { className?: string }) {
   const colors = [
-    "#1e3a8a", "#0ea5e9", "#10b981", "#f59e0b",
-    "#ef4444", "#ec4899", "#8b5cf6", "#1e3a8a",
-    "#0ea5e9", "#10b981", "#f59e0b", "#ef4444",
-    "#ec4899", "#8b5cf6", "#1e3a8a", "#0ea5e9",
+    "#1e3a8a",
+    "#0ea5e9",
+    "#10b981",
+    "#f59e0b",
+    "#ef4444",
+    "#ec4899",
+    "#8b5cf6",
+    "#1e3a8a",
+    "#0ea5e9",
+    "#10b981",
+    "#f59e0b",
+    "#ef4444",
+    "#ec4899",
+    "#8b5cf6",
+    "#1e3a8a",
+    "#0ea5e9",
   ];
   return (
     <svg viewBox="0 0 100 100" className={className} aria-hidden>
@@ -155,6 +165,7 @@ export type NavTone = "light" | "dark";
  */
 function useNavTone(initial: NavTone): NavTone {
   const [tone, setTone] = useState<NavTone>(initial);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const header = document.querySelector<HTMLElement>("[data-site-header]");
@@ -169,10 +180,12 @@ function useNavTone(initial: NavTone): NavTone {
         return;
       }
       const bottom = header.getBoundingClientRect().bottom;
-      const touching = Array.from(document.querySelectorAll<HTMLElement>("[data-tone]")).find((el) => {
-        const r = el.getBoundingClientRect();
-        return r.top <= bottom + 1 && r.bottom > bottom;
-      });
+      const touching = Array.from(document.querySelectorAll<HTMLElement>("[data-tone]")).find(
+        (el) => {
+          const r = el.getBoundingClientRect();
+          return r.top <= bottom + 1 && r.bottom > bottom;
+        },
+      );
       setTone(touching?.dataset.tone === "dark" ? "dark" : "light");
     };
 
@@ -201,15 +214,17 @@ function useNavTone(initial: NavTone): NavTone {
       observer?.disconnect();
       window.removeEventListener("resize", connect);
     };
-  }, []);
+  }, [pathname]);
 
   return tone;
 }
 
 export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
   const [open, setOpen] = useState(false);
+  const [fundingOpen, setFundingOpen] = useState(false);
   const { pathname } = useLocation();
   const isServices = pathname.startsWith("/services");
+  const isFunding = pathname.startsWith("/funding");
   const dark = useNavTone(initialTone) === "dark";
 
   const navLink = "px-4 py-2 rounded-full font-medium transition-colors";
@@ -222,9 +237,18 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
         <div className="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
           <span className="opacity-80">University of California San Francisco</span>
           <div className="hidden sm:flex items-center gap-6 opacity-80">
-            <a href="https://www.ucsf.edu/about" className="hover:opacity-100">About UCSF</a>
-            <a href="https://www.ucsfhealth.org/" className="hover:opacity-100">UCSF Health</a>
-            <a href="https://giving.ucsf.edu/" className="rounded-full bg-white text-ink px-3 py-1 font-medium hover:bg-cream">Donate</a>
+            <a href="https://www.ucsf.edu/about" className="hover:opacity-100">
+              About UCSF
+            </a>
+            <a href="https://www.ucsfhealth.org/" className="hover:opacity-100">
+              UCSF Health
+            </a>
+            <a
+              href="https://giving.ucsf.edu/"
+              className="rounded-full bg-white text-ink px-3 py-1 font-medium hover:bg-cream"
+            >
+              Donate
+            </a>
           </div>
         </div>
       </div>
@@ -239,7 +263,9 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
           <Link to="/" className="flex items-center gap-3">
             <SunburstLogo className="w-11 h-11" />
             <span className="font-display text-[15px] leading-tight transition-colors duration-300">
-              Office of<br />Collaborative Research
+              Office of
+              <br />
+              Collaborative Research
             </span>
           </Link>
 
@@ -254,7 +280,10 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
 
             <div
               className="relative"
-              onMouseEnter={() => setOpen(true)}
+              onMouseEnter={() => {
+                setOpen(true);
+                setFundingOpen(false);
+              }}
               onMouseLeave={() => setOpen(false)}
             >
               <button
@@ -262,7 +291,12 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
               >
                 Services
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  <path
+                    d="M3 4.5L6 7.5L9 4.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
                 </svg>
               </button>
               {open && (
@@ -284,7 +318,9 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
                               style={{ background: s.accent }}
                             />
                             <div>
-                              <div className="font-medium text-sm text-ink leading-snug">{s.name}</div>
+                              <div className="font-medium text-sm text-ink leading-snug">
+                                {s.name}
+                              </div>
                               <div className="text-xs text-muted-foreground mt-0.5">{s.desc}</div>
                             </div>
                           </div>
@@ -310,13 +346,12 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
             >
               Programs & Projects
             </Link>
-            <Link
-              to="/projects"
-              hash="funding"
-              className={`${navLink} ${navIdle}`}
-            >
-              Funding
-            </Link>
+            <FundingMenu
+              open={fundingOpen}
+              setOpen={setFundingOpen}
+              onEngage={() => setOpen(false)}
+              triggerClass={`${navLink} ${isFunding ? navActive : navIdle}`}
+            />
           </nav>
 
           <Link
@@ -337,12 +372,16 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
 export function Breadcrumb({ trail }: { trail: { label: string; to?: string }[] }) {
   return (
     <div className="max-w-7xl mx-auto px-6 pt-8 text-sm text-muted-foreground">
-      <Link to="/" className="hover:text-ink">Home</Link>
+      <Link to="/" className="hover:text-ink">
+        Home
+      </Link>
       {trail.map((t, i) => (
         <span key={i}>
           <span className="mx-2 opacity-50">/</span>
           {t.to ? (
-            <a href={t.to} className="hover:text-ink">{t.label}</a>
+            <a href={t.to} className="hover:text-ink">
+              {t.label}
+            </a>
           ) : (
             <span className="text-ink font-medium">{t.label}</span>
           )}
@@ -375,14 +414,21 @@ export function CTA({
           <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full bg-white/5 blur-3xl" />
           <div className="relative grid lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7">
-              <span className="text-xs uppercase tracking-[0.2em] text-white/60 font-medium">{eyebrow}</span>
-              <h2 className="mt-3 text-4xl md:text-6xl font-medium text-white leading-[1.02]">{title}</h2>
+              <span className="text-xs uppercase tracking-[0.2em] text-white/60 font-medium">
+                {eyebrow}
+              </span>
+              <h2 className="mt-3 text-4xl md:text-6xl font-medium text-white leading-[1.02]">
+                {title}
+              </h2>
               <p className="mt-6 text-white/80 max-w-xl leading-relaxed">{subtitle}</p>
             </div>
             <div className="lg:col-span-5 lg:pl-8">
               <div className="rounded-2xl bg-white/10 backdrop-blur border border-white/15 p-6">
                 <div className="text-xs text-white/60 uppercase tracking-widest">Email us</div>
-                <a href={`mailto:${email}`} className="block mt-3 text-2xl font-display hover:underline">
+                <a
+                  href={`mailto:${email}`}
+                  className="block mt-3 text-2xl font-display hover:underline"
+                >
                   {email}
                 </a>
                 <div className="mt-6 flex flex-wrap gap-3">
@@ -417,7 +463,9 @@ export function Footer() {
             <div className="flex items-center gap-4">
               <SunburstLogo className="w-14 h-14 shrink-0" />
               <span className="font-display text-white text-lg leading-tight">
-                Office of<br />Collaborative Research
+                Office of
+                <br />
+                Collaborative Research
               </span>
             </div>
             <p className="mt-6 text-sm max-w-sm leading-relaxed">
@@ -429,7 +477,9 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm">
               {SERVICES.map((s) => (
                 <li key={s.to}>
-                  <Link to={s.to} className="hover:text-white">{s.name}</Link>
+                  <Link to={s.to} className="hover:text-white">
+                    {s.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -437,17 +487,41 @@ export function Footer() {
           <div className="md:col-span-2">
             <div className="text-xs uppercase tracking-widest text-white/50 mb-4">OCR</div>
             <ul className="space-y-2.5 text-sm">
-              <li><Link to="/about" className="hover:text-white">About</Link></li>
-              <li><Link to="/people" className="hover:text-white">People</Link></li>
-              <li><Link to="/projects" className="hover:text-white">Programs & Projects</Link></li>
-              <li><Link to="/projects" hash="funding" className="hover:text-white">Funding</Link></li>
+              <li>
+                <Link to="/about" className="hover:text-white">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/people" className="hover:text-white">
+                  People
+                </Link>
+              </li>
+              <li>
+                <Link to="/projects" className="hover:text-white">
+                  Programs & Projects
+                </Link>
+              </li>
+              <li>
+                <Link to="/funding" activeOptions={{ exact: true }} className="hover:text-white">
+                  Funding & Support
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="md:col-span-2">
             <div className="text-xs uppercase tracking-widest text-white/50 mb-4">Connect</div>
             <ul className="space-y-2.5 text-sm">
-              <li><a href="mailto:ocr@ucsf.edu" className="hover:text-white">ocr@ucsf.edu</a></li>
-              <li><Link to="/contact" className="hover:text-white">Get in touch</Link></li>
+              <li>
+                <a href="mailto:ocr@ucsf.edu" className="hover:text-white">
+                  ocr@ucsf.edu
+                </a>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-white">
+                  Get in touch
+                </Link>
+              </li>
               <li>
                 <a
                   href={`mailto:ocr@ucsf.edu?subject=${encodeURIComponent("Subscribe me to the OCR dispatch")}`}
@@ -462,9 +536,15 @@ export function Footer() {
         <div className="flex flex-wrap justify-between gap-4 mt-8 text-xs text-white/50">
           <div>© {new Date().getFullYear()} The Regents of the University of California</div>
           <div className="flex gap-6">
-            <a href="https://www.ucsf.edu/accessibility-resources" className="hover:text-white">Accessibility</a>
-            <a href="https://www.ucsf.edu/website-privacy-policy" className="hover:text-white">Privacy</a>
-            <a href="https://www.ucsf.edu/terms-of-use" className="hover:text-white">Terms</a>
+            <a href="https://www.ucsf.edu/accessibility-resources" className="hover:text-white">
+              Accessibility
+            </a>
+            <a href="https://www.ucsf.edu/website-privacy-policy" className="hover:text-white">
+              Privacy
+            </a>
+            <a href="https://www.ucsf.edu/terms-of-use" className="hover:text-white">
+              Terms
+            </a>
           </div>
         </div>
       </div>

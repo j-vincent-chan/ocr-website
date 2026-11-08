@@ -80,7 +80,7 @@ export function RecordSection() {
 
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
           <p className="max-w-[560px] text-xs leading-[1.5] text-ink-muted-2">{record.footnote}</p>
-          <Link to="/projects" hash="funding" className={pillOutline}>
+          <Link to="/funding" className={pillOutline}>
             {record.awardsLink.label} <Arrow />
           </Link>
         </div>

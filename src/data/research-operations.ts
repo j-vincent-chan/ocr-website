@@ -75,7 +75,7 @@ export const trackStops: { key: ServiceKey; kicker: string; name: string }[] = [
 /** In-page or in-site destination for a linked phrase inside a fact. */
 export type FactLink = {
   label: string;
-  to: "/services/data-management" | "/projects";
+  to: "/services/data-management" | "/projects" | "/funding/biospecimen";
   hash?: string;
 };
 
@@ -292,7 +292,7 @@ export const services: Service[] = [
       {
         term: "Cost",
         text: "Scoped to project needs and capacity. Funded through grants, institutional partnerships, or OCR pipeline development awards.",
-        link: { label: "OCR pipeline development awards", to: "/projects", hash: "funding" },
+        link: { label: "OCR pipeline development awards", to: "/funding/biospecimen" },
       },
     ],
     cta: { label: "Scope a pipeline", mailtoSubject: "Scope a project: biospecimen pipeline" },

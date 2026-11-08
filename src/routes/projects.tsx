@@ -12,7 +12,8 @@ import {
 } from "@/lib/project-filters";
 import { ProjectMotif } from "@/components/site/project-motifs";
 import { cn } from "@/lib/utils";
-import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
+import { SiteShell, Breadcrumb } from "@/components/site/chrome";
+import { ProjectsFundingBand } from "@/components/funding/projects-band";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -26,8 +27,7 @@ export const Route = createFileRoute("/projects")({
       { property: "og:title", content: "Programs & Projects — UCSF OCR" },
       {
         property: "og:description",
-        content:
-          "Consortium science under the Bakar ImmunoX Initiative and Parnassus Institutes.",
+        content: "Consortium science under the Bakar ImmunoX Initiative and Parnassus Institutes.",
       },
     ],
   }),
@@ -107,9 +107,8 @@ function Hero() {
           Science we're <em className="not-italic text-gradient-sunburst">moving forward.</em>
         </h1>
         <p className="mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed">
-          OCR coordinates consortium projects across cancer, autoimmunity,
-          infection, and critical care — embedding development, project
-          management, data, and AI in each one.
+          OCR coordinates consortium projects across cancer, autoimmunity, infection, and critical
+          care — embedding development, project management, data, and AI in each one.
         </p>
       </div>
     </section>
@@ -124,7 +123,8 @@ function ServiceArmHighlights() {
       title: "From hunch to fundable program",
       description:
         "Strategic Consultations, Specific Aims Reviews, Scientific Peer Reviews, Research Plan Reviews, and large-grant development programs help investigators turn promising ideas into competitive proposals.",
-      proof: "Highlighted work: Large Grant Development Program, Research Plan Reviews, Scientific Peer Reviews",
+      proof:
+        "Highlighted work: Large Grant Development Program, Research Plan Reviews, Scientific Peer Reviews",
       to: "/services/research-development",
       accent: "var(--coral)",
     },
@@ -183,9 +183,9 @@ function ServiceArmHighlights() {
             </h2>
           </div>
           <p className="lg:col-span-4 lg:col-start-9 text-muted-foreground leading-relaxed">
-            The filterable portfolio below is strongest for active managed
-            studies and programs. These cards orient visitors first by OCR's
-            five service arms, then point them to the detailed examples.
+            The filterable portfolio below is strongest for active managed studies and programs.
+            These cards orient visitors first by OCR's five service arms, then point them to the
+            detailed examples.
           </p>
         </div>
 
@@ -197,19 +197,14 @@ function ServiceArmHighlights() {
               className="group rounded-3xl border border-border bg-card p-7 hover:shadow-lift hover:-translate-y-0.5 transition-all duration-300"
             >
               <div className="flex items-center justify-between gap-4">
-                <span
-                  className="font-display text-3xl tabular-nums"
-                  style={{ color: arm.accent }}
-                >
+                <span className="font-display text-3xl tabular-nums" style={{ color: arm.accent }}>
                   {arm.n}
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground text-right">
                   {arm.arm}
                 </span>
               </div>
-              <h3 className="mt-5 font-display text-2xl text-ink leading-tight">
-                {arm.title}
-              </h3>
+              <h3 className="mt-5 font-display text-2xl text-ink leading-tight">{arm.title}</h3>
               <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
                 {arm.description}
               </p>
@@ -224,10 +219,7 @@ function ServiceArmHighlights() {
               </div>
               <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-ink">
                 Explore the arm
-                <span
-                  aria-hidden
-                  className="transition-transform group-hover:translate-x-1"
-                >
+                <span aria-hidden className="transition-transform group-hover:translate-x-1">
                   →
                 </span>
               </div>
@@ -407,67 +399,60 @@ function Grid() {
             </div>
           </div>
 
-        {filtered.length === 0 ? (
-          <p className="text-center text-muted-foreground py-16 text-lg">
-            No programs or projects match these filters.{" "}
-            <button
-              type="button"
-              onClick={() => setFilters(DEFAULT_PROJECT_FILTERS)}
-              className="text-teal font-medium hover:underline"
-            >
-              Reset filters
-            </button>
-          </p>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((p, index) => (
-            <article
-              key={p.slug}
-              id={p.slug}
-              className="project-card-reveal group relative scroll-mt-28 rounded-3xl border border-border bg-card overflow-hidden hover:shadow-lift transition-shadow duration-500 flex flex-col"
-              style={{ animationDelay: `${index * 70}ms` }}
-            >
-              <div
-                className="relative aspect-[16/10] overflow-hidden"
-                style={{
-                  background: `linear-gradient(135deg, color-mix(in oklab, ${p.accent} 18%, var(--cream)), var(--cream))`,
-                }}
+          {filtered.length === 0 ? (
+            <p className="text-center text-muted-foreground py-16 text-lg">
+              No programs or projects match these filters.{" "}
+              <button
+                type="button"
+                onClick={() => setFilters(DEFAULT_PROJECT_FILTERS)}
+                className="text-teal font-medium hover:underline"
               >
-                <div className="project-card-art absolute inset-0 z-0">
-                  <ProjectMotif motif={p.motif} accent={p.accent} />
-                </div>
-                <span
-                  className="absolute top-4 left-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-card/85 backdrop-blur px-3 py-1 text-[11px] uppercase tracking-widest text-ink pointer-events-none"
+                Reset filters
+              </button>
+            </p>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filtered.map((p, index) => (
+                <article
+                  key={p.slug}
+                  id={p.slug}
+                  className="project-card-reveal group relative scroll-mt-28 rounded-3xl border border-border bg-card overflow-hidden hover:shadow-lift transition-shadow duration-500 flex flex-col"
+                  style={{ animationDelay: `${index * 70}ms` }}
                 >
-                  <span
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ background: p.accent }}
-                  />
-                  {p.status}
-                </span>
-              </div>
-              <div className="p-6 flex flex-col gap-3 flex-1">
-                <ProjectAreaPills project={p} />
-                <h3 className="font-display text-2xl text-ink leading-tight">
-                  {p.name}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                  {p.blurb}
-                </p>
-                <div className="pt-2 flex items-center text-sm font-medium text-ink">
-                  Read more
-                  <span
-                    className="ml-1 transition-transform group-hover:translate-x-1"
-                    aria-hidden
+                  <div
+                    className="relative aspect-[16/10] overflow-hidden"
+                    style={{
+                      background: `linear-gradient(135deg, color-mix(in oklab, ${p.accent} 18%, var(--cream)), var(--cream))`,
+                    }}
                   >
-                    →
-                  </span>
-                </div>
-              </div>
-            </article>
-          ))}
-          </div>
-        )}
+                    <div className="project-card-art absolute inset-0 z-0">
+                      <ProjectMotif motif={p.motif} accent={p.accent} />
+                    </div>
+                    <span className="absolute top-4 left-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-card/85 backdrop-blur px-3 py-1 text-[11px] uppercase tracking-widest text-ink pointer-events-none">
+                      <span className="w-1.5 h-1.5 rounded-full" style={{ background: p.accent }} />
+                      {p.status}
+                    </span>
+                  </div>
+                  <div className="p-6 flex flex-col gap-3 flex-1">
+                    <ProjectAreaPills project={p} />
+                    <h3 className="font-display text-2xl text-ink leading-tight">{p.name}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                      {p.blurb}
+                    </p>
+                    <div className="pt-2 flex items-center text-sm font-medium text-ink">
+                      Read more
+                      <span
+                        className="ml-1 transition-transform group-hover:translate-x-1"
+                        aria-hidden
+                      >
+                        →
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -487,8 +472,8 @@ function PitchBand() {
               Have something we should be working on?
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Tell us about the science. We'll bring strategy, project
-              management, data infrastructure, and the people to run it.
+              Tell us about the science. We'll bring strategy, project management, data
+              infrastructure, and the people to run it.
             </p>
           </div>
           <Link
@@ -512,14 +497,7 @@ function ProjectsPage() {
       <ServiceArmHighlights />
       <Grid />
       <PitchBand />
-      <CTA
-        id="funding"
-        eyebrow="Funding"
-        title={<>Or apply to an open RFA.</>}
-        subtitle="CoProjects, Data Library Analysis, and Data Library Development RFAs run on rolling cycles."
-        email="ocr@ucsf.edu"
-        primaryLabel="Email the office →"
-      />
+      <ProjectsFundingBand />
     </SiteShell>
   );
 }

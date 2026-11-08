@@ -9,7 +9,8 @@ export type ProjectMotifKey =
   | "helix"
   | "polepole"
   | "fullhoop"
-  | "polesquare";
+  | "polesquare"
+  | "orbit";
 
 type MotifProps = {
   className?: string;
@@ -32,8 +33,16 @@ function MotifShell({
   children: ReactNode;
 }) {
   return (
-    <div className={cn("project-motif project-motif-fill", `project-motif--${variant}`, className)} aria-hidden>
-      <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" className="project-motif-svg" role="presentation">
+    <div
+      className={cn("project-motif project-motif-fill", `project-motif--${variant}`, className)}
+      aria-hidden
+    >
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid meet"
+        className="project-motif-svg"
+        role="presentation"
+      >
         {children}
       </svg>
     </div>
@@ -41,17 +50,7 @@ function MotifShell({
 }
 
 /** Osteon cross-sections — concentric lamellae + Haversian canal (compact bone) */
-function Osteon({
-  cx,
-  cy,
-  r,
-  id,
-}: {
-  cx: number;
-  cy: number;
-  r: number;
-  id: string;
-}) {
+function Osteon({ cx, cy, r, id }: { cx: number; cy: number; r: number; id: string }) {
   const lamellae = [1, 0.78, 0.56, 0.36, 0.18];
   return (
     <g key={id}>
@@ -109,7 +108,13 @@ function RingsMotif({ className }: MotifProps) {
             className="pm-orbit-node"
             style={{ transformOrigin: "50px 50px", transform: `rotate(${i * 60}deg)` }}
           >
-            <circle cx={50 + orbit} cy="50" r={1.1} fill="currentColor" className={`pm-node pm-node-${i}`} />
+            <circle
+              cx={50 + orbit}
+              cy="50"
+              r={1.1}
+              fill="currentColor"
+              className={`pm-node pm-node-${i}`}
+            />
           </g>
         );
       })}
@@ -131,7 +136,16 @@ function DotsphereMotif({ className }: MotifProps) {
   });
   return (
     <MotifShell variant="dotsphere" className={className}>
-      <ellipse cx="50" cy="50" rx="38" ry="36" className="pm-hull" {...stroke} strokeWidth={0.65} opacity={0.32} />
+      <ellipse
+        cx="50"
+        cy="50"
+        rx="38"
+        ry="36"
+        className="pm-hull"
+        {...stroke}
+        strokeWidth={0.65}
+        opacity={0.32}
+      />
       {Array.from({ length: 8 }).map((_, i) => (
         <path
           key={`helix-wrap-${i}`}
@@ -185,7 +199,15 @@ function PolesphereMotif({ className }: MotifProps) {
   ];
   return (
     <MotifShell variant="polesphere" className={className}>
-      <circle cx="50" cy="50" r="38" className="pm-hull pm-breathe" {...stroke} strokeWidth={0.7} opacity={0.35} />
+      <circle
+        cx="50"
+        cy="50"
+        r="38"
+        className="pm-hull pm-breathe"
+        {...stroke}
+        strokeWidth={0.7}
+        opacity={0.35}
+      />
       <path
         d="M50 12 A38 38 0 0 1 88 50 A38 38 0 0 1 50 88 A38 38 0 0 1 12 50 A38 38 0 0 1 50 12"
         className="pm-inner-ring"
@@ -215,7 +237,15 @@ function PolesphereMotif({ className }: MotifProps) {
       {bundles.map(({ cx, cy, r }, i) => (
         <g key={i}>
           <circle cx={cx} cy={cy} r={r} fill="currentColor" opacity={0.12} className="pm-core" />
-          <circle cx={cx} cy={cy} r={r} className="pm-orbit-dot" {...stroke} strokeWidth={0.55} opacity={0.45} />
+          <circle
+            cx={cx}
+            cy={cy}
+            r={r}
+            className="pm-orbit-dot"
+            {...stroke}
+            strokeWidth={0.55}
+            opacity={0.45}
+          />
         </g>
       ))}
       {Array.from({ length: 48 }).map((_, i) => {
@@ -256,7 +286,17 @@ function DotsquareMotif({ className }: MotifProps) {
   }
   return (
     <MotifShell variant="dotsquare" className={className}>
-      <rect x="14" y="14" width="72" height="72" rx="3" className="pm-frame" {...stroke} strokeWidth={0.6} opacity={0.35} />
+      <rect
+        x="14"
+        y="14"
+        width="72"
+        height="72"
+        rx="3"
+        className="pm-frame"
+        {...stroke}
+        strokeWidth={0.6}
+        opacity={0.35}
+      />
       {Array.from({ length: 14 }).map((_, i) => (
         <line
           key={`fibril-${i}`}
@@ -411,7 +451,13 @@ function FullhoopMotif({ className }: MotifProps) {
   return (
     <MotifShell variant="fullhoop" className={className}>
       <polygon points={hexPoints} className="pm-hoop-glow" fill="currentColor" opacity={0.06} />
-      <polygon points={hexPoints} className="pm-hoop pm-hoop-0" {...stroke} strokeWidth={0.65} opacity={0.38} />
+      <polygon
+        points={hexPoints}
+        className="pm-hoop pm-hoop-0"
+        {...stroke}
+        strokeWidth={0.65}
+        opacity={0.38}
+      />
       <polygon
         points={Array.from({ length: 6 }, (_, i) => {
           const a = (i / 6) * Math.PI * 2 - Math.PI / 6;
@@ -425,13 +471,35 @@ function FullhoopMotif({ className }: MotifProps) {
       />
       {vessels.map(({ cx, cy, r }, i) => (
         <g key={i}>
-          <circle cx={cx} cy={cy} r={r} className={`pm-hoop pm-hoop-${(i % 3) + 1}`} {...stroke} strokeWidth={0.5} opacity={0.35} />
-          <circle cx={cx} cy={cy} r={r * 0.35} fill="currentColor" className="pm-hoop-node" opacity={0.7} style={{ animationDelay: `${i * 0.2}s` }} />
+          <circle
+            cx={cx}
+            cy={cy}
+            r={r}
+            className={`pm-hoop pm-hoop-${(i % 3) + 1}`}
+            {...stroke}
+            strokeWidth={0.5}
+            opacity={0.35}
+          />
+          <circle
+            cx={cx}
+            cy={cy}
+            r={r * 0.35}
+            fill="currentColor"
+            className="pm-hoop-node"
+            opacity={0.7}
+            style={{ animationDelay: `${i * 0.2}s` }}
+          />
         </g>
       ))}
       <g className="pm-hoop-orbit" style={{ transformOrigin: "50px 50px" }}>
         <circle cx="50" cy="10" r="1.2" fill="currentColor" className="pm-orbit-tracer" />
-        <circle cx="90" cy="50" r="1" fill="currentColor" className="pm-orbit-tracer pm-orbit-tracer-b" />
+        <circle
+          cx="90"
+          cy="50"
+          r="1"
+          fill="currentColor"
+          className="pm-orbit-tracer pm-orbit-tracer-b"
+        />
       </g>
     </MotifShell>
   );
@@ -474,7 +542,17 @@ function PolesquareMotif({ className }: MotifProps) {
 
   return (
     <MotifShell variant="polesquare" className={className}>
-      <rect x="12" y="12" width="76" height="76" rx="4" className="pm-lattice-frame" {...stroke} strokeWidth={0.55} opacity={0.28} />
+      <rect
+        x="12"
+        y="12"
+        width="76"
+        height="76"
+        rx="4"
+        className="pm-lattice-frame"
+        {...stroke}
+        strokeWidth={0.55}
+        opacity={0.28}
+      />
       {trabeculae.map((d, i) => (
         <path
           key={i}
@@ -503,6 +581,46 @@ function PolesquareMotif({ className }: MotifProps) {
   );
 }
 
+/** Two crossing elliptical paths with perimeter dots and a pulsing core. */
+function OrbitMotif({ className }: MotifProps) {
+  const ring = (deg: number, key: string, ts: number[], delay: number, dotOffset: number) => (
+    <g key={key} transform={`rotate(${deg} 50 50)`}>
+      <ellipse
+        cx={50}
+        cy={50}
+        rx={40}
+        ry={15}
+        className="pm-orbit-ring"
+        {...stroke}
+        strokeWidth={2}
+        style={{ animationDelay: `${delay}s` }}
+      />
+      {ts.map((t, i) => {
+        const angle = t * Math.PI * 2;
+        return (
+          <circle
+            key={i}
+            cx={50 + 40 * Math.cos(angle)}
+            cy={50 + 15 * Math.sin(angle)}
+            r={3.2}
+            fill="currentColor"
+            className="pm-orbit-dot"
+            style={{ animationDelay: `${i * 0.9 + dotOffset}s` }}
+          />
+        );
+      })}
+    </g>
+  );
+
+  return (
+    <MotifShell variant="orbit" className={className}>
+      {ring(-30, "a", [0.08, 0.42, 0.7], 0, 0)}
+      {ring(30, "b", [0.2, 0.58, 0.9], 1.5, 0.5)}
+      <circle cx={50} cy={50} r={5.5} fill="currentColor" className="pm-orbit-core" />
+    </MotifShell>
+  );
+}
+
 const MOTIF_MAP = {
   rings: RingsMotif,
   dotsphere: DotsphereMotif,
@@ -512,6 +630,7 @@ const MOTIF_MAP = {
   polepole: PolepoleMotif,
   fullhoop: FullhoopMotif,
   polesquare: PolesquareMotif,
+  orbit: OrbitMotif,
 } as const;
 
 export function ProjectMotif({

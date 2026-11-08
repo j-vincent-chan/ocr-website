@@ -12,8 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FundingRouteImport } from './routes/funding'
 import { Route as PeopleRouteImport } from './routes/people'
 import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as FundingIndexRouteImport } from './routes/funding.index'
+import { Route as FundingSlugRouteImport } from './routes/funding.$slug'
 import { Route as ServicesAiToolsRouteImport } from './routes/services.ai-tools'
 import { Route as ServicesCommunityManagementRouteImport } from './routes/services.community-management'
 import { Route as ServicesDataManagementRouteImport } from './routes/services.data-management'
@@ -36,6 +39,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FundingRoute = FundingRouteImport.update({
+  id: '/funding',
+  path: '/funding',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PeopleRoute = PeopleRouteImport.update({
   id: '/people',
   path: '/people',
@@ -45,6 +53,16 @@ const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
   getParentRoute: () => rootRouteImport,
+} as any)
+const FundingIndexRoute = FundingIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FundingRoute,
+} as any)
+const FundingSlugRoute = FundingSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => FundingRoute,
 } as any)
 const ServicesAiToolsRoute = ServicesAiToolsRouteImport.update({
   id: '/services/ai-tools',
@@ -85,14 +103,17 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/funding': typeof FundingRouteWithChildren
   '/people': typeof PeopleRoute
   '/projects': typeof ProjectsRoute
+  '/funding/$slug': typeof FundingSlugRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
   '/services/research-development': typeof ServicesResearchDevelopmentRoute
   '/services/research-operations': typeof ServicesResearchOperationsRoute
+  '/funding/': typeof FundingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -100,26 +121,31 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/people': typeof PeopleRoute
   '/projects': typeof ProjectsRoute
+  '/funding/$slug': typeof FundingSlugRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
   '/services/research-development': typeof ServicesResearchDevelopmentRoute
   '/services/research-operations': typeof ServicesResearchOperationsRoute
+  '/funding': typeof FundingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/funding': typeof FundingRouteWithChildren
   '/people': typeof PeopleRoute
   '/projects': typeof ProjectsRoute
+  '/funding/$slug': typeof FundingSlugRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/data-management': typeof ServicesDataManagementRoute
   '/services/project-management': typeof ServicesProjectManagementRoute
   '/services/research-development': typeof ServicesResearchDevelopmentRoute
   '/services/research-operations': typeof ServicesResearchOperationsRoute
+  '/funding/': typeof FundingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -127,14 +153,17 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/funding'
     | '/people'
     | '/projects'
+    | '/funding/$slug'
     | '/services/ai-tools'
     | '/services/community-management'
     | '/services/data-management'
     | '/services/project-management'
     | '/services/research-development'
     | '/services/research-operations'
+    | '/funding/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -142,31 +171,37 @@ export interface FileRouteTypes {
     | '/contact'
     | '/people'
     | '/projects'
+    | '/funding/$slug'
     | '/services/ai-tools'
     | '/services/community-management'
     | '/services/data-management'
     | '/services/project-management'
     | '/services/research-development'
     | '/services/research-operations'
+    | '/funding'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
+    | '/funding'
     | '/people'
     | '/projects'
+    | '/funding/$slug'
     | '/services/ai-tools'
     | '/services/community-management'
     | '/services/data-management'
     | '/services/project-management'
     | '/services/research-development'
     | '/services/research-operations'
+    | '/funding/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  FundingRoute: typeof FundingRouteWithChildren
   PeopleRoute: typeof PeopleRoute
   ProjectsRoute: typeof ProjectsRoute
   ServicesAiToolsRoute: typeof ServicesAiToolsRoute
@@ -200,6 +235,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/funding': {
+      id: '/funding'
+      path: '/funding'
+      fullPath: '/funding'
+      preLoaderRoute: typeof FundingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/people': {
       id: '/people'
       path: '/people'
@@ -213,6 +255,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/projects'
       preLoaderRoute: typeof ProjectsRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/funding/': {
+      id: '/funding/'
+      path: '/'
+      fullPath: '/funding/'
+      preLoaderRoute: typeof FundingIndexRouteImport
+      parentRoute: typeof FundingRoute
+    }
+    '/funding/$slug': {
+      id: '/funding/$slug'
+      path: '/$slug'
+      fullPath: '/funding/$slug'
+      preLoaderRoute: typeof FundingSlugRouteImport
+      parentRoute: typeof FundingRoute
     }
     '/services/ai-tools': {
       id: '/services/ai-tools'
@@ -259,10 +315,24 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface FundingRouteChildren {
+  FundingSlugRoute: typeof FundingSlugRoute
+  FundingIndexRoute: typeof FundingIndexRoute
+}
+
+const FundingRouteChildren: FundingRouteChildren = {
+  FundingSlugRoute: FundingSlugRoute,
+  FundingIndexRoute: FundingIndexRoute,
+}
+
+const FundingRouteWithChildren =
+  FundingRoute._addFileChildren(FundingRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  FundingRoute: FundingRouteWithChildren,
   PeopleRoute: PeopleRoute,
   ProjectsRoute: ProjectsRoute,
   ServicesAiToolsRoute: ServicesAiToolsRoute,
