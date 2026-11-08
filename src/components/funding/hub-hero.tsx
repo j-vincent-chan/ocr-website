@@ -8,19 +8,17 @@ export function HubHero() {
   return (
     <section className="border-b border-ink/10 bg-cream">
       <div className="mx-auto max-w-7xl px-6" style={{ paddingTop: "clamp(48px, 6vw, 88px)" }}>
-        <div className="flex flex-wrap items-end justify-between gap-x-16 gap-y-7">
-          <div className="min-w-0 flex-[7_1_520px]">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-teal-text">
-              Funding & Support
-            </p>
-            <h1 className="mt-5 font-display text-[clamp(44px,6.4vw,84px)] font-medium leading-[0.98] tracking-[-0.03em] text-balance text-ink">
-              Funding and support that comes with a team behind it.
-            </h1>
-          </div>
-          <p className="min-w-0 flex-[4_1_320px] text-[17px] leading-[1.6] text-pretty text-ink-muted">
-            {HUB_DESCRIPTION}
-          </p>
-        </div>
+        <p className="text-xs font-medium uppercase tracking-[0.22em] text-teal-text">
+          Funding & Support
+        </p>
+        <h1 className="mt-6 font-display text-[clamp(3rem,8vw,7.5rem)] leading-[0.95] tracking-tight text-ink">
+          Funding that comes
+          <br />
+          <em className="not-italic text-gradient-sunburst">with a team behind it.</em>
+        </h1>
+        <p className="mt-10 max-w-3xl text-xl leading-relaxed text-pretty text-ink-muted">
+          {HUB_DESCRIPTION}
+        </p>
 
         <nav
           aria-label="Opportunities"

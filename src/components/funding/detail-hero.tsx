@@ -85,7 +85,7 @@ export function DetailHero({ award }: { award: FundingOpportunity }) {
               href={award.applyHref}
               className={`${inkPillClass} mt-[18px] min-h-12 w-full px-6 py-3 text-[15px]`}
             >
-              {award.applyLabel} →
+              Apply online →
             </OutLink>
             {award.links.length > 0 ? (
               <div className="mt-3 flex flex-wrap items-center justify-center gap-x-[18px] gap-y-1.5">

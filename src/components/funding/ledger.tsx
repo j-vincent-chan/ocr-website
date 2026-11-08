@@ -33,13 +33,13 @@ export function Ledger() {
       />
       <AwardList awards={AWARDS.filter((award) => award.owner === "ocr")} />
 
-      <div className="h-14" aria-hidden />
+      <div className="h-20" aria-hidden />
 
       <GroupHeading
         title="From our partners"
         description="Offered by our partners. OCR helps applicants prepare and supports recipients."
       />
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-16">
         {PARTNERS.map((partner) => {
           const awards = AWARDS.filter((award) => award.partner === partner.key);
           if (awards.length === 0) return null;
@@ -97,9 +97,9 @@ function AwardList({ awards }: { awards: FundingOpportunity[] }) {
 
 function LedgerRow({ award }: { award: FundingOpportunity }) {
   return (
-    <article className="grid grid-cols-[72px_minmax(0,1fr)] items-center gap-6 border-b border-rule py-[22px]">
+    <article className="grid grid-cols-[72px_minmax(0,1fr)] items-center gap-6 border-b border-rule py-9">
       <FundingSprite id={award.id} color={award.color} />
-      <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+      <div className="flex flex-wrap items-center gap-x-10 gap-y-5">
         <div className="min-w-0 flex-[1_1_300px]">
           <div className="mb-2 flex items-center gap-2 overflow-hidden whitespace-nowrap">
             <span
@@ -129,21 +129,13 @@ function LedgerRow({ award }: { award: FundingOpportunity }) {
           <Fact term="Deadline" detail={award.deadline} />
         </dl>
 
-        <div className="flex shrink-0 flex-col items-start gap-2.5">
-          <Link
-            to="/funding/$slug"
-            params={{ slug: award.id }}
-            className={`${inkPillClass} px-5 py-[11px] text-sm`}
-          >
-            Learn more →
-          </Link>
-          <OutLink
-            href={award.applyHref}
-            className="text-sm font-medium text-ink underline decoration-ink/30 underline-offset-4"
-          >
-            {award.applyLabel}
-          </OutLink>
-        </div>
+        <Link
+          to="/funding/$slug"
+          params={{ slug: award.id }}
+          className={`${inkPillClass} shrink-0 px-5 py-[11px] text-sm lg:ml-auto`}
+        >
+          Learn more →
+        </Link>
       </div>
     </article>
   );
