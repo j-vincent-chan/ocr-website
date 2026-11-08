@@ -501,14 +501,12 @@ export const consultRouting: { byPartner: Partial<Record<PartnerId, string>>; fa
 };
 
 /**
- * One Microsoft Bookings shared booking page per strategist, with only that person assigned
- * (Bookings can't preselect a staff member from a link). The page is embedded in the card.
- * TODO: paste each page's URL from Bookings → Shared booking pages → Share. While a URL is
- * null, the card offers an email request to that strategist instead.
+ * Each strategist's personal Microsoft Bookings (Book with me) consult page, embedded in the
+ * card. While a URL is null, the card offers an email request to that strategist instead.
  */
 export const bookingPages: Record<string, string | null> = {
-  gabe: null,
-  reid: null,
+  gabe: "https://bookings.cloud.microsoft/bookwithme/user/847fb6868990452d97471d83492e2e70@ucsf.edu/meetingtype/PX0cE2GHJE6zFY1nwezOVA2?anonymous&ismsaljsauthenabled",
+  reid: "https://bookings.cloud.microsoft/bookwithme/user/2ce8321b32f149e6ae0aa4ce23ce9985@ucsf.edu/meetingtype/QA-BBBgJ3UCEMnWizf-1GA2?anonymous&ismsaljsauthenabled",
 };
 
 export function strategistFor(choice: InstituteChoice): Strategist {
