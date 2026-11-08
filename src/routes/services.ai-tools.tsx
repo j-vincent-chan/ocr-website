@@ -23,7 +23,7 @@ const ARM = "04";
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-cream border-b border-border">
+    <section className="relative overflow-hidden bg-cream border-b border-border contain-paint">
       <div
         aria-hidden
         className="absolute top-1/2 -right-40 -translate-y-1/2 w-[680px] h-[680px] rounded-full opacity-25 blur-3xl"
@@ -237,16 +237,16 @@ function Automations() {
   return (
     <section className="py-28">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-10 items-end mb-12">
-          <div className="lg:col-span-6">
+        <div className="mb-12 grid min-w-0 items-end gap-10 lg:grid-cols-12">
+          <div className="min-w-0 lg:col-span-6">
             <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: "var(--coral)" }}>
               Workflow innovation
             </span>
-            <h2 className="mt-4 font-display text-5xl text-ink leading-[0.98]">
+            <h2 className="mt-4 font-display text-4xl text-ink leading-[0.98] sm:text-5xl">
               Small automations.<br />Compounding hours back.
             </h2>
           </div>
-          <p className="lg:col-span-5 lg:col-start-8 text-muted-foreground leading-relaxed">
+          <p className="min-w-0 text-pretty leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8">
             Beyond Signal and Prospera, we ship internal tools that automate
             the high-frequency, low-judgement work — and free our team to do
             the work only humans can.
@@ -256,7 +256,7 @@ function Automations() {
           {items.map((i) => (
             <li
               key={i.t}
-              className="grid grid-cols-12 gap-6 py-6 items-center group hover:bg-cream/60 px-3 -mx-3 rounded-xl transition"
+              className="grid grid-cols-12 gap-6 py-6 items-center hover:bg-cream/60 px-3 rounded-xl transition"
             >
               <div className="col-span-12 md:col-span-1">
                 <span className="w-3 h-3 rounded-full inline-block" style={{ background: i.c }} />
@@ -287,7 +287,7 @@ function Principles() {
     { n: "04", t: "Built with users", d: "Every tool starts with a PI or staff complaint. We ship, measure, iterate, repeat." },
   ];
   return (
-    <section className="py-24 bg-ink text-white relative overflow-hidden">
+    <section className="py-24 bg-ink text-white relative overflow-hidden contain-paint">
       <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-gradient-sunburst opacity-15 blur-3xl" />
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="max-w-3xl">

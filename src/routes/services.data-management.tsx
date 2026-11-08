@@ -23,14 +23,14 @@ const ARM = "03";
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-cream border-b border-border">
+    <section className="relative overflow-hidden bg-cream border-b border-border contain-paint">
       <div
         aria-hidden
         className="absolute -bottom-40 -right-40 w-[720px] h-[720px] rounded-full opacity-25 blur-3xl"
         style={{ background: "var(--gradient-sunburst)" }}
       />
-      <div className="max-w-7xl mx-auto px-6 pt-12 pb-20 grid lg:grid-cols-12 gap-10 items-center relative">
-        <div className="lg:col-span-6">
+      <div className="relative mx-auto grid min-w-0 max-w-7xl items-center gap-10 px-6 pt-12 pb-20 lg:grid-cols-12">
+        <div className="min-w-0 lg:col-span-6">
           <ArmEyebrow arm={ARM} label="One of five service arms" accent={M} />
           <h1 className="mt-8 font-display text-[clamp(2.15rem,4.2vw,3.75rem)] leading-[1.08] tracking-tight text-ink">
             Organizing, managing, and{" "}
@@ -43,7 +43,7 @@ function Hero() {
             and Sharing plans — built with your team from study design, not
             retrofit at the end.
           </p>
-          <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
+          <div className="mt-10 grid max-w-md grid-cols-3 gap-x-3 gap-y-4 sm:gap-6">
             {[["62", "DMS plans authored"], ["100%", "NIH 2023 compliant"], ["FAIR", "By default"]].map(([n, l]) => (
               <div key={l} className="border-l-2 pl-4" style={{ borderColor: M }}>
                 <div className="font-display text-3xl text-ink">{n}</div>
@@ -52,7 +52,7 @@ function Hero() {
             ))}
           </div>
         </div>
-        <div className="lg:col-span-6 relative flex items-center justify-center">
+        <div className="relative flex min-w-0 items-center justify-center lg:col-span-6">
           <LifecycleRing />
         </div>
       </div>
@@ -69,10 +69,10 @@ function LifecycleRing() {
     { t: "Share", c: "var(--gold)" },
     { t: "Reuse", c: "var(--lime)" },
   ];
-  const R = 170;
+  const R = 150;
   return (
-    <div className="relative w-[420px] h-[420px] max-w-full">
-      <svg viewBox="-220 -220 440 440" className="absolute inset-0 w-full h-full">
+    <div className="relative mx-auto aspect-square w-full min-w-0 max-w-[420px]">
+      <svg viewBox="-220 -220 440 440" className="absolute inset-0 h-full w-full">
         <defs>
           <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stopColor="oklch(0.7 0.2 30)" />
@@ -87,26 +87,29 @@ function LifecycleRing() {
       </svg>
       {stages.map((s, i) => {
         const angle = (i / stages.length) * 2 * Math.PI - Math.PI / 2;
-        const x = Math.cos(angle) * R;
-        const y = Math.sin(angle) * R;
+        const radius = 34;
+        const left = 50 + Math.cos(angle) * radius;
+        const top = 50 + Math.sin(angle) * radius;
         return (
           <div
             key={s.t}
             className="absolute"
             style={{
-              left: "50%",
-              top: "50%",
-              transform: `translate(calc(${x}px - 50%), calc(${y}px - 50%))`,
+              left: `${left}%`,
+              top: `${top}%`,
+              transform: "translate(-50%, -50%)",
             }}
           >
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-center gap-1.5">
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-display shadow-lift"
+                className="flex h-11 w-11 items-center justify-center rounded-2xl font-display text-sm text-white shadow-lift sm:h-14 sm:w-14 sm:text-base"
                 style={{ background: s.c }}
               >
                 0{i + 1}
               </div>
-              <div className="text-xs uppercase tracking-widest text-ink font-medium">{s.t}</div>
+              <div className="text-[10px] font-medium uppercase tracking-widest text-ink sm:text-xs">
+                {s.t}
+              </div>
             </div>
           </div>
         );

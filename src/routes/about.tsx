@@ -81,11 +81,11 @@ function AtAGlance() {
             investigators needed something that didn't yet exist. The full
             story follows.
           </p>
-          <dl className="mt-8 grid grid-cols-3 gap-4">
+          <dl className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {facts.map((f) => (
-              <div key={f.l} className="border-l-2 border-coral pl-4">
-                <dd className="font-display text-3xl text-ink leading-none">{f.n}</dd>
-                <dt className="text-[11px] text-muted-foreground uppercase tracking-widest mt-2 leading-snug">
+              <div key={f.l} className="min-w-0 border-l-2 border-coral pl-4">
+                <dd className="font-display text-3xl leading-none text-ink">{f.n}</dd>
+                <dt className="mt-2 text-[11px] uppercase leading-snug tracking-widest text-muted-foreground">
                   {f.l}
                 </dt>
               </div>

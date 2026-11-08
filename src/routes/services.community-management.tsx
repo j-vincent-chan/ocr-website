@@ -378,10 +378,10 @@ function ProgramYear() {
           </p>
         </div>
 
-        <div className="hidden md:flex items-stretch gap-2">
+        <div className="hidden items-stretch gap-2 lg:flex">
           {YEAR.map((n, i) => (
-            <div key={n.t} className="flex-1 flex items-stretch">
-              <div className="flex-1 rounded-2xl border border-border bg-card p-6">
+            <div key={n.t} className="flex min-w-0 flex-1 items-stretch">
+              <div className="min-w-0 flex-1 rounded-2xl border border-border bg-card p-5 xl:p-6">
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center font-display text-white text-sm mb-4"
                   style={{ background: n.c }}
@@ -399,7 +399,7 @@ function ProgramYear() {
             </div>
           ))}
         </div>
-        <ol className="md:hidden space-y-3">
+        <ol className="space-y-3 lg:hidden">
           {YEAR.map((n, i) => (
             <li key={n.t} className="rounded-2xl border border-border bg-card p-5 flex gap-4">
               <div

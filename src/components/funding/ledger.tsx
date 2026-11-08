@@ -97,13 +97,13 @@ function AwardList({ awards }: { awards: FundingOpportunity[] }) {
 
 function LedgerRow({ award }: { award: FundingOpportunity }) {
   return (
-    <article className="grid grid-cols-[72px_minmax(0,1fr)] items-center gap-6 border-b border-rule py-9">
+    <article className="grid grid-cols-[56px_minmax(0,1fr)] items-start gap-4 border-b border-rule py-8 sm:grid-cols-[72px_minmax(0,1fr)] sm:items-center sm:gap-6 sm:py-9">
       <FundingSprite id={award.id} color={award.color} />
-      <div className="flex flex-wrap items-center gap-x-10 gap-y-5">
+      <div className="flex min-w-0 flex-wrap items-center gap-x-10 gap-y-5">
         <div className="min-w-0 flex-[1_1_300px]">
-          <div className="mb-2 flex items-center gap-2 overflow-hidden whitespace-nowrap">
+          <div className="mb-2 flex flex-wrap items-center gap-2">
             <span
-              className="min-w-0 flex-[0_1_auto] truncate text-[11px] font-medium uppercase tracking-[0.14em]"
+              className="text-[11px] font-medium uppercase tracking-[0.14em]"
               style={{ color: award.ink }}
             >
               {award.sponsor}

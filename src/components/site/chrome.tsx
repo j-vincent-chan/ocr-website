@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 const CTA_ROTATING_PHRASES = [
   "worth funding.",
   "built together.",
@@ -43,17 +43,25 @@ export function CtaRotatingPhrase({
     };
   }, [reducedMotion, phrases, intervalMs]);
 
+  const longest = phrases.reduce(
+    (widest, phrase) => (phrase.length > widest.length ? phrase : widest),
+    phrases[0] ?? "",
+  );
+
   return (
     <span
-      className={`relative inline-block min-w-[17ch] h-[1.2em] align-text-bottom ${className}`}
+      className={`relative grid w-full max-w-full align-text-bottom ${className}`}
       aria-live="polite"
     >
+      <span aria-hidden className="invisible col-start-1 row-start-1">
+        {longest}
+      </span>
       {prevIndex !== null && (
         <span aria-hidden className="cta-phrase-exit absolute inset-0">
           {phrases[prevIndex]}
         </span>
       )}
-      <span className={`absolute inset-0 ${prevIndex !== null ? "cta-phrase-enter" : ""}`}>
+      <span className={`col-start-1 row-start-1 ${prevIndex !== null ? "cta-phrase-enter" : ""}`}>
         {phrases[index]}
       </span>
     </span>
@@ -220,8 +228,45 @@ function useNavTone(initial: NavTone): NavTone {
   return tone;
 }
 
+function fineHover() {
+  return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+}
+
+function ServiceLinks({ pathname, onNavigate }: { pathname: string; onNavigate?: () => void }) {
+  return (
+    <>
+      {SERVICES.map((s) => {
+        const active = pathname === s.to;
+        return (
+          <Link
+            key={s.to}
+            to={s.to}
+            onClick={onNavigate}
+            className={`rounded-xl p-3 block hover:bg-secondary transition ${
+              active ? "bg-secondary ring-1 ring-coral/40" : ""
+            }`}
+          >
+            <div className="flex items-start gap-2.5">
+              <span
+                className="mt-1.5 h-2 w-2 flex-none rounded-full"
+                style={{ background: s.accent }}
+              />
+              <div>
+                <div className="text-sm font-medium leading-snug text-ink">{s.name}</div>
+                <div className="mt-0.5 text-xs text-muted-foreground">{s.desc}</div>
+              </div>
+            </div>
+          </Link>
+        );
+      })}
+    </>
+  );
+}
+
 export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
-  const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+  const servicesOpenedByHover = useRef(false);
   const { pathname } = useLocation();
   const isServices = pathname.startsWith("/services");
   const isFunding = pathname.startsWith("/funding");
@@ -230,13 +275,55 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
   const navLink = "px-4 py-2 rounded-full font-medium transition-colors";
   const navIdle = dark ? "hover:bg-white/10" : "hover:bg-secondary";
   const navActive = dark ? "bg-white/10" : "bg-secondary";
+  const menuLink = `flex min-h-12 items-center rounded-xl px-3 text-base font-medium ${
+    dark ? "hover:bg-white/10" : "hover:bg-secondary"
+  }`;
+
+  useEffect(() => {
+    setNavOpen(false);
+    setServicesOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!servicesOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setServicesOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [servicesOpen]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeMenu = () => {
+      if (desktop.matches) setNavOpen(false);
+    };
+    desktop.addEventListener("change", closeMenu);
+    return () => desktop.removeEventListener("change", closeMenu);
+  }, []);
+
+  useEffect(() => {
+    if (!navOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setNavOpen(false);
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [navOpen]);
 
   return (
     <>
-      <div className="bg-ink text-white text-xs">
-        <div className="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
-          <span className="opacity-80">University of California San Francisco</span>
-          <div className="hidden sm:flex items-center gap-6 opacity-80">
+      <div className="bg-ink text-xs text-white">
+        <div className="mx-auto flex h-9 max-w-7xl items-center justify-between gap-3 px-6">
+          <span className="min-w-0 truncate opacity-80">
+            University of California San Francisco
+          </span>
+          <div className="hidden shrink-0 items-center gap-6 opacity-80 sm:flex">
             <a href="https://www.ucsf.edu/about" className="hover:opacity-100">
               About UCSF
             </a>
@@ -245,7 +332,7 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
             </a>
             <a
               href="https://giving.ucsf.edu/"
-              className="rounded-full bg-white text-ink px-3 py-1 font-medium hover:bg-cream"
+              className="rounded-full bg-white px-3 py-1 font-medium text-ink hover:bg-cream"
             >
               Donate
             </a>
@@ -255,13 +342,13 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
 
       <header
         data-site-header
-        className={`sticky top-0 z-40 backdrop-blur-md border-b transition-colors duration-300 ${
-          dark ? "bg-ink border-white/10 text-white" : "bg-background/85 border-border text-ink"
+        className={`sticky top-0 z-40 border-b backdrop-blur-md transition-colors duration-300 ${
+          dark ? "border-white/10 bg-ink text-white" : "border-border bg-background/85 text-ink"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link to="/" data-intro-header-lockup className="flex items-center gap-3">
-            <SunburstLogo data-intro-header-logo className="w-11 h-11" />
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-3 px-6">
+          <Link to="/" data-intro-header-lockup className="flex min-w-0 items-center gap-3">
+            <SunburstLogo data-intro-header-logo className="h-11 w-11 shrink-0" />
             <span
               data-intro-header-text
               className="font-display text-[15px] leading-tight transition-colors duration-300"
@@ -272,7 +359,7 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
             </span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1 text-[15px]">
+          <nav className="hidden items-center gap-1 text-[15px] lg:flex">
             <Link
               to="/about"
               className={`${navLink} ${navIdle}`}
@@ -283,14 +370,29 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
 
             <div
               className="relative"
-              onMouseEnter={() => setOpen(true)}
-              onMouseLeave={() => setOpen(false)}
+              onMouseEnter={() => {
+                if (!fineHover()) return;
+                servicesOpenedByHover.current = true;
+                setServicesOpen(true);
+              }}
+              onMouseLeave={() => {
+                if (!fineHover()) return;
+                servicesOpenedByHover.current = false;
+                setServicesOpen(false);
+              }}
             >
               <button
+                type="button"
+                aria-expanded={servicesOpen}
+                aria-haspopup="true"
                 className={`${navLink} flex items-center gap-1.5 ${isServices ? navActive : navIdle}`}
+                onClick={() => {
+                  if (servicesOpenedByHover.current) return;
+                  setServicesOpen((open) => !open);
+                }}
               >
                 Services
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
                   <path
                     d="M3 4.5L6 7.5L9 4.5"
                     stroke="currentColor"
@@ -299,34 +401,10 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
                   />
                 </svg>
               </button>
-              {open && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[min(100vw-2rem,26rem)]">
-                  <div className="bg-card rounded-2xl shadow-lift border border-border p-2 flex flex-col gap-0.5">
-                    {SERVICES.map((s) => {
-                      const active = pathname === s.to;
-                      return (
-                        <Link
-                          key={s.to}
-                          to={s.to}
-                          className={`p-3 rounded-xl block hover:bg-secondary transition ${
-                            active ? "bg-secondary ring-1 ring-coral/40" : ""
-                          }`}
-                        >
-                          <div className="flex items-start gap-2.5">
-                            <span
-                              className="mt-1.5 w-2 h-2 rounded-full flex-none"
-                              style={{ background: s.accent }}
-                            />
-                            <div>
-                              <div className="font-medium text-sm text-ink leading-snug">
-                                {s.name}
-                              </div>
-                              <div className="text-xs text-muted-foreground mt-0.5">{s.desc}</div>
-                            </div>
-                          </div>
-                        </Link>
-                      );
-                    })}
+              {servicesOpen && (
+                <div className="absolute top-full left-1/2 w-[min(100vw-2rem,26rem)] -translate-x-1/2 pt-2">
+                  <div className="flex flex-col gap-0.5 rounded-2xl border border-border bg-card p-2 shadow-lift">
+                    <ServiceLinks pathname={pathname} onNavigate={() => setServicesOpen(false)} />
                   </div>
                 </div>
               )}
@@ -355,17 +433,137 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
             </Link>
           </nav>
 
-          <Link
-            to="/contact"
-            className={`hidden md:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ${
-              dark ? "bg-white text-ink hover:bg-cream" : "bg-ink text-white hover:bg-ink/90"
+          <div className="flex shrink-0 items-center gap-2">
+            <Link
+              to="/contact"
+              className={`hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 md:inline-flex ${
+                dark ? "bg-white text-ink hover:bg-cream" : "bg-ink text-white hover:bg-ink/90"
+              }`}
+            >
+              Get in touch
+              <span aria-hidden>→</span>
+            </Link>
+            <button
+              type="button"
+              className={`inline-flex h-11 w-11 items-center justify-center rounded-full border lg:hidden ${
+                dark ? "border-white/25" : "border-ink/15"
+              }`}
+              aria-expanded={navOpen}
+              aria-controls="site-nav-panel"
+              onClick={() => setNavOpen((open) => !open)}
+            >
+              <span className="sr-only">{navOpen ? "Close menu" : "Open menu"}</span>
+              {navOpen ? (
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+                  <path
+                    d="M4 4l10 10M14 4L4 14"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              ) : (
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+                  <path
+                    d="M3 5h12M3 9h12M3 13h12"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+
+        {navOpen && (
+          <div
+            id="site-nav-panel"
+            className={`absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto border-b lg:hidden ${
+              dark ? "border-white/10 bg-ink text-white" : "border-border bg-background text-ink"
             }`}
           >
-            Get in touch
-            <span aria-hidden>→</span>
-          </Link>
-        </div>
+            <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
+              <Link
+                to="/about"
+                className={menuLink}
+                activeProps={{ className: dark ? "bg-white/10" : "bg-secondary" }}
+              >
+                About
+              </Link>
+              <div
+                className={`px-3 pt-3 text-xs font-medium uppercase tracking-[0.16em] ${dark ? "text-white/50" : "text-muted-foreground"}`}
+              >
+                Services
+              </div>
+              {SERVICES.map((s) => (
+                <Link
+                  key={s.to}
+                  to={s.to}
+                  className={`${menuLink} ${pathname === s.to ? (dark ? "bg-white/10" : "bg-secondary") : ""}`}
+                >
+                  <span
+                    className="mr-2.5 h-2 w-2 shrink-0 rounded-full"
+                    style={{ background: s.accent }}
+                  />
+                  {s.name}
+                </Link>
+              ))}
+              <Link
+                to="/people"
+                className={menuLink}
+                activeProps={{ className: dark ? "bg-white/10" : "bg-secondary" }}
+              >
+                People
+              </Link>
+              <Link
+                to="/projects"
+                className={menuLink}
+                activeProps={{ className: dark ? "bg-white/10" : "bg-secondary" }}
+              >
+                Programs & Projects
+              </Link>
+              <Link
+                to="/funding"
+                activeOptions={{ exact: true }}
+                className={`${menuLink} ${isFunding ? (dark ? "bg-white/10" : "bg-secondary") : ""}`}
+              >
+                Funding
+              </Link>
+              <Link
+                to="/contact"
+                className={`mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-5 text-sm font-medium md:hidden ${
+                  dark ? "bg-white text-ink" : "bg-ink text-white"
+                }`}
+              >
+                Get in touch
+                <span aria-hidden>→</span>
+              </Link>
+              <div
+                className={`mt-3 flex flex-col gap-1 border-t pt-3 sm:hidden ${dark ? "border-white/10" : "border-border"}`}
+              >
+                <a href="https://www.ucsf.edu/about" className={menuLink}>
+                  About UCSF
+                </a>
+                <a href="https://www.ucsfhealth.org/" className={menuLink}>
+                  UCSF Health
+                </a>
+                <a href="https://giving.ucsf.edu/" className={menuLink}>
+                  Donate
+                </a>
+              </div>
+            </nav>
+          </div>
+        )}
       </header>
+      {navOpen && (
+        <button
+          type="button"
+          aria-label="Close menu"
+          className="fixed inset-0 z-30 bg-ink/40 lg:hidden"
+          onClick={() => setNavOpen(false)}
+        />
+      )}
     </>
   );
 }
@@ -408,23 +606,30 @@ export function CTA({
   primaryLabel?: string;
 }) {
   return (
-    <section id={id} className="py-24 scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="relative rounded-[2.5rem] overflow-hidden bg-ink text-white p-12 md:p-20">
+    <section id={id} className="scroll-mt-24 py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="relative overflow-clip rounded-[2rem] bg-ink p-6 text-white contain-paint sm:rounded-[2.5rem] sm:p-10 lg:p-16 xl:p-20">
           <div className="absolute inset-0 bg-gradient-sunburst opacity-25" />
-          <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full bg-white/5 blur-3xl" />
-          <div className="relative grid lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
-              <span className="text-xs uppercase tracking-[0.2em] text-white/60 font-medium">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 rounded-full"
+            style={{
+              background:
+                "radial-gradient(circle at 70% 70%, rgb(255 255 255 / 0.16), transparent 68%)",
+            }}
+          />
+          <div className="relative grid min-w-0 items-center gap-8 lg:grid-cols-12 lg:gap-10">
+            <div className="min-w-0 lg:col-span-7">
+              <span className="text-xs font-medium uppercase tracking-[0.2em] text-white/60">
                 {eyebrow}
               </span>
-              <h2 className="mt-3 text-4xl md:text-6xl font-medium text-white leading-[1.02]">
+              <h2 className="mt-3 max-w-full text-4xl font-medium leading-[1.05] text-white sm:text-5xl lg:text-6xl lg:leading-[1.02]">
                 {title}
               </h2>
-              <p className="mt-6 text-white/80 max-w-xl leading-relaxed">{subtitle}</p>
+              <p className="mt-6 max-w-xl text-pretty leading-relaxed text-white/80">{subtitle}</p>
             </div>
-            <div className="lg:col-span-5 lg:pl-8">
-              <div className="rounded-2xl bg-white/10 backdrop-blur border border-white/15 p-6">
+            <div className="min-w-0 lg:col-span-5 lg:pl-8">
+              <div className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur sm:p-6">
                 <div className="text-xs text-white/60 uppercase tracking-widest">Email us</div>
                 <a
                   href={`mailto:${email}`}
