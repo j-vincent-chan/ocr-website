@@ -3,6 +3,9 @@
  * Generated from the design prototype (design_handoff_funding/Funding.dc.html).
  * Copy is final and verbatim; flagged items are in OPEN_ITEMS.md. Drop in as src/data/funding.ts.
  */
+import vincentImg from "@/assets/people/vincent-chan.jpg";
+import { VINCENT_BOOKINGS_URL } from "./research-operations";
+
 export type SupportKind = "cash" | "staff" | "review";
 export type PartnerKey = "parnassus" | "immunox";
 export type MotifKey =
@@ -96,6 +99,8 @@ export const DEFAULT_CONTACT = {
   contactRole: "OCR Director and ImmunoX Chief Strategy Officer",
   contactEmail: "vincent.chan@ucsf.edu",
   contactInitials: "VC",
+  contactPhoto: vincentImg,
+  contactBookingUrl: VINCENT_BOOKINGS_URL,
 } as const;
 
 export const PARTNERS: FundingPartner[] = [

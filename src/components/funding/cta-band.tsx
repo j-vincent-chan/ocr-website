@@ -1,13 +1,13 @@
 import { contactFor, type FundingOpportunity } from "./lib";
 import { focusRing, glanceShadow, inkPillClass } from "./primitives";
 
-export function CtaBand({ award }: { award?: FundingOpportunity }) {
-  const contact = contactFor(award);
-  const accent = award?.color ?? "var(--teal-light)";
-  const subject = award ? `Question about the ${award.short}` : "Question about OCR funding";
-  const label = award ? "Ask about this opportunity" : "Ask which opportunity fits";
-  const href = `mailto:${contact.email}?subject=${encodeURIComponent(subject)}`;
+const DEFAULT_ACCENT = {
+  color: "oklch(0.78 0.13 195)",
+  ink: "var(--teal-text)",
+  tint: "oklch(0.78 0.13 195 / 0.14)",
+};
 
+export function CtaBand({ award }: { award?: FundingOpportunity }) {
   return (
     <section
       id="start"
@@ -32,30 +32,115 @@ export function CtaBand({ award }: { award?: FundingOpportunity }) {
             makes a proposal competitive. A short email is enough to start.
           </p>
         </div>
-        <div
-          className={`min-w-0 flex-[1_1_340px] rounded-[20px] bg-white px-7 py-6 text-ink ${glanceShadow}`}
-          style={{ borderTop: `5px solid ${accent}` }}
-        >
-          <div className="flex items-center gap-4">
-            <div className="grid size-[52px] shrink-0 place-items-center rounded-full bg-ink font-display text-[19px] text-white">
-              {contact.initials}
-            </div>
-            <div>
-              <div className="font-display text-[22px] leading-[1.2] text-ink">{contact.name}</div>
-              <p className="mt-0.5 text-[13px] leading-[1.4] text-ink-muted-2">{contact.role}</p>
-            </div>
-          </div>
-          <a
-            href={href}
-            className={`${inkPillClass} mt-5 min-h-12 w-full px-6 py-3 text-[15px] ${focusRing}`}
-          >
-            {label}
-          </a>
-          <p className="mt-3 text-center text-[13px] text-ink-muted-2">
-            {contact.email} · or ocr@ucsf.edu
-          </p>
-        </div>
+        <ConsultCard award={award} />
       </div>
     </section>
+  );
+}
+
+/** Same construction as the Research Operations scope card, minus the stage picker. */
+function ConsultCard({ award }: { award?: FundingOpportunity }) {
+  const contact = contactFor(award);
+  const accent = award?.color ?? DEFAULT_ACCENT.color;
+  const ink = award?.ink ?? DEFAULT_ACCENT.ink;
+  const tint = award?.tint ?? DEFAULT_ACCENT.tint;
+  const subject = award ? `Question about the ${award.short}` : "Question about OCR funding";
+  const emailLabel = award ? "Ask about this opportunity" : "Ask which opportunity fits";
+  const mailHref = `mailto:${contact.email}?subject=${encodeURIComponent(subject)}`;
+  const firstName = contact.name.split(" ")[0];
+
+  return (
+    <div
+      className={`min-w-0 flex-[1_1_340px] rounded-[20px] bg-white px-5 pt-[22px] pb-5 text-ink md:px-7 ${glanceShadow}`}
+      style={{ borderTop: `5px solid ${accent}` }}
+    >
+      <div className="flex items-center gap-4">
+        <div className="min-w-0 flex-1">
+          <div className="text-xs font-medium uppercase tracking-[0.16em]" style={{ color: ink }}>
+            Funding consult
+          </div>
+          <div className="mt-0.5 font-display text-2xl leading-[1.15] text-ink md:text-[22px] lg:text-2xl">
+            {award ? "Talk through your application" : "Find the opportunity that fits"}
+          </div>
+        </div>
+        {contact.bookingUrl ? (
+          <div className="shrink-0 text-right text-[13px] whitespace-nowrap text-ink-muted-2">
+            30 min
+            <br />
+            Free
+          </div>
+        ) : null}
+      </div>
+
+      <div
+        className="mt-5 flex items-center gap-4 rounded-2xl px-4 py-3.5"
+        style={{ background: tint }}
+      >
+        <div className="size-14 flex-none rounded-full p-[3px]" style={{ background: accent }}>
+          {contact.photo ? (
+            <img
+              src={contact.photo}
+              alt=""
+              className="size-full rounded-full border-2 border-white bg-secondary object-cover"
+            />
+          ) : (
+            <div className="grid size-full place-items-center rounded-full border-2 border-white bg-ink font-display text-[17px] text-white">
+              {contact.initials}
+            </div>
+          )}
+        </div>
+        <div className="min-w-0">
+          <div className="text-[11px] uppercase tracking-[0.14em] text-ink-muted-2">
+            You'll meet with
+          </div>
+          <div className="font-display text-xl leading-tight text-ink">{contact.name}</div>
+          <div className="mt-0.5 text-[13px]" style={{ color: ink }}>
+            {contact.role}
+          </div>
+        </div>
+      </div>
+
+      {contact.bookingUrl ? (
+        <>
+          <a
+            href={contact.bookingUrl}
+            target="_blank"
+            rel="noreferrer"
+            className={`${inkPillClass} mt-4 min-h-12 w-full gap-2 px-6 py-3 text-[15px]`}
+          >
+            Book a time with {firstName} <span aria-hidden>→</span>
+          </a>
+          <a
+            href={mailHref}
+            className={`mt-3 flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/20 px-6 py-3 text-[15px] font-medium text-ink transition-colors hover:border-ink/50 ${focusRing}`}
+          >
+            {emailLabel} <span aria-hidden>→</span>
+          </a>
+        </>
+      ) : (
+        <a
+          href={mailHref}
+          className={`${inkPillClass} mt-4 min-h-12 w-full gap-2 px-6 py-3 text-[15px]`}
+        >
+          {emailLabel} <span aria-hidden>→</span>
+        </a>
+      )}
+
+      <div className="mt-3 text-center text-[13px] text-ink-muted-2">
+        <a
+          href={`mailto:${contact.email}`}
+          className={`text-ink underline-offset-2 hover:underline ${focusRing}`}
+        >
+          {contact.email}
+        </a>{" "}
+        · or{" "}
+        <a
+          href="mailto:ocr@ucsf.edu"
+          className={`text-ink underline-offset-2 hover:underline ${focusRing}`}
+        >
+          ocr@ucsf.edu
+        </a>
+      </div>
+    </div>
   );
 }

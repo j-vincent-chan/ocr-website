@@ -64,7 +64,16 @@ export function motifFor(id: string): ProjectMotifKey {
   return (MOTIFS[id]?.[0] ?? "polesquare") as ProjectMotifKey;
 }
 
-export function contactFor(award?: FundingOpportunity) {
+export type FundingContact = {
+  name: string;
+  role: string;
+  email: string;
+  initials: string;
+  photo?: string;
+  bookingUrl?: string;
+};
+
+export function contactFor(award?: FundingOpportunity): FundingContact {
   if (award?.contactName && award.contactRole && award.contactEmail && award.contactInitials) {
     return {
       name: award.contactName,
@@ -78,6 +87,8 @@ export function contactFor(award?: FundingOpportunity) {
     role: DEFAULT_CONTACT.contactRole,
     email: DEFAULT_CONTACT.contactEmail,
     initials: DEFAULT_CONTACT.contactInitials,
+    photo: DEFAULT_CONTACT.contactPhoto,
+    bookingUrl: DEFAULT_CONTACT.contactBookingUrl,
   };
 }
 

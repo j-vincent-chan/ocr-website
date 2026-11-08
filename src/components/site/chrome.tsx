@@ -1,7 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { FundingMenu } from "@/components/funding/funding-menu";
-
 const CTA_ROTATING_PHRASES = [
   "worth funding.",
   "built together.",
@@ -224,7 +222,6 @@ function useNavTone(initial: NavTone): NavTone {
 
 export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
   const [open, setOpen] = useState(false);
-  const [fundingOpen, setFundingOpen] = useState(false);
   const { pathname } = useLocation();
   const isServices = pathname.startsWith("/services");
   const isFunding = pathname.startsWith("/funding");
@@ -286,10 +283,7 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
 
             <div
               className="relative"
-              onMouseEnter={() => {
-                setOpen(true);
-                setFundingOpen(false);
-              }}
+              onMouseEnter={() => setOpen(true)}
               onMouseLeave={() => setOpen(false)}
             >
               <button
@@ -352,12 +346,13 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
             >
               Programs & Projects
             </Link>
-            <FundingMenu
-              open={fundingOpen}
-              setOpen={setFundingOpen}
-              onEngage={() => setOpen(false)}
-              triggerClass={`${navLink} ${isFunding ? navActive : navIdle}`}
-            />
+            <Link
+              to="/funding"
+              activeOptions={{ exact: true }}
+              className={`${navLink} ${isFunding ? navActive : navIdle}`}
+            >
+              Funding
+            </Link>
           </nav>
 
           <Link
@@ -510,7 +505,7 @@ export function Footer() {
               </li>
               <li>
                 <Link to="/funding" activeOptions={{ exact: true }} className="hover:text-white">
-                  Funding & Support
+                  Funding
                 </Link>
               </li>
             </ul>

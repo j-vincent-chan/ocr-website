@@ -682,6 +682,10 @@ export const partners = {
   ] satisfies { name: string; meta: string; href: string; services: ServiceKey[] }[],
 };
 
+/** Vincent Chan's Microsoft Bookings page; also used by the Funding CTA. */
+export const VINCENT_BOOKINGS_URL =
+  "https://bookings.cloud.microsoft/bookwithme/user/6f03d87cc5d9466085201515215922bc@ucsf.edu/meetingtype/djDh-ywfK0CFR__joKskWA2?anonymous&ismsaljsauthenabled&ep=mlink";
+
 export const getStarted = {
   eyebrow: "Get started",
   title: "Discuss your research needs.",
@@ -711,7 +715,7 @@ export const getStarted = {
     role: "OCR Director",
     photo: vincentImg,
     button: "Book a time with Vincent",
-    url: "https://bookings.cloud.microsoft/bookwithme/user/6f03d87cc5d9466085201515215922bc@ucsf.edu/meetingtype/djDh-ywfK0CFR__joKskWA2?anonymous&ismsaljsauthenabled&ep=mlink",
+    url: VINCENT_BOOKINGS_URL,
   },
   stages: [
     {

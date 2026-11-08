@@ -686,21 +686,6 @@
   animation: pm-orbit-twinkle 4s ease-in-out infinite;
 }
 
-@keyframes funding-menu-in {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.funding-menu {
-  animation: funding-menu-in 0.2s ease;
-}
-
 @keyframes funding-faq-in {
   from {
     opacity: 0;
@@ -820,7 +805,6 @@
   .project-card-reveal,
   .ro-drawer,
   .ro-drawer-backdrop,
-  .funding-menu,
   .funding-faq-answer {
     animation: none !important;
   }
