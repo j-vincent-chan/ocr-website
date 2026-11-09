@@ -192,7 +192,7 @@ function SchedulerCard() {
         {booking.card.caption}{" "}
         <a
           href={`mailto:${booking.card.email}`}
-          className="text-ink underline-offset-2 hover:underline"
+          className="text-ink underline underline-offset-2"
         >
           {booking.card.email}
         </a>

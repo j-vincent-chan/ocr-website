@@ -54,6 +54,7 @@ export function RecordSection() {
           <div
             className="mt-5 inline-block max-w-full pb-1.5 font-display text-[4.25rem] font-medium leading-none tracking-[-0.04em] text-gradient-sunburst tabular-nums sm:text-[5.5rem] lg:mt-11 lg:text-[5.25rem] xl:text-[8.5rem]"
             style={money ? undefined : { borderBottom: "4px dotted var(--coral-deep)" }}
+            role="img"
             aria-label={
               money ? `${formatMoney(total.total)} awarded` : "Total awarded: amount pending"
             }

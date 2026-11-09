@@ -78,7 +78,7 @@ function DispatchMeta({
         <span className="w-1.5 h-1.5 rounded-full bg-magenta shrink-0" aria-hidden />
         {category}
       </span>
-      <span className="text-white/40">{date}</span>
+      <span className="text-white/80">{date}</span>
     </div>
   );
 }
@@ -258,7 +258,7 @@ function DispatchBrief({
         isLink ? "cursor-pointer" : ""
       }`}
     >
-      <span className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-white/45 font-medium w-40 shrink-0">
+      <span className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-white/80 font-medium w-40 shrink-0">
         <span className="w-1.5 h-1.5 rounded-full bg-magenta shrink-0" aria-hidden />
         {category}
       </span>
@@ -269,7 +269,7 @@ function DispatchBrief({
       >
         {title}
       </span>
-      <span className="ml-auto flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-white/40">
+      <span className="ml-auto flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-white/80">
         {date}
         {isLink && (
           <span
@@ -363,7 +363,7 @@ export function OcrDispatch() {
         {briefItems.length > 0 && (
           <div className="mt-10 md:mt-12">
             <div className="flex items-center gap-4 mb-2">
-              <span className="text-[11px] uppercase tracking-[0.24em] font-medium text-white/45">
+              <span className="text-[11px] uppercase tracking-[0.24em] font-medium text-white/80">
                 More from the dispatch
               </span>
               <span className="h-px flex-1 bg-white/10" />

@@ -122,6 +122,7 @@ export function ByTheNumbersStrip() {
   return (
     <div
       className="relative w-full bg-ink text-white border-t border-white/10 py-0"
+      role="region"
       aria-label="By the numbers"
     >
       <div ref={ref} className="max-w-7xl mx-auto px-6 py-8 md:py-10">

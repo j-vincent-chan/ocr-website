@@ -342,7 +342,7 @@ function Hero() {
         style={{ background: "var(--gradient-sunburst)" }}
       />
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-20 relative">
-        <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
+        <span className="text-xs uppercase tracking-[0.22em] text-coral-aa font-medium">
           People
         </span>
         <h1 className="mt-6 font-display text-[clamp(2.75rem,7.5vw,6.5rem)] leading-[0.95] tracking-tight text-ink max-w-[18ch]">
@@ -374,7 +374,7 @@ function Roster() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
           <div>
-            <span className="text-xs uppercase tracking-[0.22em] text-teal font-medium">
+            <span className="text-xs uppercase tracking-[0.22em] text-teal-aa font-medium">
               Current staff
             </span>
             <h2 className="mt-3 font-display text-4xl md:text-5xl text-ink">
@@ -382,12 +382,14 @@ function Roster() {
               <span className="text-muted-foreground"> · {filter}</span>
             </h2>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by service arm">
             {ARMS.map((a) => {
               const active = a === filter;
               return (
                 <button
                   key={a}
+                  type="button"
+                  aria-pressed={active}
                   onClick={() => setFilter(a)}
                   className={`px-4 py-2 rounded-full text-sm font-medium border transition ${
                     active
@@ -466,7 +468,7 @@ function Alumni() {
     <section className="pb-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="rounded-3xl bg-secondary p-10 md:p-14">
-          <span className="text-xs uppercase tracking-[0.22em] text-magenta font-medium">
+          <span className="text-xs uppercase tracking-[0.22em] text-magenta-aa font-medium">
             Alumni
           </span>
           <h2 className="mt-3 font-display text-3xl md:text-4xl text-ink">

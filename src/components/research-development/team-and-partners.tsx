@@ -110,7 +110,7 @@ export function TeamAndPartners() {
                       className={`relative flex items-center gap-5 rounded-[14px] px-3.5 py-3 ${TRANSITION}`}
                       style={{
                         background: hot ? tint(p.color, 0.14) : "transparent",
-                        opacity: dim ? 0.38 : 1,
+                        opacity: dim ? 0.65 : 1,
                       }}
                     >
                       <button
@@ -143,11 +143,14 @@ export function TeamAndPartners() {
                               href={p.linkedin}
                               target="_blank"
                               rel="noreferrer"
-                              aria-label={`${p.name} on LinkedIn`}
                               onClick={(e) => e.stopPropagation()}
-                              className="pointer-events-auto inline-flex items-center gap-1 rounded-md border border-ink/18 px-[7px] py-0.5 text-xs font-semibold text-ink-muted-2 no-underline transition-colors hover:border-ink/45 hover:text-ink"
+                              className="pointer-events-auto inline-flex min-h-6 min-w-6 items-center justify-center gap-1 rounded-md border border-ink/18 px-2 py-1 text-xs font-semibold text-ink-muted-2 no-underline transition-colors hover:border-ink/45 hover:text-ink"
                             >
-                              in ↗
+                              in
+                              <span aria-hidden>↗</span>
+                              <span className="sr-only">
+                                , {p.name} on LinkedIn (opens in a new tab)
+                              </span>
                             </a>
                           ) : null}
                         </div>
@@ -190,7 +193,7 @@ export function TeamAndPartners() {
                         {
                           "--row-bg": lit ?? "transparent",
                           "--row-hover": lit ?? "oklch(0.14 0.06 265 / 0.06)",
-                          opacity: dim ? 0.38 : 1,
+                          opacity: dim ? 0.65 : 1,
                         } as CSSProperties
                       }
                     >

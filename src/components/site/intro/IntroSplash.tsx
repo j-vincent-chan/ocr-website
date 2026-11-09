@@ -45,6 +45,7 @@ export function IntroSplash() {
   const colorG = useRef<SVGGElement>(null);
   const word = useRef<HTMLDivElement>(null);
   const skipBtn = useRef<HTMLButtonElement>(null);
+  const skipAction = useRef<() => void>(() => {});
 
   useEffect(() => {
     const root = document.documentElement;
@@ -88,6 +89,34 @@ export function IntroSplash() {
     const timers: number[] = [];
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const locked: HTMLElement[] = [];
+    const setLocked = (on: boolean) => {
+      if (!on) {
+        for (const el of locked) el.inert = false;
+        locked.length = 0;
+        return;
+      }
+      const shell = document.querySelector<HTMLElement>("[data-site-shell]");
+      if (!shell) return;
+      let node: HTMLElement | null = o;
+      while (node && node.parentElement && node.parentElement !== shell) {
+        const parent: HTMLElement = node.parentElement;
+        for (const child of Array.from(parent.children)) {
+          if (child !== node && child instanceof HTMLElement && !locked.includes(child)) {
+            child.inert = true;
+            locked.push(child);
+          }
+        }
+        node = parent;
+      }
+      for (const child of Array.from(shell.children)) {
+        if (child instanceof HTMLElement && !child.contains(o) && !locked.includes(child)) {
+          child.inert = true;
+          locked.push(child);
+        }
+      }
+    };
+    setLocked(true);
     if (hero && !reduced) hero.style.transform = "translateY(18px)";
 
     const measure = () => {
@@ -121,9 +150,15 @@ export function IntroSplash() {
       if (skipState === "hidden" && f.skipVisible) {
         skipState = "shown";
         sk.style.opacity = "1";
+        sk.style.visibility = "visible";
+        sk.tabIndex = 0;
+        sk.removeAttribute("aria-hidden");
       } else if (skipState === "shown" && !f.skipVisible) {
         skipState = "done";
         sk.style.opacity = "0";
+        sk.style.visibility = "hidden";
+        sk.tabIndex = -1;
+        sk.setAttribute("aria-hidden", "true");
       }
     };
 
@@ -136,6 +171,7 @@ export function IntroSplash() {
       lockup.style.opacity = "1";
       if (hero) hero.style.transform = "";
       document.body.style.overflow = prevOverflow;
+      setLocked(false);
       // Drop the play gate so the header lockup CSS and the scroll lock release,
       // and a client-side return to / does not replay or flash the stage.
       root.dataset.intro = "skip";
@@ -200,15 +236,24 @@ export function IntroSplash() {
     timers.push(window.setTimeout(start, 1200));
 
     const skip = () => {
-      if (!started || finished || reduced) return;
+      if (!started || finished) return;
+      if (reduced) {
+        finish();
+        return;
+      }
       scaleTarget = SKIP_TIME_SCALE;
       if (skipState === "shown") {
         skipState = "done";
-        skipBtn.current!.style.opacity = "0";
+        const sk = skipBtn.current!;
+        sk.style.opacity = "0";
+        sk.style.visibility = "hidden";
+        sk.tabIndex = -1;
+        sk.setAttribute("aria-hidden", "true");
       }
     };
+    skipAction.current = skip;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape" || e.key === "Enter" || e.key === " ") {
+      if (e.key === "Escape") {
         e.preventDefault();
         skip();
       }
@@ -228,6 +273,7 @@ export function IntroSplash() {
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("resize", onResize);
       document.body.style.overflow = prevOverflow;
+      setLocked(false);
       if (!finished) root.dataset.intro = "skip";
     };
   }, []);
@@ -236,6 +282,9 @@ export function IntroSplash() {
     <div
       ref={overlay}
       data-intro-overlay
+      role="dialog"
+      aria-modal="true"
+      aria-label="Introduction"
       className="fixed inset-0 z-[100] overflow-hidden"
       style={{ background: STAGE_BG }}
     >
@@ -270,7 +319,14 @@ export function IntroSplash() {
       <button
         ref={skipBtn}
         type="button"
+        tabIndex={-1}
+        aria-hidden="true"
+        onClick={(event) => {
+          event.stopPropagation();
+          skipAction.current();
+        }}
         className="absolute right-4 bottom-4 min-h-11 cursor-pointer rounded-full border border-current/25 bg-white/15 px-4 text-[13px] leading-none font-medium tracking-[0.14em] uppercase opacity-0 backdrop-blur-sm transition-[opacity,color] duration-300"
+        style={{ visibility: "hidden" }}
       >
         Skip intro
       </button>

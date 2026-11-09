@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { onLightText } from "@/lib/on-light-text";
 import { SERVICES } from "./chrome";
 import { armName } from "./arms";
 
@@ -33,7 +34,7 @@ export function ArmEyebrow({
         aria-hidden
       />
       <span>{armName(arm)}</span>
-      <span className="opacity-40">·</span>
+      <span aria-hidden>·</span>
       <span className="text-ink/80">{label}</span>
     </div>
   );
@@ -68,14 +69,14 @@ export function ServiceCrossNav({ currentPath }: { currentPath: string }) {
                   aria-current="page"
                   className="rounded-3xl border border-dashed border-ink/20 p-7 cursor-default select-none"
                 >
-                  <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.24em] text-muted-foreground/60">
+                  <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
                     <span className="font-display text-base normal-case tracking-normal">{arm}</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-ink/20" />
                   </div>
-                  <h3 className="mt-6 font-display text-2xl text-ink/35 leading-tight">
+                  <h3 className="mt-6 font-display text-2xl text-ink/60 leading-tight">
                     {s.name}
                   </h3>
-                  <p className="mt-3 text-sm text-muted-foreground/60">{s.desc}</p>
+                  <p className="mt-3 text-sm text-muted-foreground">{s.desc}</p>
                   <div className="mt-6 inline-flex items-center gap-1.5 rounded-full bg-ink/5 px-2.5 py-1 text-[11px] uppercase tracking-[0.18em] font-medium text-muted-foreground">
                     You are here
                   </div>
@@ -94,7 +95,7 @@ export function ServiceCrossNav({ currentPath }: { currentPath: string }) {
                   style={{ background: s.accent }}
                 />
                 <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-                  <span className="font-display text-base normal-case tracking-normal text-muted-foreground/70">{arm}</span>
+                  <span className="font-display text-base normal-case tracking-normal">{arm}</span>
                   <span
                     className="w-1.5 h-1.5 rounded-full"
                     style={{ background: s.accent }}
@@ -106,7 +107,7 @@ export function ServiceCrossNav({ currentPath }: { currentPath: string }) {
                 <p className="mt-3 text-sm text-muted-foreground">{s.desc}</p>
                 <div
                   className="mt-6 text-sm font-medium inline-flex items-center gap-1.5 transition-transform group-hover:translate-x-0.5"
-                  style={{ color: s.accent }}
+                  style={{ color: onLightText(s.accent, "small") }}
                 >
                   Explore <span aria-hidden>→</span>
                 </div>

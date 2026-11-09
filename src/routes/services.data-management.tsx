@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
+import { onLightText } from "@/lib/on-light-text";
 import { ArmEyebrow, ServiceCrossNav } from "@/components/site/service-family";
 
 export const Route = createFileRoute("/services/data-management")({
@@ -102,7 +103,7 @@ function LifecycleRing() {
           >
             <div className="flex flex-col items-center gap-1.5">
               <div
-                className="flex h-11 w-11 items-center justify-center rounded-2xl font-display text-sm text-white shadow-lift sm:h-14 sm:w-14 sm:text-base"
+                className="flex h-11 w-11 items-center justify-center rounded-2xl font-display text-sm text-ink shadow-lift sm:h-14 sm:w-14 sm:text-base"
                 style={{ background: s.c }}
               >
                 0{i + 1}
@@ -130,12 +131,12 @@ function FAIR() {
     <section className="py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-14">
-          <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: M }}>
+          <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: onLightText(M) }}>
             Framework
           </span>
           <h2 className="mt-4 font-display text-5xl text-ink leading-[0.98] max-w-3xl">
             We build to FAIR.<br />
-            <em className="not-italic text-muted-foreground/60">From day one.</em>
+            <em className="not-italic text-muted-foreground/80">From day one.</em>
           </h2>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -150,7 +151,7 @@ function FAIR() {
               </div>
               <div
                 className="font-display text-5xl mb-4 relative"
-                style={{ color: i.c }}
+                style={{ color: onLightText(i.c, "display") }}
               >
                 {i.L}
               </div>
@@ -177,7 +178,7 @@ function Architecture() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-10 items-end mb-12">
           <div className="lg:col-span-6">
-            <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: "var(--teal)" }}>
+            <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: "var(--teal-aa)" }}>
               Reference architecture
             </span>
             <h2 className="mt-4 font-display text-5xl text-ink leading-[0.98]">
@@ -270,7 +271,7 @@ function Policy() {
                   className="flex items-center gap-4 p-3.5 rounded-xl bg-card border border-border"
                 >
                   <span
-                    className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-display"
+                    className="w-7 h-7 rounded-full flex items-center justify-center text-ink text-xs font-display"
                     style={{ background: ["var(--coral)", "var(--magenta)", "var(--teal)", "var(--gold)", "var(--lime)", "#8b5cf6"][i] }}
                   >
                     {i + 1}

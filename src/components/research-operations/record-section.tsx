@@ -60,6 +60,7 @@ export function RecordSection() {
           <div className="mt-6 flex flex-wrap items-end gap-x-8 gap-y-4 lg:mt-0">
             <div
               className="font-display text-[80px] font-medium leading-[0.9] tracking-[-0.04em] text-gradient-sunburst tabular-nums md:text-[100px] lg:text-[120px]"
+              role="img"
               aria-label={`${record.heroStat.value} ${record.heroStat.caption}`}
             >
               {record.heroStat.value}

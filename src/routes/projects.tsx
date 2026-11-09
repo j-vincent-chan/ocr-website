@@ -13,6 +13,7 @@ import {
 import { ProjectMotif } from "@/components/site/project-motifs";
 import { cn } from "@/lib/utils";
 import { SiteShell, Breadcrumb } from "@/components/site/chrome";
+import { onLightText } from "@/lib/on-light-text";
 import { ProjectsFundingBand } from "@/components/funding/projects-band";
 
 export const Route = createFileRoute("/projects")({
@@ -100,7 +101,7 @@ function Hero() {
         style={{ background: "var(--gradient-sunburst)" }}
       />
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-20 relative">
-        <span className="text-xs uppercase tracking-[0.22em] text-magenta font-medium">
+        <span className="text-xs uppercase tracking-[0.22em] text-magenta-aa font-medium">
           Programs & Projects
         </span>
         <h1 className="mt-6 font-display text-[clamp(2.75rem,7.5vw,6.5rem)] leading-[0.95] tracking-tight text-ink max-w-[16ch]">
@@ -175,7 +176,7 @@ function ServiceArmHighlights() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-10 items-end mb-12">
           <div className="lg:col-span-7">
-            <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
+            <span className="text-xs uppercase tracking-[0.22em] text-coral-aa font-medium">
               Organized by service arm
             </span>
             <h2 className="mt-4 font-display text-4xl md:text-5xl text-ink leading-[1.02]">
@@ -197,7 +198,10 @@ function ServiceArmHighlights() {
               className="group rounded-3xl border border-border bg-card p-7 hover:shadow-lift hover:-translate-y-0.5 transition-all duration-300"
             >
               <div className="flex items-center justify-between gap-4">
-                <span className="font-display text-3xl tabular-nums" style={{ color: arm.accent }}>
+                <span
+                  className="font-display text-3xl tabular-nums"
+                  style={{ color: onLightText(arm.accent, "display") }}
+                >
                   {arm.n}
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground text-right">
@@ -253,6 +257,7 @@ function ProjectFiltersPanel({
       <button
         key={s}
         type="button"
+        aria-pressed={active}
         onClick={() => setFilter("status", s)}
         className={cn(
           "rounded-full text-sm font-medium border transition",
@@ -322,7 +327,7 @@ function ProjectFiltersPanel({
           <button
             type="button"
             onClick={onClear}
-            className="text-[11px] font-medium text-teal hover:text-teal/80 transition shrink-0"
+            className="text-[11px] font-medium text-teal-aa underline-offset-2 hover:underline transition shrink-0"
           >
             Clear filters
           </button>
@@ -377,7 +382,7 @@ function Grid() {
     <section className="py-20 overflow-visible">
       <div className="max-w-7xl mx-auto px-6 overflow-visible">
         <div className="mb-8 xl:mb-10">
-          <span className="text-xs uppercase tracking-[0.22em] text-teal font-medium">
+          <span className="text-xs uppercase tracking-[0.22em] text-teal-aa font-medium">
             Portfolio
           </span>
           <h2 className="mt-3 font-display text-4xl md:text-5xl text-ink">
@@ -388,7 +393,7 @@ function Grid() {
 
         <div className="xl:grid xl:grid-cols-[15.5rem_minmax(0,1fr)] xl:items-start xl:gap-10">
           <div className="mb-8 xl:mb-0">
-            <div className="xl:sticky xl:top-24" aria-label="Portfolio filters">
+            <div className="xl:sticky xl:top-24" role="group" aria-label="Portfolio filters">
               <div className="xl:hidden">
                 <ProjectFiltersPanel layout="bar" {...filterPanelProps} />
               </div>
@@ -405,7 +410,7 @@ function Grid() {
                 <button
                   type="button"
                   onClick={() => setFilters(DEFAULT_PROJECT_FILTERS)}
-                  className="text-teal font-medium hover:underline"
+                  className="text-teal-aa font-medium hover:underline"
                 >
                   Reset filters
                 </button>
@@ -469,7 +474,7 @@ function PitchBand() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="rounded-3xl bg-secondary p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div className="max-w-2xl">
-            <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
+            <span className="text-xs uppercase tracking-[0.22em] text-coral-aa font-medium">
               Start with us
             </span>
             <h2 className="mt-3 font-display text-3xl md:text-4xl text-ink leading-tight">

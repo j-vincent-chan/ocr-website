@@ -54,6 +54,16 @@
   --color-lime-text: var(--lime-text);
   --color-violet: var(--violet);
   --color-violet-text: var(--violet-text);
+  --color-coral-aa: var(--coral-aa);
+  --color-teal-aa: var(--teal-aa);
+  --color-magenta-aa: var(--magenta-aa);
+  --color-lime-aa: var(--lime-aa);
+  --color-gold-aa: var(--gold-aa);
+  --color-coral-display: var(--coral-display);
+  --color-teal-display: var(--teal-display);
+  --color-magenta-display: var(--magenta-display);
+  --color-lime-display: var(--lime-display);
+  --color-gold-display: var(--gold-display);
   --font-display: "Fraunces", "Georgia", serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
@@ -77,7 +87,7 @@
   --muted-foreground: oklch(0.48 0.03 265);
   --accent: oklch(0.96 0.04 30);
   --accent-foreground: oklch(0.22 0.08 265);
-  --destructive: oklch(0.6 0.22 27);
+  --destructive: oklch(0.55 0.21 27);
   --destructive-foreground: oklch(0.99 0.005 90);
   --border: oklch(0.91 0.012 90);
   --input: oklch(0.92 0.012 90);
@@ -99,7 +109,20 @@
   --ink-muted-2: oklch(0.42 0.03 265);
   --ondark-muted: oklch(0.82 0.02 265);
   --coral-text: oklch(0.5 0.18 30);
-  --coral-deep: oklch(0.6 0.2 30);
+  --coral-deep: oklch(0.57 0.19 30);
+  /* Same hues as the brand colors, darkened only enough to clear WCAG AA
+     on ivory and white. *-aa is small text (4.5:1); *-display is 24px+ (3:1). */
+  --coral-aa: oklch(0.545 0.185 30);
+  --teal-aa: oklch(0.495 0.105 195);
+  --magenta-aa: oklch(0.545 0.21 340);
+  --magenta-ondark: oklch(0.68 0.16 340);
+  --lime-aa: oklch(0.505 0.13 130);
+  --gold-aa: oklch(0.515 0.145 85);
+  --coral-display: oklch(0.635 0.185 30);
+  --teal-display: oklch(0.585 0.115 195);
+  --magenta-display: oklch(0.6 0.22 340);
+  --lime-display: oklch(0.595 0.15 130);
+  --gold-display: oklch(0.605 0.145 85);
   --amber: oklch(0.84 0.16 85);
   --amber-text: oklch(0.55 0.14 75);
   --magenta-text: oklch(0.5 0.2 340);
@@ -116,6 +139,14 @@
     oklch(0.55 0.2 280) 65%,
     oklch(0.7 0.13 195) 100%
   );
+  /* Same sweep as the blobs, darkened so clipped headline text clears 3:1. */
+  --gradient-sunburst-text: linear-gradient(
+    135deg,
+    var(--coral-display) 0%,
+    var(--magenta-display) 35%,
+    oklch(0.55 0.18 280) 65%,
+    var(--teal-display) 100%
+  );
   --gradient-cream: linear-gradient(180deg, oklch(0.99 0.008 85), oklch(0.96 0.015 85));
   --shadow-soft: 0 1px 2px oklch(0.18 0.06 265 / 0.04), 0 8px 24px oklch(0.18 0.06 265 / 0.06);
   --shadow-lift: 0 1px 2px oklch(0.18 0.06 265 / 0.05), 0 20px 50px oklch(0.18 0.06 265 / 0.12);
@@ -127,6 +158,29 @@
   }
   html {
     scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 0.75rem;
+    z-index: 80;
+    transform: translateY(-200%);
+    border-radius: 9999px;
+    background: var(--ink);
+    color: white;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .skip-link:focus {
+    transform: none;
+    outline: 2px solid white;
+    outline-offset: 3px;
   }
   body {
     background-color: var(--color-background);
@@ -146,7 +200,9 @@
 }
 
 @utility text-gradient-sunburst {
-  background: var(--gradient-sunburst);
+  /* Reference a variable so the background shorthand stays in one rule with
+     background-clip. An inline gradient gets rewritten later and resets the clip. */
+  background: var(--gradient-sunburst-text);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -773,12 +829,10 @@
 
 @keyframes project-card-reveal {
   from {
-    opacity: 0;
-    transform: translateY(16px) scale(0.98);
+    transform: translateY(12px);
   }
   to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 

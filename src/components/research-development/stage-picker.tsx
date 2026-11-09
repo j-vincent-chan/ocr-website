@@ -127,7 +127,6 @@ function EngagementTrack({
               type="button"
               onClick={() => onPick(s.id)}
               aria-pressed={on}
-              aria-label={`${s.name} (${s.when})`}
               className="group flex min-w-0 flex-1 basis-0 flex-col items-center gap-2.5 rounded-xl text-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70 xl:w-[190px] xl:flex-none"
             >
               <span
