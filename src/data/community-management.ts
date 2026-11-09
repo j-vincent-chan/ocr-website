@@ -509,30 +509,30 @@ export interface TeamMember {
 
 export const TEAM: TeamMember[] = [
   {
-    id: "xochitl",
-    name: "Xochitl Vargas",
-    role: "Community manager",
-    bio: "Participation and mentorship pipeline for immunology research at UCSF.",
-    photo: xochitlImg,
-    color: "oklch(0.62 0.24 340)",
-    text: "oklch(0.5 0.2 340)",
-    partners: ["immunox"],
-  },
-  {
     id: "jonathan",
     name: "Jonathon Wilson",
     role: "Community manager",
-    bio: "Award finance, subawards, and the budget side of pilot and travel programs.",
+    bio: "Education administrator including T32s, events, and initiatives, as well as financial support.",
     photo: jonathanImg,
     color: "oklch(0.7 0.2 30)",
     text: "oklch(0.5 0.18 30)",
     partners: ["immunox", "parnassus", "diabetes"],
   },
   {
+    id: "xochitl",
+    name: "Xochitl Vargas",
+    role: "Community manager",
+    bio: "Program administrator for the ImmunoDiverse trainee organization.",
+    photo: xochitlImg,
+    color: "oklch(0.62 0.24 340)",
+    text: "oklch(0.5 0.2 340)",
+    partners: ["immunox"],
+  },
+  {
     id: "open",
     name: "Open position",
     role: "Community manager",
-    bio: "Embedded full-time; runs the ImmunoX community end to end. We are hiring.",
+    bio: "End-to-end community manager for the Bakar ImmunoX Initiative.",
     photo: null,
     applyHref: OPEN_POSITIONS.immunoxCommunityManager.href,
     color: "oklch(0.82 0.18 130)",
@@ -552,25 +552,25 @@ export const PARTNERS: Partner[] = [
   {
     id: "immunox",
     name: "Bakar ImmunoX Initiative",
-    since: "Founding community · supported since before OCR launched",
+    since: "Since 2018",
     url: "https://immunox.ucsf.edu/",
   },
   {
     id: "parnassus",
     name: "Parnassus Institutes",
-    since: "Directors' meetings, campus leadership, community fund, social events",
+    since: "Since 2024 · Directors' meetings, campus leadership, community fund, social events",
     url: "https://immunox.notion.site/Parnassus-Institutes-adfc1c14869f4300964ac0f52ca49f3f",
   },
   {
     id: "diabetes",
     name: "UCSF Diabetes Center",
-    since: "DRC and NORC P30 enrichment programs",
+    since: "Since 2025 · DRC and NORC P30 enrichment programs",
     url: "https://diabetes.ucsf.edu/",
   },
   {
     id: "iha",
-    name: "Institute for Health & Aging",
-    since: "Partner since 2026 · faculty outreach and community management",
+    name: "Center for Health and Community",
+    since: "Since 2026 · Events & scientific programming",
     url: "https://iha.ucsf.edu/",
   },
 ];
@@ -591,8 +591,8 @@ export const hero = {
     href: "#contact",
   },
   avatars: [
-    { src: xochitlImg, name: "Xochitl Vargas" },
     { src: jonathanImg, name: "Jonathon Wilson" },
+    { src: xochitlImg, name: "Xochitl Vargas" },
     { src: vincentImg, name: "Vincent Chan" },
   ],
 };
