@@ -3,6 +3,7 @@ import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
 import { armName } from "@/components/site/arms";
 import { OPEN_POSITIONS } from "@/components/site/open-positions";
 import { ArmEyebrow, PullQuote, ServiceCrossNav } from "@/components/site/service-family";
+import { onDarkText, onLightText } from "@/lib/on-light-text";
 
 export const Route = createFileRoute("/services/community-management")({
   head: () => ({
@@ -43,7 +44,7 @@ function Hero() {
         <ArmEyebrow arm={ARM} label="One of five service arms" accent={L} />
         <h1 className="mt-8 font-display text-[clamp(2.15rem,4.2vw,3.75rem)] leading-[1.08] tracking-tight text-ink max-w-4xl">
           Building connections, fostering collaboration, and{" "}
-          <em className="not-italic" style={{ color: L }}>
+          <em className="not-italic" style={{ color: onLightText(L, "display") }}>
             strengthening research communities.
           </em>
         </h1>
@@ -108,7 +109,7 @@ function TheGap() {
           {beats.map((b, i) => (
             <article key={b.label} className="bg-cream p-8 md:p-10 flex flex-col">
               <div className="flex items-center gap-3 mb-6">
-                <span className="font-display text-xl" style={{ color: L }}>
+                <span className="font-display text-xl" style={{ color: onLightText(L) }}>
                   0{i + 1}
                 </span>
                 <span className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
@@ -216,7 +217,7 @@ function Catalog() {
               <div className="lg:col-span-4 flex items-start gap-5">
                 <span
                   className="font-display text-3xl tabular-nums shrink-0"
-                  style={{ color: f.c }}
+                  style={{ color: onLightText(f.c, "display") }}
                 >
                   0{i + 1}
                 </span>
@@ -301,7 +302,7 @@ function StaffingModels() {
               />
               <span
                 className="text-[11px] uppercase tracking-[0.24em] font-medium"
-                style={{ color: m.c }}
+                style={{ color: onLightText(m.c) }}
               >
                 {m.no}
               </span>
@@ -383,7 +384,7 @@ function ProgramYear() {
             <div key={n.t} className="flex min-w-0 flex-1 items-stretch">
               <div className="min-w-0 flex-1 rounded-2xl border border-border bg-card p-5 xl:p-6">
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center font-display text-white text-sm mb-4"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center font-display text-ink text-sm mb-4"
                   style={{ background: n.c }}
                 >
                   0{i + 1}
@@ -403,7 +404,7 @@ function ProgramYear() {
           {YEAR.map((n, i) => (
             <li key={n.t} className="rounded-2xl border border-border bg-card p-5 flex gap-4">
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center font-display text-white text-sm flex-none"
+                className="w-10 h-10 rounded-xl flex items-center justify-center font-display text-ink text-sm flex-none"
                 style={{ background: n.c }}
               >
                 0{i + 1}
@@ -498,7 +499,7 @@ function InPractice() {
               <div className="relative flex flex-col flex-1">
                 <div
                   className="text-[11px] uppercase tracking-[0.24em] font-medium"
-                  style={{ color: p.c }}
+                  style={{ color: onLightText(p.c) }}
                 >
                   {p.tag}
                 </div>
@@ -594,7 +595,7 @@ function FeedsOtherArms() {
               <p className="mt-4 text-sm text-white/80 leading-relaxed">{l.d}</p>
               <div
                 className="mt-5 text-sm font-medium inline-flex items-center gap-1.5 transition-transform group-hover:translate-x-0.5"
-                style={{ color: l.c }}
+                style={{ color: onDarkText(l.c) }}
               >
                 Explore <span aria-hidden>→</span>
               </div>

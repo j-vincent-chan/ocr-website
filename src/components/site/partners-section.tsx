@@ -116,14 +116,14 @@ export function PartnersSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/40" />
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="mb-12">
-          <span className="text-xs uppercase tracking-[0.22em] text-magenta font-medium">
+          <span className="text-xs uppercase tracking-[0.22em] text-magenta-aa font-medium">
             Partners
           </span>
           <h2 className="mt-4 font-display text-5xl md:text-6xl text-ink leading-[0.98]">
             <span className="block text-balance lg:whitespace-nowrap">
               Many partners, different needs.
             </span>
-            <span className="block italic text-muted-foreground/60">
+            <span className="block italic text-muted-foreground/80">
               One adaptive model.
             </span>
           </h2>
@@ -150,7 +150,7 @@ export function PartnersSection() {
                   }`}
                 >
                   <div className="flex items-center gap-6 min-w-0">
-                    <span className="font-display text-sm text-muted-foreground/60 w-8 shrink-0">
+                    <span className="font-display text-sm text-muted-foreground w-8 shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span

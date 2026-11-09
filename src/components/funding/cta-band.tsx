@@ -129,14 +129,14 @@ function ConsultCard({ award }: { award?: FundingOpportunity }) {
       <div className="mt-3 text-center text-[13px] text-ink-muted-2">
         <a
           href={`mailto:${contact.email}`}
-          className={`text-ink underline-offset-2 hover:underline ${focusRing}`}
+          className={`text-ink underline underline-offset-2 ${focusRing}`}
         >
           {contact.email}
         </a>{" "}
         · or{" "}
         <a
           href="mailto:ocr@ucsf.edu"
-          className={`text-ink underline-offset-2 hover:underline ${focusRing}`}
+          className={`text-ink underline underline-offset-2 ${focusRing}`}
         >
           ocr@ucsf.edu
         </a>

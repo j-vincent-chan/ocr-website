@@ -309,15 +309,21 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
     };
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const main = document.getElementById("main");
+    const footer = document.querySelector("footer");
+    if (main) main.inert = true;
+    if (footer) footer.inert = true;
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = previousOverflow;
+      if (main) main.inert = false;
+      if (footer) footer.inert = false;
       window.removeEventListener("keydown", onKey);
     };
   }, [navOpen]);
 
   return (
-    <>
+    <header>
       <div className="bg-ink text-xs text-white">
         <div className="mx-auto flex h-9 max-w-7xl items-center justify-between gap-3 px-6">
           <span className="min-w-0 truncate opacity-80">
@@ -340,7 +346,7 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
         </div>
       </div>
 
-      <header
+      <div
         data-site-header
         className={`sticky top-0 z-40 border-b backdrop-blur-md transition-colors duration-300 ${
           dark ? "border-white/10 bg-ink text-white" : "border-border bg-background/85 text-ink"
@@ -385,6 +391,7 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
                 type="button"
                 aria-expanded={servicesOpen}
                 aria-haspopup="true"
+                aria-controls={servicesOpen ? "services-menu" : undefined}
                 className={`${navLink} flex items-center gap-1.5 ${isServices ? navActive : navIdle}`}
                 onClick={() => {
                   if (servicesOpenedByHover.current) return;
@@ -402,7 +409,10 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
                 </svg>
               </button>
               {servicesOpen && (
-                <div className="absolute top-full left-1/2 w-[min(100vw-2rem,26rem)] -translate-x-1/2 pt-2">
+                <div
+                  id="services-menu"
+                  className="absolute top-full left-1/2 w-[min(100vw-2rem,26rem)] -translate-x-1/2 pt-2"
+                >
                   <div className="flex flex-col gap-0.5 rounded-2xl border border-border bg-card p-2 shadow-lift">
                     <ServiceLinks pathname={pathname} onNavigate={() => setServicesOpen(false)} />
                   </div>
@@ -555,7 +565,7 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
             </nav>
           </div>
         )}
-      </header>
+      </div>
       {navOpen && (
         <button
           type="button"
@@ -564,29 +574,37 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
           onClick={() => setNavOpen(false)}
         />
       )}
-    </>
+    </header>
   );
 }
 
 export function Breadcrumb({ trail }: { trail: { label: string; to?: string }[] }) {
   return (
-    <div className="max-w-7xl mx-auto px-6 pt-8 text-sm text-muted-foreground">
-      <Link to="/" className="hover:text-ink">
-        Home
-      </Link>
-      {trail.map((t, i) => (
-        <span key={i}>
-          <span className="mx-2 opacity-50">/</span>
-          {t.to ? (
-            <a href={t.to} className="hover:text-ink">
-              {t.label}
-            </a>
-          ) : (
-            <span className="text-ink font-medium">{t.label}</span>
-          )}
-        </span>
-      ))}
-    </div>
+    <nav aria-label="Breadcrumb" className="max-w-7xl mx-auto px-6 pt-8 text-sm text-muted-foreground">
+      <ol className="flex flex-wrap items-center">
+        <li>
+          <Link to="/" className="hover:text-ink">
+            Home
+          </Link>
+        </li>
+        {trail.map((t, i) => (
+          <li key={i} className="flex items-center">
+            <span aria-hidden className="mx-2 opacity-50">
+              /
+            </span>
+            {t.to ? (
+              <a href={t.to} className="hover:text-ink">
+                {t.label}
+              </a>
+            ) : (
+              <span className="text-ink font-medium" aria-current="page">
+                {t.label}
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
   );
 }
 
@@ -767,9 +785,14 @@ export function SiteShell({
   navTone?: NavTone;
 }) {
   return (
-    <div className="min-h-screen bg-background">
+    <div data-site-shell className="min-h-screen bg-background">
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <Header initialTone={navTone} />
-      {children}
+      <main id="main" tabIndex={-1} className="outline-none">
+        {children}
+      </main>
       <Footer />
     </div>
   );

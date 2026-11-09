@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
+import { onLightText } from "@/lib/on-light-text";
 import { ArmEyebrow, ServiceCrossNav } from "@/components/site/service-family";
 
 export const Route = createFileRoute("/services/ai-tools")({
@@ -33,7 +34,7 @@ function Hero() {
         <ArmEyebrow arm={ARM} label="One of five service arms" accent={G} />
         <h1 className="mt-8 font-display text-[clamp(2.15rem,4.2vw,3.75rem)] leading-[1.08] tracking-tight text-ink max-w-4xl">
           Developing innovative tools and resources to{" "}
-          <em className="not-italic" style={{ color: G }}>
+          <em className="not-italic" style={{ color: onLightText(G, "display") }}>
             accelerate research.
           </em>
         </h1>
@@ -49,7 +50,7 @@ function Hero() {
               <span className="px-2.5 py-1 rounded-md bg-card border border-border">Prospera v0.2</span>
               <span className="px-2.5 py-1 rounded-md bg-card border border-border">+ 6 internal tools</span>
               <span className="flex items-center gap-2 ml-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-lime animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-lime motion-safe:animate-pulse" />
                 <span>in active pilot</span>
               </span>
             </div>
@@ -71,7 +72,7 @@ function Products() {
           <div className="lg:col-span-5 p-10 md:p-12 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-display" style={{ background: "var(--teal)" }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-ink font-display" style={{ background: "var(--teal)" }}>
                   S
                 </div>
                 <div>
@@ -114,8 +115,8 @@ function Products() {
             <div className="relative">
               <div className="flex items-center justify-between mb-5 text-xs text-white/60 font-mono">
                 <span>signal · live feed</span>
-                <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-lime animate-pulse" />
+                  <span className="flex items-center gap-2 text-white">
+                  <span className="w-1.5 h-1.5 rounded-full bg-lime motion-safe:animate-pulse" />
                   streaming
                 </span>
               </div>
@@ -133,7 +134,7 @@ function Products() {
                       <div className="text-[10px] uppercase tracking-widest text-white/50">{r.t}</div>
                       <div className="text-sm text-white mt-0.5">{r.d}</div>
                     </div>
-                    <div className="text-[10px] text-white/40 font-mono">{r.time}</div>
+                    <div className="text-[10px] text-white/80 font-mono">{r.time}</div>
                   </div>
                 ))}
               </div>
@@ -173,7 +174,7 @@ function Products() {
                   </div>
                 ))}
               </div>
-              <div className="mt-5 text-[11px] text-white/40">
+              <div className="mt-5 text-[11px] text-white/80">
                 Illustrative preview · not live data
               </div>
             </div>
@@ -181,7 +182,7 @@ function Products() {
           <div className="lg:col-span-5 lg:order-2 order-1 p-10 md:p-12 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-display" style={{ background: "var(--magenta)" }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-ink font-display" style={{ background: "var(--magenta)" }}>
                   P
                 </div>
                 <div>
@@ -239,7 +240,7 @@ function Automations() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-12 grid min-w-0 items-end gap-10 lg:grid-cols-12">
           <div className="min-w-0 lg:col-span-6">
-            <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: "var(--coral)" }}>
+            <span className="text-xs uppercase tracking-[0.22em] font-medium" style={{ color: "var(--coral-aa)" }}>
               Workflow innovation
             </span>
             <h2 className="mt-4 font-display text-4xl text-ink leading-[0.98] sm:text-5xl">

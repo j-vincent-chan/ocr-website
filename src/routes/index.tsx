@@ -123,14 +123,14 @@ function ServicesEditorial() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-10 items-end mb-20">
           <div className="lg:col-span-7">
-            <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
+            <span className="text-xs uppercase tracking-[0.22em] text-coral-aa font-medium">
               Five service arms
             </span>
             <div className="mt-4 flex items-start gap-5 md:gap-7">
-              <SunburstLogo className="w-14 h-14 md:w-[4.5rem] md:h-[4.5rem] shrink-0 mt-1 md:mt-2 animate-[spin_60s_linear_infinite]" />
+              <SunburstLogo className="w-14 h-14 md:w-[4.5rem] md:h-[4.5rem] shrink-0 mt-1 md:mt-2 motion-safe:animate-[spin_60s_linear_infinite]" />
               <h2 className="font-display text-5xl md:text-7xl leading-[0.98] text-ink">
                 One coordinated<br />
-                <span className="italic text-muted-foreground/60">office.</span>
+                <span className="italic text-muted-foreground/80">office.</span>
               </h2>
             </div>
           </div>
@@ -154,7 +154,7 @@ function ServicesEditorial() {
                 style={{ background: s.accent }}
               />
               <div className="relative grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-                <div className="lg:col-span-1 font-display text-2xl text-muted-foreground/60 transition-all duration-500 group-hover:text-ink group-hover:scale-110">
+                <div className="lg:col-span-1 font-display text-2xl text-muted-foreground/80 transition-all duration-500 group-hover:text-ink group-hover:scale-110">
                   0{i + 1}
                 </div>
                 <div className="lg:col-span-5 min-w-0">
@@ -189,7 +189,7 @@ function Approach() {
     <section className="py-32 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-5xl">
-          <span className="text-xs uppercase tracking-[0.22rem] text-teal font-medium">
+          <span className="text-xs uppercase tracking-[0.22rem] text-teal-aa font-medium">
             Our approach
           </span>
           <blockquote className="mt-8 font-display text-4xl md:text-6xl leading-[1.05] text-ink">
@@ -232,7 +232,7 @@ function Approach() {
               >
                 <Icon className="size-11" />
               </div>
-              <h3 className="mt-6 font-display text-2xl text-ink">{i.t}</h3>
+              <h2 className="mt-6 font-display text-2xl text-ink">{i.t}</h2>
               <p className="mt-3 text-muted-foreground leading-relaxed">{i.d}</p>
             </div>
             );

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell, Breadcrumb, CTA, SunburstLogo } from "@/components/site/chrome";
+import { onLightText } from "@/lib/on-light-text";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -34,7 +35,7 @@ function Cover() {
           </div>
         </aside>
         <div className="lg:col-span-10">
-          <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
+          <span className="text-xs uppercase tracking-[0.22em] text-coral-aa font-medium">
             About
           </span>
           <h1 className="mt-6 font-display text-[clamp(3rem,8vw,7.5rem)] leading-[0.95] tracking-tight text-ink">
@@ -70,7 +71,7 @@ function AtAGlance() {
     <section className="py-20 border-b border-ink/10">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-start">
         <div className="lg:col-span-4">
-          <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
+          <span className="text-xs uppercase tracking-[0.22em] text-coral-aa font-medium">
             At a glance
           </span>
           <h2 className="mt-4 font-display text-4xl text-ink leading-[1.02]">
@@ -110,7 +111,7 @@ function OriginPartOne() {
   return (
     <section className="py-28">
       <div className="max-w-3xl mx-auto px-6">
-        <span className="text-xs uppercase tracking-[0.22em] text-teal font-medium">
+        <span className="text-xs uppercase tracking-[0.22em] text-teal-aa font-medium">
           Chapter I
         </span>
         <h2 className="mt-4 font-display text-4xl md:text-5xl text-ink leading-tight">
@@ -167,7 +168,7 @@ function OriginPartTwo() {
   return (
     <section className="py-28 bg-cream">
       <div className="max-w-3xl mx-auto px-6">
-        <span className="text-xs uppercase tracking-[0.22em] text-teal font-medium">
+        <span className="text-xs uppercase tracking-[0.22em] text-teal-aa font-medium">
           Chapter III
         </span>
         <h2 className="mt-4 font-display text-4xl md:text-5xl text-ink leading-tight">
@@ -256,7 +257,7 @@ function TimelineMilestonePanel({
 }) {
   return (
     <div
-      className={`transition-opacity duration-300 ${dimmed ? "opacity-35" : "opacity-100"}`}
+      className={`transition-opacity duration-300 ${dimmed ? "opacity-60" : "opacity-100"}`}
     >
       <button
         type="button"
@@ -448,7 +449,7 @@ function Timeline() {
         <h2 className="mt-4 font-display text-5xl md:text-6xl text-white leading-[0.98] max-w-3xl mx-auto">
           How an experiment<br />became <em className="not-italic text-gradient-sunburst">the model.</em>
         </h2>
-        <p className="mt-6 text-sm text-white/40 tracking-wide">
+        <p className="mt-6 text-sm text-white/80 tracking-wide">
           <span className="hidden md:inline">Hover a milestone to read more.</span>
           <span className="md:hidden">Tap a milestone to read more.</span>
         </p>
@@ -502,7 +503,7 @@ function Principles() {
     <section className="py-28">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-16">
-          <span className="text-xs uppercase tracking-[0.22em] text-coral font-medium">
+          <span className="text-xs uppercase tracking-[0.22em] text-coral-aa font-medium">
             Chapter IV — Principles
           </span>
           <h2 className="mt-4 font-display text-5xl md:text-6xl text-ink leading-[0.98]">
@@ -520,7 +521,7 @@ function Principles() {
               <div className={`md:col-span-3 ${i % 2 ? "md:order-2 md:text-right" : ""}`}>
                 <div
                   className="font-display text-7xl"
-                  style={{ color: p.c }}
+                  style={{ color: onLightText(p.c, "display") }}
                 >
                   {p.n}
                 </div>

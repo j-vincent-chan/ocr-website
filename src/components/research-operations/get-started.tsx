@@ -181,7 +181,7 @@ function ScopeCard() {
 
       <div className="mt-3 text-center text-[13px] text-ink-muted-2">
         {card.note}{" "}
-        <a href={`mailto:${card.email}`} className="text-ink underline-offset-2 hover:underline">
+        <a href={`mailto:${card.email}`} className="text-ink underline underline-offset-2">
           {card.email}
         </a>
       </div>

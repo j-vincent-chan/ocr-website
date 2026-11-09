@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import { SiteShell, Breadcrumb, SERVICES } from "@/components/site/chrome";
 
@@ -88,7 +88,7 @@ function Hero() {
         style={{ background: "var(--gradient-sunburst)" }}
       />
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-16 relative">
-        <span className="text-xs uppercase tracking-[0.22em] text-teal font-medium">
+        <span className="text-xs uppercase tracking-[0.22em] text-teal-aa font-medium">
           Get in touch
         </span>
         <h1 className="mt-6 font-display text-[clamp(2.75rem,7vw,6rem)] leading-[0.95] tracking-tight text-ink max-w-[18ch]">
@@ -160,6 +160,12 @@ function ContactForm() {
   const [form, setForm] = useState<FormState>(INITIAL);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const successRef = useRef<HTMLHeadingElement>(null);
+  const errorSummary = Object.values(errors).filter(Boolean).join(" ");
+
+  useEffect(() => {
+    if (submitted) successRef.current?.focus();
+  }, [submitted]);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((f) => ({ ...f, [key]: value }));
@@ -184,6 +190,10 @@ function ContactForm() {
         if (!fieldErrors[k]) fieldErrors[k] = issue.message;
       }
       setErrors(fieldErrors);
+      const first = (["name", "email", "message"] as const).find((key) => fieldErrors[key]);
+      if (first) {
+        requestAnimationFrame(() => document.getElementById(`contact-${first}`)?.focus());
+      }
       return;
     }
     setErrors({});
@@ -215,13 +225,17 @@ function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="lg:col-span-8 rounded-3xl border border-border bg-card p-10 md:p-14">
+      <div role="status" className="lg:col-span-8 rounded-3xl border border-border bg-card p-10 md:p-14">
         <div
           aria-hidden
           className="w-16 h-16 rounded-full mb-6"
           style={{ background: "var(--gradient-sunburst)" }}
         />
-        <h2 className="font-display text-4xl text-ink leading-tight">
+        <h2
+          ref={successRef}
+          tabIndex={-1}
+          className="font-display text-4xl text-ink leading-tight outline-none"
+        >
           Your message is on its way.
         </h2>
         <p className="mt-4 text-muted-foreground max-w-lg leading-relaxed">
@@ -245,53 +259,69 @@ function ContactForm() {
   }
 
   const inputCls =
-    "w-full rounded-2xl border border-border bg-card px-4 py-3 text-ink placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-coral/40 focus:border-coral/60 transition";
+    "w-full rounded-2xl border border-border bg-card px-4 py-3 text-ink placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-coral-aa focus:border-coral-aa transition";
 
   return (
     <form onSubmit={handleSubmit} className="lg:col-span-8 space-y-8" noValidate>
+      {errorSummary ? <p className="sr-only" role="alert">{errorSummary}</p> : null}
       <div className="rounded-3xl border border-border bg-card p-8 md:p-10 space-y-6">
         <div className="grid md:grid-cols-2 gap-5">
           <div>
-            <label className="text-xs uppercase tracking-widest text-muted-foreground">
-              Name <span className="text-coral">*</span>
+            <label htmlFor="contact-name" className="text-xs uppercase tracking-widest text-muted-foreground">
+              Name <span className="text-coral-aa">*</span>
             </label>
             <input
+              id="contact-name"
+              name="name"
+              autoComplete="name"
               className={`${inputCls} mt-2`}
               value={form.name}
               onChange={(e) => update("name", e.target.value)}
               placeholder="Your full name"
               maxLength={100}
               required
+              aria-required="true"
+              aria-invalid={errors.name ? true : undefined}
+              aria-describedby={errors.name ? "contact-name-error" : undefined}
             />
             {errors.name && (
-              <p className="mt-1.5 text-xs text-destructive">{errors.name}</p>
+              <p id="contact-name-error" className="mt-1.5 text-xs text-destructive">{errors.name}</p>
             )}
           </div>
           <div>
-            <label className="text-xs uppercase tracking-widest text-muted-foreground">
-              Email <span className="text-coral">*</span>
+            <label htmlFor="contact-email" className="text-xs uppercase tracking-widest text-muted-foreground">
+              Email <span className="text-coral-aa">*</span>
             </label>
             <input
+              id="contact-email"
+              name="email"
               type="email"
+              autoComplete="email"
               className={`${inputCls} mt-2`}
               value={form.email}
               onChange={(e) => update("email", e.target.value)}
               placeholder="you@ucsf.edu"
               maxLength={255}
               required
+              aria-required="true"
+              aria-invalid={errors.email ? true : undefined}
+              aria-describedby={errors.email ? "contact-email-error" : undefined}
             />
             {errors.email && (
-              <p className="mt-1.5 text-xs text-destructive">{errors.email}</p>
+              <p id="contact-email-error" className="mt-1.5 text-xs text-destructive">{errors.email}</p>
             )}
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-5">
           <div>
-            <label className="text-xs uppercase tracking-widest text-muted-foreground">
+            <label htmlFor="contact-affiliation" className="text-xs uppercase tracking-widest text-muted-foreground">
               Affiliation
             </label>
             <input
+              id="contact-affiliation"
+              name="organization"
+              autoComplete="organization"
               className={`${inputCls} mt-2`}
               value={form.affiliation}
               onChange={(e) => update("affiliation", e.target.value)}
@@ -300,10 +330,12 @@ function ContactForm() {
             />
           </div>
           <div>
-            <label className="text-xs uppercase tracking-widest text-muted-foreground">
+            <label htmlFor="contact-background" className="text-xs uppercase tracking-widest text-muted-foreground">
               Background
             </label>
             <select
+              id="contact-background"
+              name="background"
               className={`${inputCls} mt-2 appearance-none`}
               value={form.background}
               onChange={(e) => update("background", e.target.value)}
@@ -319,14 +351,14 @@ function ContactForm() {
         </div>
       </div>
 
-      <div className="rounded-3xl border border-border bg-card p-8 md:p-10">
-        <div className="text-xs uppercase tracking-widest text-muted-foreground">
+      <fieldset className="min-w-0 rounded-3xl border border-border bg-card p-8 md:p-10 [&>legend]:float-left [&>legend]:w-full [&>legend]:p-0">
+        <legend className="text-xs uppercase tracking-widest text-muted-foreground">
           Services of interest
-        </div>
-        <p className="mt-1 text-sm text-muted-foreground">
+        </legend>
+        <p id="contact-services-hint" className="mt-1 text-sm text-muted-foreground">
           Select any that apply.
         </p>
-        <div className="mt-5 flex flex-wrap gap-2">
+        <div className="mt-5 flex flex-wrap gap-2" role="group" aria-describedby="contact-services-hint">
           {SERVICE_OPTIONS.map((s) => {
             const active = form.services.includes(s);
             return (
@@ -347,26 +379,31 @@ function ContactForm() {
             );
           })}
         </div>
-      </div>
+      </fieldset>
 
       <div className="rounded-3xl border border-border bg-card p-8 md:p-10 space-y-6">
         <div>
-          <label className="text-xs uppercase tracking-widest text-muted-foreground">
-            Message <span className="text-coral">*</span>
+          <label htmlFor="contact-message" className="text-xs uppercase tracking-widest text-muted-foreground">
+            Message <span className="text-coral-aa">*</span>
           </label>
           <textarea
+            id="contact-message"
+            name="message"
             className={`${inputCls} mt-2 min-h-[180px] resize-y`}
             value={form.message}
             onChange={(e) => update("message", e.target.value)}
             placeholder="Tell us about the project, timeline, and what you're hoping for."
             maxLength={2000}
             required
+            aria-required="true"
+            aria-invalid={errors.message ? true : undefined}
+            aria-describedby={errors.message ? "contact-message-error" : "contact-message-hint"}
           />
           <div className="mt-1.5 flex justify-between text-xs">
             {errors.message ? (
-              <span className="text-destructive">{errors.message}</span>
+              <span id="contact-message-error" className="text-destructive">{errors.message}</span>
             ) : (
-              <span className="text-muted-foreground">
+              <span id="contact-message-hint" className="text-muted-foreground">
                 A sentence or two is enough.
               </span>
             )}
@@ -377,10 +414,12 @@ function ContactForm() {
         </div>
 
         <div>
-          <label className="text-xs uppercase tracking-widest text-muted-foreground">
+          <label htmlFor="contact-source" className="text-xs uppercase tracking-widest text-muted-foreground">
             How did you hear about us?
           </label>
           <select
+            id="contact-source"
+            name="source"
             className={`${inputCls} mt-2 appearance-none`}
             value={form.source}
             onChange={(e) => update("source", e.target.value)}
