@@ -157,7 +157,7 @@ export const SERVICES = [
   },
   {
     to: "/services/community-management",
-    name: "Community management",
+    name: "Community & enrichment programs",
     desc: "Community building and collaboration",
     accent: "var(--lime)",
   },
@@ -615,6 +615,7 @@ export function CTA({
   subtitle,
   email,
   primaryLabel = "Book a 30-min consult →",
+  primaryHref,
 }: {
   id?: string;
   eyebrow?: string;
@@ -622,7 +623,11 @@ export function CTA({
   subtitle: string;
   email: string;
   primaryLabel?: string;
+  /** Defaults to a mailto of `email`. External http(s) URLs open in a new tab. */
+  primaryHref?: string;
 }) {
+  const href = primaryHref ?? `mailto:${email}`;
+  const external = /^https?:\/\//.test(href);
   return (
     <section id={id} className="scroll-mt-24 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6">
@@ -657,7 +662,8 @@ export function CTA({
                 </a>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <a
-                    href={`mailto:${email}`}
+                    href={href}
+                    {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
                     className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-5 py-3 text-sm font-medium hover:bg-cream transition"
                   >
                     {primaryLabel}
