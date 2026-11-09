@@ -248,8 +248,8 @@ export const appByKey = (key: AppKey) => apps.find((a) => a.key === key)!;
 export const hero = {
   eyebrowArm: "04",
   eyebrowLabel: "One of five service arms",
-  title: "Software for the people",
-  titleAccent: "who run research.",
+  title: "AI-powered tools for the people",
+  titleAccent: "who make research happen.",
   intro:
     "Three applications and the record they share, built in-house at OCR for our own strategists, community managers, and investigators, and opened to UCSF research communities one workspace at a time.",
   primary: { label: "See the applications", href: "#apps" },
