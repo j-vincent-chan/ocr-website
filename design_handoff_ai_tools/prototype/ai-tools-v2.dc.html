@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Research Resources &amp; AI Tools — UCSF OCR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&amp;family=Inter:wght@400;500;600&amp;display=swap">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:oklch(0.99 0.005 90);color:oklch(0.18 0.06 265);font-family:"Inter",system-ui,sans-serif;font-feature-settings:"ss01","cv11";-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+h1,h2,h3,h4,p,ul,ol,dl,dd,dt{margin:0}ul,ol{padding:0;list-style:none}img{display:block}button{font:inherit}
+@keyframes drawerIn{from{transform:translateX(48px);opacity:0}to{transform:none;opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-48px,36px) scale(1.07)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:oklch(0.99 0.005 90)">
+
+<div style="background:oklch(0.14 0.06 265);color:#fff;font-size:12px"><div style="max-width:1280px;margin:0 auto;padding:0 24px;height:36px;display:flex;align-items:center;justify-content:space-between"><span style="opacity:0.8">University of California San Francisco</span><div style="display:flex;align-items:center;gap:24px;opacity:0.85"><a href="https://www.ucsf.edu/about">About UCSF</a><a href="https://www.ucsfhealth.org/">UCSF Health</a><a href="https://giving.ucsf.edu/" style="border-radius:999px;background:#fff;color:oklch(0.14 0.06 265);padding:4px 12px;font-weight:500">Donate</a></div></div></div>
+
+<header data-site-header data-screen-label="Header" style="position:sticky;top:0;z-index:40;backdrop-filter:blur(12px);border-bottom:1px solid {{ navBorder }};background:{{ navBg }};color:{{ navColor }};transition:background-color .3s,color .3s,border-color .3s">
+<div style="max-width:1280px;margin:0 auto;padding:0 24px;height:80px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+<a href="#" style="flex:none;display:flex;align-items:center;gap:12px;white-space:nowrap"><svg viewBox="0 0 100 100" style="width:44px;height:44px;flex:none" aria-hidden="true"><sc-for list="{{ rays }}" as="r" hint-placeholder-count="32"><rect x="49" y="4" width="2" height="22" rx="1" fill="{{ r.c }}" transform="rotate({{ r.a }} 50 50)"></rect></sc-for></svg><span style="font-family:'Fraunces',Georgia,serif;font-size:15px;line-height:1.25;letter-spacing:-0.02em">Office of<br>Collaborative Research</span></a>
+<nav style="flex:1 1 auto;min-width:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px;font-size:15px;max-height:40px;overflow:hidden"><a href="#" style="padding:8px 16px;border-radius:999px;font-weight:500;white-space:nowrap" style-hover="background:{{ navHover }}">About</a><a href="#" style="padding:8px 16px;border-radius:999px;font-weight:500;white-space:nowrap;background:{{ navHover }};display:inline-flex;align-items:center;gap:6px">Services <span style="font-size:10px;opacity:0.8">▾</span></a><a href="#" style="padding:8px 16px;border-radius:999px;font-weight:500;white-space:nowrap" style-hover="background:{{ navHover }}">People</a><a href="#" style="padding:8px 16px;border-radius:999px;font-weight:500;white-space:nowrap" style-hover="background:{{ navHover }}">Programs &amp; Projects</a><a href="#" style="padding:8px 16px;border-radius:999px;font-weight:500;white-space:nowrap" style-hover="background:{{ navHover }}">Funding</a></nav>
+<a href="#start" style="flex:none;display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 20px;font-size:14px;font-weight:500;white-space:nowrap;background:{{ ctaBg }};color:{{ ctaColor }};transition:background-color .3s,color .3s">Get in touch <span aria-hidden="true">→</span></a>
+</div></header>
+
+<section data-tone="dark" data-screen-label="Hero" style="position:relative;isolation:isolate;overflow:hidden;background:oklch(0.14 0.06 265);color:#fff">
+<div aria-hidden="true" style="position:absolute;z-index:-1;top:-260px;right:-140px;width:760px;height:760px;border-radius:50%;opacity:0.42;animation:drift 18s ease-in-out infinite;filter:blur(70px);background:linear-gradient(135deg, oklch(0.7 0.2 30) 0%, oklch(0.62 0.24 340) 35%, oklch(0.55 0.2 280) 65%, oklch(0.7 0.13 195) 100%);pointer-events:none"></div>
+<div style="max-width:1280px;margin:0 auto;padding:clamp(40px,5vw,64px) 24px clamp(48px,6vw,72px)">
+<div style="display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.24em;color:oklch(0.82 0.02 265)"><span style="width:6px;height:6px;border-radius:50%;background:oklch(0.82 0.16 85)"></span><span>AI Tools</span><span style="opacity:0.4">·</span><span style="color:#fff">One of five service arms</span></div>
+<h1 style="margin-top:24px;max-width:880px;font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(40px,5vw,60px);line-height:1.04;letter-spacing:-0.02em;color:#fff;text-wrap:pretty">Software for the people <span style="color:oklch(0.82 0.16 85)">who run research.</span></h1>
+<p style="margin-top:24px;max-width:640px;font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:oklch(0.82 0.02 265);text-wrap:pretty">Three applications and the record they share, built in-house at OCR for our own strategists, community managers, and investigators, and opened to UCSF research communities one workspace at a time.</p>
+<div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:12px"><a href="#apps" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:#fff;color:oklch(0.14 0.06 265);padding:12px 20px;font-size:15px;font-weight:500" style-hover="background:oklch(0.97 0.012 85)">See the applications <span aria-hidden="true">↓</span></a><a href="#start" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1px solid rgba(255,255,255,0.35);color:#fff;padding:11px 20px;font-size:14px;font-weight:500" style-hover="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.6)">Book a walkthrough</a><a href="#open-build" style="display:inline-flex;align-items:center;gap:8px;padding:11px 6px;font-size:14px;font-weight:500;color:oklch(0.82 0.16 85)" style-hover="text-decoration:underline;text-underline-offset:3px">Have an idea for a tool? <span aria-hidden="true">→</span></a></div>
+<div data-screen-label="Index" style="margin-top:clamp(40px,5vw,64px);border-top:1px solid rgba(255,255,255,0.18)">
+<sc-for list="{{ apps }}" as="a" hint-placeholder-count="4">
+<div role="button" tabindex="0" onClick="{{ openApp }}" onKeyDown="{{ keyOpen }}" data-app="{{ a.key }}" aria-haspopup="dialog" aria-label="{{ a.name }}: open details" style="cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;padding:18px 8px;margin:0 -8px;border-radius:12px;border-bottom:1px solid rgba(255,255,255,0.1);transition:background .3s" style-hover="background:rgba(255,255,255,0.06)" style-focus="outline:2px solid #fff;outline-offset:-2px"><span style="width:36px;flex:none;font-family:'Fraunces',Georgia,serif;font-size:18px;color:rgba(255,255,255,0.5)">{{ a.n }}</span><span style="width:44px;height:44px;flex:none;border-radius:50%;background:{{ a.fill }};display:flex;align-items:center;justify-content:center"><span style="width:24px;height:24px;background:oklch(0.14 0.06 265);-webkit-mask:url({{ a.mark }}) center/contain no-repeat;mask:url({{ a.mark }}) center/contain no-repeat"></span></span><span style="flex:0 1 200px;font-family:'Fraunces',Georgia,serif;font-size:26px;line-height:1;color:#fff">{{ a.name }}</span><span style="flex:1 1 160px;min-width:0;font-size:15px;color:oklch(0.82 0.02 265)">{{ a.role }}</span><span style="display:flex;align-items:center;gap:16px;margin-left:auto;flex:0 1 auto"><span style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:rgba(255,255,255,0.6)">{{ a.statusLine }}</span><span aria-hidden="true" style="flex:none;color:rgba(255,255,255,0.6)">→</span></span></div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="apps" data-tone="light" data-screen-label="Applications" style="scroll-margin-top:96px;background:oklch(0.97 0.012 85);padding:clamp(56px,7vw,96px) 0">
+<div style="max-width:1280px;margin:0 auto;padding:0 24px">
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px 72px;margin-bottom:48px"><div style="flex:5 1 320px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.18em;color:oklch(0.55 0.14 75)">The applications</div><h2 style="margin-top:16px;font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(32px,4vw,48px);line-height:1.02;letter-spacing:-0.02em;color:oklch(0.14 0.06 265);text-wrap:pretty">Three applications, one record.</h2></div><p style="flex:7 1 400px;font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:oklch(0.3 0.04 265);text-wrap:pretty">Each began as a bottleneck in our own work: the notice a strategist missed, the digest that took a week, the funding cliff nobody saw coming. We built the tool, ran it on our own portfolio, and now open it to UCSF research communities one workspace at a time.</p></div>
+<div data-screen-label="Maturity legend" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;margin:-16px 0 32px;font-size:12px;color:oklch(0.42 0.03 265)"><span style="font-weight:500;text-transform:uppercase;letter-spacing:0.14em">Maturity</span><span style="display:inline-flex;align-items:center;gap:8px"><span aria-hidden="true" style="width:30px;height:18px;border-radius:4px;border:1px dashed oklch(0.14 0.06 265 / 0.4);background-image:linear-gradient(oklch(0.14 0.06 265 / 0.16) 1px, transparent 1px), linear-gradient(90deg, oklch(0.14 0.06 265 / 0.16) 1px, transparent 1px);background-size:6px 6px"></span>In development: blueprint grid, dashed edge</span><span style="display:inline-flex;align-items:center;gap:8px"><span aria-hidden="true" style="width:30px;height:18px;border-radius:4px;border:1px solid oklch(0.14 0.06 265 / 0.2);background-image:linear-gradient(oklch(0.14 0.06 265 / 0.07) 1px, transparent 1px), linear-gradient(90deg, oklch(0.14 0.06 265 / 0.07) 1px, transparent 1px);background-size:6px 6px"></span>Beta: grid fading</span><span style="display:inline-flex;align-items:center;gap:8px"><span aria-hidden="true" style="width:30px;height:18px;border-radius:4px;border:1px solid oklch(0.14 0.06 265 / 0.2);background:#fff"></span>Released: clean</span></div>
+<div style="display:flex;flex-direction:column;gap:56px">
+
+<article id="prospera" data-screen-label="Prospera" role="button" tabindex="0" onClick="{{ openCard }}" onMouseEnter="{{ replay }}" onKeyDown="{{ keyOpen }}" data-app="prospera" aria-haspopup="dialog" style="scroll-margin-top:96px;cursor:pointer;display:flex;flex-wrap:wrap;border-radius:32px;overflow:hidden;border:1px dashed oklch(0.14 0.06 265 / 0.35);background:#fff;transition:box-shadow .4s,transform .4s" style-hover="box-shadow:0 1px 2px oklch(0.18 0.06 265 / 0.05), 0 20px 50px oklch(0.18 0.06 265 / 0.12);transform:translateY(-2px)" style-focus="outline:2px solid oklch(0.14 0.06 265);outline-offset:4px">
+<div style="flex:5 1 340px;min-width:0;position:relative;isolation:isolate;padding:clamp(28px,3.5vw,48px);display:flex;flex-direction:column">
+<div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;background-image:linear-gradient(oklch(0.14 0.06 265 / 0.09) 1px, transparent 1px), linear-gradient(90deg, oklch(0.14 0.06 265 / 0.09) 1px, transparent 1px);background-size:18px 18px;mask-image:linear-gradient(180deg, #000 0%, rgba(0,0,0,0.3) 100%);-webkit-mask-image:linear-gradient(180deg, #000 0%, rgba(0,0,0,0.3) 100%)"></div>
+<div style="display:flex;align-items:center;gap:14px"><span style="width:44px;height:44px;border-radius:50%;background:oklch(0.72 0.16 290);display:flex;align-items:center;justify-content:center;flex:none"><span style="width:24px;height:24px;background:oklch(0.14 0.06 265);-webkit-mask:url(assets/mark-prospera.svg) center/contain no-repeat;mask:url(assets/mark-prospera.svg) center/contain no-repeat"></span></span><div><div style="font-family:'Fraunces',Georgia,serif;font-size:32px;line-height:1;color:oklch(0.14 0.06 265)">Prospera</div><div style="margin-top:6px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.16em;color:oklch(0.48 0.18 285)">01 · Funding opportunity matching for research development strategists</div></div></div>
+<div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:8px"><span style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:7px 13px;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:oklch(0.72 0.16 290 / 0.18);color:oklch(0.48 0.18 285)"><span style="width:7px;height:7px;border-radius:50%;background:oklch(0.72 0.16 290)"></span>In development</span><span style="display:inline-flex;align-items:center;border-radius:999px;padding:7px 13px;font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;border:1px solid oklch(0.14 0.06 265 / 0.2);color:oklch(0.3 0.04 265)">UCSF only · one workspace per team</span></div>
+<p style="margin-top:24px;font-family:'Fraunces',Georgia,serif;font-size:26px;line-height:1.2;color:oklch(0.14 0.06 265);text-wrap:pretty">Finds the federal funding notices that fit each investigator, and shows why.</p>
+<p style="margin-top:14px;font-size:16px;line-height:1.6;color:oklch(0.3 0.04 265);text-wrap:pretty">Every new federal notice, graded against what each investigator has actually published, held, and run. Every grade carries its evidence and the constraint holding it back, so a strategist moves from notice to outreach in minutes.</p>
+<ul style="margin-top:24px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.5;color:oklch(0.38 0.04 265)"><li style="display:flex;gap:10px"><span style="margin-top:8px;width:5px;height:5px;border-radius:50%;flex:none;background:oklch(0.72 0.16 290)"></span>Nightly sync of Simpler.Grants.gov and NIH Guide notices, with saved searches</li><li style="display:flex;gap:10px"><span style="margin-top:8px;width:5px;height:5px;border-radius:50%;flex:none;background:oklch(0.72 0.16 290)"></span>Fit graded Strong, Moderate, Exploratory, or Can't assess, with what is missing</li><li style="display:flex;gap:10px"><span style="margin-top:8px;width:5px;height:5px;border-radius:50%;flex:none;background:oklch(0.72 0.16 290)"></span>Outreach tracking and reports by community: surfaced, sent, submitted, funded</li></ul>
+<div style="margin-top:auto;padding-top:32px;display:flex;flex-wrap:wrap;align-items:center;gap:12px"><a href="https://prospera.ucsf.edu/" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:oklch(0.14 0.06 265);color:#fff;padding:12px 20px;font-size:15px;font-weight:500" style-hover="background:oklch(0.22 0.08 265)">Open Prospera <span aria-hidden="true">↗</span></a><span style="display:inline-flex;align-items:center;gap:8px;padding:11px 4px;font-size:14px;font-weight:500;color:oklch(0.48 0.18 285)">Full details <span aria-hidden="true">→</span></span></div>
+</div>
+<div style="flex:7 1 400px;min-width:0;position:relative;overflow:hidden;background:oklch(0.14 0.06 265);color:#fff;padding:clamp(24px,3vw,36px) clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:12px">
+<div aria-hidden="true" style="position:absolute;top:-80px;right:-60px;width:260px;height:260px;border-radius:50%;filter:blur(60px);opacity:0.45;background:oklch(0.72 0.16 290)"></div>
+<div style="position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:rgba(255,255,255,0.6)"><span>prospera · discover</span><span>synced nightly · 02:10</span></div>
+{{ vigProspera }}
+<div style="position:relative;margin-top:auto;font-size:11px;color:rgba(255,255,255,0.4)">Illustrative · not live data</div>
+</div>
+</article>
+
+<article id="signal" data-screen-label="Signal" role="button" tabindex="0" onClick="{{ openCard }}" onMouseEnter="{{ replay }}" onKeyDown="{{ keyOpen }}" data-app="signal" aria-haspopup="dialog" style="scroll-margin-top:96px;cursor:pointer;display:flex;flex-wrap:wrap-reverse;border-radius:32px;overflow:hidden;border:1px solid oklch(0.91 0.012 90);background:#fff;transition:box-shadow .4s,transform .4s" style-hover="box-shadow:0 1px 2px oklch(0.18 0.06 265 / 0.05), 0 20px 50px oklch(0.18 0.06 265 / 0.12);transform:translateY(-2px)" style-focus="outline:2px solid oklch(0.14 0.06 265);outline-offset:4px">
+<div style="flex:7 1 400px;min-width:0;position:relative;overflow:hidden;background:oklch(0.14 0.06 265);color:#fff;padding:clamp(24px,3vw,36px) clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:10px">
+<div aria-hidden="true" style="position:absolute;top:-80px;left:-60px;width:260px;height:260px;border-radius:50%;filter:blur(60px);opacity:0.45;background:oklch(0.7 0.13 195)"></div>
+<div style="position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:4px"><span>signal · review queue · ImmunoX</span><span style="display:inline-flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:oklch(0.82 0.18 130);animation:pulse 2s ease-in-out infinite"></span>12 new</span></div>
+{{ vigSignal }}
+</div>
+<div style="flex:5 1 340px;min-width:0;position:relative;isolation:isolate;padding:clamp(28px,3.5vw,48px);display:flex;flex-direction:column">
+<div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;background-image:linear-gradient(oklch(0.14 0.06 265 / 0.045) 1px, transparent 1px), linear-gradient(90deg, oklch(0.14 0.06 265 / 0.045) 1px, transparent 1px);background-size:18px 18px;mask-image:linear-gradient(180deg, #000 0%, transparent 70%);-webkit-mask-image:linear-gradient(180deg, #000 0%, transparent 70%)"></div>
+<div style="display:flex;align-items:center;gap:14px"><span style="width:44px;height:44px;border-radius:50%;background:oklch(0.7 0.13 195);display:flex;align-items:center;justify-content:center;flex:none"><span style="width:24px;height:24px;background:oklch(0.14 0.06 265);-webkit-mask:url(assets/mark-signal.svg) center/contain no-repeat;mask:url(assets/mark-signal.svg) center/contain no-repeat"></span></span><div><div style="font-family:'Fraunces',Georgia,serif;font-size:32px;line-height:1;color:oklch(0.14 0.06 265)">Signal</div><div style="margin-top:6px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.16em;color:oklch(0.45 0.1 195)">02 · Research news monitoring and monthly digests for community managers</div></div></div>
+<div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:8px"><span style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:7px 13px;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:oklch(0.7 0.13 195 / 0.2);color:oklch(0.45 0.1 195)"><span style="width:7px;height:7px;border-radius:50%;background:oklch(0.7 0.13 195)"></span>Beta</span><span style="display:inline-flex;align-items:center;border-radius:999px;padding:7px 13px;font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;border:1px solid oklch(0.14 0.06 265 / 0.2);color:oklch(0.3 0.04 265)">UCSF only · one workspace per community</span></div>
+<p style="margin-top:24px;font-family:'Fraunces',Georgia,serif;font-size:26px;line-height:1.2;color:oklch(0.14 0.06 265);text-wrap:pretty">Tracks what your community publishes, wins, and says, then drafts the monthly digest.</p>
+<p style="margin-top:14px;font-size:16px;line-height:1.6;color:oklch(0.3 0.04 265);text-wrap:pretty">Signal watches PubMed, NIH awards, UCSF news, and social feeds for everyone on your watchlist and queues each item for a one-click review. From the approved set it drafts the copy and assembles the monthly digest. An afternoon instead of a week.</p>
+<ul style="margin-top:24px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.5;color:oklch(0.38 0.04 265)"><li style="display:flex;gap:10px"><span style="margin-top:8px;width:5px;height:5px;border-radius:50%;flex:none;background:oklch(0.7 0.13 195)"></span>Nightly discovery across PubMed, NIH RePORTER, UCSF News, X, and Bluesky</li><li style="display:flex;gap:10px"><span style="margin-top:8px;width:5px;height:5px;border-radius:50%;flex:none;background:oklch(0.7 0.13 195)"></span>Review queue with bulk approve, archive, and duplicate merging</li><li style="display:flex;gap:10px"><span style="margin-top:8px;width:5px;height:5px;border-radius:50%;flex:none;background:oklch(0.7 0.13 195)"></span>Newsletter, donor, and social copy drafted from what you approve</li></ul>
+<div style="margin-top:auto;padding-top:32px;display:flex;flex-wrap:wrap;align-items:center;gap:12px"><a href="https://signal.ucsf.edu/" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:oklch(0.14 0.06 265);color:#fff;padding:12px 20px;font-size:15px;font-weight:500" style-hover="background:oklch(0.22 0.08 265)">Open Signal <span aria-hidden="true">↗</span></a><span style="display:inline-flex;align-items:center;gap:8px;padding:11px 4px;font-size:14px;font-weight:500;color:oklch(0.45 0.1 195)">Full details <span aria-hidden="true">→</span></span></div>
+</div>
+</article>
+
+<article id="runway" data-screen-label="Runway" role="button" tabindex="0" onClick="{{ openCard }}" onMouseEnter="{{ replay }}" onKeyDown="{{ keyOpen }}" data-app="runway" aria-haspopup="dialog" style="scroll-margin-top:96px;cursor:pointer;display:flex;flex-wrap:wrap;border-radius:32px;overflow:hidden;border:1px solid oklch(0.91 0.012 90);background:#fff;transition:box-shadow .4s,transform .4s" style-hover="box-shadow:0 1px 2px oklch(0.18 0.06 265 / 0.05), 0 20px 50px oklch(0.18 0.06 265 / 0.12);transform:translateY(-2px)" style-focus="outline:2px solid oklch(0.14 0.06 265);outline-offset:4px">
+<div style="flex:5 1 340px;min-width:0;position:relative;isolation:isolate;padding:clamp(28px,3.5vw,48px);display:flex;flex-direction:column">
+<div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;background-image:linear-gradient(oklch(0.14 0.06 265 / 0.045) 1px, transparent 1px), linear-gradient(90deg, oklch(0.14 0.06 265 / 0.045) 1px, transparent 1px);background-size:18px 18px;mask-image:linear-gradient(180deg, #000 0%, transparent 70%);-webkit-mask-image:linear-gradient(180deg, #000 0%, transparent 70%)"></div>
+<div style="display:flex;align-items:center;gap:14px"><span style="width:44px;height:44px;border-radius:50%;background:oklch(0.7 0.2 30);display:flex;align-items:center;justify-content:center;flex:none"><span style="width:24px;height:24px;background:oklch(0.14 0.06 265);-webkit-mask:url(assets/mark-runway.svg) center/contain no-repeat;mask:url(assets/mark-runway.svg) center/contain no-repeat"></span></span><div><div style="font-family:'Fraunces',Georgia,serif;font-size:32px;line-height:1;color:oklch(0.14 0.06 265)">Runway</div><div style="margin-top:6px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.16em;color:oklch(0.5 0.18 30)">03 · Payroll runway planning for investigators and their analysts</div></div></div>
+<div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:8px"><span style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:7px 13px;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:oklch(0.7 0.2 30 / 0.16);color:oklch(0.5 0.18 30)"><span style="width:7px;height:7px;border-radius:50%;background:oklch(0.7 0.2 30)"></span>Beta</span><span style="display:inline-flex;align-items:center;border-radius:999px;padding:7px 13px;font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;border:1px solid oklch(0.14 0.06 265 / 0.2);color:oklch(0.3 0.04 265)">UCSF only · investigator accounts by request</span></div>
+<p style="margin-top:24px;font-family:'Fraunces',Georgia,serif;font-size:26px;line-height:1.2;color:oklch(0.14 0.06 265);text-wrap:pretty">Shows how many months of payroll each person and account has left.</p>
+<p style="margin-top:14px;font-size:16px;line-height:1.6;color:oklch(0.3 0.04 265);text-wrap:pretty">Upload the Payroll Funding Report your analyst already runs. Runway turns it into each person's funding over time, the months of payroll left on every account, and one plain sentence naming who needs attention first. Projected figures look projected.</p>
+<ul style="margin-top:24px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.5;color:oklch(0.38 0.04 265)"><li style="display:flex;gap:10px"><span style="margin-top:8px;width:5px;height:5px;border-radius:50%;flex:none;background:oklch(0.7 0.2 30)"></span>Imports the Payroll Funding, Net Position, and Position Salary .xlsx reports as received</li><li style="display:flex;gap:10px"><span style="margin-top:8px;width:5px;height:5px;border-radius:50%;flex:none;background:oklch(0.7 0.2 30)"></span>Months of payroll remaining per account and per person, actual and planned</li><li style="display:flex;gap:10px"><span style="margin-top:8px;width:5px;height:5px;border-radius:50%;flex:none;background:oklch(0.7 0.2 30)"></span>A private workspace per investigator; analyst access granted and revoked by the investigator</li></ul>
+<div style="margin-top:auto;padding-top:32px;display:flex;flex-wrap:wrap;align-items:center;gap:12px"><a href="https://runway.ucsf.edu/" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:oklch(0.14 0.06 265);color:#fff;padding:12px 20px;font-size:15px;font-weight:500" style-hover="background:oklch(0.22 0.08 265)">Open Runway <span aria-hidden="true">↗</span></a><span style="display:inline-flex;align-items:center;gap:8px;padding:11px 4px;font-size:14px;font-weight:500;color:oklch(0.5 0.18 30)">Full details <span aria-hidden="true">→</span></span></div>
+</div>
+<div style="flex:7 1 400px;min-width:0;position:relative;overflow:hidden;background:oklch(0.14 0.06 265);color:#fff;padding:clamp(24px,3vw,36px) clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:14px">
+<div aria-hidden="true" style="position:absolute;bottom:-100px;right:-60px;width:280px;height:280px;border-radius:50%;filter:blur(60px);opacity:0.4;background:oklch(0.7 0.2 30)"></div>
+<div style="position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:rgba(255,255,255,0.6)"><span>runway · dashboard · Lee Lab</span><span>FY26 · closed through Feb</span></div>
+{{ vigRunway }}
+<div style="position:relative;margin-top:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:rgba(255,255,255,0.45)"><span>solid actual · hatched projected (~)</span><span>Illustrative · not live data</span></div>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="atlas" data-tone="light" data-screen-label="Atlas" style="scroll-margin-top:96px;padding:clamp(56px,7vw,96px) 0;border-bottom:1px solid oklch(0.91 0.012 90)">
+<div style="max-width:1280px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;align-items:center;gap:40px 72px">
+<div style="flex:5 1 340px;min-width:0"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.18em;color:oklch(0.55 0.14 75)">The foundation</div><h2 style="margin-top:16px;font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(32px,4vw,48px);line-height:1.02;letter-spacing:-0.02em;color:oklch(0.14 0.06 265);text-wrap:pretty">Atlas: the record all three read from.</h2><p style="margin-top:20px;font-size:17px;line-height:1.6;color:oklch(0.3 0.04 265);text-wrap:pretty">{{ atlas.body }}</p><div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px"><button type="button" onClick="{{ openApp }}" data-app="atlas" aria-haspopup="dialog" style="cursor:pointer;display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:0;background:oklch(0.14 0.06 265);color:#fff;padding:12px 20px;font-size:15px;font-weight:500" style-hover="background:oklch(0.22 0.08 265)" style-focus="outline:2px solid oklch(0.14 0.06 265);outline-offset:2px">How Atlas works <span aria-hidden="true">→</span></button></div></div>
+<div style="flex:7 1 400px;min-width:0;border-radius:28px;border:1px solid oklch(0.91 0.012 90);background:oklch(0.97 0.012 85);padding:clamp(24px,3vw,36px)">
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px"><span style="width:52px;height:52px;border-radius:50%;background:oklch(0.84 0.16 85);display:flex;align-items:center;justify-content:center;flex:none"><span style="width:28px;height:28px;background:oklch(0.14 0.06 265);-webkit-mask:url(assets/mark-atlas.svg) center/contain no-repeat;mask:url(assets/mark-atlas.svg) center/contain no-repeat"></span></span><div><div style="font-family:'Fraunces',Georgia,serif;font-size:26px;line-height:1.1;color:oklch(0.14 0.06 265)">Atlas</div><div style="margin-top:3px;font-size:13px;color:oklch(0.42 0.03 265)">Identity · Research · Evidence</div></div><span style="margin-left:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:oklch(0.48 0.03 265)">In development · internal service</span></div>
+<ul style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px 24px;font-size:14px;line-height:1.5;color:oklch(0.3 0.04 265)"><sc-for list="{{ atlas.activities }}" as="act" hint-placeholder-count="5"><li style="display:flex;gap:10px;align-items:flex-start"><span style="margin-top:8px;width:5px;height:5px;border-radius:50%;flex:none;background:oklch(0.84 0.16 85)"></span><span>{{ act }}</span></li></sc-for></ul>
+<div style="margin-top:24px;padding-top:18px;border-top:1px solid oklch(0.14 0.06 265 / 0.1);display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px;color:oklch(0.42 0.03 265)"><span>PubMed</span><span>NIH RePORTER</span><span>ClinicalTrials.gov</span><span>ORCID</span><span>UCSF Profiles</span><span>Institutional directories</span></div>
+</div>
+</div>
+</section>
+
+<section id="open-build" data-tone="light" data-screen-label="Open Build" style="scroll-margin-top:96px;background:oklch(0.97 0.012 85);padding:clamp(56px,7vw,96px) 0;border-bottom:1px solid oklch(0.91 0.012 90)">
+<div style="max-width:1280px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;align-items:center;gap:40px 72px">
+<div style="flex:6 1 360px;min-width:0"><div style="display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.24em;color:oklch(0.48 0.03 265)"><span style="width:6px;height:6px;border-radius:50%;background:oklch(0.78 0.13 195)"></span><span>Funding &amp; support</span><span style="opacity:0.4">·</span><span style="color:oklch(0.14 0.06 265 / 0.8)">Open Build</span></div>
+<h2 style="margin-top:20px;font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(32px,4vw,48px);line-height:1.02;letter-spacing:-0.02em;color:oklch(0.14 0.06 265);text-wrap:pretty">Tell us the tool you wish existed. <span style="color:oklch(0.45 0.1 195)">We may build it.</span></h2>
+<p style="margin-top:20px;max-width:600px;font-size:17px;line-height:1.6;color:oklch(0.3 0.04 265);text-wrap:pretty">Every lab has a task that eats hours: screening literature, cleaning metadata, drafting the same report every quarter. Propose an AI tool that would take that task off your plate. If it could help other researchers too and fits what our team does well, OCR puts its own engineering effort into building it with you.</p>
+<div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px"><a href="mailto:ocr@ucsf.edu?subject=AI%20Tools%20for%20Research%20proposal" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:oklch(0.14 0.06 265);color:#fff;padding:12px 20px;font-size:15px;font-weight:500" style-hover="background:oklch(0.22 0.08 265)">Propose a tool <span aria-hidden="true">→</span></a><a href="/funding/ai-tools" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1px solid oklch(0.14 0.06 265 / 0.25);color:oklch(0.14 0.06 265);padding:11px 20px;font-size:14px;font-weight:500" style-hover="border-color:oklch(0.14 0.06 265 / 0.5);background:oklch(0.14 0.06 265 / 0.05)">Read the full call in Funding</a></div></div>
+<div style="flex:5 1 320px;min-width:0;border-radius:24px;background:#fff;border:1px solid oklch(0.91 0.012 90);border-top:5px solid oklch(0.78 0.13 195);padding:clamp(22px,3vw,30px)">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 12px"><div style="font-family:'Fraunces',Georgia,serif;font-size:24px;line-height:1.15;color:oklch(0.14 0.06 265)">We build your tool</div><span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:oklch(0.42 0.03 265)"><span style="width:7px;height:7px;border-radius:50%;background:oklch(0.72 0.17 150)"></span>Open to all of UCSF</span></div>
+<dl style="margin-top:18px;border-top:1px solid oklch(0.14 0.06 265 / 0.12);font-size:14px;line-height:1.45;color:oklch(0.3 0.04 265)">
+<div style="display:grid;grid-template-columns:88px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid oklch(0.14 0.06 265 / 0.08)"><dt style="padding-top:3px;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:oklch(0.42 0.03 265)">Support</dt><dd>OCR design and engineering effort, not cash</dd></div>
+<div style="display:grid;grid-template-columns:88px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid oklch(0.14 0.06 265 / 0.08)"><dt style="padding-top:3px;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:oklch(0.42 0.03 265)">Eligible</dt><dd>UCSF faculty, staff, trainees, and research teams</dd></div>
+<div style="display:grid;grid-template-columns:88px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid oklch(0.14 0.06 265 / 0.08)"><dt style="padding-top:3px;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:oklch(0.42 0.03 265)">Deadline</dt><dd>Rolling. Proposals reviewed quarterly</dd></div>
+<div style="display:grid;grid-template-columns:88px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid oklch(0.14 0.06 265 / 0.08)"><dt style="padding-top:3px;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:oklch(0.42 0.03 265)">Apply</dt><dd>A short proposal by email</dd></div>
+</dl>
+<div style="margin-top:16px;font-size:12px;line-height:1.5;color:oklch(0.48 0.03 265)">Official title: OCR AI Tools for Research Request for Proposals</div>
+</div>
+</div>
+</section>
+
+<section id="websites" data-tone="light" data-screen-label="Websites" style="scroll-margin-top:96px;position:relative;isolation:isolate;overflow:hidden;border-top:1px dashed oklch(0.14 0.06 265 / 0.2);border-bottom:1px dashed oklch(0.14 0.06 265 / 0.2);padding:clamp(48px,6vw,80px) 0">
+<div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;background-image:linear-gradient(oklch(0.14 0.06 265 / 0.07) 1px, transparent 1px), linear-gradient(90deg, oklch(0.14 0.06 265 / 0.07) 1px, transparent 1px);background-size:18px 18px;mask-image:radial-gradient(ellipse 70% 120% at 70% 50%, #000 30%, transparent 100%);-webkit-mask-image:radial-gradient(ellipse 70% 120% at 70% 50%, #000 30%, transparent 100%)"></div>
+<div style="max-width:1280px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;align-items:center;gap:32px 80px">
+<div style="flex:5 1 340px;min-width:0"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.18em;color:oklch(0.55 0.14 75)">Also from this arm</div><h2 style="margin-top:16px;font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,3.4vw,40px);line-height:1.05;letter-spacing:-0.02em;color:oklch(0.14 0.06 265);text-wrap:pretty">A website for your lab or program.</h2><p style="margin-top:16px;max-width:440px;font-size:16px;line-height:1.6;color:oklch(0.38 0.04 265);text-wrap:pretty">This site and the applications above were built in-house. We offer the same to UCSF labs and programs: a clear, fast site you own, handed over with what you need to keep it current.</p><div style="margin-top:24px"><a href="mailto:ocr@ucsf.edu?subject=Website%20inquiry%3A%20lab%20or%20program%20site" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:oklch(0.14 0.06 265);color:#fff;padding:12px 20px;font-size:15px;font-weight:500" style-hover="background:oklch(0.22 0.08 265)">Inquire about a website <span aria-hidden="true">→</span></a></div></div>
+<div style="flex:7 1 400px;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px">
+<div style="display:flex;flex-direction:column;gap:12px;border-radius:20px;border:1px dashed oklch(0.14 0.06 265 / 0.3);background:rgba(255,255,255,0.8);padding:28px 30px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.16em;color:oklch(0.55 0.14 75)">Lab website</div><sc-if value="{{ showPrice }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(44px,4.5vw,56px);line-height:1;letter-spacing:-0.03em;color:oklch(0.14 0.06 265)">$5k</span><span style="font-size:14px;color:oklch(0.42 0.03 265)">fixed fee</span></div></sc-if><sc-if value="{{ hidePrice }}" hint-placeholder-val="{{ false }}"><div style="font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:34px;line-height:1.1;color:oklch(0.14 0.06 265)">Fixed fee</div></sc-if><p style="font-size:15px;line-height:1.5;color:oklch(0.38 0.04 265);text-wrap:pretty">About 30 hours of work: design, build, launch, and handoff. Research, people, publications, and contact, on your domain.</p></div>
+<div style="display:flex;flex-direction:column;gap:12px;border-radius:20px;border:1px dashed oklch(0.14 0.06 265 / 0.3);background:rgba(255,255,255,0.8);padding:28px 30px"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.16em;color:oklch(0.55 0.14 75)">Program or institute website</div><div style="font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:34px;line-height:1.1;letter-spacing:-0.02em;color:oklch(0.14 0.06 265)">By inquiry</div><p style="font-size:15px;line-height:1.5;color:oklch(0.38 0.04 265);text-wrap:pretty">Scoped to the program: more sections, more people, and the structure a center or institute needs as it grows. Estimate after a scoping conversation.</p></div>
+</div>
+</div>
+</section>
+
+<section id="start" data-tone="dark" data-screen-label="Get started" style="scroll-margin-top:96px;position:relative;isolation:isolate;overflow:hidden;background:oklch(0.14 0.06 265);color:#fff;padding:clamp(48px,6vw,80px) 0">
+<div aria-hidden="true" style="position:absolute;z-index:-1;top:-260px;right:-140px;width:720px;height:720px;border-radius:50%;opacity:0.42;filter:blur(70px);background:linear-gradient(135deg, oklch(0.7 0.2 30) 0%, oklch(0.62 0.24 340) 35%, oklch(0.55 0.2 280) 65%, oklch(0.7 0.13 195) 100%);pointer-events:none"></div>
+<div style="max-width:1280px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;align-items:center;gap:40px 72px">
+<div style="flex:7 1 360px;min-width:0"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.18em;color:oklch(0.82 0.16 85)">Get started</div><h2 style="margin-top:16px;font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(32px,4.2vw,52px);line-height:1.02;letter-spacing:-0.02em;text-wrap:pretty">See a tool on your own work.</h2><p style="margin-top:20px;max-width:520px;font-size:17px;line-height:1.6;color:oklch(0.82 0.02 265);text-wrap:pretty">Every application is UCSF-only and opened one workspace at a time. Thirty minutes is enough to walk through a tool, see whether it fits your team, and tell us what it should do that it doesn't yet.</p><div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.14);font-size:14px;color:oklch(0.82 0.02 265)">Institutes, departments, and programs: <a href="mailto:ocr@ucsf.edu?subject=Partnership%20inquiry" style="color:#fff;text-decoration:underline;text-underline-offset:3px">talk to us about partnership →</a></div></div>
+<div style="flex:5 1 340px;min-width:0;border-radius:20px;background:#fff;color:oklch(0.18 0.06 265);padding:28px;border-top:5px solid oklch(0.84 0.16 85);box-shadow:0 30px 60px oklch(0.05 0.04 265 / 0.35)"><div style="display:flex;align-items:center;justify-content:space-between;gap:16px"><div><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.16em;color:oklch(0.55 0.14 75)">Walkthrough</div><div style="margin-top:4px;font-family:'Fraunces',Georgia,serif;font-size:24px;line-height:1.15;color:oklch(0.14 0.06 265)">See a tool with us</div></div><div style="text-align:right;font-size:13px;line-height:1.4;color:oklch(0.42 0.03 265)">30 min<br>Free</div></div><div style="margin-top:20px;display:flex;align-items:center;gap:16px;border-radius:16px;padding:14px 16px;background:oklch(0.84 0.16 85 / 0.16)"><img src="assets/vincent-chan.jpg" alt="" style="width:52px;height:52px;flex:none;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 0 0 2px oklch(0.84 0.16 85)"><div style="min-width:0"><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:oklch(0.42 0.03 265)">You'll meet with</div><div style="font-family:'Fraunces',Georgia,serif;font-size:20px;line-height:1.2;color:oklch(0.14 0.06 265)">Vincent Chan, PhD</div><div style="margin-top:2px;font-size:13px;color:oklch(0.55 0.14 75)">OCR Director</div></div></div><a href="https://bookings.cloud.microsoft/bookwithme/user/6f03d87cc5d9466085201515215922bc@ucsf.edu/meetingtype/djDh-ywfK0CFR__joKskWA2?anonymous&amp;ismsaljsauthenabled&amp;ep=mlink" target="_blank" rel="noreferrer" style="margin-top:16px;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;background:oklch(0.14 0.06 265);color:#fff;padding:12px 24px;font-size:15px;font-weight:500" style-hover="background:oklch(0.22 0.08 265)">Book a time with Vincent <span aria-hidden="true">→</span></a><div style="margin-top:14px;text-align:center;font-size:13px;color:oklch(0.42 0.03 265)">No data or account required · or email <a href="mailto:ocr@ucsf.edu" style="color:oklch(0.14 0.06 265);text-decoration:underline;text-underline-offset:3px">ocr@ucsf.edu</a></div></div>
+</div>
+</section>
+
+<footer data-tone="dark" data-screen-label="Footer" style="background:oklch(0.14 0.06 265);color:rgba(255,255,255,0.7);padding:80px 0 40px;border-top:1px solid rgba(255,255,255,0.1)">
+<div style="max-width:1280px;margin:0 auto;padding:0 24px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,0.1)">
+<div><div style="display:flex;align-items:center;gap:16px"><svg viewBox="0 0 100 100" style="width:56px;height:56px;flex:none" aria-hidden="true"><sc-for list="{{ rays }}" as="r" hint-placeholder-count="32"><rect x="49" y="4" width="2" height="22" rx="1" fill="{{ r.c }}" transform="rotate({{ r.a }} 50 50)"></rect></sc-for></svg><span style="font-family:'Fraunces',Georgia,serif;color:#fff;font-size:18px;line-height:1.25;letter-spacing:-0.02em">Office of<br>Collaborative Research</span></div><p style="margin-top:24px;max-width:384px;font-size:14px;line-height:1.6">OCR works in the space between inspiration and impact.</p></div>
+<div><div style="margin-bottom:16px;font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5)">Services</div><ul style="display:flex;flex-direction:column;gap:10px;font-size:14px"><li><a href="#" style-hover="color:#fff">Research development</a></li><li><a href="#" style-hover="color:#fff">Research operations &amp; management</a></li><li><a href="#" style-hover="color:#fff">Data management</a></li><li><a href="#" style="color:#fff">Research resources &amp; AI tools</a></li><li><a href="#" style-hover="color:#fff">Community management</a></li></ul></div>
+<div><div style="margin-bottom:16px;font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5)">OCR</div><ul style="display:flex;flex-direction:column;gap:10px;font-size:14px"><li><a href="#" style-hover="color:#fff">About</a></li><li><a href="#" style-hover="color:#fff">People</a></li><li><a href="#" style-hover="color:#fff">Programs &amp; Projects</a></li><li><a href="#" style-hover="color:#fff">Funding</a></li></ul></div>
+<div><div style="margin-bottom:16px;font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5)">Connect</div><ul style="display:flex;flex-direction:column;gap:10px;font-size:14px"><li><a href="mailto:ocr@ucsf.edu" style-hover="color:#fff">ocr@ucsf.edu</a></li><li><a href="#start" style-hover="color:#fff">Get in touch</a></li><li><a href="mailto:ocr@ucsf.edu?subject=Subscribe%20me%20to%20the%20OCR%20dispatch" style-hover="color:#fff">Newsletter</a></li></ul></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-top:32px;font-size:12px;color:rgba(255,255,255,0.5)"><div>© 2026 The Regents of the University of California</div><div style="display:flex;gap:24px"><a href="https://www.ucsf.edu/accessibility-resources" style-hover="color:#fff">Accessibility</a><a href="https://www.ucsf.edu/website-privacy-policy" style-hover="color:#fff">Privacy</a><a href="https://www.ucsf.edu/terms-of-use" style-hover="color:#fff">Terms</a></div></div>
+</div>
+</footer>
+
+<sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Details drawer" style="position:fixed;inset:0;z-index:60;display:flex;justify-content:flex-end">
+<div onClick="{{ closeDrawer }}" style="position:absolute;inset:0;background:oklch(0.14 0.06 265 / 0.5);backdrop-filter:blur(2px);animation:fadeIn .25s ease both"></div>
+<div role="dialog" aria-modal="true" aria-label="{{ d.name }} details" style="position:relative;width:min(540px,100%);height:100%;overflow-y:auto;background:#fff;color:oklch(0.18 0.06 265);box-shadow:-30px 0 60px oklch(0.05 0.04 265 / 0.3);animation:drawerIn .3s ease both">
+<div aria-hidden="true" style="height:5px;background:{{ d.fill }}"></div>
+<div style="padding:28px 32px 40px">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px"><div style="display:flex;align-items:center;gap:14px;min-width:0"><span style="width:48px;height:48px;flex:none;border-radius:50%;background:{{ d.fill }};display:flex;align-items:center;justify-content:center"><span style="width:26px;height:26px;background:oklch(0.14 0.06 265);-webkit-mask:url({{ d.mark }}) center/contain no-repeat;mask:url({{ d.mark }}) center/contain no-repeat"></span></span><div style="min-width:0"><div style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.16em;color:{{ d.text }}">{{ d.n }} · {{ d.name }}</div><div style="margin-top:4px;font-size:12px;color:oklch(0.48 0.03 265);font-family:ui-monospace,SFMono-Regular,Menlo,monospace">{{ d.statusLine }}</div></div></div><button type="button" data-drawer-close onClick="{{ closeDrawer }}" aria-label="Close details" style="flex:none;width:36px;height:36px;border-radius:50%;border:1px solid oklch(0.14 0.06 265 / 0.15);background:#fff;color:oklch(0.14 0.06 265);font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:oklch(0.97 0.012 85)"><span aria-hidden="true">×</span></button></div>
+<h3 style="margin-top:24px;font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:30px;line-height:1.1;color:oklch(0.14 0.06 265);text-wrap:pretty">{{ d.headline }}</h3>
+<p style="margin-top:12px;font-size:15px;line-height:1.55;color:oklch(0.35 0.04 265);text-wrap:pretty">{{ d.body }}</p>
+<div style="margin-top:24px;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:oklch(0.42 0.03 265)">What it does</div>
+<ul style="margin-top:10px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.45;color:oklch(0.3 0.04 265)"><sc-for list="{{ d.activities }}" as="act" hint-placeholder-count="5"><li style="display:flex;gap:10px;align-items:flex-start"><span style="margin-top:8px;width:5px;height:5px;border-radius:50%;flex:none;background:{{ d.fill }}"></span><span>{{ act }}</span></li></sc-for></ul>
+<dl style="margin-top:24px;border-top:1px solid oklch(0.14 0.06 265 / 0.12);font-size:14px;line-height:1.4;color:oklch(0.3 0.04 265)"><sc-for list="{{ d.facts }}" as="f" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:96px 1fr;gap:14px;padding:8px 0;border-bottom:1px solid oklch(0.14 0.06 265 / 0.08)"><dt style="padding-top:3px;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:oklch(0.42 0.03 265)">{{ f.k }}</dt><dd>{{ f.v }}</dd></div></sc-for></dl>
+<div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px"><sc-if value="{{ dHasUrl }}" hint-placeholder-val="{{ true }}"><a href="{{ d.url }}" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:oklch(0.14 0.06 265);color:#fff;padding:12px 20px;font-size:15px;font-weight:500" style-hover="background:oklch(0.22 0.08 265)">Open {{ d.name }} <span aria-hidden="true">↗</span></a></sc-if><a href="{{ d.mailto }}" style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1px solid oklch(0.14 0.06 265 / 0.25);color:oklch(0.14 0.06 265);padding:11px 20px;font-size:14px;font-weight:500" style-hover="border-color:oklch(0.14 0.06 265 / 0.5);background:oklch(0.14 0.06 265 / 0.05)">{{ d.askLabel }}</a></div>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;openFirst&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Preview&quot;},&quot;showPrice&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Websites&quot;}}">
+class Component extends DCLogic {
+  state = { dark: true, open: null, live: {} };
+
+  apps = [
+    { key: "prospera", n: "01", name: "Prospera", role: "Funding opportunity matching, for research development strategists", status: "In development", host: "prospera.ucsf.edu", url: "https://prospera.ucsf.edu/", mark: "assets/mark-prospera.svg", fill: "oklch(0.72 0.16 290)", text: "oklch(0.48 0.18 285)",
+      headline: "Funding that fits, with the reasons why.",
+      body: "Prospera reads each new federal notice and grades its fit against an investigator's record: Strong, Moderate, Exploratory, or Can't assess. Every grade carries the evidence it rests on and the constraint holding it back, so a strategist moves from notice to outreach in minutes, and a program manager sees the whole community's pipeline.",
+      activities: ["Nightly sync of notices from Simpler.Grants.gov and the NIH Guide, with saved searches", "A Discover queue sorted by deadline, each notice with suggested investigators", "Fit graded Strong, Moderate, Exploratory, or Can't assess, with the evidence and what is missing", "Outreach tracking: who was contacted, who replied, and the next step", "Reports by community: surfaced, triaged, sent, submitted, funded", "Investigator profiles enriched from PubMed, NIH RePORTER, ClinicalTrials.gov, ORCID, UCSF Profiles, and biosketches"],
+      facts: [{ k: "For whom", v: "Research development strategists and program managers." }, { k: "Reads", v: "Simpler.Grants.gov and NIH Guide notices; PubMed, NIH RePORTER, ClinicalTrials.gov, ORCID, UCSF Profiles, and biosketches for investigators." }, { k: "Access", v: "UCSF only. One workspace per team, sign-in required." }, { k: "Status", v: "In development, in use by OCR's research development team." }],
+      askLabel: "Request a workspace", ask: "Prospera: request a workspace" },
+    { key: "signal", n: "02", name: "Signal", role: "Research news monitoring and digests, for community managers", status: "Beta", host: "signal.ucsf.edu", url: "https://signal.ucsf.edu/", mark: "assets/mark-signal.svg", fill: "oklch(0.7 0.13 195)", text: "oklch(0.45 0.1 195)",
+      headline: "What your community published, won, and said this month.",
+      body: "Signal watches PubMed, NIH awards, UCSF news, and social feeds for the people on your watchlist and queues each item for a one-click review. From the approved set it drafts newsletter, donor, and social copy, then assembles the monthly digest. The month's roundup takes an afternoon instead of a week.",
+      activities: ["Nightly discovery across PubMed, NIH RePORTER, UCSF News, X, and Bluesky for everyone on the watchlist", "A review queue with filters, bulk approve and archive, and duplicate merging", "Newsletter, donor, social, and concise copy drafted for any approved item", "A monthly digest assembled from the approved set, with cover and visuals", "A dashboard of community research activity and a collaboration landscape", "One workspace per community, with its own social publishing credentials"],
+      facts: [{ k: "For whom", v: "Community managers and administrative assistants." }, { k: "Watches", v: "PubMed, NIH RePORTER, UCSF News, X, and Bluesky, plus anything you add by hand." }, { k: "Access", v: "UCSF only. One workspace per community, each with its own watchlist and social credentials." }, { k: "Status", v: "Beta. New community workspaces by request." }],
+      askLabel: "Request a workspace", ask: "Signal: request a workspace" },
+    { key: "runway", n: "03", name: "Runway", role: "Payroll runway planning, for investigators and their analysts", status: "Beta", host: "runway.ucsf.edu", url: "https://runway.ucsf.edu/", mark: "assets/mark-runway.svg", fill: "oklch(0.7 0.2 30)", text: "oklch(0.5 0.18 30)",
+      headline: "How long your funding lasts, by person and by account.",
+      body: "Upload the Payroll Funding Report your analyst already runs. Runway turns it into each person's funding over time, the months of payroll left on every account, and one plain sentence naming who needs attention first. Projected figures look projected: marked ~, hatched, and explained on hover. A planning layer for the ten-second read, not a system of record.",
+      activities: ["Imports Payroll Funding, Net Position, and Position Salary reports as the .xlsx files you already receive", "Distributions: each person's funding by month, actual and planned, with planned hires", "Projections and runway: months of payroll remaining per account and per person", "A dashboard verdict naming who needs attention and whether funding or a burn cut is needed", "Projected figures marked ~, hatched, and explained on hover; period closure always stated", "A private workspace per investigator; analyst access granted and revoked by the investigator"],
+      facts: [{ k: "For whom", v: "Investigators and the financial analysts who support them." }, { k: "Reads", v: "Payroll Funding, Net Position, and Position Salary reports (.xlsx)." }, { k: "Access", v: "UCSF only. A private workspace per investigator, shared with an analyst only when the investigator grants it, and revocable at any time." }, { k: "Status", v: "Beta. Investigator accounts by request." }],
+      askLabel: "Request access", ask: "Runway: request access" },
+    { key: "atlas", n: "—", name: "Atlas", role: "The verified investigator record underneath all three", status: "In development", host: "internal service", url: "", mark: "assets/mark-atlas.svg", fill: "oklch(0.84 0.16 85)", text: "oklch(0.55 0.14 75)",
+      headline: "The record every tool rests on.",
+      body: "Atlas resolves who an investigator is from institutional evidence, then attributes publications, NIH grant families, and clinical trials to the right individual. Every decision is recorded with its source, and unresolved is a valid result: a gap stays visible instead of being filled in. Verified profiles flow from Atlas into Prospera, Signal, and Runway, so a fit, a signal, and a roster all rest on the same record.",
+      activities: ["Resolves identity from institutional directories, ORCID, and UCSF Profiles before anything is attributed", "Attributes publications, NIH grant families, and clinical trials to the verified person", "Captures lab and institutional websites and biosketch evidence", "Records every decision with its source and keeps an audit trail", "Delivers versioned evidence snapshots to a connected app, or exports with a compatibility manifest", "Leaves gaps visible: unresolved is a valid, reportable result"],
+      facts: [{ k: "For whom", v: "Backend developers. The applications read from it; people rarely open it." }, { k: "Resolves", v: "Identity, publications, NIH grant families, clinical trials, lab and institutional websites, and biosketch evidence." }, { k: "Delivers", v: "Versioned evidence snapshots to a connected app, or exports with a compatibility manifest." }, { k: "Status", v: "In development. A 33-investigator pilot cohort is under review." }],
+      askLabel: "Talk to us about connecting an app", ask: "Atlas: connect an application" },
+  ];
+
+  componentDidMount() {
+    this.lastOpen = this.state.open;
+    this.lastOpenFirst = this.props.openFirst ?? false;
+    this.onScroll = () => {
+      const h = document.querySelector("[data-site-header]");
+      if (!h) return;
+      const r = h.getBoundingClientRect();
+      const probe = (y) => Array.from(document.querySelectorAll("[data-tone]")).find((el) => { const b = el.getBoundingClientRect(); return b.top <= y && b.bottom > y; });
+      const hit = probe(r.top + r.height / 2) || probe(r.bottom + 1);
+      const dark = hit ? hit.dataset.tone === "dark" : false;
+      if (dark !== this.state.dark) this.setState({ dark });
+    };
+    this.onKey = (e) => { if (e.key === "Escape" && this.state.open) this.close(); };
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    window.addEventListener("resize", this.onScroll);
+    window.addEventListener("keydown", this.onKey);
+    this.onScroll();
+    if (this.props.openFirst) this.open("prospera");
+    // Vignettes play when their card scrolls into view and replay on hover.
+    if ("IntersectionObserver" in window) {
+      this.io = new IntersectionObserver((entries) => entries.forEach((en) => { const k = en.target.dataset.app; this.setState((s) => ({ live: { ...s.live, [k]: en.isIntersecting } })); }), { threshold: 0.35 });
+      this.ioTimer = setTimeout(() => document.querySelectorAll("article[data-app]").forEach((el) => this.io.observe(el)), 400);
+    } else {
+      this.setState({ live: { prospera: true, signal: true, runway: true } });
+    }
+  }
+
+  componentDidUpdate() {
+    // Track previous values on the instance; the runtime may call this without prevProps/prevState.
+    const prevFirst = this.lastOpenFirst, first = this.props.openFirst ?? false;
+    this.lastOpenFirst = first;
+    if (prevFirst !== undefined && prevFirst !== first) { if (first) this.open("prospera"); else this.close(); }
+    const prevOpen = this.lastOpen;
+    this.lastOpen = this.state.open;
+    if (prevOpen !== this.state.open) {
+      document.body.style.overflow = this.state.open ? "hidden" : "";
+      if (this.state.open) setTimeout(() => { const b = document.querySelector("[data-drawer-close]"); if (b) b.focus(); }, 60);
+      else if (this.lastTrigger) { this.lastTrigger.focus(); this.lastTrigger = null; }
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("resize", this.onScroll);
+    window.removeEventListener("keydown", this.onKey);
+    if (this.io) this.io.disconnect();
+    clearTimeout(this.ioTimer);
+    clearTimeout(this.rt);
+    document.body.style.overflow = "";
+  }
+
+  open(key, trigger) { if (trigger) this.lastTrigger = trigger; this.setState({ open: key }); }
+  close() { this.setState({ open: null }); }
+
+  // Console vignettes are built here so their staged transitions survive re-renders.
+  vignette(id, active) {
+    const h = React.createElement;
+    const ease = "cubic-bezier(.2,.8,.2,1)";
+    const mono = "ui-monospace,SFMono-Regular,Menlo,monospace";
+    const ink = "oklch(0.14 0.06 265)";
+    const trs = (list) => list.map(([p, d, del]) => p + " " + d + "ms " + ease + " " + (active ? del : 0) + "ms").join(", ");
+    const reveal = (delay, dx, dy) => ({ opacity: active ? 1 : 0, transform: active ? "none" : "translate(" + (dx || 0) + "px," + (dy || 0) + "px)", transition: trs([["opacity", 600, delay], ["transform", 600, delay]]) });
+    if (id === "prospera") {
+      const violet = "oklch(0.72 0.16 290)";
+      const lines = [["oklch(0.82 0.18 130)", "14 publications on tissue-resident T cells since 2021"], ["oklch(0.82 0.18 130)", "Active NIAID R01 on mucosal immunity through 2028"], ["oklch(0.82 0.16 85)", "No prior PAR submission on record (constraint)"]];
+      const row = (k, text, grade, pill, delay) => h("div", { key: k, style: { position: "relative", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, borderRadius: 12, background: "rgba(255,255,255,0.04)", padding: "12px 16px", fontSize: 13, color: "rgba(255,255,255,0.85)", ...reveal(delay, 0, 6) } }, h("span", null, text), h("span", { style: { flex: "none", borderRadius: 999, padding: "3px 9px", fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", ...pill } }, grade));
+      return h(React.Fragment, null,
+        h("div", { key: "card", style: { position: "relative", borderRadius: 16, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", padding: "20px 22px" } },
+          h("div", { style: { display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "8px 12px", minHeight: 24 } },
+            h("span", { style: { fontFamily: mono, fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" } }, "PAR-26-114 · NIAID · R01"),
+            h("span", { style: { borderRadius: 999, padding: "4px 10px", fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", background: violet, color: ink, opacity: active ? 1 : 0, transform: active ? "scale(1)" : "scale(0.7)", transition: trs([["opacity", 400, 950], ["transform", 500, 950]]) } }, "Strong fit")),
+          h("div", { style: { marginTop: 10, fontSize: 16, lineHeight: 1.4, color: "#fff" } }, "Tissue-resident immunity in chronic inflammation"),
+          h("div", { style: { marginTop: 6, fontSize: 12, color: "rgba(255,255,255,0.55)" } }, "Due Feb 5 · 3 suggested investigators"),
+          h("div", { style: { marginTop: 16, paddingTop: 14, borderTop: "1px solid rgba(255,255,255,0.1)", display: "flex", flexDirection: "column", gap: 8, fontSize: 13, lineHeight: 1.45, color: "rgba(255,255,255,0.82)" } },
+            lines.map(([c, s], i) => h("div", { key: i, style: { display: "flex", gap: 10, ...reveal(150 + i * 230, -10, 0) } }, h("span", { style: { color: c } }, "●"), s)))),
+        row("r1", "RFA-HL-26-020 · Lung repair after viral injury", "Moderate", { background: "oklch(0.72 0.16 290 / 0.55)", color: "#fff" }, 1200),
+        row("r2", "PA-26-061 · Data science for immune aging", "Exploratory", { border: "1px solid rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.8)" }, 1320));
+    }
+    if (id === "signal") {
+      const teal = "oklch(0.7 0.13 195)";
+      const items = [["Publication", teal, "Single-cell atlas of the human thymus across the lifespan", "Cell · 3 watched authors"], ["Award", "oklch(0.82 0.16 85)", "R01 awarded · Mechanisms of B cell tolerance", "NIH RePORTER · NIAID"], ["News", "oklch(0.7 0.2 30)", "UCSF team maps immune memory after vaccination", "UCSF News · 2 watched faculty quoted"]];
+      return h(React.Fragment, null,
+        items.map(([tag, c, title, sub], i) => {
+          const on = i === 0 && active;
+          return h("div", { key: i, style: { position: "relative", display: "flex", flexWrap: "wrap", gap: "12px 16px", alignItems: "center", borderRadius: 14, background: on ? "oklch(0.7 0.13 195 / 0.14)" : "rgba(255,255,255,0.06)", border: "1px solid " + (on ? "oklch(0.7 0.13 195 / 0.55)" : "rgba(255,255,255,0.1)"), padding: "14px 18px", opacity: active ? 1 : 0, transform: active ? "none" : "translateX(-14px)", transition: trs([["opacity", 600, i * 160], ["transform", 600, i * 160], ["background-color", 400, 1100], ["border-color", 400, 1100]]) } },
+            h("span", { style: { flex: "0 0 90px", fontFamily: mono, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: c } }, tag),
+            h("div", { style: { flex: "1 1 220px", minWidth: 0 } }, h("div", { style: { fontSize: 14, lineHeight: 1.35, color: "#fff" } }, title), h("div", { style: { marginTop: 3, fontSize: 12, color: "rgba(255,255,255,0.55)" } }, sub)),
+            h("div", { style: { display: "flex", gap: 6 } },
+              h("span", { style: { borderRadius: 999, padding: "5px 11px", fontSize: 11, fontWeight: 600, background: teal, color: ink } }, "Approve"),
+              h("span", { style: { borderRadius: 999, padding: "5px 11px", fontSize: 11, fontWeight: 500, border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.8)" } }, "Archive")));
+        }),
+        h("div", { key: "foot", style: { position: "relative", marginTop: "auto", paddingTop: 14, display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 8, alignItems: "center", fontFamily: mono, fontSize: 12, color: "rgba(255,255,255,0.6)" } }, h("span", null, "March digest · 9 approved items"), h("span", { style: { color: "#fff" } }, "Draft the digest →")));
+    }
+    const coral = "oklch(0.7 0.2 30)", teal = "oklch(0.7 0.13 195)";
+    const rows = [["7023 · NIH R01", 22, 18, true, "~5 mo"], ["8810 · Gift", 62, 16, false, "~14 mo"], ["6610 · T32", 44, 0, false, "9 mo"], ["5120 · Startup", 14, 10, true, "~4 mo"]];
+    return h(React.Fragment, null,
+      h("p", { key: "v", style: { position: "relative", fontFamily: "'Fraunces',Georgia,serif", fontSize: "clamp(19px,1.8vw,23px)", lineHeight: 1.3, color: "#fff", textWrap: "pretty", opacity: active ? 1 : 0, transform: active ? "none" : "translateY(6px)", transition: trs([["opacity", 700, 1200], ["transform", 700, 1200]]) } }, "Two accounts fall below six months of payroll by August. The postdoc on 7023 needs attention first."),
+      h("div", { key: "rows", style: { position: "relative", marginTop: 6, display: "flex", flexDirection: "column", gap: 12, fontSize: 13 } },
+        rows.map(([name, act, proj, crit, label], i) => h("div", { key: i, style: { display: "grid", gridTemplateColumns: "minmax(96px,120px) minmax(0,1fr) 64px", gap: 14, alignItems: "center" } },
+          h("span", { style: { color: "rgba(255,255,255,0.8)" } }, name),
+          h("div", { style: { position: "relative", height: 10, borderRadius: 5, background: "rgba(255,255,255,0.1)" } },
+            h("div", { style: { position: "absolute", left: 0, top: 0, bottom: 0, width: (active ? act : 0) + "%", borderRadius: 5, background: crit ? coral : teal, transition: trs([["width", 900, 100 + i * 120]]) } }),
+            proj ? h("div", { style: { position: "absolute", left: act + "%", top: 0, bottom: 0, width: (active ? proj : 0) + "%", borderRadius: "0 5px 5px 0", background: "repeating-linear-gradient(135deg, " + (crit ? "oklch(0.7 0.2 30 / 0.55)" : "oklch(0.7 0.13 195 / 0.55)") + " 0 3px, transparent 3px 7px)", transition: trs([["width", 700, 900 + i * 120]]) } }) : null),
+          h("span", { style: { textAlign: "right", fontFamily: mono, color: crit ? "oklch(0.78 0.16 30)" : "rgba(255,255,255,0.8)", opacity: active ? 1 : 0, transition: trs([["opacity", 400, 1000 + i * 120]]) } }, label)))));
+  }
+
+  renderVals() {
+    const colors = ["#1e3a8a", "#0ea5e9", "#10b981", "#f59e0b", "#ef4444", "#ec4899", "#8b5cf6", "#1e3a8a", "#0ea5e9", "#10b981", "#f59e0b", "#ef4444", "#ec4899", "#8b5cf6", "#1e3a8a", "#0ea5e9"];
+    const rays = Array.from({ length: 32 }, (_, i) => ({ a: (i / 32) * 360, c: colors[i % colors.length] }));
+    const mail = (s) => "mailto:ocr@ucsf.edu?subject=" + encodeURIComponent(s);
+    const apps = this.apps.map((a) => ({ ...a, hasUrl: !!a.url, mailto: mail(a.ask), statusLine: a.status + " · " + a.host }));
+    const dark = this.state.dark;
+    const d = apps.find((a) => a.key === this.state.open) || apps[0];
+    const showPrice = this.props.showPrice ?? true;
+    return {
+      rays, apps,
+      atlas: apps[3],
+      navBg: dark ? "oklch(0.14 0.06 265)" : "oklch(0.99 0.005 90 / 0.85)",
+      navBorder: dark ? "rgba(255,255,255,0.1)" : "oklch(0.91 0.012 90)",
+      navColor: dark ? "#fff" : "oklch(0.14 0.06 265)",
+      navHover: dark ? "rgba(255,255,255,0.1)" : "oklch(0.95 0.012 85)",
+      ctaBg: dark ? "#fff" : "oklch(0.14 0.06 265)",
+      ctaColor: dark ? "oklch(0.14 0.06 265)" : "#fff",
+      showPrice, hidePrice: !showPrice,
+      d, dHasUrl: !!d.url,
+      drawerOpen: !!this.state.open,
+      openApp: (e) => this.open(e.currentTarget.dataset.app, e.currentTarget),
+      openCard: (e) => { if (e.target.closest && e.target.closest("a")) return; this.open(e.currentTarget.dataset.app, e.currentTarget); },
+      keyOpen: (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.open(e.currentTarget.dataset.app, e.currentTarget); } },
+      closeDrawer: () => this.close(),
+      replay: (e) => { const k = e.currentTarget.dataset.app; if (!this.state.live[k]) return; this.setState((s) => ({ live: { ...s.live, [k]: false } })); clearTimeout(this.rt); this.rt = setTimeout(() => this.setState((s) => ({ live: { ...s.live, [k]: true } })), 80); },
+      vigProspera: this.vignette("prospera", !!this.state.live.prospera),
+      vigSignal: this.vignette("signal", !!this.state.live.signal),
+      vigRunway: this.vignette("runway", !!this.state.live.runway),
+    };
+  }
+}
+</script>
+</body>
+</html>

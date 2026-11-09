@@ -816,6 +816,35 @@
   animation: ro-fade-out 0.25s ease both;
 }
 
+/* ── AI tools: hero blob drift and the vignette "live" dot ── */
+@keyframes ai-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-48px, 36px) scale(1.07);
+  }
+}
+
+@keyframes ai-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.ai-drift {
+  animation: ai-drift 18s ease-in-out infinite;
+}
+
+.ai-pulse {
+  animation: ai-pulse 2s ease-in-out infinite;
+}
+
 /* Research operations: 36px project sprites reuse the project-card motifs.
    Undo the card-art zoom and thicken strokes so the art reads at icon size. */
 .ro-sprite .project-motif-svg {
@@ -859,8 +888,16 @@
   .project-card-reveal,
   .ro-drawer,
   .ro-drawer-backdrop,
-  .funding-faq-answer {
+  .funding-faq-answer,
+  .ai-drift,
+  .ai-pulse {
     animation: none !important;
+  }
+
+  /* AI tools vignettes render their final state (see applications-section.tsx). */
+  .ai-vignette,
+  .ai-vignette * {
+    transition: none !important;
   }
 
   .project-motif-svg,

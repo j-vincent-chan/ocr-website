@@ -21,21 +21,41 @@ export function ArmEyebrow({
   arm,
   label,
   accent,
+  tone = "light",
 }: {
   arm: string;
   label: string;
   accent: string;
+  tone?: "light" | "dark";
 }) {
+  return <EyebrowTrail lead={armName(arm)} label={label} accent={accent} tone={tone} />;
+}
+
+/** The ArmEyebrow grammar (dot · lead · label) with any lead, e.g. "Funding & support · Open Build". */
+export function EyebrowTrail({
+  lead,
+  label,
+  accent,
+  tone = "light",
+}: {
+  lead: string;
+  label: string;
+  accent: string;
+  tone?: "light" | "dark";
+}) {
+  const dark = tone === "dark";
   return (
-    <div className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-muted-foreground font-medium">
-      <span
-        className="w-1.5 h-1.5 rounded-full"
-        style={{ background: accent }}
-        aria-hidden
-      />
-      <span>{armName(arm)}</span>
-      <span aria-hidden>·</span>
-      <span className="text-ink/80">{label}</span>
+    <div
+      className={`inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] font-medium ${
+        dark ? "text-ondark-muted" : "text-muted-foreground"
+      }`}
+    >
+      <span className="w-1.5 h-1.5 rounded-full" style={{ background: accent }} aria-hidden />
+      <span>{lead}</span>
+      <span aria-hidden className="opacity-40">
+        ·
+      </span>
+      <span className={dark ? "text-white" : "text-ink/80"}>{label}</span>
     </div>
   );
 }

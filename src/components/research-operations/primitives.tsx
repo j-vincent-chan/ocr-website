@@ -123,21 +123,27 @@ export function LinkedText({ text, link }: { text: string; link?: FactLink }) {
   );
 }
 
-/** Definition-list row: 96px uppercase label column plus the value, with hairlines. */
+/** Definition-list row: 96px (default) uppercase label column plus the value, with hairlines. */
 export function FactRow({
   label,
   children,
   last = false,
+  labelWidth = 96,
+  padY,
   className = "",
 }: {
   label: string;
   children: React.ReactNode;
   last?: boolean;
+  labelWidth?: number;
+  /** Row padding in px; defaults to 8. */
+  padY?: number;
   className?: string;
 }) {
   return (
     <div
-      className={`grid grid-cols-[96px_1fr] gap-3.5 py-2 ${last ? "" : "border-b border-ink/8"} ${className}`}
+      className={`grid gap-3.5 py-2 ${last ? "" : "border-b border-ink/8"} ${className}`}
+      style={{ gridTemplateColumns: `${labelWidth}px 1fr`, paddingBlock: padY }}
     >
       <dt className="pt-[3px] text-[11px] uppercase tracking-[0.14em] text-ink-muted-2">{label}</dt>
       <dd>{children}</dd>

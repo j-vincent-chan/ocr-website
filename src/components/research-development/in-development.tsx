@@ -1,9 +1,9 @@
 import { inDevelopment, inDevelopmentCopy, links } from "@/data/research-development";
+import { BLUEPRINT_MASK, blueprintGrid } from "./lib";
 import { Arrow, Eyebrow, pillOutline } from "./primitives";
 
-const GRID =
-  "linear-gradient(oklch(0.14 0.06 265 / 0.07) 1px, transparent 1px), linear-gradient(90deg, oklch(0.14 0.06 265 / 0.07) 1px, transparent 1px)";
-const MASK = "radial-gradient(ellipse 70% 120% at 70% 50%, #000 30%, transparent 100%)";
+const GRID = blueprintGrid(0.07);
+const MASK = BLUEPRINT_MASK;
 
 export function InDevelopment() {
   return (
