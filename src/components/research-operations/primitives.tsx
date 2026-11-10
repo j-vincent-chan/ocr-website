@@ -1,22 +1,28 @@
 import { Link } from "@tanstack/react-router";
 import { ctaAvatars, SHOW_REVIEW_FLAGS, TEAL, type FactLink } from "@/data/research-operations";
 
-/** Section eyebrow: 12px Inter 500, uppercase, 0.18em tracking, teal ink, 16px below. */
+type Avatar = { slug: string; photo: string };
+
+/** Section eyebrow: 12px Inter 500, uppercase, 0.18em tracking, teal by default, 16px below. */
 export function Eyebrow({
   children,
   tone = "light",
   className = "",
+  accent,
 }: {
   children: React.ReactNode;
   tone?: "light" | "dark";
   className?: string;
+  /** Override the default teal accent (e.g. magenta on Data Management). */
+  accent?: string;
 }) {
+  const color = accent ?? (tone === "dark" ? TEAL : undefined);
   return (
     <div
       className={`mb-4 text-[11px] font-medium uppercase tracking-[0.18em] lg:text-xs ${
-        tone === "dark" ? "" : "text-teal-text"
+        color ? "" : "text-teal-text"
       } ${className}`}
-      style={tone === "dark" ? { color: TEAL } : undefined}
+      style={color ? { color } : undefined}
     >
       {children}
     </div>
@@ -32,18 +38,20 @@ export function SectionHeader({
   title,
   lede,
   className = "",
+  accent,
 }: {
   eyebrow: string;
   title: string;
   lede: string;
   className?: string;
+  accent?: string;
 }) {
   return (
     <div
       className={`mb-7 lg:mb-14 lg:grid lg:grid-cols-[5fr_7fr] lg:items-end lg:gap-[72px] ${className}`}
     >
       <div>
-        <Eyebrow>{eyebrow}</Eyebrow>
+        <Eyebrow accent={accent}>{eyebrow}</Eyebrow>
         <h2 className="font-display text-[32px] font-medium leading-[1.08] tracking-[-0.02em] text-ink text-pretty md:text-[40px] lg:text-[48px] lg:leading-[1.02]">
           {title}
         </h2>
@@ -55,9 +63,15 @@ export function SectionHeader({
   );
 }
 
-/** Yellow design-review annotation. Renders nothing unless SHOW_REVIEW_FLAGS is on. */
-export function ReviewFlag({ children }: { children: React.ReactNode }) {
-  if (!SHOW_REVIEW_FLAGS) return null;
+/** Yellow design-review annotation. Renders nothing unless `show` (default: RO flag) is on. */
+export function ReviewFlag({
+  children,
+  show = SHOW_REVIEW_FLAGS,
+}: {
+  children: React.ReactNode;
+  show?: boolean;
+}) {
+  if (!show) return null;
   return (
     <span className="ml-1.5 inline-block rounded-full bg-[oklch(0.95_0.08_85)] px-2 py-0.5 align-middle text-[11px] font-semibold text-[oklch(0.4_0.1_70)]">
       {children}
@@ -65,11 +79,19 @@ export function ReviewFlag({ children }: { children: React.ReactNode }) {
   );
 }
 
-/** Overlapping circular headshots of the people who scope projects. */
-export function TeamAvatars({ size = 36, overlap = 10 }: { size?: number; overlap?: number }) {
+/** Overlapping circular headshots. Defaults to Research Operations CTA avatars. */
+export function TeamAvatars({
+  size = 36,
+  overlap = 10,
+  people = ctaAvatars,
+}: {
+  size?: number;
+  overlap?: number;
+  people?: Avatar[];
+}) {
   return (
     <div className="flex flex-none" style={{ paddingLeft: overlap }} aria-hidden>
-      {ctaAvatars.map((p) => (
+      {people.map((p) => (
         <img
           key={p.slug}
           src={p.photo}
