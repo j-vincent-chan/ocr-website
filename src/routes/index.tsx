@@ -199,8 +199,8 @@ function Approach() {
             Our approach
           </span>
           <blockquote className="mt-8 font-display text-4xl md:text-6xl leading-[1.05] text-ink">
-            &ldquo;OCR works project by project, building collaborations and infrastructure that help
-            the next project move faster.&rdquo;
+            OCR works project by project, building collaborations and infrastructure that help
+            the next project move faster.
           </blockquote>
           <div className="mt-8 text-sm text-muted-foreground">
             — The OCR operating principle

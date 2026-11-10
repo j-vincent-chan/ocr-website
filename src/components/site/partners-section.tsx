@@ -70,9 +70,9 @@ const PARTNERS = [
     c: "oklch(0.6 0.13 160)",
     since: 2026,
     description:
-      "OCR provides research development support to Mechanisms of Neurological Disorders investigators — shaping proposal strategy and coordinating grant submissions for research into the biology of neurological disease.",
-    services: ["Research development"],
-    proof: "Research development capacity extended to neuroscience investigators.",
+      "OCR provides research development support to Mechanisms of Neurological Disorders investigators, with priority access to Specific Aims development and review plus support for R01 and equivalent applications.",
+    services: ["Research development", "Specific Aims", "R01 / equivalent"],
+    proof: "One-year pilot centered on Specific Aims access, with R01 and equivalent support available.",
   },
   {
     n: "Institute for Health & Aging",

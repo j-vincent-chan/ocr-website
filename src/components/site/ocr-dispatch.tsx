@@ -4,10 +4,10 @@ import { OPEN_POSITIONS } from "@/components/site/open-positions";
 
 const DISPATCH_SPOTLIGHT = {
   category: "Spotlight",
-  date: "Jul 2026",
+  date: "Nov 2026",
   title:
-    "OCR welcomes the Institute for Health & Aging as its newest research development partner",
-  desc: "OCR is partnering with IHA to expand strategic research development support for core and affiliate faculty, helping investigators sharpen ideas, connect around shared priorities, and move promising proposals toward submission. The one-year pilot covers faculty outreach, funding opportunity matchmaking, proposal development support, and educational programming.",
+    "OCR welcomes Mechanisms of Neurological Disorders as its newest research development partner",
+  desc: "OCR is partnering with MND on a one-year pilot that gives investigators priority access to Specific Aims development and review, with support also available for R01 and equivalent applications. The collaboration is designed to strengthen MND grant submissions and test a model centered on early framing support.",
 } as const;
 
 /* Newest first — the top items get full cards, the rest collapse into brief rows. */
@@ -25,6 +25,13 @@ const DISPATCH_ITEMS = [
     title: `OCR is hiring an ${OPEN_POSITIONS.immunoxCommunityManager.title}`,
     desc: "Help steward the ImmunoX research community through convenings, communications, outreach, and collaborator connections.",
     href: OPEN_POSITIONS.immunoxCommunityManager.href,
+  },
+  {
+    category: "Spotlight",
+    date: "Jul 2026",
+    title:
+      "OCR partners with the Institute for Health & Aging on research development",
+    desc: "OCR is working with IHA to expand strategic research development support for core and affiliate faculty, helping investigators sharpen ideas, connect around shared priorities, and move promising proposals toward submission. The one-year pilot covers faculty outreach, funding opportunity matchmaking, proposal development support, and educational programming.",
   },
   {
     category: "AI tool",
