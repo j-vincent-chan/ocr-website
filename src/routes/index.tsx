@@ -42,18 +42,24 @@ function Hero() {
           className="pointer-events-none absolute inset-0 overflow-hidden"
           aria-hidden
         >
-          <div className="absolute top-0 right-0 bottom-0 left-[42%] md:left-[48%] animate-hero-constellation">
+          {/*
+            Height-fit + intrinsic width (no object-cover crop). The graphic keeps
+            its full ribbon composition; as the viewport narrows we scale the whole
+            asset down so arcs stay intact, with only the left fade clipped under
+            the readability veil.
+          */}
+          <div className="absolute inset-y-0 right-0 flex items-center justify-end animate-hero-constellation">
             <img
               src={constellationImg}
               alt=""
-              className="h-full w-full object-cover object-right select-none"
+              className="h-auto w-[min(150vw,36rem)] max-w-none select-none sm:w-auto sm:h-[88%] lg:h-full xl:h-[105%]"
             />
           </div>
         </div>
         {/* left-side readability veil */}
         <div
           aria-hidden
-          className="absolute inset-0 z-[2] bg-gradient-to-r from-cream via-cream/85 to-transparent"
+          className="absolute inset-0 z-[2] bg-gradient-to-r from-cream from-15% via-cream/90 via-45% to-transparent to-75% sm:from-10% sm:via-cream/85 sm:via-40%"
         />
         <div
           aria-hidden
