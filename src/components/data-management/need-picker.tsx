@@ -65,7 +65,7 @@ export function NeedPicker() {
       <div
         role="radiogroup"
         aria-labelledby={labelId}
-        className="mt-3 flex flex-col gap-2.5 md:flex-row md:flex-wrap"
+        className="mt-3 flex flex-col gap-2 md:flex-row md:flex-wrap md:gap-2.5"
       >
         {needs.map((n, i) => {
           const active = n.key === need;
@@ -82,14 +82,14 @@ export function NeedPicker() {
               tabIndex={active ? 0 : -1}
               onClick={() => setNeed(n.key)}
               onKeyDown={(e) => onPillKeyDown(e, i)}
-              className={`flex min-h-12 w-full items-center gap-2 rounded-[14px] border px-5 py-[11px] text-left text-[15px] font-medium ${TRANSITION} focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-magenta md:w-auto md:max-w-max md:min-w-[min(100%,240px)] md:flex-[1_1_240px] md:rounded-full ${
+              className={`flex min-h-12 w-full items-center justify-between gap-3 rounded-[14px] border px-4 py-3 text-left text-[15px] font-medium ${TRANSITION} focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-magenta md:min-h-0 md:w-auto md:justify-start md:gap-2 md:whitespace-nowrap md:rounded-full md:px-5 md:py-[11px] ${
                 active
                   ? "border-white bg-white text-ink"
                   : "border-white/30 bg-transparent text-white hover:border-white/60"
               }`}
             >
-              <Dot color={accent.color} className="flex-none" />
               <span>{n.chip}</span>
+              <Dot color={accent.color} className="flex-none md:order-first" />
             </button>
           );
         })}

@@ -3,9 +3,9 @@ import { TRANSITION, tint } from "@/components/research-development/lib";
 import { capabilities, capabilitiesSection, type CapabilityKey } from "@/data/data-management";
 import { Dot, ReviewFlag, SectionHeader } from "./primitives";
 
-/** Accordion of the four capabilities; first open by default; one open at a time. */
+/** Accordion of the four capabilities; starts closed; one open at a time. */
 export function Capabilities() {
-  const [open, setOpen] = useState<CapabilityKey | null>(capabilities[0].key);
+  const [open, setOpen] = useState<CapabilityKey | null>(null);
 
   return (
     <section id="capabilities" className="scroll-mt-24 bg-paper py-[clamp(48px,7vw,96px)]">
