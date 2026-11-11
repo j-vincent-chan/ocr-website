@@ -69,7 +69,7 @@ export const services: Service[] = [
     cost: "Fixed fee, as capacity allows.",
     costPartner: "Subsidized and/or dedicated priority support",
     description:
-      "A deep editorial engagement on new or revised applications. We pressure-test the pages that drive score—including the Introduction on A1s—then revise until the logic, figures, and transitions hold for a generalist reader on study section.",
+      "A deep editorial engagement on new or revised applications. We pressure-test the pages that drive score, including the Introduction on A1s, then revise until the logic, figures, and transitions hold for a generalist reader on study section.",
     ask: "Best started 1–2 months before your deadline.",
   },
   {
@@ -119,7 +119,7 @@ export const whatWeDo = {
   eyebrow: "What we do",
   heading: "We read your proposal the way many on study section will.",
   intro:
-    "Our strategists are trained scientists and practiced editors. We read it as someone familiar with the topic in general, but not the details the way you — the PI — or a small subset of reviewers do. We read and revise as many times as a proposal needs, and our focus shifts as the deadline approaches: first the logic, then the structure, then the details.",
+    "Our strategists are trained scientists and practiced editors. We read it as someone familiar with the topic in general, but not the details the way you, the PI, or a small subset of reviewers do. We read and revise as many times as a proposal needs, and our focus shifts as the deadline approaches: first the logic, then the structure, then the details.",
   passes: [
     {
       n: "01",
