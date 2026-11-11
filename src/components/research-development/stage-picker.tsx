@@ -213,12 +213,10 @@ function StartHereCard({ stage }: { stage: StageId }) {
               className={`${stacked(st.id)} border-t border-ink/12 text-sm leading-[1.4]`}
             >
               <FactRow label="When">{s.when}</FactRow>
-              {s.id !== "plan" ? <FactRow label="For whom">{s.who}</FactRow> : null}
-              {s.id !== "plan" ? (
-                <FactRow label="Format" className="hidden lg:grid">
-                  {s.format}
-                </FactRow>
-              ) : null}
+              <FactRow label="For whom">{s.who}</FactRow>
+              <FactRow label="Format" className="hidden lg:grid">
+                {s.format}
+              </FactRow>
               <FactRow label="Cost" last>
                 {s.cost}
                 {s.costPartner ? <span> Partner institutes: {lcFirst(s.costPartner)}.</span> : null}
