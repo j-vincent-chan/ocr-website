@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { PI_SATISFACTION } from "@/data/research-development";
 
 export const BY_THE_NUMBERS_STATS = [
   {
@@ -20,7 +21,7 @@ export const BY_THE_NUMBERS_STATS = [
     color: "var(--teal)",
   },
   {
-    value: 9.3,
+    value: PI_SATISFACTION,
     decimals: 1,
     label: "Avg. PI satisfaction / 10",
     color: "var(--gold)",

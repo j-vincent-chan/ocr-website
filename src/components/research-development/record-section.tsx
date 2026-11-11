@@ -1,10 +1,9 @@
-import type { CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 import {
   awardTotal,
   formatMoney,
   grants,
   grantType,
-  links,
   programFor,
   record,
   recordCopy,
@@ -35,12 +34,13 @@ function StatValue({ value, smallClass }: { value: string; smallClass: string })
 }
 
 export function RecordSection() {
+  const [showAllGrants, setShowAllGrants] = useState(false);
   // The headline total is computed from grants[].award; a `$XXM` placeholder shows if any is null.
   const total = awardTotal();
   const money = total.complete ? splitMoney(formatMoney(total.total)) : null;
-  const featured = [...grants]
-    .sort((a, b) => b.awarded.localeCompare(a.awarded))
-    .slice(0, FEATURED_GRANTS);
+  const sorted = [...grants].sort((a, b) => b.awarded.localeCompare(a.awarded));
+  const visible = showAllGrants ? sorted : sorted.slice(0, FEATURED_GRANTS);
+  const hasMore = sorted.length > FEATURED_GRANTS;
 
   return (
     <section className="bg-cream py-12 md:py-20 lg:py-24">
@@ -114,18 +114,21 @@ export function RecordSection() {
             {recordCopy.fundedHeading}
           </h3>
           <ul className="mt-5 border-t border-ink">
-            {featured.map((g) => (
+            {visible.map((g) => (
               <GrantRow key={g.url} grant={g} />
             ))}
           </ul>
-          <div className="mt-5 flex lg:mt-6 lg:justify-end">
-            <a
-              href={links.allGrants}
-              className={`${pillOutline} min-h-12 w-full lg:min-h-0 lg:w-auto`}
-            >
-              {recordCopy.allGrants} <Arrow />
-            </a>
-          </div>
+          {hasMore && !showAllGrants ? (
+            <div className="mt-5 flex lg:mt-6 lg:justify-end">
+              <button
+                type="button"
+                onClick={() => setShowAllGrants(true)}
+                className={`${pillOutline} min-h-12 w-full lg:min-h-0 lg:w-auto`}
+              >
+                {recordCopy.allGrants} <Arrow />
+              </button>
+            </div>
+          ) : null}
         </div>
       </div>
     </section>

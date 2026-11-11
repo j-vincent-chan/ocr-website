@@ -69,7 +69,7 @@ export const services: Service[] = [
     cost: "Fixed fee, as capacity allows.",
     costPartner: "Subsidized and/or dedicated priority support",
     description:
-      "Six weeks of iterative editorial feedback on R01-scale applications: Specific Aims, Research Plan, biosketch, figures. Roughly 30 hours of work per proposal.",
+      "Roughly 30 hours of iterative feedback on the primary score-driving components of R01-scale applications: Specific Aims, Research Plan, Biosketch.",
     ask: "Best started six weeks before your deadline.",
   },
   {
@@ -117,9 +117,9 @@ export const stages: { id: StageId; label: string; primary: ServiceId; also: Ser
 
 export const whatWeDo = {
   eyebrow: "What we do",
-  heading: "We read your proposal the way a study section will.",
+  heading: "We read your proposal the way many on study section will.",
   intro:
-    "Our strategists are trained scientists and practiced editors. We won't know your field the way you do, and that's the point. We read and revise as many times as a proposal needs, and our focus shifts as the deadline approaches: first the logic, then the structure, then the details.",
+    "Our strategists are trained scientists and practiced editors. We read it as someone familiar with the topic in general, but not the details the way you — the PI — or a small subset of reviewers do. We read and revise as many times as a proposal needs, and our focus shifts as the deadline approaches: first the logic, then the structure, then the details.",
   passes: [
     {
       n: "01",
@@ -142,6 +142,9 @@ export const whatWeDo = {
   ],
 };
 
+/** Shared PI satisfaction score — RD page is the source of truth; home page imports this. */
+export const PI_SATISFACTION = 9.2;
+
 export const record = {
   stats: [
     {
@@ -149,7 +152,7 @@ export const record = {
       label: "full applications completed, including 31 still pending or under review",
     },
     { value: "94", label: "unique investigator engagements" },
-    { value: "9.2/10", label: "average overall PI satisfaction" },
+    { value: `${PI_SATISFACTION}/10`, label: "average overall PI satisfaction" },
   ],
 };
 
@@ -253,6 +256,16 @@ export const grants: {
     awarded: "2025-07-01",
     award: 2_544_228, // FY25 $527,760 + FY26 $504,117, plus 3 years at $504,117
   },
+  {
+    mech: "DISC5",
+    kind: "CIRM discovery award",
+    ic: "CIRM",
+    title: "Advancing next-generation models for the development of thymoregenerative medicines",
+    pis: "Audrey Parent",
+    url: "https://www.cirm.ca.gov/our-progress/awards/advancing-next-generation-models-development-thymoregenerative-medicines/",
+    awarded: "2026-09-24", // CIRM board recommendation date (award status Pre-Active)
+    award: 2_500_000,
+  },
 ];
 
 /** R01 and K-series → Research plan review; R24 and P-series → Large grant development program */
@@ -270,7 +283,9 @@ export const grantType = (mech: string) =>
       ? { color: "oklch(0.72 0.22 340)", text: "oklch(0.5 0.2 340)" }
       : mech === "R24"
         ? { color: "oklch(0.78 0.13 195)", text: "oklch(0.45 0.1 195)" }
-        : { color: "oklch(0.84 0.16 85)", text: "oklch(0.55 0.14 75)" }; // K
+        : mech.startsWith("DISC")
+          ? { color: "oklch(0.72 0.19 30)", text: "oklch(0.5 0.18 30)" } // CIRM
+          : { color: "oklch(0.84 0.16 85)", text: "oklch(0.55 0.14 75)" }; // K
 
 /** `$1.2M` / `$850K` / `$900` */
 export function formatMoney(v: number): string {
@@ -527,8 +542,8 @@ export const inDevelopmentCopy = {
 
 /* ───────── Link destinations ─────────
  * TODO (OCR open items 3 & 4): these are interim targets. Replace with the scheduler URL and
- * the real pages for "All grants funded with our support", "Get notified" and
- * "Talk to us about partnership" once they exist. */
+ * the real pages for "Get notified" and "Talk to us about partnership" once they exist.
+ * "All grants funded with our support" expands the on-page grant list (no separate page yet). */
 const mail = (subject: string) => `mailto:ocr@ucsf.edu?subject=${encodeURIComponent(subject)}`;
 
 export const links = {
@@ -536,8 +551,6 @@ export const links = {
   bookConsult: "#book",
   consultRequest: (strategistName: string, institute: string | null) =>
     mail(`Consult request: ${strategistName}${institute ? ` (${institute})` : ""}`),
-  /** TODO: destination for "All grants funded with our support". */
-  allGrants: mail("Grants funded with OCR support"),
   /** TODO: destination for "Talk to us about partnership" (currently the site contact page). */
   partnership: "/contact" as const,
   /** TODO: destination for "Get notified" (e.g. newsletter signup). */

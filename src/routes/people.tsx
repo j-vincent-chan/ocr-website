@@ -116,7 +116,7 @@ const TEAM: Person[] = [
     name: "Open Position",
     role: "Research Development Strategist",
     arms: ["Research Development"],
-    bio: "Joining as IHA comes on board in 2026. We're hiring.",
+    bio: "Joining as we expand support for IGHS and engage with additional partners. We're hiring.",
     accent: "var(--coral)",
     applyHref: OPEN_POSITIONS.researchDevelopmentStrategist.href,
   },
