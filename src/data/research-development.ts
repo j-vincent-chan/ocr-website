@@ -462,7 +462,25 @@ export const recordCopy = {
   caption: "in grants awarded since 2024",
   fundedHeading: "Recently funded with our support",
   allGrants: "All grants funded with our support",
+  grantsDrawer: {
+    eyebrow: "Funded with our support",
+    heading: "All grants funded with our support",
+    intro: "Awards OCR helped shape, with links to the public record on NIH RePORTER, CIRM, and other funders.",
+    close: "Close grants list",
+    viewOn: (source: string) => `View on ${source}`,
+  },
 };
+
+/** Public record host label for a grant’s external URL. */
+export function grantSource(url: string): string {
+  if (url.includes("reporter.nih.gov")) return "NIH RePORTER";
+  if (url.includes("cirm.ca.gov")) return "CIRM";
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "funder site";
+  }
+}
 
 export const teamCopy = {
   team: {
@@ -543,7 +561,7 @@ export const inDevelopmentCopy = {
 /* ───────── Link destinations ─────────
  * TODO (OCR open items 3 & 4): these are interim targets. Replace with the scheduler URL and
  * the real pages for "Get notified" and "Talk to us about partnership" once they exist.
- * "All grants funded with our support" expands the on-page grant list (no separate page yet). */
+ * "All grants funded with our support" opens the on-page grants drawer. */
 const mail = (subject: string) => `mailto:ocr@ucsf.edu?subject=${encodeURIComponent(subject)}`;
 
 export const links = {

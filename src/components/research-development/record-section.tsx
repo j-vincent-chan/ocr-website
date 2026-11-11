@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from "react";
+import { useRef, useState, type CSSProperties } from "react";
 import {
   awardTotal,
   formatMoney,
@@ -10,6 +10,7 @@ import {
   serviceById,
   type OcrProgram,
 } from "@/data/research-development";
+import { GrantsDrawer } from "./grants-drawer";
 import { tint } from "./lib";
 import { Arrow, Eyebrow, pillOutline } from "./primitives";
 
@@ -34,13 +35,14 @@ function StatValue({ value, smallClass }: { value: string; smallClass: string })
 }
 
 export function RecordSection() {
-  const [showAllGrants, setShowAllGrants] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   // The headline total is computed from grants[].award; a `$XXM` placeholder shows if any is null.
   const total = awardTotal();
   const money = total.complete ? splitMoney(formatMoney(total.total)) : null;
-  const sorted = [...grants].sort((a, b) => b.awarded.localeCompare(a.awarded));
-  const visible = showAllGrants ? sorted : sorted.slice(0, FEATURED_GRANTS);
-  const hasMore = sorted.length > FEATURED_GRANTS;
+  const featured = [...grants]
+    .sort((a, b) => b.awarded.localeCompare(a.awarded))
+    .slice(0, FEATURED_GRANTS);
 
   return (
     <section className="bg-cream py-12 md:py-20 lg:py-24">
@@ -114,23 +116,30 @@ export function RecordSection() {
             {recordCopy.fundedHeading}
           </h3>
           <ul className="mt-5 border-t border-ink">
-            {visible.map((g) => (
+            {featured.map((g) => (
               <GrantRow key={g.url} grant={g} />
             ))}
           </ul>
-          {hasMore && !showAllGrants ? (
-            <div className="mt-5 flex lg:mt-6 lg:justify-end">
-              <button
-                type="button"
-                onClick={() => setShowAllGrants(true)}
-                className={`${pillOutline} min-h-12 w-full lg:min-h-0 lg:w-auto`}
-              >
-                {recordCopy.allGrants} <Arrow />
-              </button>
-            </div>
-          ) : null}
+          <div className="mt-5 flex lg:mt-6 lg:justify-end">
+            <button
+              ref={triggerRef}
+              type="button"
+              aria-haspopup="dialog"
+              aria-expanded={drawerOpen}
+              onClick={() => setDrawerOpen(true)}
+              className={`${pillOutline} min-h-12 w-full lg:min-h-0 lg:w-auto`}
+            >
+              {recordCopy.allGrants} <Arrow />
+            </button>
+          </div>
         </div>
       </div>
+
+      <GrantsDrawer
+        open={drawerOpen}
+        onOpenChange={setDrawerOpen}
+        returnFocusTo={triggerRef}
+      />
     </section>
   );
 }
