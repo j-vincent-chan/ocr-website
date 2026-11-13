@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Motif } from "@/components/portfolio/motif";
 import { communities, programs, projects } from "@/data/portfolio";
 
@@ -50,12 +51,18 @@ export function PortfolioHero({
   const tabsRef = useRef<HTMLElement | null>(null);
   const [showBar, setShowBar] = useState(false);
   const [activeSection, setActiveSection] = useState<string>(view);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const el = tabsRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => setShowBar(!entry?.isIntersecting),
+      // Match the sticky site header (h-20 = 80px).
       { rootMargin: "-80px 0px 0px 0px", threshold: 0 },
     );
     io.observe(el);
@@ -289,50 +296,60 @@ export function PortfolioHero({
         </section>
       </div>
 
-      {showBar && (
-        <div
-          className="fixed inset-x-0 z-30 border-y border-[#e4e1d8]"
-          style={{
-            top: 80,
-            background: "rgba(253,252,248,.94)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-          }}
-        >
-          <nav
-            aria-label="Sections of Portfolio"
-            className="mx-auto flex max-w-[1280px] items-center gap-1.5 overflow-x-auto px-6 py-2"
+      {mounted &&
+        showBar &&
+        createPortal(
+          <div
+            // Portal to body so position:fixed is relative to the viewport even if
+            // a parent (transform/filter/contain) creates a containing block.
+            style={{
+              position: "fixed",
+              left: 0,
+              right: 0,
+              top: 80,
+              zIndex: 30,
+              borderTop: "1px solid #e4e1d8",
+              borderBottom: "1px solid #e4e1d8",
+              background: "rgba(253,252,248,.94)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+            }}
           >
-            <span
-              className="mr-3.5 whitespace-nowrap font-display text-[15px] text-[#010621]"
-              style={{ fontWeight: 400 }}
+            <nav
+              aria-label="Sections of Portfolio"
+              className="mx-auto flex max-w-[1280px] items-center gap-1.5 overflow-x-auto px-6 py-2"
             >
-              Portfolio
-            </span>
-            {(["programs", "projects", "communities", "contact"] as const).map((id) => {
-              const on =
-                id === "contact"
-                  ? activeSection === "contact"
-                  : view === id && activeSection !== "contact";
-              return (
-                <a
-                  key={id}
-                  href={`#${id}`}
-                  aria-current={on ? "true" : undefined}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    goSection(id);
-                  }}
-                  style={navStyle(on)}
-                  className="hover:shadow-[inset_0_0_0_1px_#010621]"
-                >
-                  {id[0]!.toUpperCase() + id.slice(1)}
-                </a>
-              );
-            })}
-          </nav>
-        </div>
-      )}
+              <span
+                className="mr-3.5 whitespace-nowrap font-display text-[15px] text-[#010621]"
+                style={{ fontWeight: 400 }}
+              >
+                Portfolio
+              </span>
+              {(["programs", "projects", "communities", "contact"] as const).map((id) => {
+                const on =
+                  id === "contact"
+                    ? activeSection === "contact"
+                    : view === id && activeSection !== "contact";
+                return (
+                  <a
+                    key={id}
+                    href={`#${id}`}
+                    aria-current={on ? "true" : undefined}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      goSection(id);
+                    }}
+                    style={navStyle(on)}
+                    className="hover:shadow-[inset_0_0_0_1px_#010621]"
+                  >
+                    {id[0]!.toUpperCase() + id.slice(1)}
+                  </a>
+                );
+              })}
+            </nav>
+          </div>,
+          document.body,
+        )}
 
     </>
   );

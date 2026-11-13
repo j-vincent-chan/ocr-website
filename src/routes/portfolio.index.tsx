@@ -56,6 +56,8 @@ function PortfolioPage() {
         };
       },
       replace: true,
+      // In-place filter / show-more updates must not jump the page.
+      resetScroll: false,
     });
   };
 
@@ -65,10 +67,9 @@ function PortfolioPage() {
       <PortfolioHero
         view={search.view}
         onViewChange={(view) => {
+          // Swap the view in place — do not scroll. Scrolling would skip the
+          // Programs / Projects / Communities explainer under the tabs.
           patch({ view });
-          requestAnimationFrame(() => {
-            document.getElementById(view)?.scrollIntoView({ behavior: "smooth", block: "start" });
-          });
         }}
       />
       <div id="portfolio-results" role="tabpanel">
