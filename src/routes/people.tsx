@@ -224,9 +224,9 @@ const TEAM: Person[] = [
 ];
 
 const ALUMNI = [
+  { name: "Nora Hazenbos", role: "Project Manager" },
   { name: "Lily Ortiz", role: "ImmunoX Community Manager" },
   { name: "Jo Williams", role: "Parnassus Institutes Community Manager" },
-  { name: "Nora Hazenbos", role: "Project Manager" },
   { name: "Nelson Wu", role: "Data Manager" },
 ];
 
@@ -239,41 +239,56 @@ const ARMS = [
   "Community Management",
 ] as const;
 
-const FILTER_ORDER: Record<Arm, string[]> = {
-  Leadership: [
-    "Vincent Chan|Director",
-    "Gabe Murphy|Senior Research Development Strategist",
-    "Natalia Dikinov|Senior Clinical Research Coordinator",
-    "Corey Rathe|Project Manager",
-    "Jonathan Wilson|Research Administrative Officer",
-  ],
-  "Research Development": [
-    "Gabe Murphy|Senior Research Development Strategist",
-    "Reid Bolus|Research Development Strategist",
-    "Lindsay Breithaupt|Research Development Strategist",
-    "Open Position|Research Development Strategist",
-  ],
-  "Research Operations & Management": [
-    "Corey Rathe|Project Manager",
-    "Natalia Dikinov|Senior Clinical Research Coordinator",
-    "Francisco Quintanilla|Senior Clinical Research Coordinator",
-    "Lina Kamil|Clinical Research Coordinator",
-    "Ohnmar Chan|Senior Clinical Research Coordinator",
-    "Olivia Murley|Clinical Research Coordinator",
-  ],
-  "Data Management": [
-    "Michelle Yu|Data Manager",
-    "Bushra Samad|Data Manager",
-  ],
-  "Community Management": [
-    "Open Position|ImmunoX Community Manager",
-    "Xochitl Vargas|ImmunoDiverse Program Administrator",
-    "Jonathan Wilson|Research Administrative Officer",
-  ],
+const ARM_ORDER: Arm[] = [
+  "Leadership",
+  "Research Development",
+  "Research Operations & Management",
+  "Data Management",
+  "Community Management",
+];
+
+/** Lower sorts first. Open roles are forced last, then this rank, then last name. */
+const ROLE_RANK: Record<string, number> = {
+  Director: 0,
+  "Senior Research Development Strategist": 1,
+  "Project Manager": 2,
+  "Senior Clinical Research Coordinator": 3,
+  "Research Development Strategist": 4,
+  "Data Manager": 5,
+  "Research Administrative Officer": 6,
+  "ImmunoDiverse Program Administrator": 7,
+  "Clinical Research Coordinator": 8,
+  "ImmunoX Community Manager": 9,
 };
 
-function personKey(p: Person) {
-  return `${p.name}|${p.role}`;
+function lastName(name: string) {
+  return name.split(" ").at(-1) ?? name;
+}
+
+function isOpenRole(p: Person) {
+  return p.name === "Open Position";
+}
+
+/** Primary arm is the earliest one this person belongs to, so All lists them once. */
+function primaryArm(p: Person) {
+  return ARM_ORDER.find((arm) => p.arms.includes(arm)) ?? p.arms[0];
+}
+
+function comparePeople(a: Person, b: Person) {
+  const openDelta = Number(isOpenRole(a)) - Number(isOpenRole(b));
+  if (openDelta !== 0) return openDelta;
+  const rankDelta = (ROLE_RANK[a.role] ?? 100) - (ROLE_RANK[b.role] ?? 100);
+  if (rankDelta !== 0) return rankDelta;
+  return (
+    lastName(a.name).localeCompare(lastName(b.name)) ||
+    a.name.localeCompare(b.name)
+  );
+}
+
+function compareRoster(a: Person, b: Person) {
+  const armDelta = ARM_ORDER.indexOf(primaryArm(a)) - ARM_ORDER.indexOf(primaryArm(b));
+  if (armDelta !== 0) return armDelta;
+  return comparePeople(a, b);
 }
 
 function initials(name: string) {
@@ -362,11 +377,8 @@ function Hero() {
 function Roster() {
   const [filter, setFilter] = useState<(typeof ARMS)[number]>("All");
   const filtered = useMemo(() => {
-    if (filter === "All") return TEAM;
-    const order = FILTER_ORDER[filter];
-    return TEAM.filter((p) => p.arms.includes(filter)).sort(
-      (a, b) => order.indexOf(personKey(a)) - order.indexOf(personKey(b)),
-    );
+    if (filter === "All") return [...TEAM].sort(compareRoster);
+    return TEAM.filter((p) => p.arms.includes(filter)).sort(comparePeople);
   }, [filter]);
 
   return (
