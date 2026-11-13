@@ -96,7 +96,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image:height", content: "630" },
       {
         property: "og:image:alt",
-        content: "UCSF Office of Collaborative Research sunburst logo",
+        content: "Office of Collaborative Research — UCSF sunburst logo on dark background",
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Office of Collaborative Research — UCSF" },
@@ -107,7 +107,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://ocr.ucsf.edu/og-image.jpg" },
       {
         name: "twitter:image:alt",
-        content: "UCSF Office of Collaborative Research sunburst logo",
+        content: "Office of Collaborative Research — UCSF sunburst logo on dark background",
       },
     ],
     links: [
