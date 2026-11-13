@@ -1,0 +1,1708 @@
+// Generated from Programs_and_Projects.xlsx (public fields only: no dollar amounts, internal notes, IRB or sponsor protocol numbers).
+window.OCR_PORTFOLIO={
+ "programs": [
+  {
+   "id": "clinical-research-office-at-ucsf-hyde-and-stanyan-hospitals",
+   "name": "Clinical Research Office at UCSF Hyde & Stanyan Hospitals",
+   "type": "program",
+   "status": "Active",
+   "areas": [
+    "Multi-disease"
+   ],
+   "theme": "Multi-disease",
+   "lead": "Theodore Abraham",
+   "dept": "Medicine",
+   "division": "Cardiology",
+   "funding": "Institutional · UCSF Health Network",
+   "services": [
+    "Program management",
+    "Clinical coordination"
+   ],
+   "card": "OCR runs the Clinical Research Office at UCSF Hyde and Stanyan Hospitals, helping UCSF investigators activate, coordinate, and enroll studies and building new collaborations with hospital physicians.",
+   "full": "OCR manages the Clinical Research Office (CRO) for UCSF Hyde and Stanyan Hospitals (formerly Saint Francis and St. Mary's), expanding UCSF's research mission across both hospitals and their outpatient clinics in partnership with UCSF Health Network. The CRO connects researchers with unit managers and hospital leadership; guides studies through UCSF IRB approval, Office of Clinical Trials Activation, and site-specific requirements; and provides on-site operational support, including patient recruitment and enrollment, study coordination, and clinical data collection. OCR also manages the transition of 14 existing hospital research projects to UCSF and is identifying clinical groups to launch new collaborative projects with UCSF investigators.",
+   "start": "2024",
+   "sites": [
+    "UCSF Hyde Hospital",
+    "UCSF Stanyan Hospital",
+    "associated outpatient clinics"
+   ],
+   "partners": [
+    "UCSF Health Network"
+   ],
+   "url": "https://cm-research.ucsf.edu/",
+   "programType": "Clinical research unit",
+   "partnerDepts": "UCSF Health Network (Clinical and Medical Staff Affairs)",
+   "title": "UCSF Hyde & Stanyan Hospitals",
+   "subtitle": "Clinical Research Office",
+   "ocrTeam": [
+    "Vincent Chan, PhD",
+    "Ohnmar Chan"
+   ]
+  },
+  {
+   "id": "bronchiectasis-clinical-research-unit",
+   "name": "Clinical Research Program in Bronchiectasis & NTM",
+   "short": "INTEGRATE",
+   "fullTitle": "Bronchiectasis & NTM Program (INTEGRATE)",
+   "type": "program",
+   "status": "Active",
+   "areas": [
+    "Bronchiectasis",
+    "Pulmonary NTM",
+    "Primary ciliary dyskinesia",
+    "Cystic fibrosis-related lung disease"
+   ],
+   "theme": "Lung disease",
+   "lead": "Shoshana Zha (Director), Catherine DeVoe (Co-Director)",
+   "dept": "Medicine",
+   "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+   "funding": "Institutional · INTEGRATE program funds",
+   "services": [
+    "Program management",
+    "Clinical coordination",
+    "Data management"
+   ],
+   "card": "OCR provides senior clinical research coordination for the Bronchiectasis & NTM Program (INTEGRATE), supporting study startup, day-to-day study oversight, CRC training, and safety escalation across active studies.",
+   "full": "Through a pilot partnership launched in 2026, OCR supports the startup and operation of clinical and translational studies within INTEGRATE. A senior OCR clinical research coordinator helps activate new studies with the IRB and Office of Clinical Trials Activation, monitors progress and risks across active studies, trains and mentors junior coordinators on protocol adherence, data integrity, and Good Clinical Practice, coordinates escalation of adverse events and sponsor notifications, and helps refine study workflows and SOPs.",
+   "start": "2026",
+   "sites": [
+    "Parnassus"
+   ],
+   "partners": [
+    "Infectious Diseases",
+    "Radiology",
+    "Microbiology"
+   ],
+   "url": "https://pulmonary.ucsf.edu/patients/bronchiectasis-pulmonary-nontuberculous-mycobacterium",
+   "programType": "Clinical research unit",
+   "partnerDepts": "Pulmonary Medicine",
+   "title": "Bronchiectasis & NTM",
+   "subtitle": "Clinical Research Program",
+   "ocrTeam": [
+    "Vincent Chan, PhD",
+    "Natalia Dikinov",
+    "Michelle Yu"
+   ]
+  },
+  {
+   "id": "interstitial-lung-disease-clinical-research-unit",
+   "name": "Clinical Research Program in Interstitial Lung Disease",
+   "short": "ILD",
+   "fullTitle": "Interstitial Lung Disease (ILD) Clinical Research Program",
+   "type": "program",
+   "status": "Closed",
+   "areas": [
+    "Interstitial lung disease",
+    "Idiopathic pulmonary fibrosis",
+    "Connective tissue disease-associated ILD"
+   ],
+   "theme": "Lung disease",
+   "lead": "Jeffrey Golden",
+   "dept": "Medicine",
+   "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+   "funding": "Institutional · ILD program funds",
+   "services": [
+    "Program management",
+    "Clinical coordination"
+   ],
+   "card": "OCR provided clinical research oversight, coordination, and escalation support for the Interstitial Lung Disease (ILD) program, stabilizing active studies, re-engaging paused studies, and supporting new study startups.",
+   "full": "OCR supported the ILD Clinical Research Program with oversight and coordination of its clinical research operations. OCR held regular check-ins with study coordinators to review study status and resolve blockers; coordinated escalation of time-sensitive issues such as adverse events, sponsor and medical monitor notifications, and urgent protocol questions; guided required documentation and IRB reporting; helped re-activate paused studies through the Office of Clinical Trials Activation; and developed workflows and escalation SOPs.",
+   "start": "2026",
+   "end": "2026",
+   "sites": [
+    "Parnassus"
+   ],
+   "url": "https://pulmonary.ucsf.edu/care/lung_fibrosis",
+   "programType": "Clinical research unit",
+   "partnerDepts": "Pulmonary Medicine",
+   "title": "Interstitial Lung Disease",
+   "subtitle": "Clinical Research Program",
+   "ocrTeam": [
+    "Vincent Chan, PhD",
+    "Ohnmar Chan"
+   ]
+  },
+  {
+   "id": "coprojects",
+   "name": "ImmunoX co·projects Research Program",
+   "type": "program",
+   "status": "Active",
+   "areas": [
+    "Multi-disease"
+   ],
+   "theme": "Multi-disease",
+   "lead": "Vincent Chan",
+   "funding": "Philanthropy",
+   "services": [
+    "Program management",
+    "Clinical coordination",
+    "Data management"
+   ],
+   "card": "OCR manages the full slate of ImmunoX co·projects — collaborative pilot-to-program studies using CoLabs technology to build detailed immune profiles across diverse diseases.",
+   "start": "2018",
+   "programType": "Research program",
+   "title": "ImmunoX co·projects",
+   "subtitle": "Research Program",
+   "ocrTeam": [
+    "Vincent Chan, PhD",
+    "Corey Rathe, MS"
+   ]
+  },
+  {
+   "id": "custom-discovery",
+   "name": "UCSF Custom Discovery Research Platform",
+   "fullTitle": "UCSF Custom Discovery: A platform for personalized cancer discovery and treatment",
+   "type": "program",
+   "status": "Active",
+   "areas": [
+    "Cancer"
+   ],
+   "theme": "Cancer",
+   "lead": "Matthew Krummel",
+   "dept": "Pathology",
+   "funding": "Philanthropy",
+   "services": [
+    "Program management",
+    "Clinical coordination",
+    "Data management"
+   ],
+   "card": "UCSF Custom Discovery is a platform for personalized cancer research and treatment. It profiles an individual patient's tumor and immune cells in depth to help their care team find matching existing drugs or point toward new custom therapies, in days to weeks.",
+   "full": "Custom Discovery, a program of the UCSF Immunoprofiler and ImmunoX, offers personalized profiling of a patient's cancer to help patients and clinicians find novel or cutting-edge therapies. Working with the patient's clinicians to ensure good sample preparation, the team applies the same methods used in the Immunoprofiler's large cohort studies, including DNA and RNA sequencing of tumor cells and the surrounding immune cells and a large CITE-seq panel, on tumor, normal tissue, and blood. A rapid track returns results in about 1 to 3 days and a deeper track in 4 to 8 weeks. Findings, shared with the patient's care team, may identify existing drugs that match the tumor's biology or support custom therapies or vaccines, and a portion of each tumor is kept frozen to test future treatments. A cross-functional team of immunologists, biostatisticians, pathologists, and project managers works closely with each patient.",
+   "start": "2025",
+   "partners": [
+    "UCSF Immunoprofiler",
+    "ImmunoX"
+   ],
+   "url": "https://immunoprofiler.org/custom-discovery",
+   "programType": "Expanded access program",
+   "title": "UCSF Custom Discovery",
+   "subtitle": "Research Platform",
+   "scale": {
+    "value": "25",
+    "unit": "patients profiled",
+    "note": "6 peptide vaccines designed"
+   },
+   "patients": {
+    "total": 25,
+    "years": [
+     [
+      "2024",
+      7
+     ],
+     [
+      "2025",
+      7
+     ],
+     [
+      "2026",
+      11
+     ]
+    ],
+    "types": [
+     [
+      "Rare cancers",
+      13
+     ],
+     [
+      "Melanoma",
+      3
+     ],
+     [
+      "Uterine leiomyosarcoma",
+      3
+     ],
+     [
+      "Colorectal adenocarcinoma",
+      2
+     ],
+     [
+      "Pancreatic ductal carcinoma",
+      2
+     ],
+     [
+      "Prostate adenocarcinoma",
+      2
+     ]
+    ]
+   },
+   "ocrTeam": [
+    "Corey Rathe, MS",
+    "Francisco Quintanilla"
+   ]
+  }
+ ],
+ "projects": [
+  {
+   "id": "immunoprofiler-consortium",
+   "name": "IPI: Immunoprofiler Consortium",
+   "short": "IPI",
+   "type": "bio",
+   "status": "Closed",
+   "areas": [
+    "Cancer"
+   ],
+   "theme": "Cancer",
+   "lead": "Matthew Krummel",
+   "dept": "Pathology",
+   "origin": "Investigator-initiated",
+   "funding": "Industry",
+   "services": [
+    "Project management",
+    "Clinical coordination"
+   ],
+   "card": "Coordinates handling of human biopsy samples from cancer patients and performs deep tests of immune composition, gene expression, and interaction biology — treating cancers as discrete immunopathologies.",
+   "start": "2014",
+   "model": "Consortium",
+   "specimens": [
+    "Tumor biopsies"
+   ]
+  },
+  {
+   "id": "autoimmunoprofiler-consortium",
+   "name": "AutoIPI: AutoImmunoprofiler Consortium",
+   "short": "AutoIPI",
+   "type": "bio",
+   "status": "Closed",
+   "areas": [
+    "Sjögren's syndrome",
+    "Lupus nephritis",
+    "Lupus cutaneous",
+    "Scleroderma",
+    "Type 1 diabetes",
+    "Inflammatory bowel disease"
+   ],
+   "theme": "Autoimmunity",
+   "lead": "Matthew Krummel",
+   "dept": "Pathology",
+   "origin": "Investigator-initiated",
+   "funding": "Industry",
+   "services": [
+    "Project management",
+    "Clinical coordination",
+    "Data management"
+   ],
+   "card": "A consortium that profiled autoimmune diseases with proteomic, transcriptomic, epigenomic, and structural analyses of freshly collected tissue and matched blood, to find pathways, targets, and better patient selection.",
+   "start": "2022",
+   "end": "2025",
+   "partners": [
+    "Co-investigators: Roose, Gross, Erle, Ye, Chan, Combes, Fragiadakis"
+   ],
+   "model": "Consortium",
+   "specimens": [
+    "Fresh tissue",
+    "Matched blood"
+   ],
+   "assays": [
+    "Proteomics",
+    "Transcriptomics",
+    "Epigenomics",
+    "Structural analyses"
+   ]
+  },
+  {
+   "id": "sjogren-s-syndrome-stamp",
+   "name": "STAMP: Sjögren's Disease Team",
+   "short": "STAMP",
+   "fullTitle": "Sjögren's Team for Accelerating Medicines Partnership",
+   "type": "bio",
+   "status": "Active",
+   "areas": [
+    "Sjögren's syndrome"
+   ],
+   "theme": "Autoimmunity",
+   "lead": "Caroline Shiboski",
+   "dept": "Orofacial Sciences",
+   "division": "Oral Medicine, Oral Pathology & Oral Radiology",
+   "origin": "Investigator-initiated",
+   "funding": "NIH · NIDCR UC2DE032254 (AMP® AIM)",
+   "fundingUrl": "https://reporter.nih.gov/search/9jct2oa5wUiHUzXNWO1rjQ/project-details/10451841",
+   "services": [
+    "Clinical coordination",
+    "Data management"
+   ],
+   "card": "Interrogates the tissue and systems biology of Sjögren's Disease using deep sequencing to understand pathogenesis, identify targets, and map progression from early to advanced disease.",
+   "full": "STAMP is the Sjögren's disease team of the Accelerating Medicines Partnership® Autoimmune and Immune-Mediated Diseases (AMP® AIM), managed by the Foundation for the NIH and led by UCSF. Across clinical sites at UCSF/UC Berkeley, Johns Hopkins, the Oklahoma Medical Research Foundation, and the NIDCR, the team deeply characterizes people with or at risk for Sjögren's disease, including healthy controls, long-term follow-up participants from earlier cohorts, and people with Sjögren's-lupus overlap. Salivary gland biopsies, blood, saliva, and tears are analyzed with single-cell and spatial technologies to understand how the disease develops and progresses, how immune cells interact with salivary gland tissue, and which pathways could become new treatment targets.",
+   "start": "2022",
+   "partners": [
+    "UC Berkeley",
+    "Johns Hopkins",
+    "Oklahoma Medical Research Foundation",
+    "NIDCR Intramural Sjögren's Disease Clinic",
+    "NYU",
+    "Broad Institute",
+    "Harvard",
+    "University of Michigan",
+    "Foundation for the NIH (AMP® AIM)",
+    "Sjögren's Foundation"
+   ],
+   "model": "Consortium",
+   "specimens": [
+    "Labial salivary gland biopsy",
+    "Blood (PBMCs, serum, plasma)",
+    "Saliva",
+    "Tears and conjunctival imprints",
+    "Stool (optional)"
+   ],
+   "assays": [
+    "Single-cell RNA-seq",
+    "Spatial transcriptomics",
+    "Histopathology",
+    "Salivary gland ultrasound",
+    "TCR/BCR profiling",
+    "Autoantibodies",
+    "Microbiome"
+   ],
+   "population": "People with signs or symptoms of Sjögren's disease; healthy controls; prior SICCA/OMRF participants; Sjögren's-lupus overlap",
+   "open": true
+  },
+  {
+   "id": "tuberculosis",
+   "name": "Tuberculosis Susceptibility Pathways",
+   "type": "bio",
+   "status": "Closed",
+   "areas": [
+    "Tuberculosis"
+   ],
+   "theme": "Infectious disease",
+   "lead": "Sara Suliman",
+   "dept": "Medicine",
+   "division": "Experimental Medicine (ZSFG)",
+   "origin": "Investigator-initiated",
+   "funding": "Philanthropy",
+   "services": [
+    "Project management"
+   ],
+   "card": "The Suliman group uses systems biology — GWAS, transcriptomics, metabolomics, eQTLs — to identify pathways that determine why only 5–10% of exposed individuals develop active TB.",
+   "start": "2023",
+   "end": "2024",
+   "model": "Investigator-led study",
+   "assays": [
+    "GWAS",
+    "Transcriptomics",
+    "Metabolomics",
+    "eQTLs"
+   ]
+  },
+  {
+   "id": "sepsis-and-ards",
+   "name": "Sepsis & ARDS Inflammatory Subtypes",
+   "type": "bio",
+   "status": "Closed",
+   "areas": [
+    "Sepsis & ARDS"
+   ],
+   "theme": "Infectious disease",
+   "lead": "Carolyn Calfee",
+   "dept": "Medicine",
+   "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+   "origin": "Investigator-initiated",
+   "funding": "Philanthropy",
+   "services": [
+    "Project management"
+   ],
+   "card": "The Calfee Lab classifies ARDS and sepsis patients into validated hyper- and hypoinflammatory phenotypes, then queries immunophenotype and metagenomic differences in blood and tracheal aspirate.",
+   "start": "2023",
+   "end": "2024",
+   "partners": [
+    "Matthew Krummel (co-PI)"
+   ],
+   "model": "Investigator-led study",
+   "specimens": [
+    "Blood",
+    "Tracheal aspirate"
+   ],
+   "assays": [
+    "Immunophenotyping",
+    "Metagenomics"
+   ]
+  },
+  {
+   "id": "rheumatoid-arthritis",
+   "name": "Arthritogenic T Cells in Rheumatoid Arthritis",
+   "fullTitle": "Immune Mapping of Arthritogenic Cells in Rheumatoid Arthritis",
+   "type": "bio",
+   "status": "Active",
+   "areas": [
+    "Rheumatoid arthritis"
+   ],
+   "theme": "Autoimmunity",
+   "lead": "Judith Ashouri",
+   "dept": "Medicine",
+   "division": "Rheumatology",
+   "origin": "Investigator-initiated",
+   "funding": "ImmunoX co·project (pilot study, 2023)",
+   "services": [
+    "Clinical coordination",
+    "Project management"
+   ],
+   "card": "A hypothesis-driven study of antigen-activated CD4 T cells in RA synovial tissue, plus a broad characterization of immune and non-immune cells in the synovium — toward more targeted therapeutics.",
+   "full": "In rheumatoid arthritis, it is hard to tell which T cells in an inflamed joint are actually responding to a self-antigen and which are simply caught up in the inflammation. Dr. Ashouri's lab showed that NUR77, a protein switched on only when a T cell recognizes its antigen, marks these disease-driving cells. This pilot collects synovial tissue (and, when possible, joint fluid) with matched blood and serum from about 12 patients with seropositive rheumatoid arthritis undergoing joint surgery. The team uses spectral flow cytometry and single-cell sequencing with T and B cell receptor sequencing to find antigen-activated lymphocytes and their receptors, profiles all immune and non-immune cells in the joint, and measures autoantibodies and cytokines in blood.",
+   "start": "2023",
+   "partners": [
+    "ImmunoX CoLabs (Disease to Biology, Data Science)"
+   ],
+   "parent": "coprojects",
+   "model": "Investigator-led study",
+   "specimens": [
+    "Synovial tissue",
+    "Synovial fluid (when feasible)",
+    "PBMCs",
+    "Serum"
+   ],
+   "assays": [
+    "Spectral flow cytometry",
+    "CITE-seq",
+    "TCR/BCR sequencing",
+    "Autoantibody and cytokine profiling"
+   ],
+   "population": "Adults with seropositive rheumatoid arthritis undergoing a joint procedure (e.g., joint replacement, synovectomy)",
+   "inDL": true,
+   "open": true
+  },
+  {
+   "id": "organoids-biobank",
+   "name": "GI Cancer Organoid Biobank",
+   "fullTitle": "Predictors of Response to Systemic Therapy in Pancreatic, Colorectal, and Intestinal Cancers",
+   "type": "bio",
+   "status": "Active",
+   "areas": [
+    "Pancreatic cancer",
+    "Colorectal cancer",
+    "Small intestinal cancer"
+   ],
+   "theme": "Cancer",
+   "lead": "Jeroen Roose",
+   "dept": "Anatomy",
+   "origin": "Investigator-initiated",
+   "funding": "Foundation · Mark Foundation for Cancer Research (Endeavor Award); Shorenstein Award",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "A living biobank of patient-derived organoids from pancreatic, colorectal, and small-intestinal cancers, paired with blood and normal tissue, to study metastasis and predict response to systemic therapy.",
+   "full": "This project generates, characterizes, and banks 3D tumor organoids from patients with pancreatic, colorectal, and small-intestinal (jejunal, duodenal, ampullary) cancers, with a target of 240 patients. Fresh tumor from biopsies and surgeries, along with ascites or pleural fluid, adjacent normal tissue, and blood, are collected. Patient immune cells are added back to the organoids to create 'ImmunoOrganoids,' allowing researchers to study how cancers progress to metastasis, which immune patterns predict response to therapy, and how tumors respond to EGFR- and Ras-targeted drugs. Organoids remain at UCSF.",
+   "start": "2019",
+   "partners": [
+    "Ajay Maker, MD (UCSF)",
+    "Eric Collisson, MD (Fred Hutch)",
+    "UCSF Molecular Profiling in GI Malignancies Biorepository (Cancer Center Tissue Core)"
+   ],
+   "model": "Biobank",
+   "specimens": [
+    "Fresh tumor (biopsy or surgical)",
+    "Adjacent normal tissue",
+    "Ascites / pleural fluid",
+    "Blood (PBMCs)",
+    "Histology slides"
+   ],
+   "assays": [
+    "3D tumor organoids",
+    "ImmunoOrganoid co-culture",
+    "H&E / immunofluorescence"
+   ],
+   "population": "Patients with pancreatic, colorectal, or small-intestinal cancer undergoing biopsy, surgery, thoracentesis, or paracentesis",
+   "open": true
+  },
+  {
+   "id": "autoimmune-hepatitis",
+   "name": "Spatial Map of Autoimmune Hepatitis",
+   "short": "AIH",
+   "fullTitle": "Profiling Molecular Mechanisms of Autoimmune Hepatitis in the POSULD Cohort",
+   "type": "bio",
+   "status": "Closed",
+   "areas": [
+    "Autoimmune hepatitis"
+   ],
+   "theme": "Autoimmunity",
+   "lead": "Michele Tana",
+   "dept": "Medicine",
+   "division": "Gastroenterology (ZSFG)",
+   "origin": "Investigator-initiated",
+   "funding": "ImmunoX co·project (seed study, 2024)",
+   "services": [
+    "Clinical coordination",
+    "Project management"
+   ],
+   "card": "Mapped where immune cells and liver cells interact in autoimmune hepatitis, using spatial gene mapping and imaging of liver biopsies from a diverse San Francisco patient cohort.",
+   "full": "Autoimmune hepatitis is an understudied chronic liver disease that disproportionately affects women and people of color. Building on the POSULD cohort at Zuckerberg San Francisco General and UCSF (about 300 participants, 60 with autoimmune hepatitis) and earlier work that pointed to a possible autoantigen (AFF3) and to B and T cell interactions through CD40, this seed project mapped liver biopsies from patients with autoimmune hepatitis and a comparison liver disease (MASLD). The team used spatial transcriptomics with a custom 480-gene liver panel and multiplexed immunofluorescence to see where AFF3-expressing liver cells and CD40/CD40L-expressing immune cells sit, and piloted single-cell profiling of matched blood samples.",
+   "start": "2024",
+   "end": "2026",
+   "sites": [
+    "Zuckerberg San Francisco General",
+    "UCSF"
+   ],
+   "partners": [
+    "Bruce Wang (co-PI)",
+    "Cindy Ament (embedded researcher)",
+    "Jennifer Price",
+    "Emily Perito",
+    "Heather Stevenson (University of Texas)",
+    "ImmunoX CoLabs (Disease to Biology, Biological Imaging Development)"
+   ],
+   "parent": "coprojects",
+   "model": "Investigator-led study",
+   "specimens": [
+    "Liver biopsies (FFPE blocks and slides)",
+    "PBMCs"
+   ],
+   "assays": [
+    "Spatial transcriptomics (Xenium)",
+    "Multiplexed immunofluorescence",
+    "CITE-seq"
+   ],
+   "population": "POSULD participants with autoimmune hepatitis, with MASLD participants as comparison",
+   "inDL": true,
+   "open": true
+  },
+  {
+   "id": "lupus",
+   "name": "Single-Cell Map of Lupus",
+   "fullTitle": "Mapping the cell-type-specific molecular and genetic basis of lupus using single cell multiomics",
+   "type": "bio",
+   "status": "Closed",
+   "areas": [
+    "Systemic lupus erythematosus"
+   ],
+   "theme": "Autoimmunity",
+   "lead": "Chun Jimmie Ye",
+   "dept": "Medicine",
+   "division": "Rheumatology",
+   "origin": "Investigator-initiated",
+   "funding": "NIH · NIAID R01AI171184",
+   "fundingUrl": "https://reporter.nih.gov/project-details/10882903",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "Uses single-cell technologies to map which immune cells and genetic variants drive lupus in a diverse group of patients and controls, including how blood immune cells change during flares.",
+   "full": "Lupus (systemic lupus erythematosus) affects many organs, is far more common in women and in people of Asian, African, and Hispanic ancestry, and responds unevenly to treatment. Using blood samples from the ancestrally diverse California Lupus Epidemiology Study (CLUES), this project applies multiplexed single-cell technologies that read each immune cell's chromatin, genes, and surface proteins in about 300 patients and 80 controls. These data are combined with genetic studies to pinpoint which lupus-linked DNA variants act in which cell types, with a subset tested in T cells using CRISPR. Patients are also followed through flares and treatment, including a pilot of self-collected fingertip blood sampled frequently over time, to find markers that could guide more personalized care.",
+   "start": "2024",
+   "end": "2026",
+   "partners": [
+    "Jinoos Yazdany, MD, MPH",
+    "Julie Zikherman, MD",
+    "Jason Cyster, PhD",
+    "California Lupus Epidemiology Study (CLUES)"
+   ],
+   "model": "Investigator-led study",
+   "specimens": [
+    "Blood (PBMCs, granulocytes)",
+    "Self-collected capillary blood"
+   ],
+   "assays": [
+    "Single-cell multiomics (mux-TEA-seq)",
+    "fixed-SCITO-seq",
+    "Genotyping",
+    "CRISPRa/i validation"
+   ],
+   "population": "Adults with lupus in the multiethnic CLUES cohort (including patients sampled at flare) and healthy controls"
+  },
+  {
+   "id": "sjogren-s-syndrome-sicca",
+   "name": "SICCA: Sjögren's Registry & Biorepository",
+   "short": "SICCA",
+   "fullTitle": "Sjögren's International Collaborative Clinical Alliance",
+   "type": "bio",
+   "status": "Active",
+   "areas": [
+    "Sjögren's syndrome"
+   ],
+   "theme": "Autoimmunity",
+   "lead": "Caroline Shiboski",
+   "dept": "Orofacial Sciences",
+   "division": "Oral Medicine, Oral Pathology & Oral Radiology",
+   "origin": "Investigator-initiated",
+   "funding": "NIH · NIDCR U01DE028891 (SICCA-NextGen); supplemental funding from the Sjögren's Foundation",
+   "fundingUrl": "https://reporter.nih.gov/search/ssS1_PvHkUScQGZxqfVh1A/project-details/10885914",
+   "services": [
+    "Data management"
+   ],
+   "card": "OCR manages data for SICCA, an international registry and biorepository of clinical data and biospecimens from people evaluated for Sjögren's disease, shared with researchers worldwide.",
+   "full": "The Sjögren's International Collaborative Clinical Alliance (SICCA) was established in 2003 with NIDCR funding to develop new classification criteria for Sjögren's disease and better characterize how it looks and what genes drive it. Between 2003 and 2013, the Alliance built the International Sjögren's Syndrome Biorepository and Data Registry: uniform clinical data and biospecimens collected at nine research sites around the world. Since 2020, SICCA-NextGen has used these existing data and specimens, along with genome-wide genotyping of all participants, to study how genes are switched on and off in Sjögren's at the cell and tissue level. Researchers worldwide can apply for SICCA biospecimens and data. OCR supports SICCA's data management and dissemination; specimen collection was completed years before OCR's involvement.",
+   "start": "2003",
+   "partners": [
+    "Nine international research sites (incl. University of Buenos Aires",
+    "Peking Union Medical College Hospital",
+    "Rigshospitalet, Copenhagen",
+    "Kanazawa Medical University)"
+   ],
+   "url": "https://siccaonline.ucsf.edu/",
+   "model": "Biobank",
+   "specimens": [
+    "Clinical data",
+    "Labial salivary gland biopsies",
+    "Genotyping data"
+   ],
+   "assays": [
+    "Genome-wide genotyping",
+    "Transcriptomics",
+    "Epigenetics"
+   ],
+   "population": "People evaluated for Sjögren's disease at nine international research sites",
+   "inDL": true,
+   "open": true
+  },
+  {
+   "id": "tcr-repertoire",
+   "name": "T-Cell Repertoire in GI Cancers",
+   "fullTitle": "Assessing the Immune Cell Repertoire of Pancreatic and Colorectal Cancer Patients",
+   "type": "bio",
+   "status": "Closed",
+   "areas": [
+    "Pancreatic cancer",
+    "Colorectal cancer"
+   ],
+   "theme": "Cancer",
+   "lead": "ShennonBio",
+   "origin": "Industry-sponsored",
+   "funding": "Industry · Shennon Bio",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "Shennon Bio mapped the immune cell (T-cell receptor) repertoires of patients with pancreatic and colorectal cancer, using tumor tissue and blood collected through a UCSF biorepository.",
+   "full": "This project assessed the immune cell repertoire of pancreatic and colorectal cancer patients. Tumor tissue, blood, and de-identified clinical data were obtained through the UCSF Molecular Profiling in GI Malignancies Biorepository under an approved specimen request, without the need for personal health information.",
+   "start": "2024",
+   "end": "2026",
+   "partners": [
+    "UCSF Molecular Profiling in GI Malignancies Biorepository (Cancer Center Tissue Core)"
+   ],
+   "model": "Industry collaboration",
+   "specimens": [
+    "Tumor tissue",
+    "Blood"
+   ],
+   "assays": [
+    "Immune cell / T-cell receptor repertoire"
+   ],
+   "population": "Patients with pancreatic or colorectal cancer",
+   "open": true
+  },
+  {
+   "id": "allergen-immunotherapy",
+   "name": "Nasal Immune Responses to Allergy Shots",
+   "fullTitle": "Local adaptive immune responses during allergen immunotherapy",
+   "type": "bio",
+   "status": "Active",
+   "areas": [
+    "Allergic rhinoconjunctivitis",
+    "Allergic asthma"
+   ],
+   "theme": "Allergy",
+   "lead": "Christopher Allen",
+   "dept": "Anatomy",
+   "origin": "Investigator-initiated",
+   "funding": "ImmunoX co·project (seed study, 2025)",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "A pilot using simple nasal swabs to sample immune cells in the adenoids and nasal lining of people with airborne allergies, to learn how allergy shots retrain the immune system.",
+   "full": "Allergen immunotherapy (allergy shots) reduces symptoms of airborne allergies and allergic asthma, but how it changes the immune system is unclear, because most studies have looked only at blood. This seed project uses a non-invasive nasal swab, adapted from COVID research at the La Jolla Institute for Immunology, to sample the adenoids, a lymph tissue at the back of the nose, along with a paired swab of the nasal lining. Swabs from up to 12 patients at the UCSF Allergy and Immunology Clinic, comparing people about to start immunotherapy with those on long-term maintenance, are profiled with flow cytometry and single-cell sequencing of B and T cells. The goal is to show this approach works and lay the groundwork for following patients over time.",
+   "start": "2025",
+   "sites": [
+    "UCSF Allergy and Immunology Clinic"
+   ],
+   "partners": [
+    "Mark Ansel and Monica Tang (co-PIs)",
+    "Shane Crotty (La Jolla Institute for Immunology)",
+    "ImmunoX CoLabs (Disease to Biology, Flow Cytometry, Genomics, Data Science)"
+   ],
+   "parent": "coprojects",
+   "model": "Investigator-led study",
+   "specimens": [
+    "Nasal swabs (nasopharyngeal/adenoid and inferior turbinate)"
+   ],
+   "assays": [
+    "Flow cytometry",
+    "CITE-seq",
+    "TCR/BCR sequencing"
+   ],
+   "population": "Patients with airborne (aeroallergen) allergies at the UCSF Allergy and Immunology Clinic, before starting or on maintenance allergen immunotherapy",
+   "inDL": true,
+   "open": true
+  },
+  {
+   "id": "obesity-and-glp-1-biobank",
+   "name": "Obesity and GLP-1 Biobank",
+   "fullTitle": "Development of an Obesity and Immune-Mediated Disease Pipeline",
+   "type": "bio",
+   "status": "Active",
+   "areas": [
+    "Obesity",
+    "Rheumatoid arthritis",
+    "Psoriatic arthritis",
+    "Axial spondyloarthritis",
+    "Lupus",
+    "Type 1 diabetes",
+    "Graves' disease",
+    "Myositis"
+   ],
+   "theme": "Autoimmunity",
+   "lead": "Diana Alba",
+   "dept": "Medicine",
+   "division": "Endocrinology & Metabolism (ZSFG)",
+   "origin": "Investigator-initiated",
+   "funding": "OCR",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "Collects blood, fat tissue, and stool from diverse adults at Zuckerberg San Francisco General to study how obesity, GLP-1 drugs, and weight-loss surgery affect autoimmune and inflammatory diseases.",
+   "full": "This pipeline builds a biobank at Zuckerberg San Francisco General, a safety-net hospital serving a racially, ethnically, and socioeconomically diverse population often missing from obesity and immunology research. Adults with and without obesity, and with or without autoimmune or inflammatory conditions such as rheumatoid arthritis, lupus, type 1 diabetes, Graves' disease, and myositis, donate blood, fat tissue (by small biopsy or from planned surgery), and stool, along with health, diet, and quality-of-life questionnaires and an optional body-composition scan. People starting a GLP-1 medication or having weight-loss surgery give repeat stool samples over six months. The initial pilot aims to enroll 50 to 60 participants in its first year, and samples are open to UCSF investigators studying inflammation, metabolism, the microbiome, and immune-mediated disease.",
+   "start": "2026",
+   "sites": [
+    "Zuckerberg San Francisco General (Endocrine, Rheumatology, and Ward 92 specialty clinics)"
+   ],
+   "partners": [
+    "Kristen Mengwasser, MD (co-investigator)",
+    "Peter Turnbaugh (microbiome)"
+   ],
+   "model": "Biobank",
+   "specimens": [
+    "Blood (serum, plasma, PBMCs)",
+    "Subcutaneous and visceral adipose tissue",
+    "Stool",
+    "Clinical and dietary questionnaires",
+    "DXA body composition"
+   ],
+   "assays": [
+    "Single-cell RNA-seq",
+    "TCR/BCR repertoire",
+    "Cytokine profiling",
+    "Autoantigen discovery",
+    "Microbiome",
+    "Adipose tissue histology"
+   ],
+   "population": "Adults 18–75 at ZSFG or affiliated UCSF clinics, with or without obesity and with or without autoimmune disease, including people starting GLP-1 therapy or having bariatric surgery",
+   "open": true
+  },
+  {
+   "id": "nicu-picu-biobank",
+   "name": "NICU/PICU Biobank",
+   "type": "bio",
+   "status": "Closed",
+   "areas": [
+    "Pediatric development (multi-organ)"
+   ],
+   "theme": "Pediatrics",
+   "lead": "Elizabeth Crouch",
+   "dept": "Pediatrics",
+   "division": "Neonatology",
+   "origin": "Investigator-initiated",
+   "funding": "OCR Biospecimen Pipeline Development award",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "Offered families who lost a child at UCSF Benioff Children's Hospital the chance to donate tissue to research, helping fill a major gap in understanding how organs like the brain develop in childhood.",
+   "full": "Families whose child passed away in the Children's Hospital had no way to donate tissue to research. Studies with parents who have lost a baby show that donation can bring meaning and help with grief and coping. Children have long been underrepresented in research, and childhood is largely missing from tissue atlases; for example, brain blood vessel cells have been described before birth and in adults, but not in children. This pipeline set out to collect brain tissue across pediatric ages with autopsy and neuropathology support, with the longer-term aim of a dedicated program serving researchers who study development across childhood.",
+   "start": "2025",
+   "end": "2025",
+   "partners": [
+    "Dr. Andrew Connolly (Director of Autopsy)",
+    "NICU/PICU and Labor & Delivery research coordinators"
+   ],
+   "model": "Biobank",
+   "specimens": [
+    "Postmortem brain",
+    "Other organs (multi-organ donation)"
+   ],
+   "assays": [
+    "Brain vascular development profiling"
+   ],
+   "population": "Infants and children who pass away at UCSF Benioff Children's Hospital, with family consent"
+  },
+  {
+   "id": "prostate-cancer-biobank",
+   "name": "Prostate Cancer Biobank",
+   "type": "bio",
+   "status": "Active",
+   "areas": [
+    "Prostate cancer"
+   ],
+   "theme": "Cancer",
+   "lead": "Rohit Bose",
+   "dept": "Anatomy",
+   "origin": "Investigator-initiated",
+   "funding": "OCR Biospecimen Pipeline Development award",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "Collects fresh tumor, tumor-adjacent, and normal tissue from prostate cancer surgeries to find molecular signs of aggressive disease and grow patient-derived organoids.",
+   "full": "This pipeline collects three to four fresh research samples from each prostatectomy for locally advanced prostate cancer, marked as tumor, tumor-adjacent, and distant normal tissue, plus lymph node metastases when available (about one set every two weeks). Samples are placed in growth media for culture and molecular profiling, including deep DNA and RNA sequencing, possible cell-surface protein profiling, spatial analysis, and patient-derived organoids. The goal is to understand how normal and pre-cancerous prostate tissue evolves into clinically significant cancer, find biomarkers in nearby normal tissue that predict aggressive or treatment-resistant disease, and expand UCSF's biobank of patient-derived prostate cancer models.",
+   "start": "2025",
+   "partners": [
+    "Matthew Cooperberg, MD (Urology)"
+   ],
+   "model": "Biobank",
+   "specimens": [
+    "Fresh prostatectomy tissue (tumor, tumor-adjacent, distant normal)",
+    "Lymph node metastases when available"
+   ],
+   "assays": [
+    "DNA sequencing",
+    "RNA sequencing",
+    "Cell-surface protein profiling",
+    "Spatial analysis",
+    "Patient-derived organoids"
+   ],
+   "population": "Patients with locally advanced prostate cancer undergoing prostatectomy",
+   "open": true
+  },
+  {
+   "id": "bronchiectasis-biobank",
+   "name": "Bronchiectasis & NTM Research Registry & Biorepository",
+   "type": "bio",
+   "status": "Active",
+   "areas": [
+    "Bronchiectasis",
+    "Pulmonary NTM"
+   ],
+   "theme": "Lung disease",
+   "lead": "Shoshana Zha",
+   "dept": "Medicine",
+   "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+   "origin": "Investigator-initiated",
+   "funding": "OCR Biospecimen Pipeline Development award",
+   "services": [
+    "Clinical coordination",
+    "Data management"
+   ],
+   "card": "A growing cohort and biobank of blood, sputum, nasal brushings, and bacterial isolates from a diverse group of adults with bronchiectasis and NTM lung disease, shared with researchers studying these understudied diseases.",
+   "full": "INTEGRATE launched a prospective cohort and biobank in 2024; about 120 participants have since donated blood. With pipeline funding, the biobank is expanding from the Lung Health Center at Parnassus to the Chest Clinic at Zuckerberg San Francisco General, with a focus on groups underrepresented in research, and adding sputum and nasal brushings alongside blood (PBMCs, serum, plasma), NTM bacterial isolates, and yearly quality-of-life and social-needs questionnaires. The goal is to enroll 75 more participants. Samples support studies of how NTM bacteria and the immune system interact to cause lung disease, new bronchiectasis subtypes in diverse populations, and how CFTR-related disorders affect immune responses to NTM. OCR is helping upgrade sample tracking and the database, and a research website for sample requests is planned.",
+   "start": "2026",
+   "sites": [
+    "Parnassus (Lung Health Center)",
+    "Zuckerberg San Francisco General (Chest Clinic)"
+   ],
+   "partners": [
+    "INTEGRATE (Bronchiectasis & NTM Program)",
+    "Jon Budzik, MD, PhD",
+    "UCSF Airway Clinical Research Center",
+    "UCSF Clinical Microbiology Laboratory"
+   ],
+   "parent": "bronchiectasis-clinical-research-unit",
+   "model": "Biobank",
+   "specimens": [
+    "Blood (PBMCs, serum, plasma)",
+    "Sputum",
+    "Nasal brushings",
+    "NTM isolates",
+    "Questionnaires"
+   ],
+   "assays": [
+    "Macrophage infection models",
+    "Sputum transcriptomics and proteomics",
+    "Air-liquid interface co-culture"
+   ],
+   "population": "Adults with bronchiectasis and/or NTM lung disease in INTEGRATE clinics, with a focus on groups underrepresented in research",
+   "open": true
+  },
+  {
+   "id": "influenza",
+   "name": "Influenza",
+   "type": "bio",
+   "status": "Active",
+   "areas": [
+    "Influenza"
+   ],
+   "theme": "Infectious disease",
+   "lead": "Angela Phillips",
+   "dept": "Microbiology & Immunology",
+   "origin": "Investigator-initiated",
+   "services": [
+    "Clinical coordination"
+   ],
+   "start": "2026",
+   "model": "Investigator-led study"
+  },
+  {
+   "id": "colorectal-cancer",
+   "name": "Colorectal Cancer Organoids for Immunotherapy",
+   "fullTitle": "Preclinical Testing of Immunotherapies in Combined CRC Air-Liquid Interface Patient-Derived Organoids plus Lymphoid Organoids",
+   "type": "bio",
+   "status": "Active",
+   "areas": [
+    "Colorectal cancer"
+   ],
+   "theme": "Cancer",
+   "lead": "Karin Pelka",
+   "dept": "Microbiology & Immunology",
+   "origin": "Investigator-initiated",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "Builds combined tumor and lymph-node organoids from colorectal cancer surgeries to test new immunotherapies, such as Treg depleters and CAR T cells, for the many colorectal cancers that don't respond to current immunotherapy.",
+   "full": "Immunotherapy helps only a small share of colorectal cancer patients. This feasibility study collects fresh tumor and lymph node tissue from colorectal cancer surgeries (10 cases in year 1) to build combined tumor and lymphoid organoids. These lab-grown models are used to test emerging immunotherapies, including CCR8 Treg depleters and GCC19 CAR T cells, measuring cancer cell killing and changes in the tumor's immune 'hubs' with spatial profiling. A larger multi-year effort is planned if the approach proves feasible.",
+   "start": "2025",
+   "partners": [
+    "Chloe Atreya, MD, PhD",
+    "Matthew Spitzer, PhD",
+    "Aras Mattis, MD, PhD (BSPL)",
+    "UCSF Molecular Profiling in GI Malignancies Biorepository (Cancer Center Tissue Core)"
+   ],
+   "model": "Investigator-led study",
+   "specimens": [
+    "Fresh colectomy tumor",
+    "Lymphoid tissue (lymph nodes / FNA)",
+    "Normal tissue"
+   ],
+   "assays": [
+    "Tumor organoids (ALI PDO)",
+    "Lymphoid organoids",
+    "Xenium spatial profiling"
+   ],
+   "population": "Colorectal cancer patients (any stage) undergoing surgical resection; excludes rectal tumors after neoadjuvant chemoradiation",
+   "open": true
+  },
+  {
+   "id": "kidney-cancer-immunoprofiling",
+   "name": "Kidney Cancer Immunoprofiling",
+   "short": "IPI RCC",
+   "fullTitle": "Immunoprofiling of Renal Cell Carcinoma",
+   "type": "bio",
+   "status": "Active",
+   "areas": [
+    "Renal cell carcinoma"
+   ],
+   "theme": "Cancer",
+   "lead": "Matthew Krummel, Alexis Combes",
+   "dept": "Pathology",
+   "origin": "Investigator-initiated",
+   "funding": "Philanthropy",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "A pilot that profiles immune cells in kidney tumors removed during surgery and tests drug combinations on living tumor slices, aiming to match immunotherapies to each tumor's immune type.",
+   "full": "Single-drug treatments often fail in kidney cancer. This pilot collects tumor tissue and matched blood from 15 patients undergoing radical nephrectomy. Part of each tumor is profiled by flow cytometry to assign it to one of two immune 'archetypes,' and thin slices of living tumor are cultured with different drug combinations and analyzed by flow cytometry and single-cell sequencing. The goal is to find combinations that work for each archetype, laying the groundwork for a future clinical trial.",
+   "start": "2024",
+   "partners": [
+    "UCSF GU Oncology",
+    "Max Meng, MD",
+    "Aras Mattis, MD, PhD (BSPL)"
+   ],
+   "model": "Investigator-led study",
+   "specimens": [
+    "Nephrectomy tumor tissue",
+    "Whole blood"
+   ],
+   "assays": [
+    "Flow cytometry",
+    "Single-cell sequencing",
+    "Tumor slice culture drug testing"
+   ],
+   "population": "Adults undergoing radical nephrectomy for kidney tumors larger than 5 cm",
+   "open": true
+  },
+  {
+   "id": "psoriatic-arthritis-and-spondyloarthritis",
+   "name": "Tissue-Resident T Cells in Psoriatic Arthritis",
+   "fullTitle": "Paired Synovial, Skin, and Blood Biospecimen Collection to Characterize Tissue-Resident Memory T Cells in Psoriatic Arthritis and Spondyloarthritis",
+   "type": "bio",
+   "status": "Active",
+   "areas": [
+    "Psoriatic arthritis",
+    "Spondyloarthritis"
+   ],
+   "theme": "Autoimmunity",
+   "lead": "Judith Ashouri",
+   "dept": "Medicine",
+   "division": "Rheumatology",
+   "origin": "Industry-sponsored",
+   "funding": "Industry · Radera",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "Collects paired joint (synovial) tissue, skin, and blood from patients with psoriatic arthritis and spondyloarthritis to study tissue-resident memory T cells as a potential treatment target.",
+   "full": "In partnership with Radera, this project enrolls about 12 patients with psoriatic arthritis or spondyloarthritis from UCSF rheumatology clinics who are having a large-joint procedure. Synovial tissue and blood are collected at the procedure, and a skin biopsy about two weeks later. Samples are fixed, banked, or delivered fresh with coded IDs only, so the sponsor can examine tissue-resident memory T cells using multiplex immunofluorescence and flow cytometry.",
+   "start": "2026",
+   "sites": [
+    "UCSF rheumatology clinics",
+    "Ashouri Lab (Parnassus)"
+   ],
+   "partners": [
+    "Radera",
+    "Lianne Gensler, MD (co-investigator)"
+   ],
+   "model": "Industry collaboration",
+   "specimens": [
+    "Synovial tissue",
+    "Skin biopsy",
+    "Blood"
+   ],
+   "assays": [
+    "Multiplex immunofluorescence",
+    "Flow cytometry"
+   ],
+   "population": "Adults with psoriatic arthritis or spondyloarthritis scheduled for a large-joint procedure",
+   "open": true
+  },
+  {
+   "id": "copa-biomarker",
+   "name": "COPA Syndrome Biomarker Study",
+   "fullTitle": "Non-IMP clinical study to generate data on the natural history of disease, biomarkers, and relevance of clinical endpoints in patients with selected type 1 interferonopathies",
+   "type": "clin",
+   "status": "Active",
+   "areas": [
+    "COPA syndrome",
+    "Type 1 interferonopathies (AGS, SAVI, FCL)"
+   ],
+   "theme": "Autoimmunity",
+   "lead": "Anthony Shum",
+   "dept": "Medicine",
+   "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+   "origin": "Industry-sponsored",
+   "funding": "Industry · Boehringer Ingelheim",
+   "services": [
+    "Project management",
+    "Clinical coordination"
+   ],
+   "card": "Follows children and adults with COPA syndrome and related rare interferon diseases for two years to track how the disease changes and which blood markers reflect disease activity.",
+   "full": "COPA syndrome and related type 1 interferonopathies (Aicardi-Goutières syndrome, SAVI, and familial chilblain lupus) are ultra-rare inherited diseases in which an overactive interferon pathway drives inflammation in the lungs, skin, joints, and other organs. There are no approved treatments. This multicenter study gives no study drug: at least 40 children and adults (about 10 with COPA syndrome) receiving standard care are followed for two years, with regular visits measuring an interferon gene score, doctor and patient assessments, lung function, and skin and joint activity. An optional interview substudy captures what matters most to patients and families. The results will help design trials of new therapies.",
+   "start": "2024",
+   "end": "2026",
+   "studyType": "Biomarker study",
+   "intervention": "None (observational; standard of care)",
+   "eligibility": "Children and adults with a genetic diagnosis of COPA syndrome, AGS, SAVI, FCL, or another selected type 1 interferonopathy",
+   "target": "40"
+  },
+  {
+   "id": "copa-natural-history",
+   "name": "COPA Syndrome Natural History Study",
+   "fullTitle": "Natural History Study of Selected Type 1 Interferonopathies with Mutation in cGAS/STING Pathway",
+   "type": "clin",
+   "status": "Closed",
+   "areas": [
+    "COPA syndrome",
+    "Type 1 interferonopathies (AGS, SAVI, FCL)"
+   ],
+   "theme": "Autoimmunity",
+   "lead": "Anthony Shum",
+   "dept": "Medicine",
+   "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+   "origin": "Industry-sponsored",
+   "funding": "Industry · Boehringer Ingelheim",
+   "services": [
+    "Project management",
+    "Clinical coordination"
+   ],
+   "card": "Reviewed medical records of patients with COPA syndrome and related rare interferon diseases to describe how these conditions are diagnosed, progress, and are treated in real-world care.",
+   "full": "COPA syndrome and related type 1 interferonopathies are ultra-rare inherited inflammatory diseases with little published information on how they unfold over time. This multinational study reviewed existing medical records at expert centers to describe patients' characteristics at diagnosis, how the disease changed afterward, the treatments and healthcare they received, and survival, with a goal of about 125 patients across all included syndromes. No visits or procedures were required. The findings support the design of future trials for new therapies.",
+   "start": "2024",
+   "end": "2025",
+   "studyType": "Observational / natural history",
+   "intervention": "None (medical record review)",
+   "enrollment": "Completed",
+   "eligibility": "Patients of any age with a genetically confirmed type 1 interferonopathy in the cGAS/STING pathway, identified from site medical records",
+   "target": "125"
+  },
+  {
+   "id": "poetyk-sjs-1-deucravacitinib-for-sjogren-s",
+   "name": "POETYK SjS-1: Deucravacitinib for Sjögren's",
+   "short": "POETYK SjS-1",
+   "fullTitle": "A Phase 3, Randomized, Double-blind, Placebo-controlled Study to Evaluate the Efficacy and Safety of Deucravacitinib in Adults with Active Sjögren's Syndrome (POETYK SjS-1)",
+   "type": "clin",
+   "status": "Closed",
+   "areas": [
+    "Sjögren's syndrome"
+   ],
+   "theme": "Autoimmunity",
+   "lead": "John Gonzales",
+   "dept": "Ophthalmology",
+   "origin": "Industry-sponsored",
+   "funding": "Industry · Bristol Myers Squibb",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "A Phase 3 trial testing whether deucravacitinib, a pill already approved for psoriasis, reduces disease activity in adults with active Sjögren's disease compared with placebo.",
+   "full": "Sjögren's disease has no approved treatment that targets its underlying inflammation. This international Phase 3 study (about 756 participants) tests deucravacitinib, an oral medicine approved for psoriasis that blocks inflammatory signals such as type I interferon and IL-12. Participants are randomly assigned to one of two doses or placebo for 52 weeks, with visits every four weeks that include saliva and tear measurements, joint exams, and blood and urine tests. Those who complete the first year may continue on active drug for up to two more years.",
+   "start": "2025",
+   "end": "2025",
+   "sites": [
+    "Sol Silverman Oral Medicine Clinic (Parnassus)"
+   ],
+   "partners": [
+    "Caroline Shiboski (co-PI)"
+   ],
+   "url": "https://clinicaltrials.gov/study/NCT05946941",
+   "studyType": "Interventional trial",
+   "phase": "Phase 3",
+   "intervention": "Deucravacitinib oral tablet, two doses twice daily vs. placebo for 52 weeks; optional 2-year extension on active drug",
+   "nct": "NCT05946941",
+   "enrollment": "Active, not recruiting",
+   "eligibility": "Adults 18+ with moderate-to-severe active Sjögren's (anti-Ro/SSA positive, diagnosed within 10 years, some remaining saliva flow)",
+   "target": "756"
+  },
+  {
+   "id": "cephalosporin-allergy",
+   "name": "DACAT: Cephalosporin Allergy Testing",
+   "short": "DACAT",
+   "fullTitle": "Optimizing the Diagnostic Approach to Cephalosporin Allergy Testing",
+   "type": "clin",
+   "status": "Closed",
+   "areas": [
+    "Antibiotic (cephalosporin) allergy"
+   ],
+   "theme": "Allergy",
+   "lead": "Iris Otani",
+   "dept": "Medicine",
+   "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+   "origin": "Investigator-initiated",
+   "funding": "NIH · NIAID U01AI184071 (investigator-initiated; lead site Massachusetts General Hospital)",
+   "fundingUrl": "https://reporter.nih.gov/project-details/10928478",
+   "services": [
+    "Project management",
+    "Clinical coordination"
+   ],
+   "card": "UCSF took part in a national trial using carefully supervised skin tests and drug challenges to find the best way to diagnose cephalosporin antibiotic allergy and learn which related antibiotics are safe.",
+   "full": "Cephalosporins are first-line antibiotics for pneumonia, urinary tract infections, and surgical infections, but there is no standard, validated way to test for cephalosporin allergy, so many people avoid useful antibiotics. DACAT is the first clinical trial in drug allergy to compare diagnostic strategies for a major antibiotic class. About 300 participants at six U.S. sites, including UCSF during OCR's involvement, undergo double-blind skin testing and placebo-controlled drug challenges over two to four visits. The study aims to confirm or rule out suspected allergies, test whether skin testing is useful, measure cross-reactivity with related antibiotics, and investigate how cephalosporin allergy works.",
+   "start": "2024",
+   "partners": [
+    "Massachusetts General Hospital (lead)",
+    "Mayo Clinic",
+    "UT Southwestern Medical Center"
+   ],
+   "url": "https://antibioticallergy.massgeneral.org/info/",
+   "studyType": "Interventional trial",
+   "phase": "Phase 2",
+   "intervention": "Double-blind skin testing and placebo-controlled drug challenges with cephalosporins (and amoxicillin)",
+   "nct": "NCT06406114",
+   "eligibility": "People with a history of an immediate allergic reaction to at least one cephalosporin who are not currently taking beta-lactam antibiotics",
+   "target": "300"
+  },
+  {
+   "id": "epicel-cultured-epidermal-autografts-hud",
+   "name": "Epicel Cultured Epidermal Autografts (HUD)",
+   "fullTitle": "Epicel HUD-Cultured Epidermal Autographs (HUD)",
+   "type": "clin",
+   "status": "Active",
+   "areas": [
+    "Severe burns"
+   ],
+   "theme": "Surgery & devices",
+   "lead": "Richard Grossman",
+   "services": [],
+   "card": "Provides Epicel, lab-grown sheets of a patient's own skin cells, under a Humanitarian Use Device approval to cover large, deep burns at UCSF Hyde Hospital.",
+   "start": "2025",
+   "sites": [
+    "UCSF Hyde Hospital (formerly St. Francis)"
+   ],
+   "parent": "clinical-research-office-at-ucsf-hyde-and-stanyan-hospitals",
+   "studyType": "Humanitarian Use Device (HUD)",
+   "intervention": "Epicel cultured epidermal autografts"
+  },
+  {
+   "id": "long-covid-physiology",
+   "name": "Long COVID Physiology",
+   "fullTitle": "Physiologic Characteristics of symptomatic Long-COVID patients",
+   "type": "clin",
+   "status": "Active",
+   "areas": [
+    "Long COVID"
+   ],
+   "theme": "Infectious disease",
+   "lead": "Jamie Bigelow",
+   "origin": "Investigator-initiated",
+   "services": [],
+   "card": "Studies the physical and physiological characteristics of patients with ongoing Long COVID symptoms at UCSF Hyde and Stanyan Hospitals.",
+   "start": "2025",
+   "sites": [
+    "UCSF Hyde Hospital (formerly St. Francis)",
+    "UCSF Stanyan Hospital (formerly St. Mary's)"
+   ],
+   "parent": "clinical-research-office-at-ucsf-hyde-and-stanyan-hospitals",
+   "studyType": "Observational / natural history"
+  },
+  {
+   "id": "peritoneal-pull-through-vaginoplasty",
+   "name": "Peritoneal Pull-Through Vaginoplasty",
+   "fullTitle": "Peritoneal Pull Through Technique for Gender Confirmation Vaginoplasty Grafting",
+   "type": "clin",
+   "status": "Active",
+   "areas": [
+    "Gender-affirming surgery"
+   ],
+   "theme": "Surgery & devices",
+   "lead": "Heidi Wittenberg",
+   "origin": "Investigator-initiated",
+   "services": [],
+   "card": "Evaluates the peritoneal pull-through technique as a grafting approach in gender-affirming vaginoplasty at UCSF Hyde Hospital.",
+   "start": "2025",
+   "sites": [
+    "UCSF Hyde Hospital (formerly St. Francis)"
+   ],
+   "parent": "clinical-research-office-at-ucsf-hyde-and-stanyan-hospitals",
+   "intervention": "Peritoneal pull-through grafting technique"
+  },
+  {
+   "id": "papyrus-covered-coronary-stent-hud",
+   "name": "Papyrus Covered Coronary Stent (HUD)",
+   "fullTitle": "Papyrus Covered Coronary Stent System Humanitarian Use Device (HUD)",
+   "type": "clin",
+   "status": "Active",
+   "areas": [
+    "Coronary artery perforation"
+   ],
+   "theme": "Surgery & devices",
+   "lead": "Remo Morelli",
+   "dept": "Cardiovascular Medical Group",
+   "services": [],
+   "card": "Provides the Papyrus covered coronary stent under a Humanitarian Use Device approval to seal tears in heart arteries during procedures at UCSF Stanyan Hospital.",
+   "start": "2025",
+   "sites": [
+    "UCSF Stanyan Hospital (formerly St. Mary's)"
+   ],
+   "parent": "clinical-research-office-at-ucsf-hyde-and-stanyan-hospitals",
+   "studyType": "Humanitarian Use Device (HUD)",
+   "intervention": "Papyrus covered coronary stent system"
+  },
+  {
+   "id": "premia-spine-tops-system",
+   "name": "TOPS: Motion-Preserving Spinal Implant",
+   "short": "TOPS",
+   "fullTitle": "A Clinical Study to Access the Safety and Effectiveness of the Premia Spine TOPS System",
+   "type": "clin",
+   "status": "Active",
+   "areas": [
+    "Lumbar spinal stenosis",
+    "Degenerative spondylolisthesis"
+   ],
+   "theme": "Surgery & devices",
+   "lead": "James Zucherman",
+   "dept": "San Francisco Spine Surgeons",
+   "origin": "Industry-sponsored",
+   "funding": "Industry · Premia Spine",
+   "services": [],
+   "card": "A randomized study comparing the TOPS System, a motion-preserving spinal implant, with standard fusion surgery for lumbar spinal stenosis with slipped vertebrae, at UCSF Stanyan Hospital.",
+   "full": "Lumbar spinal stenosis, a narrowing of the spinal canal common with aging, causes back and leg pain that worsens with standing and walking. When a vertebra has also slipped forward (degenerative spondylolisthesis), surgeons usually fuse the affected segment after relieving pressure on the nerves. This FDA investigational device study, which enrolled 305 patients at sites across the U.S., compares the TOPS System, an implant designed to stabilize the spine while preserving motion, with standard transforaminal lumbar interbody fusion. Patients were randomly assigned 2:1 to TOPS or fusion and are followed for five years, with the main results assessed at two years.",
+   "start": "2025",
+   "sites": [
+    "UCSF Stanyan Hospital (formerly St. Mary's)"
+   ],
+   "url": "https://clinicaltrials.gov/study/NCT03012776",
+   "parent": "clinical-research-office-at-ucsf-hyde-and-stanyan-hospitals",
+   "studyType": "Interventional trial",
+   "intervention": "TOPS System (Total Posterior Spine) vs. transforaminal lumbar interbody fusion (TLIF), randomized 2:1",
+   "nct": "NCT03012776",
+   "enrollment": "Active, not recruiting",
+   "eligibility": "Adults 35–80 with at least moderate lumbar spinal stenosis and grade I degenerative spondylolisthesis at one level needing decompression surgery",
+   "target": "305"
+  },
+  {
+   "id": "airtivity-bi-1291583-for-bronchiectasis",
+   "name": "AIRTIVITY: BI 1291583 for Bronchiectasis",
+   "short": "AIRTIVITY",
+   "fullTitle": "A Phase III, Randomised, Double-blind, Placebo-controlled Study to Assess the Efficacy, Safety, and Tolerability of BI 1291583 2.5 mg Administered Once Daily for up to 76 Weeks in Patients With Bronchiectasis (The AIRTIVITY™ Study)",
+   "type": "clin",
+   "status": "Active",
+   "areas": [
+    "Bronchiectasis"
+   ],
+   "theme": "Lung disease",
+   "lead": "Shoshana Zha",
+   "dept": "Medicine",
+   "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+   "origin": "Industry-sponsored",
+   "funding": "Industry · Boehringer Ingelheim",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "A Phase 3 trial testing whether a once-daily pill, BI 1291583, reduces flare-ups in adults and adolescents with bronchiectasis compared with placebo.",
+   "full": "AIRTIVITY is a large international Phase 3 study (about 1,755 participants) of BI 1291583, a once-daily tablet, in people aged 12 and older with bronchiectasis who produce sputum and have had recent flare-ups. Participants are randomly assigned to BI 1291583 or placebo for up to 76 weeks, track their symptoms in a smartphone diary, and attend up to 10 clinic visits. The main measure is how often flare-ups occur in each group. The study is expected to finish in December 2027.",
+   "start": "2025",
+   "sites": [
+    "Parnassus"
+   ],
+   "url": "https://clinicaltrials.ucsf.edu/trial/NCT06872892",
+   "parent": "bronchiectasis-clinical-research-unit",
+   "studyType": "Interventional trial",
+   "phase": "Phase 3",
+   "intervention": "BI 1291583 2.5 mg tablet once daily vs. placebo, up to 76 weeks",
+   "nct": "NCT06872892",
+   "enrollment": "Active, not recruiting",
+   "eligibility": "Ages 12+ with CT-confirmed bronchiectasis, chronic sputum, and recent flare-ups needing antibiotics",
+   "target": "1755"
+  },
+  {
+   "id": "clear-azd0292-for-bronchiectasis-with-pseudomonas",
+   "name": "CLEAR: AZD0292 for Bronchiectasis with Pseudomonas",
+   "short": "CLEAR",
+   "fullTitle": "A Phase IIb Randomized, Double-blind, Placebo-controlled, Parallel, Multidose Study to Evaluate the Efficacy, Safety, and PK of AZD0292 in Participants 12 Years of Age and Older With Bronchiectasis and Chronic Pseudomonas Aeruginosa Colonization",
+   "type": "clin",
+   "status": "Active",
+   "areas": [
+    "Bronchiectasis",
+    "Pseudomonas aeruginosa infection"
+   ],
+   "theme": "Lung disease",
+   "lead": "Shoshana Zha",
+   "dept": "Medicine",
+   "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+   "origin": "Industry-sponsored",
+   "funding": "Industry · AstraZeneca",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "A Phase 2b trial testing AZD0292, an IV antibody treatment, to prevent flare-ups in people with bronchiectasis whose airways are chronically infected with Pseudomonas bacteria.",
+   "full": "CLEAR is a Phase 2b study (about 435 participants) of AZD0292, an antibody given by IV infusion, for preventing flare-ups in people aged 12 and older with bronchiectasis whose airways are chronically colonized with Pseudomonas aeruginosa, a bacterium linked to frequent flare-ups, declining lung function, and poorer quality of life. Two dosing regimens are compared with placebo. People with cystic fibrosis who carry Pseudomonas are included as a smaller exploratory group. The study is expected to finish in June 2028.",
+   "start": "2025",
+   "sites": [
+    "Parnassus"
+   ],
+   "url": "https://clinicaltrials.ucsf.edu/trial/NCT07088926",
+   "parent": "bronchiectasis-clinical-research-unit",
+   "studyType": "Interventional trial",
+   "phase": "Phase 2",
+   "intervention": "AZD0292 (bispecific monoclonal antibody), IV, two dose regimens vs. placebo",
+   "nct": "NCT07088926",
+   "enrollment": "Recruiting",
+   "eligibility": "Ages 12+ (at least 35 kg) with CT-confirmed bronchiectasis, recent flare-ups, and chronic Pseudomonas in the airways",
+   "target": "435"
+  },
+  {
+   "id": "sounds-protecting-hearing-during-ntm-treatment",
+   "name": "SOUNDS: Protecting Hearing During NTM Treatment",
+   "short": "SOUNDS",
+   "fullTitle": "Phase 2 Study of the Efficacy and Safety of ORC-13661 for the Prevention of Drug-Induced Hearing Loss in Patients Receiving Intravenous Amikacin Therapy for Non-Tuberculous Mycobacterium Disease",
+   "type": "clin",
+   "status": "Active",
+   "areas": [
+    "Nontuberculous mycobacterial (NTM) lung disease",
+    "Drug-induced hearing loss"
+   ],
+   "theme": "Lung disease",
+   "lead": "Shoshana Zha",
+   "dept": "Medicine",
+   "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+   "origin": "Investigator-initiated",
+   "funding": "NIH · NIDCD U01DC020175 (lead site Oregon Health & Science University; sponsor-investigator Kevin Winthrop)",
+   "fundingUrl": "https://reporter.nih.gov/search/SuRqufKNBkqCp2jTgAeIRw/project-details/11386397",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "A Phase 2 trial testing whether ORC-13661 can protect hearing in people receiving the antibiotic amikacin for nontuberculous mycobacterial (NTM) lung disease.",
+   "full": "Severe NTM lung infections are often treated with IV amikacin, an antibiotic that can damage the inner ear and cause hearing loss or balance problems. This Phase 2 study tests ORC-13661, an investigational pill taken alongside amikacin, to see whether it prevents or lessens that damage. About 105 participants at 5 sites are randomly assigned to a high dose, a low dose, or placebo for up to 90 days. Researchers also measure effects on speech understanding, balance, and hearing quality. The study is expected to finish in February 2028.",
+   "start": "2025",
+   "sites": [
+    "Parnassus"
+   ],
+   "partners": [
+    "Oregon Health & Science University"
+   ],
+   "url": "https://clinicaltrials.ucsf.edu/trial/NCT05730283",
+   "parent": "bronchiectasis-clinical-research-unit",
+   "studyType": "Interventional trial",
+   "phase": "Phase 2",
+   "intervention": "ORC-13661 (oral), high or low dose vs. placebo, during IV amikacin for up to 90 days",
+   "nct": "NCT05730283",
+   "enrollment": "Recruiting",
+   "eligibility": "Adults 18–79 with NTM infection starting IV amikacin for at least 30 days",
+   "target": "105"
+  },
+  {
+   "id": "stride-cap-capvaxive-effectiveness-against-pneumonia",
+   "name": "STRIDE-CAP: CAPVAXIVE Effectiveness Against Pneumonia",
+   "short": "STRIDE-CAP",
+   "fullTitle": "A Test-Negative Case-Control Study to Evaluate the Effectiveness of V116, CAPVAXIVE™ Against Pneumococcal Pneumonia in Older Adults",
+   "type": "clin",
+   "status": "Pending",
+   "areas": [
+    "Community-acquired pneumonia",
+    "Pneumococcal disease"
+   ],
+   "theme": "Infectious disease",
+   "lead": "Sarah Doernberg",
+   "dept": "Medicine",
+   "division": "Infectious Diseases",
+   "origin": "Industry-sponsored",
+   "funding": "Industry · Merck Sharp & Dohme LLC",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "A Merck study of adults 65 and older hospitalized with pneumonia, comparing vaccination histories to measure how well the CAPVAXIVE vaccine prevents pneumococcal pneumonia.",
+   "full": "STRIDE-CAP is a large observational study in the United States and Canada (about 22,000 participants) measuring how well CAPVAXIVE, Merck's 21-valent pneumococcal vaccine for adults, prevents hospitalization for pneumococcal pneumonia in people aged 65 and older. No vaccine is given as part of the study. Adults hospitalized with community-acquired pneumonia, often identified in the emergency department, share medical record information such as vaccination history, chest imaging, and lab results, and provide a urine sample. Researchers then compare vaccination rates between people whose pneumonia was caused by bacteria strains covered by the vaccine and those whose pneumonia was not.",
+   "start": "2026",
+   "partners": [
+    "Jonathan Chan (co-investigator)"
+   ],
+   "parent": "clinical-research-office-at-ucsf-hyde-and-stanyan-hospitals",
+   "studyType": "Observational / natural history",
+   "intervention": "None (observational; CAPVAXIVE received only through routine care)",
+   "enrollment": "Not yet recruiting",
+   "eligibility": "Adults 65+ hospitalized with community-acquired pneumonia confirmed by symptoms and chest imaging",
+   "target": "22000"
+  },
+  {
+   "id": "alpha-modzatinib-for-oral-lichen-planus",
+   "name": "ALPHA: Modzatinib for Oral Lichen Planus",
+   "short": "ALPHA",
+   "fullTitle": "A Randomized, Double-Blind, Placebo-Controlled, Dose-Finding Study to Evaluate the Efficacy and Safety of Modzatinib (ATI-2138) in Adult Participants with Biopsy-Proven Forms of Lichen Planus Not Adequately Controlled with Topical Therapies",
+   "type": "clin",
+   "status": "Pending",
+   "areas": [
+    "Oral lichen planus",
+    "Lichen planus"
+   ],
+   "theme": "Autoimmunity",
+   "lead": "Kamal Al-Eryani",
+   "dept": "Orofacial Sciences",
+   "division": "Oral Medicine, Oral Pathology & Oral Radiology",
+   "origin": "Industry-sponsored",
+   "funding": "Industry · Aclaris Therapeutics",
+   "services": [
+    "Clinical coordination"
+   ],
+   "card": "A Phase 2 trial testing modzatinib, an investigational pill that calms overactive T cells, in adults with moderate-to-severe erosive oral lichen planus not controlled by topical treatments.",
+   "full": "Lichen planus is an inflammatory disease driven by T cells that affects about 1% of people worldwide. In the mouth, it can cause painful sores that make eating, speaking, and brushing teeth difficult, and there is no approved targeted treatment. This randomized, double-blind study compares two doses of modzatinib, an oral medicine that blocks two signals T cells rely on (ITK and JAK3), with placebo over 16 weeks in adults whose oral lichen planus is not controlled by topical therapy. The oral lichen planus group will enroll about 36 participants at roughly 15 sites in the United States and Europe; a group for skin (cutaneous) lichen planus is planned later.",
+   "start": "2026",
+   "studyType": "Interventional trial",
+   "phase": "Phase 2",
+   "intervention": "Modzatinib (ATI-2138) oral tablet, two dose levels vs. placebo, 16 weeks",
+   "enrollment": "Not yet recruiting",
+   "eligibility": "Adults 18–75 with biopsy-confirmed, moderate-to-severe erosive oral lichen planus not adequately controlled with topical therapy",
+   "target": "36"
+  }
+ ],
+ "coprojects": {
+  "active": [
+   {
+    "title": "Local adaptive immune responses during allergen immunotherapy",
+    "theme": "Allergy",
+    "kind": "Pilot",
+    "rec": "allergen-immunotherapy",
+    "featured": true
+   },
+   {
+    "title": "Defining the Spatial Immune Architecture & Tumor-Intrinsic Mechanism of Breast Cancer Chest Wall Recurrence",
+    "theme": "Cancer",
+    "kind": "Full study",
+    "featured": true
+   },
+   {
+    "title": "T-Scan for the identification of CD8 T-Cell antigens in atherosclerosis",
+    "theme": "Fibrosis · Inflammation",
+    "kind": "Pilot",
+    "featured": true
+   },
+   {
+    "title": "3-D Biomimetic Human TB Granuloma (BHTG) to understand mechanisms of TB immunity",
+    "theme": "Infection · Tech development",
+    "kind": "Pilot",
+    "featured": true
+   },
+   {
+    "title": "Immune Mapping of Arthritogenic Cells in Rheumatoid Arthritis",
+    "theme": "Autoimmunity",
+    "kind": "Pilot",
+    "rec": "rheumatoid-arthritis"
+   },
+   {
+    "title": "The UCSF Treat Acute HIV Study",
+    "theme": "Infection",
+    "kind": "Full study"
+   },
+   {
+    "title": "Mapping the Cellular and Metabolic Landscape of Human Immune Development",
+    "theme": "Early life",
+    "kind": "Full study"
+   },
+   {
+    "title": "Metabolic Profiling of Acute Myeloid Leukemia",
+    "theme": "Cancer",
+    "kind": "Pilot"
+   },
+   {
+    "title": "Immune phenotyping on Patients with Chronic Pediatric Autoimmune Cytopenias",
+    "theme": "Autoimmunity",
+    "kind": "Pilot"
+   },
+   {
+    "title": "Investigating the Impact of Immune Modulation via TNFa Inhibitors on the Spatial Immune Organization During Cutaneous Squamous Cell Carcinoma Development and Progression",
+    "theme": "Cancer",
+    "kind": "Pilot"
+   },
+   {
+    "title": "A Roadmap of Human Lung Stromal-Immune Topography across Fibrosis",
+    "theme": "Fibrosis",
+    "kind": "Full study"
+   }
+  ],
+  "completed": [
+   {
+    "title": "Profiling Molecular Mechanisms of Autoimmune Hepatitis in the POSULD Cohort",
+    "theme": "Autoimmunity",
+    "kind": "Pilot",
+    "rec": "autoimmune-hepatitis"
+   },
+   {
+    "title": "Immunoprofiling the normal, pathologic, and resilient human brain across life",
+    "theme": "Neurodegeneration",
+    "kind": "Full study"
+   },
+   {
+    "title": "Comparative transcriptomics of fibroblast subsets in fibrosing skin diseases",
+    "theme": "Fibrosis",
+    "kind": "Pilot"
+   },
+   {
+    "title": "Identifying epigenetic landmarks driving myeloid immune-suppressive phenotypes within the lung tumor",
+    "theme": "Cancer",
+    "kind": "Full study"
+   },
+   {
+    "title": "Identifying autoantigen and immune signatures in dermatomyositis",
+    "theme": "Autoimmunity",
+    "kind": "Full study"
+   },
+   {
+    "title": "Using Single Cell Analysis to Unravel Immune Cell Networks in Sarcoidosis",
+    "theme": "Autoimmunity",
+    "kind": "Full study"
+   },
+   {
+    "title": "Perinatal inflammation, immune imprinting, and the microbiome (Pre-term birth)",
+    "theme": "Early life",
+    "kind": "Full study"
+   },
+   {
+    "title": "The UCSF Human Immune Census",
+    "theme": "Healthy reference",
+    "kind": "Full study"
+   },
+   {
+    "title": "Identification of immune biomarkers for diagnosis of diminished ovarian reserve",
+    "theme": "Women’s health",
+    "kind": "Pilot"
+   },
+   {
+    "title": "Development of Tissue Microarray-MIBI-Analysis for Topological Characterization of the Immune Landscape in Synchronous Primary and Metastatic Colorectal Cancers",
+    "theme": "Tech development",
+    "kind": "Pilot"
+   },
+   {
+    "title": "scRNAseq of Exhausted and Non-Exhausted HIV-Specific CD8+ T Cells",
+    "theme": "Infection",
+    "kind": "Pilot"
+   },
+   {
+    "title": "Immune System in Women with Endometriosis",
+    "theme": "Women’s health",
+    "kind": "Pilot"
+   },
+   {
+    "title": "Immune Profile of the Human Decidua at Term Gestation",
+    "theme": "Women’s health",
+    "kind": "Pilot"
+   },
+   {
+    "title": "Interrogating the Immune Context of Checkpoint Inhibitor-Induced Colitis in Cancer Patients",
+    "theme": "Autoimmunity",
+    "kind": "Pilot"
+   },
+   {
+    "title": "Immune Phenotypes of High-Risk Early Stage Lung Adenocarcinoma",
+    "theme": "Cancer",
+    "kind": "Pilot"
+   },
+   {
+    "title": "Immunoprofiling of Ulcerative Colitis patients on anti-integrin therapy",
+    "theme": "Autoimmunity",
+    "kind": "Pilot"
+   },
+   {
+    "title": "ImmunoMicrobiome: Longitudinal integrative analysis of systems-level immunity and the microbiome in a healthy population",
+    "theme": "Healthy reference",
+    "kind": "Full study"
+   },
+   {
+    "title": "The Fetal Immune Response to Pathogens in Utero",
+    "theme": "Early life",
+    "kind": "Full study"
+   },
+   {
+    "title": "Total Cancer Profiling & Reconstruction (Organoids)",
+    "theme": "Tech development",
+    "kind": "Full study"
+   },
+   {
+    "title": "The impact of diet and the microbiome on immune responses to cancer (HuMu Translator)",
+    "theme": "Cancer",
+    "kind": "Full study"
+   },
+   {
+    "title": "Comparative In-Depth Profiling of Systemic (PBMC) and Organ-specific (liver) immune cells during phases of chronic viral infection (viral replication, treatment-induced suppression and/or clearance)",
+    "theme": "Infection",
+    "kind": "Full study"
+   },
+   {
+    "title": "Neuroimmune Interactions in Neurodegenerative Diseases",
+    "theme": "Neurodegeneration",
+    "kind": "Full study"
+   },
+   {
+    "title": "Immune activation during acute lung allograft dysfunction",
+    "theme": "Inflammation",
+    "kind": "Pilot"
+   }
+  ]
+ },
+ "degrees": {
+  "Theodore Abraham": "MD",
+  "Shoshana Zha": "MD, PhD",
+  "Catherine DeVoe": "MD",
+  "Jeffrey Golden": "MD",
+  "Vincent Chan": "PhD",
+  "Matthew Krummel": "PhD",
+  "Caroline Shiboski": "DDS, MPH, PhD",
+  "Sara Suliman": "PhD, MPH",
+  "Carolyn Calfee": "MD, MAS",
+  "Judith Ashouri": "MD",
+  "Jeroen Roose": "PhD",
+  "Michele Tana": "MD, MHS",
+  "Chun Jimmie Ye": "PhD",
+  "Christopher Allen": "PhD",
+  "Diana Alba": "MD",
+  "Elizabeth Crouch": "MD, PhD",
+  "Rohit Bose": "MD, PhD",
+  "Angela Phillips": "PhD",
+  "Karin Pelka": "PhD",
+  "Alexis Combes": "PhD",
+  "Anthony Shum": "MD",
+  "John Gonzales": "MD",
+  "Iris Otani": "MD",
+  "Sarah Doernberg": "MD, MAS",
+  "Kamal Al-Eryani": "DDS, PhD",
+  "Jamie Bigelow": "MD",
+  "Richard Grossman": "MD",
+  "Heidi Wittenberg": "MD",
+  "Remo Morelli": "MD",
+  "James Zucherman": "MD"
+ },
+ "staff": {
+  "Vincent Chan, PhD": "Director",
+  "Gabe Murphy, PhD": "Senior Research Development Strategist",
+  "Reid Bolus, PhD": "Research Development Strategist",
+  "Lindsay Breithaupt, MPH": "Research Development Strategist",
+  "Corey Rathe, MS": "Project Manager",
+  "Francisco Quintanilla": "Senior Clinical Research Coordinator",
+  "Natalia Dikinov": "Senior Clinical Research Coordinator",
+  "Ohnmar Chan": "Senior Clinical Research Coordinator",
+  "Lina Kamil, MPH": "Clinical Research Coordinator",
+  "Olivia Murley": "Clinical Research Coordinator",
+  "Michelle Yu": "Data Manager",
+  "Bushra Samad, MS": "Data Manager",
+  "Jonathan Wilson": "Research Administrative Officer",
+  "Xochitl Vargas": "ImmunoDiverse Program Administrator"
+ },
+ "staffPhotos": {
+  "Vincent Chan, PhD": "people/vincent-chan.jpg",
+  "Corey Rathe, MS": "people/corey-rathe.jpg",
+  "Francisco Quintanilla": "people/francisco-quintanilla.jpg",
+  "Natalia Dikinov": "people/natalia-dikinov.jpg",
+  "Ohnmar Chan": "people/ohnmar-chan.jpg",
+  "Michelle Yu": "people/michelle-yu.jpg",
+  "Gabe Murphy, PhD": "people/gabe-murphy.jpg",
+  "Reid Bolus, PhD": "people/reid-bolus-CDcf-hA.jpg",
+  "Lindsay Breithaupt, MPH": "people/lindsay-breithaupt.jpg",
+  "Lina Kamil, MPH": "people/lina-kamil.jpg",
+  "Olivia Murley": "people/olivia-murley.jpg",
+  "Bushra Samad, MS": "people/bushra-samad.jpg",
+  "Jonathan Wilson": "people/jonathan-wilson-D9o7E.jpg",
+  "Xochitl Vargas": "people/xochitl-vargas.jpg"
+ }
+};

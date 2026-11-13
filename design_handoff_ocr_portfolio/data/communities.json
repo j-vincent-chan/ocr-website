@@ -1,0 +1,101 @@
+[
+  {
+    "name": "Bakar ImmunoX Initiative",
+    "since": "2018",
+    "href": "https://immunox.ucsf.edu/",
+    "serves": "Immunology investigators and trainees across UCSF.",
+    "contributes": "A team of community managers, hired through OCR and embedded in the community, who own the retreat, the seminar series, the newsletter, the award programs, and the relationships.",
+    "model": "Team of community managers",
+    "groups": [
+      [
+        "Events & scientific programming",
+        [
+          "Retreat",
+          "Seminar series"
+        ]
+      ],
+      [
+        "Communications & outreach",
+        [
+          "Newsletter",
+          "Blog & spotlights",
+          "Vlogs & audio clips",
+          "Social media"
+        ]
+      ],
+      [
+        "Program & partnership development",
+        [
+          "Award programs"
+        ]
+      ],
+      [
+        "Community building & engagement",
+        [
+          "ImmunoDiverse trainee organization"
+        ]
+      ]
+    ]
+  },
+  {
+    "name": "Parnassus Institutes",
+    "since": "2024",
+    "href": "https://immunox.notion.site/Parnassus-Institutes-adfc1c14869f4300964ac0f52ca49f3f",
+    "serves": "A group of UCSF institutes and their directors.",
+    "contributes": "One community manager working across the institutes, so each gets experienced coverage and the group shares a common calendar, a community fund, and a voice with campus leadership.",
+    "model": "Shared coordination across institutes",
+    "groups": [
+      [
+        "Program & partnership development",
+        [
+          "Directors’ meetings",
+          "Campus leadership"
+        ]
+      ],
+      [
+        "Community building & engagement",
+        [
+          "Community fund"
+        ]
+      ],
+      [
+        "Events & scientific programming",
+        [
+          "Social events"
+        ]
+      ]
+    ]
+  },
+  {
+    "name": "UCSF Diabetes Center",
+    "since": "2025",
+    "href": "https://diabetes.ucsf.edu/",
+    "serves": "Members of the center’s two P30 programs.",
+    "contributes": "A share of an OCR community manager, budgeted into the Enrichment or Administrative Core, runs each enrichment program on the grant’s calendar and produces the reporting the center requires.",
+    "model": "Partial effort on a center grant",
+    "scopes": [
+      {
+        "name": "DRC",
+        "line": "P30 enrichment program",
+        "detail": "Run on the grant’s calendar, with the reporting the center requires."
+      },
+      {
+        "name": "NORC",
+        "line": "P30 enrichment program",
+        "detail": "Run on the grant’s calendar, with the reporting the center requires."
+      }
+    ]
+  },
+  {
+    "name": "Center for Health and Community",
+    "since": "2026",
+    "href": "https://iha.ucsf.edu/",
+    "contributes": "OCR supports the center’s events and scientific programming.",
+    "groups": [
+      [
+        "Events & scientific programming",
+        []
+      ]
+    ]
+  }
+]

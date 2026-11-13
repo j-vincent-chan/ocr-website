@@ -1,0 +1,35 @@
+/* Extracted from the prototype <style> block: base rules, motif classes and every keyframe the motifs reference. */
+body{margin:0;background:#fdfcf8;color:#050f2c;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#006464}a:hover{color:#010621}
+:focus-visible{outline:2px solid #d64938;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+.ocrm{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.ocrm [style*="animation"]:not([transform]):not(.bx):not(.bb){transform-origin:50px 50px}
+.ocrm .F{fill:currentColor;stroke:none}
+.ocrm .bx{transform-box:fill-box;transform-origin:center}
+.ocrm .bb{transform-box:fill-box;transform-origin:50% 100%}
+.ocrm.still *{animation:none!important}
+.ocrm.bg{animation:pm-card-drift 14s ease-in-out infinite}
+.ocrm.bg [style*="animation"]{animation-duration:3.4s!important}
+@keyframes cm-ripple{0%{transform:scale(.1);opacity:.55}70%{opacity:.18}100%{transform:scale(1);opacity:0}}
+@keyframes pm-card-drift{0%,to{transform:translate(0,0) rotate(0deg) scale(1)}50%{transform:translate(-14px,10px) rotate(5deg) scale(1.07)}}
+@keyframes pm-breathe{0%,to{opacity:.35;transform:scale(1)}50%{opacity:.55;transform:scale(1.04)}}
+@keyframes pm-ring-pulse{0%,to{opacity:.22;transform:scale(1)}50%{opacity:.42;transform:scale(1.02)}}
+@keyframes pm-orbit-spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes pm-node-twinkle{0%,to{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+@keyframes pm-core-pulse{0%,to{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+@keyframes pm-spoke-shimmer{0%,to{opacity:.12}50%{opacity:.28}}
+@keyframes pm-meridian-drift{0%,to{opacity:.14;transform:scaleX(1)}50%{opacity:.28;transform:scaleX(1.06)}}
+@keyframes pm-lattice-shimmer{0%,to{opacity:.25}50%{opacity:.95}}
+@keyframes pm-ray-breathe{0%,to{opacity:.22}50%{opacity:.5}}
+@keyframes pm-radial-rotate{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes pm-helix-flow{0%,to{opacity:.4}50%{opacity:.75}}
+@keyframes pm-line-wave{0%,to{opacity:.28;transform:translate(0)}50%{opacity:.48;transform:translate(1.4px)}}
+@keyframes pm-hoop-expand{0%,to{opacity:.32;transform:scale(1)}50%{opacity:.52;transform:scale(1.03)}}
+@keyframes pm-sway{0%,to{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@keyframes pm-sway-sm{0%,to{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+@keyframes pm-dash-flow{0%{stroke-dashoffset:0}to{stroke-dashoffset:-12px}}
+@keyframes pm-rise{0%{opacity:0;transform:translateY(8px)}20%,75%{opacity:.7}to{opacity:0;transform:translateY(-14px)}}
+@keyframes pm-dock{0%,to{opacity:.45;transform:translateY(-3px)}50%{opacity:1;transform:translateY(2px)}}
+@keyframes pm-float{0%,to{transform:translate(0,0)}50%{transform:translate(1.5px,-2px)}}
+@keyframes pm-emit{0%{opacity:0;transform:translate(0,0)}15%{opacity:.9}to{opacity:0;transform:translate(var(--dx,0),var(--dy,0))}}

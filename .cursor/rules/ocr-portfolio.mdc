@@ -1,0 +1,20 @@
+---
+description: Rules for building and maintaining the OCR Portfolio page (programs, projects, communities)
+globs: ["**/portfolio/**", "**/Portfolio*"]
+alwaysApply: false
+---
+
+# OCR Portfolio page
+
+The approved design and its documentation live in `design_handoff_ocr_portfolio/`. Read `README.md` and `DATA_MODEL.md` there before changing anything on this page.
+
+- The prototype (`prototype/Portfolio.dc.html`) is a design reference. Never import it, its runtime (`support.js`), or its template syntax into the app.
+- Render from typed data (`Program`, `Project`, `CoProject`, `Community`). Adding or editing a record must not require a component change.
+- Three kinds of engagement, three different layouts: programs are containers with nested work, projects are a compact directory, communities are profiles. Do not merge them into one grid or one total.
+- Never publish dollar amounts, patient-level data, study IDs for patients, or internal notes. Custom Discovery shows aggregate counts only.
+- `status` is the status of OCR's support. `enrollment` is the study's own status. Keep them separate and labelled.
+- Do not invent content. Omit rows for missing fields.
+- The category is "Biospecimen collection". Use "Biobank" only inside a project's own name or collection model.
+- Every control is keyboard reachable with a visible focus ring (`2px solid #d64938`, offset 3px) and a 44px minimum target. No meaning by color or hover alone.
+- Honor `prefers-reduced-motion: reduce`: no animation, no pointer-follow.
+- Items listed under "Open items for the OCR team" in the README stay as `TODO(OCR):` until OCR answers them.
