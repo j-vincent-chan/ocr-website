@@ -90,7 +90,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://ocr.ucsf.edu/" },
-      { property: "og:image", content: "https://ocr.ucsf.edu/og-image.jpg" },
+      // Query string busts Slack ImgProxy cache when the file at /og-image.jpg changes.
+      { property: "og:image", content: "https://ocr.ucsf.edu/og-image.jpg?v=2" },
       { property: "og:image:type", content: "image/jpeg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
@@ -104,7 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         name: "twitter:description",
         content: "Where great science finds great partners. Research development, project management, data, AI tools, and community management for UCSF investigators.",
       },
-      { name: "twitter:image", content: "https://ocr.ucsf.edu/og-image.jpg" },
+      { name: "twitter:image", content: "https://ocr.ucsf.edu/og-image.jpg?v=2" },
       {
         name: "twitter:image:alt",
         content: "Office of Collaborative Research — UCSF sunburst logo on dark background",
