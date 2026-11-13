@@ -428,11 +428,11 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
               People
             </Link>
             <Link
-              to="/projects"
+              to="/portfolio"
               className={`${navLink} ${navIdle}`}
               activeProps={{ className: navActive }}
             >
-              Programs & Projects
+              Portfolio
             </Link>
             <Link
               to="/funding"
@@ -527,11 +527,11 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
                 People
               </Link>
               <Link
-                to="/projects"
+                to="/portfolio"
                 className={menuLink}
                 activeProps={{ className: dark ? "bg-white/10" : "bg-secondary" }}
               >
-                Programs & Projects
+                Portfolio
               </Link>
               <Link
                 to="/funding"
@@ -728,8 +728,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/projects" className="hover:text-white">
-                  Programs & Projects
+                <Link to="/portfolio" className="hover:text-white">
+                  Portfolio
                 </Link>
               </li>
               <li>

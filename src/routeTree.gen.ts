@@ -14,15 +14,19 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FundingRouteImport } from './routes/funding'
 import { Route as PeopleRouteImport } from './routes/people'
+import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as FundingIndexRouteImport } from './routes/funding.index'
 import { Route as FundingSlugRouteImport } from './routes/funding.$slug'
+import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
 import { Route as ServicesAiToolsRouteImport } from './routes/services.ai-tools'
 import { Route as ServicesCommunityManagementRouteImport } from './routes/services.community-management'
 import { Route as ServicesDataManagementRouteImport } from './routes/services.data-management'
 import { Route as ServicesProjectManagementRouteImport } from './routes/services.project-management'
 import { Route as ServicesResearchDevelopmentRouteImport } from './routes/services.research-development'
 import { Route as ServicesResearchOperationsRouteImport } from './routes/services.research-operations'
+import { Route as PortfolioProgramsIdRouteImport } from './routes/portfolio.programs.$id'
+import { Route as PortfolioProjectsIdRouteImport } from './routes/portfolio.projects.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -49,6 +53,11 @@ const PeopleRoute = PeopleRouteImport.update({
   path: '/people',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortfolioRoute = PortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
@@ -63,6 +72,11 @@ const FundingSlugRoute = FundingSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => FundingRoute,
+} as any)
+const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PortfolioRoute,
 } as any)
 const ServicesAiToolsRoute = ServicesAiToolsRouteImport.update({
   id: '/services/ai-tools',
@@ -98,6 +112,16 @@ const ServicesResearchOperationsRoute =
     path: '/services/research-operations',
     getParentRoute: () => rootRouteImport,
   } as any)
+const PortfolioProgramsIdRoute = PortfolioProgramsIdRouteImport.update({
+  id: '/programs/$id',
+  path: '/programs/$id',
+  getParentRoute: () => PortfolioRoute,
+} as any)
+const PortfolioProjectsIdRoute = PortfolioProjectsIdRouteImport.update({
+  id: '/projects/$id',
+  path: '/projects/$id',
+  getParentRoute: () => PortfolioRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -105,6 +129,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/funding': typeof FundingRouteWithChildren
   '/people': typeof PeopleRoute
+  '/portfolio': typeof PortfolioRouteWithChildren
   '/projects': typeof ProjectsRoute
   '/funding/$slug': typeof FundingSlugRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
@@ -114,6 +139,9 @@ export interface FileRoutesByFullPath {
   '/services/research-development': typeof ServicesResearchDevelopmentRoute
   '/services/research-operations': typeof ServicesResearchOperationsRoute
   '/funding/': typeof FundingIndexRoute
+  '/portfolio/': typeof PortfolioIndexRoute
+  '/portfolio/programs/$id': typeof PortfolioProgramsIdRoute
+  '/portfolio/projects/$id': typeof PortfolioProjectsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -129,6 +157,9 @@ export interface FileRoutesByTo {
   '/services/research-development': typeof ServicesResearchDevelopmentRoute
   '/services/research-operations': typeof ServicesResearchOperationsRoute
   '/funding': typeof FundingIndexRoute
+  '/portfolio': typeof PortfolioIndexRoute
+  '/portfolio/programs/$id': typeof PortfolioProgramsIdRoute
+  '/portfolio/projects/$id': typeof PortfolioProjectsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -137,6 +168,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/funding': typeof FundingRouteWithChildren
   '/people': typeof PeopleRoute
+  '/portfolio': typeof PortfolioRouteWithChildren
   '/projects': typeof ProjectsRoute
   '/funding/$slug': typeof FundingSlugRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
@@ -146,6 +178,9 @@ export interface FileRoutesById {
   '/services/research-development': typeof ServicesResearchDevelopmentRoute
   '/services/research-operations': typeof ServicesResearchOperationsRoute
   '/funding/': typeof FundingIndexRoute
+  '/portfolio/': typeof PortfolioIndexRoute
+  '/portfolio/programs/$id': typeof PortfolioProgramsIdRoute
+  '/portfolio/projects/$id': typeof PortfolioProjectsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -155,6 +190,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/funding'
     | '/people'
+    | '/portfolio'
     | '/projects'
     | '/funding/$slug'
     | '/services/ai-tools'
@@ -164,6 +200,9 @@ export interface FileRouteTypes {
     | '/services/research-development'
     | '/services/research-operations'
     | '/funding/'
+    | '/portfolio/'
+    | '/portfolio/programs/$id'
+    | '/portfolio/projects/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -179,6 +218,9 @@ export interface FileRouteTypes {
     | '/services/research-development'
     | '/services/research-operations'
     | '/funding'
+    | '/portfolio'
+    | '/portfolio/programs/$id'
+    | '/portfolio/projects/$id'
   id:
     | '__root__'
     | '/'
@@ -186,6 +228,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/funding'
     | '/people'
+    | '/portfolio'
     | '/projects'
     | '/funding/$slug'
     | '/services/ai-tools'
@@ -195,6 +238,9 @@ export interface FileRouteTypes {
     | '/services/research-development'
     | '/services/research-operations'
     | '/funding/'
+    | '/portfolio/'
+    | '/portfolio/programs/$id'
+    | '/portfolio/projects/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -203,6 +249,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FundingRoute: typeof FundingRouteWithChildren
   PeopleRoute: typeof PeopleRoute
+  PortfolioRoute: typeof PortfolioRouteWithChildren
   ProjectsRoute: typeof ProjectsRoute
   ServicesAiToolsRoute: typeof ServicesAiToolsRoute
   ServicesCommunityManagementRoute: typeof ServicesCommunityManagementRoute
@@ -249,6 +296,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PeopleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects': {
       id: '/projects'
       path: '/projects'
@@ -269,6 +323,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/funding/$slug'
       preLoaderRoute: typeof FundingSlugRouteImport
       parentRoute: typeof FundingRoute
+    }
+    '/portfolio/': {
+      id: '/portfolio/'
+      path: '/'
+      fullPath: '/portfolio/'
+      preLoaderRoute: typeof PortfolioIndexRouteImport
+      parentRoute: typeof PortfolioRoute
     }
     '/services/ai-tools': {
       id: '/services/ai-tools'
@@ -312,6 +373,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesResearchOperationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portfolio/programs/$id': {
+      id: '/portfolio/programs/$id'
+      path: '/programs/$id'
+      fullPath: '/portfolio/programs/$id'
+      preLoaderRoute: typeof PortfolioProgramsIdRouteImport
+      parentRoute: typeof PortfolioRoute
+    }
+    '/portfolio/projects/$id': {
+      id: '/portfolio/projects/$id'
+      path: '/projects/$id'
+      fullPath: '/portfolio/projects/$id'
+      preLoaderRoute: typeof PortfolioProjectsIdRouteImport
+      parentRoute: typeof PortfolioRoute
+    }
   }
 }
 
@@ -328,12 +403,29 @@ const FundingRouteChildren: FundingRouteChildren = {
 const FundingRouteWithChildren =
   FundingRoute._addFileChildren(FundingRouteChildren)
 
+interface PortfolioRouteChildren {
+  PortfolioIndexRoute: typeof PortfolioIndexRoute
+  PortfolioProgramsIdRoute: typeof PortfolioProgramsIdRoute
+  PortfolioProjectsIdRoute: typeof PortfolioProjectsIdRoute
+}
+
+const PortfolioRouteChildren: PortfolioRouteChildren = {
+  PortfolioIndexRoute: PortfolioIndexRoute,
+  PortfolioProgramsIdRoute: PortfolioProgramsIdRoute,
+  PortfolioProjectsIdRoute: PortfolioProjectsIdRoute,
+}
+
+const PortfolioRouteWithChildren = PortfolioRoute._addFileChildren(
+  PortfolioRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   FundingRoute: FundingRouteWithChildren,
   PeopleRoute: PeopleRoute,
+  PortfolioRoute: PortfolioRouteWithChildren,
   ProjectsRoute: ProjectsRoute,
   ServicesAiToolsRoute: ServicesAiToolsRoute,
   ServicesCommunityManagementRoute: ServicesCommunityManagementRoute,
