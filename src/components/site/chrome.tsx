@@ -323,7 +323,7 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
   }, [navOpen]);
 
   return (
-    <header>
+    <>
       <div className="bg-ink text-xs text-white">
         <div className="mx-auto flex h-9 max-w-7xl items-center justify-between gap-3 px-6">
           <span className="min-w-0 truncate opacity-80">
@@ -346,7 +346,10 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
         </div>
       </div>
 
-      <div
+      {/* Sticky on its own, outside the utility bar. A sticky box only sticks
+          inside its parent, so wrapping both in one short <header> lets the nav
+          scroll away after the bar and leaves a gap under the fixed Portfolio bar. */}
+      <header
         data-site-header
         className={`sticky top-0 z-40 border-b backdrop-blur-md transition-colors duration-300 ${
           dark ? "border-white/10 bg-ink text-white" : "border-border bg-background/85 text-ink"
@@ -565,7 +568,7 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
             </nav>
           </div>
         )}
-      </div>
+      </header>
       {navOpen && (
         <button
           type="button"
@@ -574,7 +577,7 @@ export function Header({ initialTone = "light" }: { initialTone?: NavTone }) {
           onClick={() => setNavOpen(false)}
         />
       )}
-    </header>
+    </>
   );
 }
 
