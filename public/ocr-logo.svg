@@ -1,5 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="UCSF Office of Collaborative Research">
-  <rect width="100" height="100" fill="#010621"/>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2a1230"/>
+      <stop offset="100%" stop-color="#0a1638"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" fill="url(#bg)"/>
   <g transform="translate(50 50) scale(0.78) translate(-50 -50)">
     <rect x="49" y="4" width="2" height="22" rx="1" fill="#1e3a8a" transform="rotate(0.0 50 50)"/>
     <rect x="49" y="4" width="2" height="22" rx="1" fill="#0ea5e9" transform="rotate(11.25 50 50)"/>
