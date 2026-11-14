@@ -7,7 +7,6 @@ import { RecordSection } from "@/components/research-operations/record-section";
 import { ServicesSection } from "@/components/research-operations/services-section";
 import { StaffingSection } from "@/components/research-operations/staffing-section";
 import { TeamAndPartners } from "@/components/research-operations/team-and-partners";
-import { Testimonials } from "@/components/research-operations/testimonials";
 import { arm, hero } from "@/data/research-operations";
 
 const TITLE = `${arm.name} — UCSF OCR`;
@@ -33,7 +32,7 @@ export const Route = createFileRoute("/services/research-operations")({
 
 /**
  * Sibling of /services/research-development (see design_handoff_research_operations/README.md).
- * Background rhythm: dark hero → paper → cream → paper → cream → paper → cream → dark CTA →
+ * Background rhythm: dark hero → paper → cream → paper → paper → cream → dark CTA →
  * dark footer. Copy and data live in src/data/research-operations.ts.
  */
 function ResearchOperationsPage() {
@@ -43,7 +42,6 @@ function ResearchOperationsPage() {
       <ServicesSection />
       <HowWeWork />
       <RecordSection />
-      <Testimonials />
       <StaffingSection />
       <TeamAndPartners />
       <GetStarted />

@@ -38,7 +38,7 @@ export function ContactCard() {
                 }}
               >
                 Have something we{" "}
-                <span style={{ color: "#cdbccf" }}>/ should be working on?</span>
+                <span style={{ color: "#cdbccf" }}>should be working on?</span>
               </h2>
               <p className="mt-4 max-w-[40ch] text-[15.5px] leading-[1.6] text-white/75 text-pretty">
                 Tell us about a program, project, or community you want OCR to support. We will

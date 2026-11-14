@@ -21,10 +21,7 @@ export type StageKey = "early" | "startup" | "active" | "expand" | "other";
 /** Design-review annotations (yellow "Confirm …" pills). Never shown in production builds. */
 export const SHOW_REVIEW_FLAGS = import.meta.env.DEV;
 
-/**
- * The testimonials are assembled from published remarks (see `testimonials.verify`).
- * Set to false to hide the whole section until the wording is confirmed with each speaker.
- */
+/** Set to false to hide the home-page testimonials section. */
 export const SHOW_TESTIMONIALS = true;
 
 /**
@@ -513,18 +510,11 @@ export const record = {
 // Attributions are intentionally non-identifying. Do not add names, titles, or photos.
 export const testimonials = {
   eyebrow: "Testimonials",
-  verify: true, // assembled from published remarks; confirm wording and permission with each speaker
-  flag: "Assembled from published remarks · confirm exact wording with each speaker before publishing",
   items: [
     {
       quote:
-        "OCR engages with and supports the UCSF community. The ‘collaboration’ in its name reflects exactly what it does: connecting people and building interdisciplinary partnerships. I’ve come to see OCR as a source of innovation.",
-      attribution: "UCSF faculty leader",
-    },
-    {
-      quote:
-        "OCR exemplifies what makes UCSF great. Grassroots organizations like OCR are essential to building a stronger, more connected research community.",
-      attribution: "UCSF faculty member",
+        "OCR engages with and supports the UCSF community. ‘Collaboration’ in its name reflects exactly what it does: connecting people and building interdisciplinary partnerships. I’ve come to see OCR as a constant source of innovation.",
+      attribution: "UCSF senior research leader",
     },
   ],
 };

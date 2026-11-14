@@ -10,6 +10,7 @@ import { OcrDispatch } from "@/components/site/ocr-dispatch";
 import { PartnersSection } from "@/components/site/partners-section";
 import { SiteShell, SERVICES, CTA, SunburstLogo, CtaRotatingPhrase, ServiceTitle } from "@/components/site/chrome";
 import { IntroSplash } from "@/components/site/intro/IntroSplash";
+import { Testimonials } from "@/components/research-operations/testimonials";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -251,8 +252,9 @@ function Approach() {
 
 /*
  * Section order follows the team's launch review: lead with how OCR works
- * (the operating principle), then the five arms, then the ask — with partners
- * as proof and the dispatch as the running record for returning visitors.
+ * (the operating principle), then the five arms, then the ask. Testimonials
+ * sit directly under the consult, with partners as proof and the dispatch as
+ * the running record for returning visitors.
  */
 function HomePage() {
   return (
@@ -272,6 +274,7 @@ function HomePage() {
         subtitle="Whether you have a deadline next month or a five-year vision, the earlier we engage, the more value we can add."
         email="ocr@ucsf.edu"
       />
+      <Testimonials />
       <PartnersSection />
       <OcrDispatch />
     </SiteShell>
