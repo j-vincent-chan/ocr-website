@@ -1034,6 +1034,7 @@
     {
       "id": "copa-biomarker",
       "name": "COPA Syndrome Biomarker Study",
+      "short": "BI 1509-0019",
       "fullTitle": "Non-IMP clinical study to generate data on the natural history of disease, biomarkers, and relevance of clinical endpoints in patients with selected type 1 interferonopathies",
       "type": "clin",
       "status": "Active",
@@ -1055,6 +1056,7 @@
       "full": "COPA syndrome and related type 1 interferonopathies (Aicardi-Goutières syndrome, SAVI, and familial chilblain lupus) are ultra-rare inherited diseases in which an overactive interferon pathway drives inflammation in the lungs, skin, joints, and other organs. There are no approved treatments. This multicenter study gives no study drug: at least 40 children and adults (about 10 with COPA syndrome) receiving standard care are followed for two years, with regular visits measuring an interferon gene score, doctor and patient assessments, lung function, and skin and joint activity. An optional interview substudy captures what matters most to patients and families. The results will help design trials of new therapies.",
       "start": "2024",
       "end": "2026",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
       "studyType": "Biomarker study",
       "intervention": "None (observational; standard of care)",
       "eligibility": "Children and adults with a genetic diagnosis of COPA syndrome, AGS, SAVI, FCL, or another selected type 1 interferonopathy",
@@ -1455,6 +1457,531 @@
       "enrollment": "Not yet recruiting",
       "eligibility": "Adults 18–75 with biopsy-confirmed, moderate-to-severe erosive oral lichen planus not adequately controlled with topical therapy",
       "target": "36"
+    },
+    {
+      "id": "beconnectd-ild-belimumab-for-ctd-ild",
+      "name": "BEconneCTD-ILD: Belimumab for CTD-ILD",
+      "short": "BEconneCTD-ILD",
+      "fullTitle": "A Phase 3, Randomized, Double-Blind, Placebo-Controlled, Parallel Group Study to Evaluate the Efficacy and Safety of Belimumab Administered Subcutaneously in Adults With Interstitial Lung Disease (ILD) Associated With Connective Tissue Disease (CTD)",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "Connective tissue disease-associated ILD (RA, lupus, inflammatory myopathy, Sjögren's, MCTD)"
+      ],
+      "theme": "Lung disease",
+      "lead": "Hayley Barnes",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Industry-sponsored",
+      "funding": "Industry · GlaxoSmithKline (221672)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "A Phase 3 trial testing whether weekly belimumab injections, added to standard care, stabilize lung function in adults with lung scarring caused by autoimmune connective tissue diseases.",
+      "full": "Interstitial lung disease (ILD), inflammation and scarring of the lungs, is a serious complication of autoimmune connective tissue diseases such as rheumatoid arthritis, lupus, inflammatory myositis, Sjögren's disease, and mixed connective tissue disease. This international Phase 3 study (about 440 participants) tests belimumab, an approved lupus medicine that blocks the immune protein BLyS. Participants continue their usual treatment and self-inject belimumab or placebo under the skin once a week for 52 weeks, with lung function, symptoms, and quality of life tracked throughout. Those who complete the study may join an open-label extension in which everyone receives belimumab.",
+      "start": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "url": "https://clinicaltrials.ucsf.edu/trial/NCT06572384",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "phase": "Phase 3",
+      "intervention": "Belimumab 200 mg subcutaneous once weekly vs. placebo for 52 weeks, added to standard therapy; open-label extension",
+      "nct": "NCT06572384",
+      "enrollment": "Recruiting",
+      "eligibility": "Adults 18+ with CTD-ILD (primary RA, SLE, inflammatory myopathy, Sjögren's, or MCTD; not systemic sclerosis) with at least 10% lung involvement on CT and active or worsening ILD despite standard therapy",
+      "target": "440"
+    },
+    {
+      "id": "abcvild-abatacept-for-cvid-related-lung-disease",
+      "name": "ABCVILD: Abatacept for CVID-Related Lung Disease",
+      "short": "ABCVILD",
+      "fullTitle": "Abatacept for the Treatment of Common Variable Immunodeficiency with Interstitial Lung Disease (ABCVILD)",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "Common variable immunodeficiency (CVID)",
+        "Granulomatous-lymphocytic interstitial lung disease (GLILD)"
+      ],
+      "theme": "Lung disease",
+      "lead": "Michele Pham",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Investigator-initiated",
+      "funding": "FDA · Office of Orphan Products Development R01FD007267 (lead site Cincinnati Children's; abatacept supplied by Bristol Myers Squibb)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "A Phase 2 trial testing whether abatacept, an approved arthritis medicine, can treat inflammatory lung disease in children and adults with common variable immunodeficiency, which has no standard treatment.",
+      "full": "People with common variable immunodeficiency (CVID), an inherited condition that leaves the body unable to make enough protective antibodies, can develop granulomatous-lymphocytic interstitial lung disease (GLILD), in which clusters of immune cells inflame and damage the lungs. There is no standard treatment. This multi-site Phase 2 study (about 38 participants, ages 4 and up) tests abatacept, which calms overactive T cells. Adults and larger children are randomly assigned to weekly abatacept or placebo injections for six months, after which everyone receives abatacept; smaller children receive open-label abatacept. Lung CT scans and breathing tests measure response, and participants who benefit may continue abatacept for up to three years.",
+      "start": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "partners": [
+        "Cincinnati Children's Hospital Medical Center (lead site)",
+        "Bristol Myers Squibb (drug supply)"
+      ],
+      "url": "https://clinicaltrials.ucsf.edu/trial/NCT04925375",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "phase": "Phase 2",
+      "intervention": "Abatacept subcutaneous weekly (weight-based in children) vs. placebo for 6 months, then open-label abatacept; optional extension up to 3 years",
+      "nct": "NCT04925375",
+      "enrollment": "Recruiting",
+      "eligibility": "Ages 4+ with CVID on immunoglobulin replacement for at least 6 months and biopsy-confirmed GLILD that has persisted or worsened on CT",
+      "target": "38"
+    },
+    {
+      "id": "insignia-ph-copd-frespaciguat-for-ph-copd",
+      "name": "INSIGNIA-PH-COPD: Frespaciguat for PH-COPD",
+      "short": "INSIGNIA-PH-COPD",
+      "fullTitle": "A Phase 2a Randomized, Placebo-Controlled Clinical Study to Evaluate the Efficacy and Safety of MK-5475 in Adults With Pulmonary Hypertension Associated With Chronic Obstructive Pulmonary Disease",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "Pulmonary hypertension associated with COPD (PH-COPD)"
+      ],
+      "theme": "Lung disease",
+      "lead": "Nicholas Kolaitis",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Industry-sponsored",
+      "funding": "Industry · Merck Sharp & Dohme (MK-5475-013)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "A Phase 2a trial testing frespaciguat, an inhaled medicine that relaxes lung blood vessels, in adults with pulmonary hypertension caused by chronic obstructive pulmonary disease (COPD).",
+      "full": "Pulmonary hypertension, high blood pressure in the lungs' arteries, often complicates chronic obstructive pulmonary disease (COPD) and makes breathlessness and exercise limits worse. This international Phase 2a study tested frespaciguat (MK-5475), an inhaled soluble guanylate cyclase stimulator designed to widen lung blood vessels without lowering blood pressure elsewhere. Adults were randomly assigned to inhale frespaciguat or placebo once daily for 24 weeks, with an optional 18-month extension on active drug; the main measure was the change in six-minute walk distance. Enrollment is complete, and primary results presented in 2026 showed the drug was well tolerated but did not improve walk distance.",
+      "start": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT05612035",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "phase": "Phase 2",
+      "intervention": "Frespaciguat (MK-5475) 380 µg inhaled dry powder once daily vs. placebo for 24 weeks; optional 18-month extension on active drug",
+      "nct": "NCT05612035",
+      "enrollment": "Active, not recruiting",
+      "eligibility": "Adults 40–85 with pulmonary hypertension due to COPD (WHO Group 3.1) confirmed by right heart catheterization, functional class II–IV, on stable COPD therapy",
+      "target": "120"
+    },
+    {
+      "id": "bi-3000202-for-copa-and-type-1-interferonopathies",
+      "name": "BI 3000202 for COPA and Type 1 Interferonopathies",
+      "short": "BI 1509-0003",
+      "fullTitle": "Single-arm, open label trial to assess safety, tolerability, pharmacokinetics, and pharmacodynamics of BI 3000202 in adult patients with selected type 1 interferonopathies",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "COPA syndrome",
+        "Type 1 interferonopathies (AGS, FCL)"
+      ],
+      "theme": "Autoimmunity",
+      "lead": "Anthony Shum",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Industry-sponsored",
+      "funding": "Industry · Boehringer Ingelheim (1509-0003)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "A Phase 1 trial testing BI 3000202, an oral pill that blocks an overactive immune pathway, in adults with COPA syndrome and related rare inherited interferon diseases.",
+      "full": "COPA syndrome, Aicardi-Goutières syndrome, familial chilblain lupus, and related type 1 interferonopathies are rare inherited diseases in which an overactive interferon pathway drives inflammation in the lungs, skin, joints, and other organs. There are no approved treatments. This open-label Phase 1 study (about 16 participants at sites in nine countries) tests BI 3000202, an oral medicine that blocks the cGAS enzyme at the top of this pathway. Participants take a lower dose for four weeks and then a higher dose for 36 weeks, while continuing their usual treatment, with regular visits to check safety, drug levels, and the interferon gene score.",
+      "start": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "url": "https://clinicaltrials.ucsf.edu/trial/NCT06878365",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "phase": "Phase 1",
+      "intervention": "BI 3000202 oral tablets: low dose for 4 weeks, then high dose for 36 weeks, on top of standard care",
+      "nct": "NCT06878365",
+      "enrollment": "Recruiting",
+      "eligibility": "Adults 18–74 with a genetic diagnosis of COPA syndrome, Aicardi-Goutières syndrome, familial chilblain lupus, or another selected type 1 interferonopathy",
+      "target": "16"
+    },
+    {
+      "id": "aloft-ppf-admilparant-for-progressive-pulmonary-fibrosis",
+      "name": "ALOFT-PPF: Admilparant for Progressive Pulmonary Fibrosis",
+      "short": "ALOFT-PPF",
+      "fullTitle": "A Multicenter, Randomized, Double-blind, Placebo-controlled, Phase 3 Study to Evaluate the Efficacy, Safety, and Tolerability of BMS-986278 in Participants With Progressive Pulmonary Fibrosis",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "Progressive pulmonary fibrosis (PPF)"
+      ],
+      "theme": "Lung disease",
+      "lead": "Jeffrey Golden",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Industry-sponsored",
+      "funding": "Industry · Bristol Myers Squibb (IM027-1015)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "A Phase 3 trial testing admilparant, an oral pill that blocks a scarring signal in the lungs, in adults with progressive pulmonary fibrosis other than idiopathic pulmonary fibrosis.",
+      "full": "Progressive pulmonary fibrosis (PPF) describes a group of interstitial lung diseases in which lung scarring keeps worsening despite treatment, and options are limited. This global Phase 3 study (more than 1,000 participants) tests admilparant (BMS-986278), an oral medicine that blocks the LPA1 receptor, a key signal in lung scarring. Participants are randomly assigned to one of two doses or placebo, taken twice daily for at least 52 weeks alongside their usual antifibrotic or immune-suppressing treatment, with lung function and disease progression tracked throughout. Enrollment is complete; participants who finish may move to an open-label protocol.",
+      "start": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "url": "https://www.bmsclinicaltrials.com/us/en/clinical-trials/NCT06025578",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "phase": "Phase 3",
+      "intervention": "Admilparant (BMS-986278) 60 mg or 120 mg oral twice daily vs. placebo for at least 52 weeks",
+      "nct": "NCT06025578",
+      "enrollment": "Active, not recruiting",
+      "eligibility": "Adults 21+ with progressive fibrotic ILD (at least 10% fibrosis on HRCT) within the past 24 months; excludes IPF with usual interstitial pneumonia pattern",
+      "target": "1057"
+    },
+    {
+      "id": "bersiporocin-for-idiopathic-pulmonary-fibrosis",
+      "name": "Bersiporocin for Idiopathic Pulmonary Fibrosis",
+      "short": "DWN12088-201",
+      "fullTitle": "A Phase 2, Randomized, Double-Blind, Placebo-Controlled Study to Evaluate the Safety and Efficacy of DWN12088 in Patients With Idiopathic Pulmonary Fibrosis",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "Idiopathic pulmonary fibrosis (IPF)"
+      ],
+      "theme": "Lung disease",
+      "lead": "Jeffrey Golden",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Industry-sponsored",
+      "funding": "Industry · Daewoong Pharmaceutical (DWN12088-201)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "A Phase 2 trial testing bersiporocin, a first-in-class oral pill designed to cut collagen production, in adults with idiopathic pulmonary fibrosis, with or without standard antifibrotic treatment.",
+      "full": "Idiopathic pulmonary fibrosis (IPF) is a progressive scarring disease of the lungs. Bersiporocin (DWN12088) is a first-in-class oral medicine that blocks prolyl-tRNA synthetase, an enzyme needed to make collagen, the main component of scar tissue. In this Phase 2 study in the United States and South Korea (about 102 participants), adults with IPF, either on stable pirfenidone or nintedanib or on no IPF treatment, are randomly assigned 2:1 to bersiporocin or placebo twice daily for 24 weeks, with lung function, CT scans, and walk tests tracked. Enrollment is complete, and results are expected in early 2027.",
+      "start": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "url": "https://clinicaltrials.ucsf.edu/trial/NCT05389215",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "phase": "Phase 2",
+      "intervention": "Bersiporocin (DWN12088) 150 mg oral tablet twice daily vs. placebo (2:1) for 24 weeks",
+      "nct": "NCT05389215",
+      "enrollment": "Active, not recruiting",
+      "eligibility": "Adults 40+ with IPF diagnosed within 5 years, on stable pirfenidone or nintedanib or no IPF therapy, with FVC of at least 40% and DLCO 25–80% predicted",
+      "target": "102"
+    },
+    {
+      "id": "egcg-green-tea-compound-for-idiopathic-pulmonary-fibrosis",
+      "name": "EGCG (Green Tea Compound) for Idiopathic Pulmonary Fibrosis",
+      "short": "EGCG-101",
+      "fullTitle": "Dose Ranging Study of Oral Epigallocatechin-3-gallate (EGCG) Given Daily for 12 Weeks to Patients With Idiopathic Pulmonary Fibrosis (IPF) Evaluating Safety, PK Interactions With Standard of Care Drugs, and Biomarkers of Drug Effect",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "Idiopathic pulmonary fibrosis (IPF)"
+      ],
+      "theme": "Lung disease",
+      "lead": "Jeffrey Golden",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Investigator-initiated",
+      "funding": "NIH · sponsor-investigator Harold Chapman, MD (UCSF)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "A Phase 1 trial testing whether EGCG, a purified green tea compound that blocks scarring signals, is safe at two doses when added to standard treatment for idiopathic pulmonary fibrosis.",
+      "full": "Laboratory studies show that EGCG, a compound purified from green tea, blocks collagen cross-linking and the TGF-beta scarring pathway, and an earlier human study found it safe and able to dampen scarring signals in lung tissue. This multi-center, double-blind, placebo-controlled Phase 1 study, led by UCSF, gives adults with idiopathic pulmonary fibrosis already taking nintedanib or pirfenidone either EGCG or placebo once daily for 12 weeks. Two doses are tested in sequential cohorts (300 mg, then 600 mg), with safety, drug levels, interactions with standard therapy, and blood biomarkers of drug effect measured.",
+      "start": "2026",
+      "end": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "partners": [
+        "University of Michigan",
+        "Cornell University",
+        "Massachusetts General Hospital",
+        "Temple University",
+        "University of Washington",
+        "University of Virginia"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT05195918",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "phase": "Phase 1",
+      "intervention": "EGCG capsules (Teavigo, at least 94% purity) 300 mg (Cohort A) or 600 mg (Cohort B) daily vs. placebo for 12 weeks, added to nintedanib or pirfenidone",
+      "nct": "NCT05195918",
+      "enrollment": "Active, not recruiting",
+      "eligibility": "Adults 40–85 with IPF on stable nintedanib or pirfenidone",
+      "target": "50"
+    },
+    {
+      "id": "ascent-dry-powder-inhaled-treprostinil-yutrepia-for-ph-ild",
+      "name": "ASCENT: Dry-Powder Inhaled Treprostinil (Yutrepia) for PH-ILD",
+      "short": "ASCENT",
+      "fullTitle": "An Open-Label ProSpective MultiCENTer Study to Evaluate Safety and Tolerability of Dry Powder Inhaled Treprostinil in PH",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "Pulmonary hypertension due to interstitial lung disease (PH-ILD)"
+      ],
+      "theme": "Lung disease",
+      "lead": "Nicholas Kolaitis",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Industry-sponsored",
+      "funding": "Industry · Liquidia Technologies (LTI-401)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "An open-label study of Yutrepia, a dry-powder inhaled form of treprostinil, checking its safety and tolerability in adults with pulmonary hypertension caused by lung scarring.",
+      "full": "Pulmonary hypertension is a common and serious complication of interstitial lung disease (ILD). ASCENT is an open-label, multicenter study of Yutrepia (LIQ861), a dry-powder inhaled form of treprostinil made with particle-engineering technology for deep-lung delivery. Cohort A (about 60 participants) enrolls adults with PH-ILD who have not taken prostacyclin medicines; Cohort B (about 20 participants) enrolls people already on nebulized or inhaled treprostinil four times a day who are not at their treatment goal and switch to Yutrepia. Participants are followed for safety, tolerability, cough, walking distance, and lung and heart measures.",
+      "start": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "url": "https://clinicaltrials.ucsf.edu/trial/NCT06129240",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "intervention": "Yutrepia (LIQ861, dry-powder inhaled treprostinil), titrated by tolerability",
+      "nct": "NCT06129240",
+      "enrollment": "Recruiting",
+      "eligibility": "Adults with WHO Group 3 PH-ILD confirmed by CT and right heart catheterization; Cohort A prostacyclin-naive, Cohort B on inhaled treprostinil four times daily and not at goal",
+      "target": "80"
+    },
+    {
+      "id": "vixarelimab-for-ipf-and-scleroderma-related-lung-disease",
+      "name": "Vixarelimab for IPF and Scleroderma-Related Lung Disease",
+      "short": "GB44496",
+      "fullTitle": "A Two-Cohort, Phase II, Multicenter, Randomized, Double-Blind, Parallel-Group, Placebo-Controlled Study Evaluating the Efficacy and Safety of Vixarelimab Compared With Placebo in Patients With Idiopathic Pulmonary Fibrosis and in Patients With Systemic Sclerosis-Associated Interstitial Lung Disease",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "Idiopathic pulmonary fibrosis (IPF)",
+        "Systemic sclerosis-associated ILD (SSc-ILD)"
+      ],
+      "theme": "Lung disease",
+      "lead": "Jeffrey Golden",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Industry-sponsored",
+      "funding": "Industry · Genentech / Roche (GB44496)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "A Phase 2 trial that tested vixarelimab, an antibody given by injection, against placebo in adults with idiopathic pulmonary fibrosis or scleroderma-related lung scarring.",
+      "full": "Idiopathic pulmonary fibrosis (IPF) and lung disease linked to systemic sclerosis (scleroderma) both cause progressive lung scarring. This global Phase 2 study tested vixarelimab, an antibody that blocks the oncostatin M receptor, a signal involved in inflammation and fibrosis. Adults were randomly assigned to vixarelimab or placebo for 52 weeks, with an optional 52-week open-label extension; the main measure was change in lung function. The sponsor ended the study early after enrolling 286 participants.",
+      "start": "2026",
+      "end": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT05785624",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "phase": "Phase 2",
+      "intervention": "Vixarelimab injection vs. placebo for 52 weeks; optional 52-week open-label extension",
+      "nct": "NCT05785624",
+      "enrollment": "Terminated",
+      "eligibility": "Cohort 1: adults 40–85 with progressive IPF; Cohort 2: adults 18–85 with progressive SSc-ILD (at least 10% fibrosis on HRCT)",
+      "target": "286"
+    },
+    {
+      "id": "fighting-fibrosis-ifetroban-for-ipf",
+      "name": "FIGHTING FIBROSIS: Ifetroban for IPF",
+      "short": "CPI-IFE-008",
+      "fullTitle": "A Randomized, Double-Blind, Placebo-Controlled Phase II Study to Determine the Safety and Efficacy of Oral Ifetroban in Patients With Idiopathic Pulmonary Fibrosis (IPF)",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "Idiopathic pulmonary fibrosis (IPF)"
+      ],
+      "theme": "Lung disease",
+      "lead": "Jeffrey Golden",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Industry-sponsored",
+      "funding": "Industry · Cumberland Pharmaceuticals (CPI-IFE-008)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "A Phase 2 trial testing ifetroban, a once-daily pill that blocks a scarring and clotting signal, against placebo for one year in adults with idiopathic pulmonary fibrosis.",
+      "full": "Idiopathic pulmonary fibrosis (IPF) is a progressive scarring disease of the lungs. Ifetroban blocks the thromboxane-prostanoid receptor, a signal found on platelets, airway muscle and other cells, and in laboratory studies it prevented and helped resolve lung fibrosis. In this U.S. Phase 2 study (about 128 participants at roughly 20 centers), adults with IPF, with or without standard antifibrotic treatment, are randomly assigned to ifetroban or placebo once daily for 12 months. The study measures safety, changes in lung function, and blood and urine biomarkers of fibrosis.",
+      "start": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "url": "https://clinicaltrials.ucsf.edu/trial/NCT05571059",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "phase": "Phase 2",
+      "intervention": "Ifetroban 250 mg oral capsule once daily vs. placebo for 12 months",
+      "nct": "NCT05571059",
+      "enrollment": "Recruiting",
+      "eligibility": "Adults 40+ with IPF (UIP or probable UIP on HRCT), on stable pirfenidone or nintedanib or on neither",
+      "target": "128"
+    },
+    {
+      "id": "mist-inhaled-pirfenidone-ap01-for-progressive-pulmonary-fibrosis",
+      "name": "MIST: Inhaled Pirfenidone (AP01) for Progressive Pulmonary Fibrosis",
+      "short": "MIST",
+      "fullTitle": "A Randomized, Double-Blind, Placebo-Controlled, Phase 2b Study Evaluating the Safety and Efficacy of Pirfenidone Solution for Inhalation (AP01) in Participants With Progressive Pulmonary Fibrosis",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "Progressive pulmonary fibrosis (PPF)"
+      ],
+      "theme": "Lung disease",
+      "lead": "Jeffrey Golden",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Industry-sponsored",
+      "funding": "Industry · Avalyn Pharma (AP01-007)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "A Phase 2b trial testing AP01, an inhaled form of the antifibrotic pirfenidone delivered straight to the lungs, in adults with progressive pulmonary fibrosis.",
+      "full": "Pirfenidone pills slow lung scarring in idiopathic pulmonary fibrosis, but many people cannot tolerate their stomach and liver side effects. AP01 is a nebulized form of pirfenidone that delivers lower doses directly to the lungs. In this global Phase 2b study (375 participants), adults with progressive pulmonary fibrosis other than IPF are randomly assigned to a high or low dose of AP01 or placebo, inhaled twice daily for 52 weeks on top of their usual care. The main measure is change in lung function (forced vital capacity); enrollment is complete and results are expected in the second half of 2027.",
+      "start": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "partners": [
+        "DevPro Biopharma"
+      ],
+      "url": "https://clinicaltrials.ucsf.edu/trial/NCT06329401",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "phase": "Phase 2",
+      "intervention": "AP01 (pirfenidone solution for inhalation) 100 mg or 50 mg twice daily by nebulizer vs. placebo for 52 weeks",
+      "nct": "NCT06329401",
+      "enrollment": "Active, not recruiting",
+      "eligibility": "Adults 18+ with fibrotic ILD other than IPF showing progression within the past 24 months; not on oral pirfenidone",
+      "target": "375"
+    },
+    {
+      "id": "aloft-ipf-admilparant-for-idiopathic-pulmonary-fibrosis",
+      "name": "ALOFT-IPF: Admilparant for Idiopathic Pulmonary Fibrosis",
+      "short": "ALOFT-IPF",
+      "fullTitle": "A Multicenter, Randomized, Double-blind, Placebo-controlled, Phase 3 Study to Evaluate the Efficacy, Safety, and Tolerability of BMS-986278 in Participants with Idiopathic Pulmonary Fibrosis",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "Idiopathic pulmonary fibrosis (IPF)"
+      ],
+      "theme": "Lung disease",
+      "lead": "Jeffrey Golden",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Industry-sponsored",
+      "funding": "Industry · Bristol Myers Squibb (IM027-068)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "A Phase 3 trial of admilparant, an oral pill that blocks a scarring signal, in adults with idiopathic pulmonary fibrosis; the lower dose slowed lung function decline.",
+      "full": "Idiopathic pulmonary fibrosis (IPF) is a progressive scarring disease of the lungs. Admilparant (BMS-986278) is an oral medicine that blocks the LPA1 receptor, a key signal driving lung scarring. In this global Phase 3 study (about 1,255 participants), adults with IPF were randomly assigned to one of two doses or placebo twice daily for at least 52 weeks, alongside their usual antifibrotic treatment. Topline results announced in October 2026 showed the 60 mg dose significantly reduced the decline in lung function compared with placebo.",
+      "start": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "url": "https://www.bmsclinicaltrials.com/us/en/clinical-trials/NCT06003426",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "phase": "Phase 3",
+      "intervention": "Admilparant (BMS-986278) 60 mg or 120 mg oral twice daily vs. placebo for at least 52 weeks",
+      "nct": "NCT06003426",
+      "enrollment": "Active, not recruiting",
+      "eligibility": "Adults 40+ with IPF diagnosed within 7 years, confirmed by central HRCT review",
+      "target": "1255"
+    },
+    {
+      "id": "teton-1-inhaled-treprostinil-tyvaso-for-ipf",
+      "name": "TETON-1: Inhaled Treprostinil (Tyvaso) for IPF",
+      "short": "TETON-1",
+      "fullTitle": "A Phase 3, Randomized, Double-Blind, Placebo-Controlled Study of the Efficacy and Safety of Inhaled Treprostinil in Subjects With Idiopathic Pulmonary Fibrosis",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "Idiopathic pulmonary fibrosis (IPF)"
+      ],
+      "theme": "Lung disease",
+      "lead": "Jeffrey Golden",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Industry-sponsored",
+      "funding": "Industry · United Therapeutics (RIN-PF-301)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "A Phase 3 trial in the U.S. and Canada showing that nebulized Tyvaso (inhaled treprostinil) slowed lung function decline compared with placebo in adults with idiopathic pulmonary fibrosis.",
+      "full": "Treprostinil, a lab-made form of the hormone prostacyclin, is an approved inhaled treatment for pulmonary hypertension, and earlier data suggested it might also protect lung function in fibrotic lung disease. TETON-1 randomly assigned about 600 adults with idiopathic pulmonary fibrosis in the United States and Canada to nebulized Tyvaso or placebo four times daily for 52 weeks. The trial met its main goal, slowing the decline in forced vital capacity, and with its sister trial TETON-2 supports an FDA application for IPF now under review.",
+      "start": "2026",
+      "end": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT04708782",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "phase": "Phase 3",
+      "intervention": "Nebulized treprostinil (Tyvaso) four times daily, titrated up to 12 breaths, vs. placebo for 52 weeks",
+      "nct": "NCT04708782",
+      "enrollment": "Completed",
+      "eligibility": "Adults with IPF in the United States and Canada",
+      "target": "598"
+    },
+    {
+      "id": "teton-ole-long-term-inhaled-treprostinil-for-pulmonary-fibrosis",
+      "name": "TETON-OLE: Long-Term Inhaled Treprostinil for Pulmonary Fibrosis",
+      "short": "TETON-OLE",
+      "fullTitle": "A Multicenter, Open-Label Extension Study of Inhaled Treprostinil in Subjects With Fibrotic Lung Disease",
+      "type": "clin",
+      "status": "Closed",
+      "areas": [
+        "Idiopathic pulmonary fibrosis (IPF)",
+        "Progressive pulmonary fibrosis (PPF)"
+      ],
+      "theme": "Lung disease",
+      "lead": "Jeffrey Golden",
+      "dept": "Medicine",
+      "division": "Pulmonary, Critical Care, Allergy & Sleep Medicine",
+      "origin": "Industry-sponsored",
+      "funding": "Industry · United Therapeutics (RIN-PF-302)",
+      "services": [
+        "Clinical coordination",
+        "Regulatory support"
+      ],
+      "card": "An open-label extension letting adults who finished a TETON trial keep taking nebulized Tyvaso (inhaled treprostinil) while its long-term safety in pulmonary fibrosis is tracked.",
+      "full": "This Phase 3 open-label extension enrolls people with idiopathic or progressive pulmonary fibrosis who completed one of the TETON trials of nebulized Tyvaso (treprostinil). Participants inhale treprostinil four times a day, titrated toward 15 breaths per session or their highest tolerated dose, and continue until the drug becomes commercially available for their condition or the study ends. The main goal is to understand long-term safety and tolerability.",
+      "start": "2026",
+      "sites": [
+        "Parnassus"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT04905693",
+      "parent": "interstitial-lung-disease-clinical-research-unit",
+      "studyType": "Interventional trial",
+      "phase": "Phase 3",
+      "intervention": "Open-label nebulized treprostinil (Tyvaso) four times daily, target 15 breaths per session",
+      "nct": "NCT04905693",
+      "enrollment": "Active, not recruiting",
+      "eligibility": "Adults who completed TETON-1, TETON-2 or TETON-PPF",
+      "target": "1850"
     }
   ],
   "coprojects": {
