@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { communities, programs, projects } from "@/data/portfolio";
 import { PI_SATISFACTION } from "@/data/research-development";
 
 const HEADLINE_STATS = [
@@ -29,28 +28,7 @@ const HEADLINE_STATS = [
   },
 ] as const;
 
-/** Counts match the portfolio tabs. */
-const PORTFOLIO_STATS = [
-  {
-    value: programs.length,
-    label: "Programs served",
-    color: "var(--lime)",
-  },
-  {
-    value: projects.length,
-    label: "Projects served",
-    color: "var(--violet)",
-  },
-  {
-    value: communities.length,
-    label: "Communities served",
-    color: "var(--coral)",
-  },
-] as const;
-
-export const BY_THE_NUMBERS_STATS = [...HEADLINE_STATS, ...PORTFOLIO_STATS];
-
-type Stat = (typeof BY_THE_NUMBERS_STATS)[number];
+type Stat = (typeof HEADLINE_STATS)[number];
 
 function useCountUp(
   target: number,
@@ -149,21 +127,12 @@ export function ByTheNumbersStrip() {
       aria-label="By the numbers"
     >
       <div ref={ref} className="max-w-7xl mx-auto px-6 py-8 md:py-10">
-        <div className="flex flex-col gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:rounded-3xl">
-          <div className="grid grid-cols-2 gap-px lg:grid-cols-4">
-            {HEADLINE_STATS.map((stat) => (
-              <div key={stat.label} className="bg-ink">
-                <StatCell stat={stat} active={active} />
-              </div>
-            ))}
-          </div>
-          <div className="grid grid-cols-1 gap-px sm:grid-cols-3">
-            {PORTFOLIO_STATS.map((stat) => (
-              <div key={stat.label} className="bg-ink">
-                <StatCell stat={stat} active={active} />
-              </div>
-            ))}
-          </div>
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:rounded-3xl lg:grid-cols-4">
+          {HEADLINE_STATS.map((stat) => (
+            <div key={stat.label} className="bg-ink">
+              <StatCell stat={stat} active={active} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

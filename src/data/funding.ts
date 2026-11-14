@@ -155,7 +155,7 @@ export const AWARDS: FundingOpportunity[] = [
       ["Apply", "Online application form"],
     ],
     applyLabel: "Apply online",
-    applyHref: "https://tally.so/r/w4oa05",
+    applyHref: "/funding/biospecimen/apply",
     links: [],
     providesTitle: "Part of a coordinator's time, a database, and a path to long-term funding.",
     provides: [
@@ -207,7 +207,7 @@ export const AWARDS: FundingOpportunity[] = [
       "The sample stream: biospecimen types, source population, clinical locations, clinic days, and expected rate and duration of collection",
       "Resources needed: CRC responsibilities, clinical workflows, space, equipment, databasing, language access, special skills",
       "The research questions these samples will answer",
-      "Who else would use the pipeline, as an uploaded list of names and affiliations",
+      "Who else would use the pipeline, as a list of names and affiliations",
       "Regulatory status: not started, in preparation, submitted, or approved",
       "How access to the pipeline will be managed or shared",
     ],

@@ -81,12 +81,21 @@ export function DetailHero({ award }: { award: FundingOpportunity }) {
                 </div>
               ))}
             </dl>
-            <OutLink
-              href={award.applyHref}
-              className={`${inkPillClass} mt-[18px] min-h-12 w-full px-6 py-3 text-[15px]`}
-            >
-              Apply online →
-            </OutLink>
+            {award.id === "biospecimen" ? (
+              <Link
+                to="/funding/biospecimen/apply"
+                className={`${inkPillClass} mt-[18px] min-h-12 w-full px-6 py-3 text-[15px]`}
+              >
+                {award.applyLabel} →
+              </Link>
+            ) : (
+              <OutLink
+                href={award.applyHref}
+                className={`${inkPillClass} mt-[18px] min-h-12 w-full px-6 py-3 text-[15px]`}
+              >
+                {award.applyLabel} →
+              </OutLink>
+            )}
             {award.links.length > 0 ? (
               <div className="mt-3 flex flex-wrap items-center justify-center gap-x-[18px] gap-y-1.5">
                 {award.links.map((link) => (

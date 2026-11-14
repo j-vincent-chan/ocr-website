@@ -18,6 +18,7 @@ import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as FundingIndexRouteImport } from './routes/funding.index'
 import { Route as FundingSlugRouteImport } from './routes/funding.$slug'
+import { Route as FundingApplicationsRouteImport } from './routes/funding.applications'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
 import { Route as ServicesAiToolsRouteImport } from './routes/services.ai-tools'
 import { Route as ServicesCommunityManagementRouteImport } from './routes/services.community-management'
@@ -25,6 +26,7 @@ import { Route as ServicesDataManagementRouteImport } from './routes/services.da
 import { Route as ServicesProjectManagementRouteImport } from './routes/services.project-management'
 import { Route as ServicesResearchDevelopmentRouteImport } from './routes/services.research-development'
 import { Route as ServicesResearchOperationsRouteImport } from './routes/services.research-operations'
+import { Route as FundingBiospecimenApplyRouteImport } from './routes/funding.biospecimen.apply'
 import { Route as PortfolioProgramsIdRouteImport } from './routes/portfolio.programs.$id'
 import { Route as PortfolioProjectsIdRouteImport } from './routes/portfolio.projects.$id'
 
@@ -73,6 +75,11 @@ const FundingSlugRoute = FundingSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => FundingRoute,
 } as any)
+const FundingApplicationsRoute = FundingApplicationsRouteImport.update({
+  id: '/applications',
+  path: '/applications',
+  getParentRoute: () => FundingRoute,
+} as any)
 const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -112,6 +119,11 @@ const ServicesResearchOperationsRoute =
     path: '/services/research-operations',
     getParentRoute: () => rootRouteImport,
   } as any)
+const FundingBiospecimenApplyRoute = FundingBiospecimenApplyRouteImport.update({
+  id: '/biospecimen/apply',
+  path: '/biospecimen/apply',
+  getParentRoute: () => FundingRoute,
+} as any)
 const PortfolioProgramsIdRoute = PortfolioProgramsIdRouteImport.update({
   id: '/programs/$id',
   path: '/programs/$id',
@@ -132,6 +144,7 @@ export interface FileRoutesByFullPath {
   '/portfolio': typeof PortfolioRouteWithChildren
   '/projects': typeof ProjectsRoute
   '/funding/$slug': typeof FundingSlugRoute
+  '/funding/applications': typeof FundingApplicationsRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/data-management': typeof ServicesDataManagementRoute
@@ -140,6 +153,7 @@ export interface FileRoutesByFullPath {
   '/services/research-operations': typeof ServicesResearchOperationsRoute
   '/funding/': typeof FundingIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
+  '/funding/biospecimen/apply': typeof FundingBiospecimenApplyRoute
   '/portfolio/programs/$id': typeof PortfolioProgramsIdRoute
   '/portfolio/projects/$id': typeof PortfolioProjectsIdRoute
 }
@@ -150,6 +164,7 @@ export interface FileRoutesByTo {
   '/people': typeof PeopleRoute
   '/projects': typeof ProjectsRoute
   '/funding/$slug': typeof FundingSlugRoute
+  '/funding/applications': typeof FundingApplicationsRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/data-management': typeof ServicesDataManagementRoute
@@ -158,6 +173,7 @@ export interface FileRoutesByTo {
   '/services/research-operations': typeof ServicesResearchOperationsRoute
   '/funding': typeof FundingIndexRoute
   '/portfolio': typeof PortfolioIndexRoute
+  '/funding/biospecimen/apply': typeof FundingBiospecimenApplyRoute
   '/portfolio/programs/$id': typeof PortfolioProgramsIdRoute
   '/portfolio/projects/$id': typeof PortfolioProjectsIdRoute
 }
@@ -171,6 +187,7 @@ export interface FileRoutesById {
   '/portfolio': typeof PortfolioRouteWithChildren
   '/projects': typeof ProjectsRoute
   '/funding/$slug': typeof FundingSlugRoute
+  '/funding/applications': typeof FundingApplicationsRoute
   '/services/ai-tools': typeof ServicesAiToolsRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/data-management': typeof ServicesDataManagementRoute
@@ -179,6 +196,7 @@ export interface FileRoutesById {
   '/services/research-operations': typeof ServicesResearchOperationsRoute
   '/funding/': typeof FundingIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
+  '/funding/biospecimen/apply': typeof FundingBiospecimenApplyRoute
   '/portfolio/programs/$id': typeof PortfolioProgramsIdRoute
   '/portfolio/projects/$id': typeof PortfolioProjectsIdRoute
 }
@@ -193,6 +211,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/projects'
     | '/funding/$slug'
+    | '/funding/applications'
     | '/services/ai-tools'
     | '/services/community-management'
     | '/services/data-management'
@@ -201,6 +220,7 @@ export interface FileRouteTypes {
     | '/services/research-operations'
     | '/funding/'
     | '/portfolio/'
+    | '/funding/biospecimen/apply'
     | '/portfolio/programs/$id'
     | '/portfolio/projects/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -211,6 +231,7 @@ export interface FileRouteTypes {
     | '/people'
     | '/projects'
     | '/funding/$slug'
+    | '/funding/applications'
     | '/services/ai-tools'
     | '/services/community-management'
     | '/services/data-management'
@@ -219,6 +240,7 @@ export interface FileRouteTypes {
     | '/services/research-operations'
     | '/funding'
     | '/portfolio'
+    | '/funding/biospecimen/apply'
     | '/portfolio/programs/$id'
     | '/portfolio/projects/$id'
   id:
@@ -231,6 +253,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/projects'
     | '/funding/$slug'
+    | '/funding/applications'
     | '/services/ai-tools'
     | '/services/community-management'
     | '/services/data-management'
@@ -239,6 +262,7 @@ export interface FileRouteTypes {
     | '/services/research-operations'
     | '/funding/'
     | '/portfolio/'
+    | '/funding/biospecimen/apply'
     | '/portfolio/programs/$id'
     | '/portfolio/projects/$id'
   fileRoutesById: FileRoutesById
@@ -324,6 +348,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FundingSlugRouteImport
       parentRoute: typeof FundingRoute
     }
+    '/funding/applications': {
+      id: '/funding/applications'
+      path: '/applications'
+      fullPath: '/funding/applications'
+      preLoaderRoute: typeof FundingApplicationsRouteImport
+      parentRoute: typeof FundingRoute
+    }
     '/portfolio/': {
       id: '/portfolio/'
       path: '/'
@@ -373,6 +404,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesResearchOperationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/funding/biospecimen/apply': {
+      id: '/funding/biospecimen/apply'
+      path: '/biospecimen/apply'
+      fullPath: '/funding/biospecimen/apply'
+      preLoaderRoute: typeof FundingBiospecimenApplyRouteImport
+      parentRoute: typeof FundingRoute
+    }
     '/portfolio/programs/$id': {
       id: '/portfolio/programs/$id'
       path: '/programs/$id'
@@ -392,12 +430,16 @@ declare module '@tanstack/react-router' {
 
 interface FundingRouteChildren {
   FundingSlugRoute: typeof FundingSlugRoute
+  FundingApplicationsRoute: typeof FundingApplicationsRoute
   FundingIndexRoute: typeof FundingIndexRoute
+  FundingBiospecimenApplyRoute: typeof FundingBiospecimenApplyRoute
 }
 
 const FundingRouteChildren: FundingRouteChildren = {
   FundingSlugRoute: FundingSlugRoute,
+  FundingApplicationsRoute: FundingApplicationsRoute,
   FundingIndexRoute: FundingIndexRoute,
+  FundingBiospecimenApplyRoute: FundingBiospecimenApplyRoute,
 }
 
 const FundingRouteWithChildren =
