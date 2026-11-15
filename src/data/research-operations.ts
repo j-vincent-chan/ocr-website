@@ -509,11 +509,11 @@ export const record = {
 
 // Attributions are intentionally non-identifying. Do not add names, titles, or photos.
 export const testimonials = {
-  eyebrow: "Testimonials",
+  eyebrow: "From the community",
   items: [
     {
       quote:
-        "OCR engages with and supports the UCSF community. ‘Collaboration’ in its name reflects exactly what it does: connecting people and building interdisciplinary partnerships. I’ve come to see OCR as a constant source of innovation.",
+        "I’ve come to see OCR as a constant source of innovation — connecting people and building interdisciplinary partnerships.",
       attribution: "UCSF senior research leader",
     },
   ],
