@@ -35,10 +35,10 @@ export const Route = createFileRoute("/")({
 /* ─────────── HERO: cinematic, layered, editorial ─────────── */
 function Hero() {
   return (
-    <section className="relative bg-cream">
+    <section className="relative flex flex-col bg-cream lg:h-[calc(100dvh-7.25rem)]">
       <IntroSplash />
       {/* hero panel: clip graphic here so it cannot bleed into dark band or past viewport */}
-      <HeroInteractiveBackdrop>
+      <HeroInteractiveBackdrop className="flex min-h-0 flex-1 flex-col">
         <div
           className="pointer-events-none absolute inset-0 overflow-hidden"
           aria-hidden
@@ -68,40 +68,43 @@ function Hero() {
         />
         <HeroMouseGlow />
 
-        <div data-intro-hero className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-32">
+        <div
+          data-intro-hero
+          className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 py-14 lg:py-10"
+        >
           <div className="flex items-center gap-3 text-xs font-medium text-ink/70 uppercase tracking-[0.22em]">
-          <span className="w-8 h-px bg-coral" />
-          UCSF - Office of Collaborative Research (OCR)
-        </div>
-
-        <h1 className="mt-10 font-display text-[clamp(3.4rem,9vw,9rem)] leading-[0.92] tracking-tight text-ink max-w-[18ch]">
-          Where great <em className="not-italic">science</em>
-          <br />
-          <em className="not-italic text-gradient-sunburst">finds great partners</em>.
-        </h1>
-
-        <div className="mt-12 grid lg:grid-cols-12 gap-10 items-end">
-          <p className="lg:col-span-5 text-lg md:text-xl text-muted-foreground leading-relaxed">
-            OCR works in the space between inspiration and impact, helping
-            researchers turn ambitious ideas into fundable, executable programs
-            that carry discovery forward.
-          </p>
-
-          <div className="lg:col-span-7 lg:col-start-6 flex flex-wrap gap-3">
-            <a
-              href="#services"
-              className="inline-flex items-center gap-2 rounded-full bg-ink text-white px-6 py-3.5 text-sm font-medium hover:bg-ink/90 transition shadow-lift"
-            >
-              Explore our services <span aria-hidden>↓</span>
-            </a>
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-card px-6 py-3.5 text-sm font-medium hover:bg-secondary transition"
-            >
-              About OCR
-            </Link>
+            <span className="w-8 h-px bg-coral" />
+            UCSF - Office of Collaborative Research (OCR)
           </div>
-        </div>
+
+          <h1 className="mt-8 font-display text-[clamp(3.2rem,8vw,8.25rem)] leading-[0.92] tracking-tight text-ink max-w-[18ch] lg:mt-10">
+            Where great <em className="not-italic">science</em>
+            <br />
+            <em className="not-italic text-gradient-sunburst">finds great partners</em>.
+          </h1>
+
+          <div className="mt-8 grid items-end gap-8 lg:mt-10 lg:grid-cols-12 lg:gap-10">
+            <p className="lg:col-span-5 text-lg md:text-xl text-muted-foreground leading-relaxed">
+              OCR works in the space between inspiration and impact, helping
+              researchers turn ambitious ideas into fundable, executable programs
+              that carry discovery forward.
+            </p>
+
+            <div className="lg:col-span-7 lg:col-start-6 flex flex-wrap gap-3">
+              <a
+                href="#services"
+                className="inline-flex items-center gap-2 rounded-full bg-ink text-white px-6 py-3.5 text-sm font-medium hover:bg-ink/90 transition shadow-lift"
+              >
+                Explore our services <span aria-hidden>↓</span>
+              </a>
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-card px-6 py-3.5 text-sm font-medium hover:bg-secondary transition"
+              >
+                About OCR
+              </Link>
+            </div>
+          </div>
         </div>
       </HeroInteractiveBackdrop>
 

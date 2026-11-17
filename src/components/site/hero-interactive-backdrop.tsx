@@ -21,7 +21,13 @@ const HeroGlowContext = createContext<HeroGlowContextValue>({
   enabled: false,
 });
 
-export function HeroInteractiveBackdrop({ children }: { children: ReactNode }) {
+export function HeroInteractiveBackdrop({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   const [pos, setPos] = useState<GlowPos>({ x: 0, y: 0 });
   const [active, setActive] = useState(false);
   const [enabled, setEnabled] = useState(false);
@@ -64,7 +70,7 @@ export function HeroInteractiveBackdrop({ children }: { children: ReactNode }) {
   return (
     <HeroGlowContext.Provider value={{ pos, active, enabled }}>
       <div
-        className="relative overflow-hidden"
+        className={`relative overflow-hidden ${className}`}
         onMouseMove={handleMove}
         onMouseLeave={() => setActive(false)}
       >

@@ -46,7 +46,10 @@ function useCountUp(
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-    if (!active) return;
+    if (!active) {
+      setValue(0);
+      return;
+    }
 
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -59,6 +62,7 @@ function useCountUp(
     let frame = 0;
     let start: number | null = null;
     let delayTimer = 0;
+    setValue(0);
 
     const begin = () => {
       const tick = (timestamp: number) => {
@@ -116,44 +120,37 @@ function StatCell({
   index: number;
 }) {
   const decimals = "decimals" in stat ? stat.decimals : 0;
-  const count = useCountUp(stat.value, active, 1400, decimals, index * 90);
+  const count = useCountUp(stat.value, active, 1400, decimals, index * 80);
 
   return (
     <div
       className={[
-        "group relative flex h-full min-h-[11.5rem] flex-col justify-between gap-8 px-5 py-8 sm:px-6 md:min-h-[13rem] md:px-8 md:py-10",
+        "group relative flex h-full flex-col justify-between gap-4 px-5 py-5 sm:px-6 md:gap-5 md:px-7 md:py-6",
         "transition-colors duration-300 ease-out hover:bg-white/[0.04]",
         cellBorders(index),
       ].join(" ")}
     >
       <span
         aria-hidden
-        className="absolute inset-x-5 top-0 h-px opacity-55 transition-opacity duration-300 group-hover:opacity-90 sm:inset-x-6 md:inset-x-8"
+        className="absolute inset-x-5 top-0 h-px opacity-55 transition-opacity duration-300 group-hover:opacity-90 sm:inset-x-6 md:inset-x-7"
         style={{ background: stat.color }}
       />
       <span
         aria-hidden
-        className="absolute left-5 top-0 h-0.5 w-8 rounded-full transition-all duration-500 group-hover:w-11 sm:left-6 md:left-8"
+        className="absolute left-5 top-0 h-0.5 w-7 rounded-full transition-all duration-500 group-hover:w-10 sm:left-6 md:left-7"
         style={{ background: stat.color }}
       />
 
-      <div
-        className={[
-          "font-display text-[clamp(2.6rem,5.5vw,4.5rem)] leading-none tracking-tight text-white",
-          "transition-[transform,opacity] duration-500 ease-out",
-          active ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
-        ].join(" ")}
-        style={{ transitionDelay: active ? `${index * 90}ms` : "0ms" }}
-      >
+      <div className="font-display text-[clamp(2.4rem,4.8vw,3.75rem)] leading-none tracking-tight text-white">
         {formatStatValue(stat, count)}
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         <div className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/70 md:text-xs">
           {stat.label}
         </div>
         {"detail" in stat && stat.detail ? (
-          <p className="max-w-[15rem] text-[13px] leading-snug text-white/45">
+          <p className="max-w-[15rem] text-[12px] leading-snug text-white/45 md:text-[13px]">
             {stat.detail}
           </p>
         ) : null}
@@ -177,7 +174,10 @@ export function ByTheNumbersStrip() {
           observer.disconnect();
         }
       },
-      { threshold: 0.35 },
+      {
+        // Fire once the strip is on screen; on desktop it sits at the bottom of the first view.
+        threshold: 0.35,
+      },
     );
 
     observer.observe(el);
@@ -186,7 +186,7 @@ export function ByTheNumbersStrip() {
 
   return (
     <div
-      className="relative w-full overflow-hidden border-t border-white/10 bg-ink text-white"
+      className="relative w-full shrink-0 overflow-hidden border-t border-white/10 bg-ink text-white"
       role="region"
       aria-label="By the numbers"
     >
@@ -199,8 +199,8 @@ export function ByTheNumbersStrip() {
         }}
       />
 
-      <div ref={ref} className="relative mx-auto max-w-7xl px-6 py-10 md:py-12">
-        <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.22em] text-white/45 md:mb-7">
+      <div ref={ref} className="relative mx-auto max-w-7xl px-6 py-7 md:py-8">
+        <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-white/45">
           By the numbers since 2023
         </p>
 
