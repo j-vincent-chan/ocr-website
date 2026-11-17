@@ -65,7 +65,7 @@ function AtAGlance() {
   const facts = [
     { n: "5", l: "Service arms" },
     { n: "8", l: "Partners" },
-    { n: "120+", l: "Investigators served" },
+    { n: "180+", l: "Investigators served" },
   ];
   return (
     <section className="py-20 border-b border-ink/10">
