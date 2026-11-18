@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import vincentImg from "@/assets/people/vincent-chan.jpg";
 import { SiteShell, Breadcrumb, CTA, SunburstLogo } from "@/components/site/chrome";
+import { VINCENT_BOOKINGS_URL } from "@/data/research-operations";
 import { onLightText } from "@/lib/on-light-text";
 
 export const Route = createFileRoute("/about")({
@@ -557,7 +559,12 @@ function AboutPage() {
         eyebrow="Partner with OCR"
         title={<>Could your institute<br /><span className="text-white/70">be next?</span></>}
         subtitle="We design partnerships at the program, department, or institute level — and we're actively looking for what's next."
-        email="ocr@ucsf.edu"
+        contact={{
+          name: "Vincent Chan, PhD",
+          role: "OCR Director",
+          photo: vincentImg,
+        }}
+        primaryHref={VINCENT_BOOKINGS_URL}
         primaryLabel="Start the conversation →"
       />
     </SiteShell>

@@ -61,7 +61,7 @@ function CommunityManagementPage() {
           </>
         }
         subtitle={ctaCopy.subtitle}
-        email={ctaCopy.email}
+        contact={ctaCopy.contact}
         primaryLabel={ctaCopy.primaryLabel}
         primaryHref={ctaCopy.primaryHref}
       />

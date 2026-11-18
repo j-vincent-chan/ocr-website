@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import vincentImg from "@/assets/people/vincent-chan.jpg";
+import { VINCENT_BOOKINGS_URL } from "@/data/research-operations";
 
 export function ContactCard() {
   return (
@@ -55,27 +57,39 @@ export function ContactCard() {
                 WebkitBackdropFilter: "blur(10px)",
               }}
             >
-              <div
-                className="text-white/70"
-                style={{
-                  font: "500 11px/1.4 Inter, system-ui, sans-serif",
-                  letterSpacing: ".18em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Email us
+              <div className="flex items-center gap-4">
+                <img
+                  src={vincentImg}
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="h-14 w-14 shrink-0 rounded-full object-cover"
+                />
+                <div className="min-w-0">
+                  <div
+                    className="text-white/70"
+                    style={{
+                      font: "500 11px/1.4 Inter, system-ui, sans-serif",
+                      letterSpacing: ".18em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Consult with
+                  </div>
+                  <div
+                    className="mt-1 font-display text-2xl leading-tight text-white"
+                    style={{ fontWeight: 400 }}
+                  >
+                    Vincent Chan, PhD
+                  </div>
+                  <div className="mt-1 text-sm text-white/70">OCR Director</div>
+                </div>
               </div>
-              <a
-                href="mailto:ocr@ucsf.edu"
-                className="mt-2 block font-display text-2xl text-white no-underline hover:underline"
-                style={{ fontWeight: 400 }}
-              >
-                ocr@ucsf.edu
-              </a>
               <div className="mt-6 flex flex-col gap-3">
-                {/* TODO(OCR): replace mailto with the director's scheduling URL when supplied. */}
                 <a
-                  href="mailto:ocr@ucsf.edu?subject=30-minute%20consult%20request"
+                  href={VINCENT_BOOKINGS_URL}
+                  target="_blank"
+                  rel="noreferrer"
                   className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-white px-5 text-sm font-medium text-[#010621] no-underline hover:bg-[#f2eee6]"
                 >
                   Book a 30-min consult <span aria-hidden>→</span>

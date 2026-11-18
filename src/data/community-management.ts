@@ -756,7 +756,11 @@ export const ctaCopy = {
   titleAccent: "Talk to us before the Enrichment section.",
   subtitle:
     "Whether you are drafting a P30, renewing one, launching a new initiative, or trying to make an existing community actually run, tell us what you promised and we'll scope the community manager effort to deliver it.",
-  email: "ocr@ucsf.edu",
+  contact: {
+    name: "Vincent Chan, PhD",
+    role: "OCR Director",
+    photo: vincentImg,
+  },
   primaryLabel: "Book a 30-min consult →",
   primaryHref: VINCENT_BOOKINGS_URL,
 };

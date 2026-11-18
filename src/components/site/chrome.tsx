@@ -617,6 +617,7 @@ export function CTA({
   title,
   subtitle,
   email,
+  contact,
   primaryLabel = "Book a 30-min consult →",
   primaryHref,
 }: {
@@ -624,12 +625,18 @@ export function CTA({
   eyebrow?: string;
   title: React.ReactNode;
   subtitle: string;
-  email: string;
+  email?: string;
+  /** Replaces the shared inbox with a named person to book. */
+  contact?: {
+    name: string;
+    role: string;
+    photo: string;
+  };
   primaryLabel?: string;
   /** Defaults to a mailto of `email`. External http(s) URLs open in a new tab. */
   primaryHref?: string;
 }) {
-  const href = primaryHref ?? `mailto:${email}`;
+  const href = primaryHref ?? (email ? `mailto:${email}` : "#contact");
   const external = /^https?:\/\//.test(href);
   return (
     <section id={id} className="scroll-mt-24 py-16 sm:py-24">
@@ -656,13 +663,34 @@ export function CTA({
             </div>
             <div className="min-w-0 lg:col-span-5 lg:pl-8">
               <div className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur sm:p-6">
-                <div className="text-xs text-white/60 uppercase tracking-widest">Email us</div>
-                <a
-                  href={`mailto:${email}`}
-                  className="block mt-3 text-2xl font-display hover:underline"
-                >
-                  {email}
-                </a>
+                {contact ? (
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={contact.photo}
+                      alt=""
+                      width={56}
+                      height={56}
+                      className="h-14 w-14 shrink-0 rounded-full object-cover"
+                    />
+                    <div className="min-w-0">
+                      <div className="text-xs uppercase tracking-widest text-white/60">
+                        Consult with
+                      </div>
+                      <div className="mt-1 font-display text-2xl leading-tight">{contact.name}</div>
+                      <div className="mt-1 text-sm text-white/70">{contact.role}</div>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <div className="text-xs text-white/60 uppercase tracking-widest">Email us</div>
+                    <a
+                      href={`mailto:${email}`}
+                      className="block mt-3 text-2xl font-display hover:underline"
+                    >
+                      {email}
+                    </a>
+                  </>
+                )}
                 <div className="mt-6 flex flex-wrap gap-3">
                   <a
                     href={href}

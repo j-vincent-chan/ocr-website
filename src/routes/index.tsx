@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import constellationImg from "@/assets/hero-constellation.png";
+import vincentImg from "@/assets/people/vincent-chan.jpg";
+import { VINCENT_BOOKINGS_URL } from "@/data/research-operations";
 import { ByTheNumbersStrip } from "@/components/site/by-the-numbers";
 import {
   HeroInteractiveBackdrop,
@@ -275,7 +277,12 @@ function HomePage() {
           </>
         }
         subtitle="Whether you have a deadline next month or a five-year vision, the earlier we engage, the more value we can add."
-        email="ocr@ucsf.edu"
+        contact={{
+          name: "Vincent Chan, PhD",
+          role: "OCR Director",
+          photo: vincentImg,
+        }}
+        primaryHref={VINCENT_BOOKINGS_URL}
       />
       <Testimonials />
       <PartnersSection />

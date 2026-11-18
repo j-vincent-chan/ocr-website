@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SiteShell, Breadcrumb, CTA } from "@/components/site/chrome";
+import { VINCENT_BOOKINGS_URL } from "@/data/research-operations";
 import { GhibliPortrait } from "@/components/site/ghibli-portrait";
 import { OPEN_POSITIONS } from "@/components/site/open-positions";
 import bushraSamadImg from "@/assets/people/bushra-samad.jpg";
@@ -519,7 +520,12 @@ function PeoplePage() {
         eyebrow="Join us"
         title={<>Want to work with this team?</>}
         subtitle="Whether you're a PI looking for a strategist or considering a role at OCR, we'd love to hear from you."
-        email="ocr@ucsf.edu"
+        contact={{
+          name: "Vincent Chan, PhD",
+          role: "OCR Director",
+          photo: vincentChanImg,
+        }}
+        primaryHref={VINCENT_BOOKINGS_URL}
         primaryLabel="Get in touch →"
       />
     </SiteShell>
