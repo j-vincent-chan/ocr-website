@@ -102,12 +102,17 @@ function formatStatValue(stat: Stat, count: number) {
   }`;
 }
 
-function cellBorders(index: number) {
-  const parts = ["border-white/10"];
-  if (index % 2 === 1) parts.push("border-l");
-  if (index >= 2) parts.push("border-t lg:border-t-0");
-  if (index === 2) parts.push("lg:border-l");
-  return parts.join(" ");
+function cellBorders() {
+  return [
+    "min-w-0 border-white/10",
+    // One column: rules between rows only.
+    "max-sm:[&:not(:last-child)]:border-b",
+    // Two columns: vertical rule down the middle, horizontal rule between rows.
+    "sm:max-lg:odd:border-r",
+    "sm:max-lg:[&:nth-child(-n+2)]:border-b",
+    // Four columns: vertical rules only.
+    "lg:[&:not(:last-child)]:border-r",
+  ].join(" ");
 }
 
 function StatCell({
@@ -125,9 +130,12 @@ function StatCell({
   return (
     <div
       className={[
-        "group relative flex h-full flex-col justify-between gap-4 px-5 py-5 sm:px-6 md:gap-5 md:px-7 md:py-6",
+        "group relative flex h-full min-w-0 @container",
+        "flex-row items-center justify-between gap-4 px-5 py-4",
+        "sm:flex-col sm:items-stretch sm:justify-between sm:gap-4 sm:px-6 sm:py-5",
+        "md:gap-5 md:px-7 md:py-6",
         "transition-colors duration-300 ease-out hover:bg-white/[0.04]",
-        cellBorders(index),
+        cellBorders(),
       ].join(" ")}
     >
       <span
@@ -141,16 +149,16 @@ function StatCell({
         style={{ background: stat.color }}
       />
 
-      <div className="font-display text-[clamp(2.4rem,4.8vw,3.75rem)] leading-none tracking-tight text-white">
+      <div className="shrink-0 font-display text-[clamp(1.85rem,24cqi,2.5rem)] leading-none tracking-tight whitespace-nowrap text-white sm:text-[clamp(2rem,24cqi,3.75rem)]">
         {formatStatValue(stat, count)}
       </div>
 
-      <div className="space-y-1.5">
-        <div className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/70 md:text-xs">
+      <div className="min-w-0 space-y-1 text-right sm:space-y-1.5 sm:text-left">
+        <div className="text-balance text-[11px] font-medium uppercase tracking-[0.14em] text-white/70 sm:tracking-[0.18em] md:text-xs">
           {stat.label}
         </div>
         {"detail" in stat && stat.detail ? (
-          <p className="max-w-[15rem] text-[12px] leading-snug text-white/45 md:text-[13px]">
+          <p className="text-balance text-[12px] leading-snug text-white/45 md:text-[13px] sm:max-w-[15rem]">
             {stat.detail}
           </p>
         ) : null}
@@ -204,7 +212,7 @@ export function ByTheNumbersStrip() {
           By the numbers since 2023
         </p>
 
-        <div className="grid grid-cols-2 border-y border-white/10 lg:grid-cols-4">
+        <div className="grid grid-cols-1 border-y border-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {HEADLINE_STATS.map((stat, index) => (
             <StatCell
               key={stat.label}

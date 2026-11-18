@@ -35,10 +35,10 @@ export const Route = createFileRoute("/")({
 /* ─────────── HERO: cinematic, layered, editorial ─────────── */
 function Hero() {
   return (
-    <section className="relative flex flex-col bg-cream lg:h-[calc(100dvh-7.25rem)]">
+    <section className="relative flex flex-col bg-cream lg:min-h-[calc(100dvh-7.25rem)]">
       <IntroSplash />
       {/* hero panel: clip graphic here so it cannot bleed into dark band or past viewport */}
-      <HeroInteractiveBackdrop className="flex min-h-0 flex-1 flex-col">
+      <HeroInteractiveBackdrop className="flex min-h-min flex-1 flex-col">
         <div
           className="pointer-events-none absolute inset-0 overflow-hidden"
           aria-hidden
