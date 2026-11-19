@@ -282,7 +282,7 @@ export function ProjectsView({
     "h-11 w-full cursor-pointer appearance-none rounded-full border border-[#e4e1d8] bg-white py-0 pl-[18px] pr-10 text-sm font-medium text-[#010621] focus:border-[#010621] focus:outline-none";
 
   return (
-    <section id="projects" className="pb-24 pt-10">
+    <section id="projects" className="pb-2 pt-10">
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="flex flex-wrap items-center gap-2 gap-x-2.5">
           <label className="relative block max-w-[340px] flex-[2_1_220px]">

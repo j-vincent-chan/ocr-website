@@ -560,7 +560,7 @@ export function ProgramsView() {
   });
 
   return (
-    <section id="programs" className="pb-24 pt-10">
+    <section id="programs" className="pb-2 pt-10">
       <div className="mx-auto max-w-[1280px] px-6">
         {ordered.map((g, gi, arr) => {
           const firstClosed =

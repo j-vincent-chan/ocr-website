@@ -232,7 +232,7 @@ function CommunityCard({ community }: { community: Community }) {
 
 export function CommunitiesView() {
   return (
-    <section id="communities" className="pb-24 pt-10">
+    <section id="communities" className="pb-2 pt-10">
       <div className="mx-auto max-w-[1280px] px-6">
         <p className="mb-7 max-w-[62ch] text-pretty text-[17px] leading-[1.6] text-[#555e6f]">
           The research communities OCR supports, and the programming it helps deliver for their

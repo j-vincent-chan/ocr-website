@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { CommunitiesView } from "@/components/portfolio/communities-view";
 import { ContactCard } from "@/components/portfolio/contact-card";
-import { PortfolioHero } from "@/components/portfolio/hero";
+import { PortfolioHero, type PortfolioView } from "@/components/portfolio/hero";
 import { ProgramsView } from "@/components/portfolio/programs-view";
 import { ProjectsView } from "@/components/portfolio/projects-view";
 import {
@@ -34,6 +34,143 @@ export const Route = createFileRoute("/portfolio/")({
   }),
   component: PortfolioPage,
 });
+
+type SectionLink = {
+  view?: PortfolioView;
+  target: string;
+  label: string;
+  hint: string;
+};
+
+const SECTION_LINKS: Record<PortfolioView | "contact", SectionLink> = {
+  programs: {
+    view: "programs",
+    target: "portfolio-tabs",
+    label: "Programs",
+    hint: "Multi-project efforts OCR supports as a whole",
+  },
+  projects: {
+    view: "projects",
+    target: "portfolio-tabs",
+    label: "Projects",
+    hint: "Individual research efforts OCR supports",
+  },
+  communities: {
+    view: "communities",
+    target: "portfolio-tabs",
+    label: "Communities",
+    hint: "Groups of people and the programming around them",
+  },
+  contact: {
+    target: "contact",
+    label: "Start with us",
+    hint: "Tell us about a program, project, or community",
+  },
+};
+
+const SECTION_PAGER: Record<
+  PortfolioView,
+  { prev?: SectionLink; next: SectionLink }
+> = {
+  programs: { next: SECTION_LINKS.projects },
+  projects: { prev: SECTION_LINKS.programs, next: SECTION_LINKS.communities },
+  communities: { prev: SECTION_LINKS.projects, next: SECTION_LINKS.contact },
+};
+
+function SectionPager({
+  view,
+  onViewChange,
+}: {
+  view: PortfolioView;
+  onViewChange: (view: PortfolioView) => void;
+}) {
+  const { prev, next } = SECTION_PAGER[view];
+
+  const go = (link: SectionLink) => {
+    if (link.view) onViewChange(link.view);
+    requestAnimationFrame(() => {
+      const target = document.getElementById(link.target);
+      if (!target) return;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const top = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: reduce ? "auto" : "smooth" });
+    });
+  };
+
+  return (
+    <nav
+      aria-label="Portfolio sections"
+      className="mx-auto max-w-[1280px] px-6 pb-24 pt-4"
+    >
+      <div className="flex items-center gap-4">
+        <span aria-hidden className="h-0 flex-1 border-t border-[#dad7cf]" />
+        <span
+          className="whitespace-nowrap text-[#555e6f]"
+          style={{
+            font: "500 11px/1.4 Inter, system-ui, sans-serif",
+            letterSpacing: ".18em",
+            textTransform: "uppercase",
+          }}
+        >
+          Section
+        </span>
+        <span aria-hidden className="h-0 flex-1 border-t border-[#dad7cf]" />
+      </div>
+
+      <div
+        className={`mt-5 flex flex-col gap-6 sm:flex-row sm:items-start ${
+          prev ? "sm:justify-between" : "sm:justify-end"
+        }`}
+      >
+        {prev ? (
+          <button
+            type="button"
+            onClick={() => go(prev)}
+            className="group flex max-w-[28rem] flex-col items-start gap-1 border-0 bg-transparent p-0 text-left text-[#010621] hover:text-[#08173f] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#010621]"
+          >
+            <span
+              className="font-display text-[clamp(1.5rem,2.4vw,2rem)] leading-tight"
+              style={{ fontWeight: 400 }}
+            >
+              <span
+                aria-hidden
+                className="mr-2 inline-block transition-transform duration-200 group-hover:-translate-x-1"
+              >
+                ←
+              </span>
+              {prev.label}
+            </span>
+            <span className="max-w-[28ch] text-[14px] leading-snug text-[#555e6f]">
+              {prev.hint}
+            </span>
+          </button>
+        ) : null}
+
+        <button
+          type="button"
+          onClick={() => go(next)}
+          className="group flex max-w-[28rem] flex-col items-end gap-1 border-0 bg-transparent p-0 text-right text-[#010621] hover:text-[#08173f] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#010621]"
+        >
+          <span
+            className="font-display text-[clamp(1.5rem,2.4vw,2rem)] leading-tight"
+            style={{ fontWeight: 400 }}
+          >
+            {next.label}
+            <span
+              aria-hidden
+              className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1"
+            >
+              →
+            </span>
+          </span>
+          <span className="max-w-[28ch] text-[14px] leading-snug text-[#555e6f]">
+            {next.hint}
+          </span>
+        </button>
+      </div>
+    </nav>
+  );
+}
 
 function PortfolioPage() {
   const raw = Route.useSearch();
@@ -78,6 +215,12 @@ function PortfolioPage() {
           <ProjectsView search={search} onPatch={patch} />
         ) : null}
         {search.view === "communities" ? <CommunitiesView /> : null}
+        <SectionPager
+          view={search.view}
+          onViewChange={(view) => {
+            patch({ view });
+          }}
+        />
         <ContactCard />
       </div>
     </div>
