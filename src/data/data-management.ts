@@ -11,7 +11,7 @@ import bushraImg from "@/assets/people/bushra-samad.jpg";
 import vincentImg from "@/assets/people/vincent-chan.jpg";
 import { VINCENT_BOOKINGS_URL } from "@/data/research-operations";
 
-export const SHOW_REVIEW_FLAGS = true;
+export const SHOW_REVIEW_FLAGS = false;
 
 /** Page accent (magenta fill). Text-on-light / on-dark variants live in styles.css. */
 export const MAGENTA = "oklch(0.62 0.24 340)";
